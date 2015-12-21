@@ -1,0 +1,33 @@
+<?php
+	global $wpl_exe_wp;
+	$wproto_footer_style = isset( $data['wproto_footer_style'] ) ? $data['wproto_footer_style'] : '';
+	$page_footer_sidebar_id = isset( $data['wproto_page_footer_sidebar_id'] ) ? $data['wproto_page_footer_sidebar_id'] : '';
+?>
+<table class="form-table wproto-form-table">
+	<tr>
+		<th><label><?php _e( 'Page footer style', 'wproto' ); ?>:</label></th>
+		<td>
+			<select class="select" name="wproto_settings[wproto_footer_style]">
+				<option value="">&mdash; <?php _e('Default skin footer', 'wproto'); ?> &mdash;</option>
+				<?php foreach( $wpl_exe_wp->system_config['footer_styles'] as $k=>$v): ?>
+				<option <?php echo $wproto_footer_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th><p><?php _e( 'Customize footer widget area', 'wproto' ); ?>:</p></th>
+		<td>
+			<select class="select" name="wproto_settings[wproto_page_footer_sidebar_id]">
+				<option value="">&mdash; <?php _e('Use default footer widget area', 'wproto'); ?> &mdash;</option>
+				<?php if( is_array( $data['registered_sidebars'] ) && count( $data['registered_sidebars'] ) > 0 ): ?>
+	
+					<?php foreach( $data['registered_sidebars'] as $sidebar ): ?>
+					<option <?php echo $page_footer_sidebar_id == $sidebar['id'] ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $sidebar['id'] ); ?>"><?php echo esc_html( $sidebar['name'] ); ?></option>
+					<?php endforeach; ?>
+	
+				<?php endif; ?>
+			</select>
+		</td>
+	</tr>
+</table>

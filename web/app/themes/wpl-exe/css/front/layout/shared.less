@@ -1,0 +1,688 @@
+/**************************************************************************************************************************
+	UNLOADER AND PRELOADERS
+**************************************************************************************************************************/
+#wproto-preloader {
+	display: none;
+}
+body.preloader #wproto-preloader {
+	display: block;
+	position: absolute;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 9999999;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+body.preloader #wproto-preloader-inner {
+	position: absolute;
+	left: 49%;
+	top: 49%;
+}
+body.preloader #wproto-preloader .custom-preloader-image {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------
+	Page unloaders
+*/
+.pageunload-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 9998;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.pageunload-overlay.show {
+	visibility: visible;
+}
+
+.pageunload-overlay svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	pointer-events: none;
+}
+
+.pageunload-loading.pageunload-overlay::after,
+.pageunload-loading.pageunload-overlay::before {
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+/**************************************************************************************************************************
+	HELPER CLASSES
+**************************************************************************************************************************/
+.clearfix:before,
+.clearfix:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.container:after,
+.container-fluid:after,
+.row:after {
+  clear: both;
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-align-right {
+	text-align: right;
+}
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+.affix {
+  position: fixed;
+}
+/**************************************************************************************************************************
+	START BASE OF THEME
+**************************************************************************************************************************/
+html {
+	font-size: 62.5%;
+	height: 100% !important;
+}
+body {
+	height: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+body.boxed-layout, body.framed-layout {
+	#wrap {
+		max-width: 1250px;
+		margin: 0 auto;
+	}
+	.container-fluid {
+		max-width: 1170px;
+		margin: 0 auto;
+	}
+}
+body.framed-layout {
+	#wrap {
+		margin: 25px auto;
+	}	
+}
+@media (max-width: 1199px) {
+  body.boxed-layout, body.framed-layout {
+  	#wrap {
+  		max-width: 970px;
+  	}
+  }
+}
+@media (max-width: 992px) {
+  body.boxed-layout, body.framed-layout {
+  	#wrap {
+  		max-width: 750px;
+  	}
+  }
+}
+a {
+	text-decoration: none;
+}
+mark.alt {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+strong, b {
+	font-weight: bold;
+}
+i, em, q, address {
+	font-style: italic;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+input[type='number'] {
+	-moz-appearance:textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+select::-ms-expand {
+	display: none;
+}
+input, select, textarea {
+	max-width: 100%;
+}
+table {
+	td, th, caption {
+		padding: 12px;
+	}
+	th {
+		font-weight: bold;
+		text-align: left;
+	}
+	caption {
+		text-align: center;
+		font-style: italic;
+	}
+}
+dl {
+	dt {
+		display: block;
+		font-weight: bold;
+	}
+	dd {
+		margin-bottom: 14px;
+	}
+}
+ul {
+	padding-left: 16px;
+}
+ol {
+	padding-left: 19px;
+}
+ol, ul {
+	li {
+		display: list-item;
+	}
+	li, ol, ul {
+		margin-bottom: 14px;
+	}
+	ul, ol {
+		margin-top: 14px;
+		margin-left: 10px;
+	}
+}
+ul {
+	list-style-type: square;
+	list-style-position: outside;
+}
+ul ul {
+	list-style-type: disc;
+}
+ul ul ul {
+	list-style-type: circle;
+}
+ol {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+pre, code, tt, var {
+  font-family: "Courier New", monospace;
+}
+code, tt, var {
+	padding: 0 8px;
+}
+pre {
+  display: block;
+  padding: 10px;
+  overflow-x: auto;
+  width: 100%;
+}
+hr {
+  border: 0;
+  height: 1px;
+	margin: 28px 0;
+}
+p, table, ul, ol, dl, pre, address, audio, video, iframe, blockquote, embed, canvas, form, fieldset,
+.wproto-tabs, .wproto-shortcode-facts-in-digits, .wproto-shortcode-facts-in-digits-circle, .wp-audio-shortcode {
+	margin-bottom: 32px;
+}
+legend {
+	display: inline-block;
+	padding: 0 10px;
+}
+.field-wrap {
+	margin-bottom: 30px;
+}
+.wproto-tabs {
+	margin-bottom: 32px !important;
+	h1,h2,h3,h4,h5,h6,p, table, ul, ol, dl, pre, address, audio, video, iframe, blockquote, embed, canvas, form, fieldset, .field-wrap {
+		margin-bottom: 18px;
+	}
+}
+/**************************************************************************************************************************
+	DEFAULT WP STYLES
+**************************************************************************************************************************/
+.alignleft, img.alignleft {
+	float: left;
+	margin: 0 15px 15px 0;
+	}
+.alignright, img.alignright {
+	float: right;
+	margin: 0 0 15px 15px;
+}
+.aligncenter, img.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	clear: both;
+	text-align: center;
+	input, select, textarea {
+		text-align: center;
+	}
+}
+.wp-caption {
+	
+}
+.wp-caption p.wp-caption-text {
+	
+}
+.wp-smiley {
+	margin: 0 !important;
+	max-height: 1em;
+}
+.centered {
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
+[data-parallax] {
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-attachment: fixed !important;
+}
+/**************************************************************************************************************************
+	HEADERS
+**************************************************************************************************************************/
+.header_with_line, .header_with_thin_line {
+	background-repeat: no-repeat;
+	background-position: bottom left;
+}
+.header_with_line.centered, .header_with_thin_line.centered {
+	background-position: bottom center;
+}
+.header_with_line.right, .header_with_thin_line.right {
+	background-position: bottom right;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 36px;
+	.header-subtext {
+		display: block;
+		padding: 8px 0 8px 0;
+	}
+}
+h1.header_with_line,
+h2.header_with_line,
+h3.header_with_line,
+h4.header_with_line,
+h5.header_with_line,
+h6.header_with_line {
+	padding-bottom: 14px;
+}
+h5, h6 {
+	margin-bottom: 18px;
+}
+/**************************************************************************************************************************
+	CITES AND BLOCKQUOTES
+**************************************************************************************************************************/
+blockquote {
+	padding-left: 50px;
+	background-size: 31px 26px;
+	background-repeat: no-repeat;
+	padding-top: 6px;
+	p {
+		line-height: 1.25em;
+		font-weight: 600;
+	}
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+	cite {
+		display: block;
+		padding-top: 14px;
+	}
+}
+blockquote.style_2, blockquote.style_5, blockquote.style_9, blockquote.style_10 {
+	display: block;
+	position: relative;
+	padding-left: 0;
+	padding-top: 50px;
+	background-position: center top;
+	text-align: center;
+}
+blockquote.style_2 .inner, blockquote.style_5 .inner, blockquote.style_9 .inner, blockquote.style_10 .inner {
+	padding-bottom: 50px;
+	background-size: 31px 26px;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+blockquote.style_3 {
+	padding-left: 0;
+	padding-right: 120px;
+	background-size: 70px 60px;
+	background-position: right top;
+	text-align: right;
+}
+blockquote.style_4, blockquote.style_6 {
+	padding: 40px 0 40px 99px;	
+	background-position: 48px 40px;
+	text-transform: uppercase;
+}
+blockquote.style_6 {
+	text-transform: none;
+	.inner {
+		padding-right: 30px;
+	}
+}
+blockquote.style_7, blockquote.style_8 {
+	text-align: center;
+	padding: 0;
+	p {
+		font-style: italic;
+	}
+}
+blockquote.style_7, blockquote.style_7 .inner, blockquote.style_8, blockquote.style_8 .inner {
+	background: none !important;
+}
+blockquote.style_9 p {
+	font-style: italic;
+}
+blockquote.style_10 p {
+	text-transform: uppercase;
+}
+
+@media screen and (max-width: 995px) {
+	blockquote {
+		br {
+			display: none;
+		}
+	}
+	blockquote.style_3 {
+		padding-right: 45px;
+		background-size: 31px 26px;
+	}
+}
+/**************************************************************************************************************************
+	FORMS
+**************************************************************************************************************************/
+form, .wproto-ninja-form form, .wproto-ninja-form.style-style_1 form {
+	fieldset {
+		padding: 20px;
+	}
+	fieldset *:last-of-type {
+		margin-bottom: 0;
+	}
+	input[type=text], input[type=email], input[type=url], input[type=password], input[type=number], input[type=tel],
+	textarea, select {
+		width: 100%;
+		.box-sizing();
+		max-width: 100%;
+		outline: none !important;
+		padding: 14px 20px;
+		margin: 0;
+	}
+	input[type=text]:hover, input[type=email]:hover, input[type=url]:hover, input[type=password]:hover, input[type=number]:hover, input[type=tel]:hover,
+	textarea:hover, select:hover {
+		cursor: pointer;
+	}
+	select option {
+		padding: 10px 10px;
+		cursor: pointer;
+	}
+	input[type=radio], input[type=checkbox] {
+		vertical-align: middle;
+		margin: 0 5px 2px 0;
+	}
+	textarea {
+		min-height: 130px;
+	}
+	label {
+		display: inline-block;
+		margin-bottom: 8px;
+	}
+	input[type=text] + label, input[type=email] + label, input[type=url] + label, input[type=password] + label,
+	input[type=number] + label, input[type=tel] + label, textarea + label, select + label {
+		padding-top: 14px;
+	}
+	.ninja-forms-field-error {
+		padding-top: 7px;
+	}
+	textarea + .ninja-forms-field-error, input[type=checkbox] + .ninja-forms-field-error {
+		padding-top: 0;	
+	}
+}
+input[placeholder]          { text-overflow: ellipsis; }
+::-webkit-input-placeholder { text-overflow: ellipsis; }
+input::-moz-placeholder     { text-overflow: ellipsis; } 
+input:-moz-placeholder      { text-overflow: ellipsis; } 
+input:-ms-input-placeholder { text-overflow: ellipsis; }
+
+.icr__checkbox, .icr__radio {
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	.transition( background-color .1s );
+}
+.icr__text {
+	padding-left: 27px;
+}
+.checked .icr__checkbox {
+	background-size: 7px 7px; 
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.checked .icr__radio {
+	background-size: 6px 6px; 
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+select[multiple] + select + .sbHolder {
+	display: none !important;
+}
+
+.wproto-ninja-form.style-style_2 form, form.style-style_2,
+.wproto-ninja-form.style-style_3 form, form.style-style_3,
+.wproto-ninja-form.style-style_8 form, form.style-style_8 {
+	.field-wrap {
+		margin-bottom: 10px;
+	}
+}
+
+.wproto-ninja-form.style-style_5 form, form.style-style_5 {
+	textarea {
+		min-height: 207px;
+	}
+}
+
+.wproto-ninja-form.style-style_3 form, form.style-style_3,
+.wproto-ninja-form.style-style_8 form, form.style-style_8 {
+	input[type=text], input[type=email], input[type=url], input[type=password], input[type=number], input[type=tel], select {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	textarea {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 995px) {
+	.wproto-ninja-form.style-style_3 form, form.style-style_3,
+	.wproto-ninja-form.style-style_8 form, form.style-style_8,
+	textarea {
+		input[type=text], input[type=email], input[type=url], input[type=password], input[type=number], input[type=tel], select {
+			width: 100%;
+		}
+	}
+}
+
+.input-icon-user,
+.input-icon-email,
+.input-icon-web,
+.input-icon-url,
+.input-icon-comment,
+.input-icon-phone {
+	background-position: right 20px center;
+	background-repeat: no-repeat;
+	padding-right: 40px !important;
+}
+.input-icon-user,
+.input-icon-email {
+	background-position: right 17px center;
+}
+.input-icon-phone {
+	background-position: right 20px center;
+}
+.input-icon-comment {
+	background-position: right 20px top 15px;
+}
+
+/**************************************************************************************************************************
+	BUTTONS
+**************************************************************************************************************************/
+button, input[type=button], input[type=submit], input[type=reset], .button, .btn, .post-pagination a, .comment-navigation a, .woocommerce-pagination a, .woocommerce-pagination span {
+	display: inline-block;
+	padding: 14px 25px;
+	line-height: 1.25em;
+	font-weight: 800;
+	cursor: pointer;
+	text-overflow: ellipsis;
+	-webkit-appearance: none;
+	i {
+		margin: 0 10px 0 -10px;
+	}
+}
+.button .money {
+	font-size: 24px;
+	font-weight: bold;
+}
+.button .period {
+	font-weight: 300;
+	font-size: 14px;
+}
+.button-size-mini {
+	padding: 6px 24px;
+	font-weight: 700;
+	text-transform: none;
+}
+.button-size-small {
+	padding: 8px 24px;
+}
+.button-size-medium, .post-pagination a, .comment-navigation a, .woocommerce-pagination a, .woocommerce-pagination span {
+	padding: 12px 25px;
+}
+.button-size-large {
+	padding: 18px 33px;
+}
+.button-size-extra-large {
+	padding: 19px 33px;
+}
+.button-size-medium, .button-size-large, .button-size-extra-large {
+	text-transform: uppercase;
+}
+.button-style-red-stroke, .button-style-black-stroke, .button-style-green-stroke, .button-style-blue-stroke {
+	font-weight: 400;
+}
+.button-style-iconic, .button-style-iconic-gradient, .button-style-iconic-alt, .button-style-iconic-stroke {
+	position: relative;
+}
+.button-style-iconic, .button-style-iconic-stroke, .button-style-iconic-gradient, .button-style-iconic-alt {
+	.icon-holder {
+		position: absolute;
+		left: -1px;
+		bottom: -1px;
+		top: -1px;
+		text-align: center;
+	}
+	i {
+		margin: 0;
+	}
+}
+.button-style-iconic.button-size-mini, .button-style-iconic-stroke.button-size-mini,
+.button-style-iconic-gradient.button-size-mini, .button-style-iconic-alt.button-size-mini {
+	padding-left: 45px;
+	.icon-holder {
+		width: 30px;
+		line-height: 30px;
+	}
+}
+.button-style-iconic.button-size-small, .button-style-iconic-stroke.button-size-small,
+.button-style-iconic-gradient.button-size-small, .button-style-iconic-alt.button-size-small {
+	padding-left: 47px;
+	.icon-holder {
+		width: 34px;
+		line-height: 34px;
+	}
+}
+.button-style-iconic.button-size-medium, .button-style-iconic-stroke.button-size-medium,
+.button-style-iconic-gradient.button-size-medium, .button-style-iconic-alt.button-size-medium {
+	padding-left: 52px;
+	.icon-holder {
+		width: 41px;
+		line-height: 41px;
+	}
+}
+.button-style-iconic.button-size-large, .button-style-iconic-stroke.button-size-large,
+.button-style-iconic-gradient.button-size-large, .button-style-iconic-alt.button-size-large {
+	padding-left: 72px;
+	.icon-holder {
+		width: 54px;
+		line-height: 54px;
+	}
+}
+.button-style-iconic.button-size-extra-large, .button-style-iconic-stroke.button-size-extra-large,
+.button-style-iconic-gradient.button-size-extra-large, .button-style-iconic-alt.button-size-extra-large {
+	padding-left: 88px;
+	.icon-holder {
+		width: 64px;
+		line-height: 62px;
+	}
+}
+/**************************************************************************************************************************
+	TOOLTIPS
+**************************************************************************************************************************/
+.tipsy { position: absolute; padding: 5px; z-index: 100; }
+.tipsy-inner { max-width: 200px; padding: 5px 8px 4px 8px; text-align: center; }
+.tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed @color_accent; }
+.tipsy-n .tipsy-arrow { top: 0px; left: 50%; margin-left: -5px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent; }
+.tipsy-nw .tipsy-arrow { top: 0; left: 10px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent;}
+.tipsy-ne .tipsy-arrow { top: 0; right: 10px; border-bottom-style: solid; border-top: none;  border-left-color: transparent; border-right-color: transparent;}
+.tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -5px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+.tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+.tipsy-se .tipsy-arrow { bottom: 0; right: 10px; border-top-style: solid; border-bottom: none; border-left-color: transparent; border-right-color: transparent; }
+.tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
+.tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
+
+@-moz-document url-prefix() {
+	.page-template-page-tpl-custom-php {
+		overflow-x: hidden;
+	}
+}

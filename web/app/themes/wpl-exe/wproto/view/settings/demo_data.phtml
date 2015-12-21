@@ -1,0 +1,49 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Demo Data', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" method="post">
+	
+		<!--
+	
+			Install demo data
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Install demo data', 'wproto' ); ?></h3>
+		
+			<p><?php _e( 'Demo data helps you understand how the theme works', 'wproto' ); ?></p>
+		
+			<p><strong><?php _e('Important notes:', 'wproto'); ?></strong></p>
+			
+			<ol>
+				<li><?php _e('Demo data must be installed on a clear WordPress installation.', 'wproto'); ?></li>
+				<li><?php _e('Do not forget to activate following plugins before: <strong>Visual Composer, Slider Revolution, Ninja Forms, Ninja Form Layout</strong> otherwise the demo data for these plugins will be not installed or may be corrupted', 'wproto'); ?></li>
+				<li><?php _e('WooCommerce products will be not installed since that plugin has it\'s own demo data', 'wproto'); ?></li>
+				<li><?php _e('The Demo data installer will not import the images we have used in our live demos, due to copyright / license reasons (placeholders will be used instead).', 'wproto'); ?></li>
+				<li><?php _e('Do not run importer multiple times one after another, it will result in double content.', 'wproto'); ?></li>
+			</ol>
+			
+			<p><strong><?php _e('What should I do if I get "200" or "500" error message?', 'wproto'); ?></strong></p>
+			
+			<ol>
+				<li><?php _e('Check that <code>/wp-content/uploads/</code> directory and it\'s subfolders have correct permissions.', 'wproto'); ?></li>
+				<li><?php _e('Increase time limit for PHP scripts and memory limit for WordPress, e.g.: add following code<br/><code>set_time_limit(30000); <br/>define( \'WP_MEMORY_LIMIT\', \'128M\' ); <br/>define( \'WP_MAX_MEMORY_LIMIT\', \'256M\' );</code> <br/>into your <i>wp-config.php</i>. and try to install demo data again.', 'wproto'); ?></li>
+				<li><?php _e('If that does not help or you do not know how to do that, contact your hosting provider.', 'wproto'); ?></li>
+			</ol>
+		
+			<p>
+				<a href="javascript:;" id="wproto-install-demo-data" class="button button-primary"><?php _e( 'Click here to install demo data', 'wproto' ); ?></a>
+			</p>
+						
+			<div id="import-demo-data-results" class="infodiv" style="display: none;"></div>
+		
+		</div>
+	
+	</form>
+</div>

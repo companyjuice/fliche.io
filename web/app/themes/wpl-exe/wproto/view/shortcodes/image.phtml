@@ -1,0 +1,49 @@
+<?php
+	$target = isset( $data['link_target'] ) ? $data['link_target'] : '_self';
+	$image_link = '';
+	
+	$image = absint( $data['image'] );
+	
+	switch( $data['link_type'] ) {
+		default:
+		case 'direct':
+		case 'lightbox':
+			$image_link = wp_get_attachment_image_src( $image, 'full' );
+			$image_link = $image_link[0];
+		break;
+		case 'custom':
+			$image_link = $data['custom_link'];
+		break;
+	}
+
+	if( $image > 0 ):
+?>
+
+<div <?php if( $data['animation'] <> '' ): ?>data-wow-delay="<?php echo esc_attr( $data['animation_delay'] ); ?>"<?php endif; ?> class="wproto-image wow <?php echo esc_attr( $data['animation'] ); ?> <?php echo esc_attr( $data['image_align'] ); ?>">
+
+	<?php if( $data['link_type'] <> '' && $image_link <> '' ): ?>
+	<a target="<?php echo esc_attr( $target ); ?>" class="<?php echo $data['link_type'] == 'lightbox' ? 'lightbox' : ''; ?>" href="<?php echo esc_attr( $image_link ); ?>">
+	<?php endif; ?>
+	
+	<?php if( $data['image_size'] == '' || $data['image_size'] == 'full' ): ?>
+	
+		<img src="<?php echo wp_get_attachment_url( $image ); ?>" alt="" />
+	
+	<?php else: ?>
+	
+		<?php
+			$_custom_size = explode( 'x', $data['image_size'] );
+			$_width = isset( $_custom_size[0] ) && is_numeric( $_custom_size[0] ) ? $_custom_size[0] : 0;
+			$_height = isset( $_custom_size[1] ) && is_numeric( $_custom_size[1] ) ? $_custom_size[1] : 0;
+		?>
+	
+		<?php echo wpl_exe_image( wp_get_attachment_url( $image ), $_width, $_height ); ?>
+	
+	<?php endif; ?>
+	
+	<?php if( $data['link_type'] <> '' && $image_link <> '' ): ?>
+	</a>
+	<?php endif; ?>
+
+</div>
+<?php endif;

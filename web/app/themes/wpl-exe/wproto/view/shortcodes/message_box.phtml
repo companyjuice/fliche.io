@@ -1,0 +1,49 @@
+<?php
+	$type = $data['type'];
+	$icon = '';
+	$custom_icon = false;
+	$custom_icon = $data['icon'] <> '';
+	if( $custom_icon ) $type = 'custom';
+	
+	switch( $type ) {
+		case '':
+		case 'error':
+		default:
+			$icon = 'fa fa-exclamation-triangle';
+		break;
+		case 'custom':
+			$icon = $data['icon'];
+		break;
+		case 'help':
+			$icon = 'fa fa-life-ring';
+		break;
+		case 'notice':
+			$icon = 'fa fa-bell-o';
+		break;
+		case 'success':
+			$icon = 'fa fa-check';
+		break;
+		case 'information':
+			$icon = 'fa fa-info';
+		break;
+		case 'general':
+			$icon = 'fa fa-envelope';
+		break;
+	}
+	
+	$box_style = $text_style = $icon_style = '';
+	
+	if( $data['text_color'] <> '' ) $text_style .= 'color: ' . $data['text_color'] . '; ';
+	if( $data['icon_color'] <> '' ) $icon_style .= 'color: ' . $data['icon_color'] . '; ';
+	if( $data['border_color'] <> '' ) {
+		$icon_style .= 'border-color: ' . $data['border_color'] . '; ';
+		$box_style .= 'border-color: ' . $data['border_color'] . '; ';
+	} 
+	if( $data['bg_color'] <> '' ) $box_style .= 'background-color: ' . $data['bg_color'] . '; ';
+	if( $data['icon_bg_color'] <> '' ) $icon_style .= 'background-color: ' . $data['icon_bg_color'] . '; ';
+?>
+<?php if( $data['text'] <> '' ): ?>
+<div <?php if( $data['animation'] <> '' ): ?>data-wow-delay="<?php echo esc_attr( $data['animation_delay'] ); ?>"<?php endif; ?> class="wproto-message <?php if( $data['animation'] <> '' ): ?>wow <?php echo esc_attr( $data['animation'] ); ?><?php endif; ?> type-<?php echo esc_attr( $data['type'] ); ?> style-<?php echo esc_attr( $data['style'] ); ?>" style="<?php echo esc_attr( $box_style ); ?>">
+	<?php if( $icon <> '' ): ?><span class="icon" style="<?php echo esc_attr( $icon_style ); ?>"><i class="<?php echo esc_attr( $icon ); ?>"></i></span><?php endif; ?> <span class="text" style="<?php echo esc_attr( $text_style ); ?>"><?php echo wp_kses_post( $data['text'] ); ?></span>
+</div>
+<?php endif; 

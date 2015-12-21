@@ -1,0 +1,20 @@
+<?php echo $data['args']['before_widget']; ?>
+
+<?php if ( isset( $data['instance']['logo_url'] ) && $data['instance']['logo_url'] <> '' ) : ?>
+
+	<?php
+		$img = $data['instance']['logo_url'];
+		if( wpl_exe_wp_utils::is_retina() ) {
+			$img = $data['instance']['logo_2x_url'];
+		}
+		$width = isset( $data['instance']['logo_width'] ) && is_numeric( $data['instance']['logo_width'] ) ? $data['instance']['logo_width'] : '';
+	?>
+
+<p class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo esc_attr( $img ); ?>" alt="" width="<?php echo esc_attr( $width ); ?>" /></a></p>
+<?php endif; ?>
+
+<?php if ( isset( $data['instance']['description'] ) && $data['instance']['description'] <> '' ) : ?>
+	<?php echo wp_kses_post( $data['instance']['description'] ); ?>
+<?php endif; ?>
+
+<?php echo $data['args']['after_widget'];

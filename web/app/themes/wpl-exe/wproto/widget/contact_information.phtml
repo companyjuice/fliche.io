@@ -1,0 +1,84 @@
+<?php
+
+	add_action( 'widgets_init', 'register_wpl_exe_wp_contact_info_widget' );
+	
+	function register_wpl_exe_wp_contact_info_widget() {
+		register_widget( 'wpl_exe_wp_contact_info_widget' );
+	}
+	
+	class wpl_exe_wp_contact_info_widget extends WP_Widget {
+		
+		function __construct() {
+			$widget_ops = array( 'classname' => 'wproto_contact_info_widget', 'description' => __('A widget that displays contact information. ', 'wproto') );
+		
+			$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wproto_contact_info_widget' );
+		
+			parent::__construct( 'wproto_contact_info_widget', __( '[EXE] Contact Information', 'wproto' ), $widget_ops, $control_ops );
+		}
+		
+		function widget( $args, $instance ) {
+			global $wpl_exe_wp;
+			
+			$data = array();
+			$data['title'] = apply_filters( 'widget_title', $instance['title'] );
+			
+			$data['instance'] = $instance;
+			$data['args'] = $args;
+
+			$wpl_exe_wp->view->load_partial( 'widgets/contact_info', $data );
+
+		}
+		
+		function update( $new_instance, $old_instance ) {
+			$instance = $old_instance;
+
+			//Strip tags from title and name to remove HTML 
+			$allowed_tags = wp_kses_allowed_html( 'post' );
+			
+			$instance['title'] = strip_tags( str_replace( '\'', "&#39;", $new_instance['title'] ) );
+			$instance['address'] = wp_kses( $new_instance['address'], wp_kses_allowed_html( 'post' ) );
+			$instance['phone'] = wp_kses( $new_instance['phone'], wp_kses_allowed_html( 'post' ) );
+			$instance['email'] = wp_kses( $new_instance['email'], wp_kses_allowed_html( 'post' ) );
+			$instance['display_social_icons'] = isset( $new_instance['display_social_icons'] );
+
+			return $instance;
+		}
+		
+		function form( $instance ) {
+			
+			//Set up some default widget settings.
+			$defaults = array(
+				'title' => __( 'Contact', 'wproto' ),
+				'address' => '',
+				'phone' => '',
+				'email' => '',
+				'display_social_icons' => true,
+			);
+			
+			$instance = wp_parse_args( (array) $instance, $defaults );
+			
+			?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Widget title:', 'wproto'); ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'address' ); ?>"><?php _e('Address:', 'wproto'); ?></label>
+				<textarea class="widefat" id="<?php echo $this->get_field_id( 'address' ); ?>" name="<?php echo $this->get_field_name( 'address' ); ?>"><?php echo esc_textarea( $instance['address'] ); ?></textarea>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'phone' ); ?>"><?php _e('Phone:', 'wproto'); ?></label>
+				<textarea class="widefat" id="<?php echo $this->get_field_id( 'phone' ); ?>" name="<?php echo $this->get_field_name( 'phone' ); ?>"><?php echo esc_textarea( $instance['phone'] ); ?></textarea>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e('Email:', 'wproto'); ?></label>
+				<textarea class="widefat" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>"><?php echo esc_textarea( $instance['email'] ); ?></textarea>
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php checked( $instance['display_social_icons'] ); ?> id="<?php echo $this->get_field_id( 'display_social_icons' ); ?>" name="<?php echo $this->get_field_name( 'display_social_icons' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'display_social_icons' ); ?>"><?php _e('Display social icons', 'wproto'); ?></label>  
+			</p>
+			<?php
+		}
+		
+	}

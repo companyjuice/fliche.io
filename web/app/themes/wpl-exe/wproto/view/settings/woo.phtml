@@ -1,0 +1,173 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Additional settings for WooCommerce', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="plugins" />
+		
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+		
+		<!--
+	
+			WooCommerce
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Customization', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Shop layout style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$woo_layout = $wpl_exe_wp->get_option( 'woo_layout', 'plugins' ); 
+							$_woo_layouts = $wpl_exe_wp->system_config['shop_styles'];
+						?>
+					
+						<select class="select" name="plugins[woo_layout]">
+							<?php foreach( $_woo_layouts as $k=>$v ): ?>
+							<option <?php echo $woo_layout == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Products per page', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$posts_per_page = $wpl_exe_wp->get_option( 'woo_posts_per_page', 'plugins' ); 
+						?>
+					
+						<input type="number" min="0" value="<?php echo absint( $posts_per_page ); ?>" name="plugins[woo_posts_per_page]" />
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Disable ordering boxes', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$disable_ordering = $wpl_exe_wp->get_option( 'woo_disable_ordering', 'plugins' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $disable_ordering, false, 'plugins', 'woo_disable_ordering'); ?>
+						
+						<p class="description"><?php _e('Your shop will work as a simple "Catalog"', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Sidebar settings', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Display sidebar at shop pages', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$woo_display_sidebar = $wpl_exe_wp->get_option( 'woo_display_sidebar', 'plugins' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $woo_display_sidebar, 'tr.woo-sidebar-settings', 'plugins', 'woo_display_sidebar'); ?>
+						
+					</td>
+				</tr>
+				<tr class="woo-sidebar-settings"<?php echo $woo_display_sidebar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Sidebar position', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$woo_default_sidebar = $wpl_exe_wp->get_option( 'woo_default_sidebar', 'plugins' ); 
+						?>
+					
+						<select class="select" name="plugins[woo_default_sidebar]">
+							<option value="right"><?php _e( 'Right', 'wproto' ); ?></option>
+							<option <?php echo $woo_default_sidebar == 'left' ? 'selected="selected"' : ''; ?> value="left"><?php _e( 'Left', 'wproto' ); ?></option>
+						</select>
+						
+					</td>
+				</tr>
+				<tr class="woo-sidebar-settings"<?php echo $woo_display_sidebar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Choose widget area', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$woo_default_sidebar_id = $wpl_exe_wp->get_option( 'woo_default_sidebar_id', 'plugins' ); 
+							
+							global $wp_registered_sidebars;
+						?>
+					
+						<select class="select" name="plugins[woo_default_sidebar_id]">
+							<?php foreach( $wp_registered_sidebars as $sidebar ): ?>
+							<option <?php echo $woo_default_sidebar_id == $sidebar['id'] ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $sidebar['id'] ); ?>"><?php echo esc_html( $sidebar['name'] ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			Custom Templates
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Custom Templates', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Replace default WooCommerce templates with custom theme-styled templates', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+						<?php
+							$woo_custom_templates = $wpl_exe_wp->get_option( 'woo_custom_templates', 'plugins' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $woo_custom_templates, false, 'plugins', 'woo_custom_templates'); ?>
+						
+						<p class="description"><?php _e( 'Disable this option to use default WooCommerce style', 'wproto' ); ?></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+</div>

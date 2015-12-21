@@ -1,0 +1,385 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Settings for single post templates', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="posts" />
+	
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+	
+
+		<div class="wproto-settings-box">
+
+			<h3 class="title"><?php _e( 'Blog single post layout', 'wproto' ); ?></h3>
+			<!--
+			
+				Blog posts
+				
+			-->
+		
+			<table class="form-table wproto-form-table">
+				<tr class="without-space noborder">
+					<td colspan="2"><h4 class="header"><?php _e('Single post style', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th><label><?php _e( 'Single post style', 'wproto' ); ?>:</label></th>
+					<td>
+						<select class="select" name="posts[blog_single_style]">
+							<?php $blog_single_style = $wpl_exe_wp->get_option( 'blog_single_style', 'posts' ); ?>
+							<?php foreach( $wpl_exe_wp->system_config['blog_single_styles'] as $k=>$v): ?>
+							<option <?php echo $blog_single_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th><label><?php _e( 'Comments style', 'wproto' ); ?>:</label></th>
+					<td>
+						<select class="select" name="posts[blog_comments_style]">
+							<?php $blog_comments_style = $wpl_exe_wp->get_option( 'blog_comments_style', 'posts' ); ?>
+							<?php foreach( $wpl_exe_wp->system_config['comments_styles'] as $k=>$v): ?>
+							<option <?php echo $blog_comments_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Appearance', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show tags after post content', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$show_tags_blog = $wpl_exe_wp->get_option( 'show_tags_blog', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $show_tags_blog, false, 'posts', 'show_tags_blog'); ?>
+					
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Display share links after post content', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$show_share_links_blog = $wpl_exe_wp->get_option( 'show_share_links_blog', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $show_share_links_blog, false, 'posts', 'show_share_links_blog'); ?>
+					
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show previous / Next post links', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$show_posts_links_blog = $wpl_exe_wp->get_option( 'show_posts_links_blog', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $show_posts_links_blog, false, 'posts', 'show_posts_links_blog'); ?>
+					
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show author information after post content', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$show_author_info = $wpl_exe_wp->get_option( 'show_author_info', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $show_author_info, false, 'posts', 'show_author_info'); ?>
+					
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Related posts', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show related posts', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_blog = $wpl_exe_wp->get_option( 'display_related_posts_blog', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_related_posts_blog, 'tr.wproto-related-posts-blog-settings', 'posts', 'display_related_posts_blog'); ?>
+						
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-blog-settings"<?php echo $display_related_posts_blog ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Block title', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_blog_block_title = $wpl_exe_wp->get_option( 'display_related_posts_blog_block_title', 'posts' ); 
+						?>
+				
+						<input type="text" name="posts[display_related_posts_blog_block_title]" value="<?php echo esc_attr( $display_related_posts_blog_block_title ); ?>" />
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-blog-settings"<?php echo $display_related_posts_blog ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Maximum posts count', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_blog_count = $wpl_exe_wp->get_option( 'display_related_posts_blog_count', 'posts' ); 
+							
+							$display_related_posts_blog_count = absint( $display_related_posts_blog_count ) == 0 ? 8 : $display_related_posts_blog_count;
+						?>
+				
+						<input type="number" name="posts[display_related_posts_blog_count]" value="<?php echo esc_attr( $display_related_posts_blog_count ); ?>" />
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-blog-settings"<?php echo $display_related_posts_blog ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Query type', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_blog_query_type = $wpl_exe_wp->get_option( 'display_related_posts_blog_query_type', 'posts' ); 
+						?>
+				
+						<select class="select" name="posts[display_related_posts_blog_query_type]">
+							<option value="same"><?php _e( 'Display related posts from same category', 'wproto' ); ?></option>
+							<option <?php echo $display_related_posts_blog_query_type == 'any' ? 'selected="selected"' : ''; ?> value="any"><?php _e( 'Display random posts from any category', 'wproto' ); ?></option>
+						</select>
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-blog-settings"<?php echo $display_related_posts_blog ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Show thumbnails', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+				
+						<?php
+							$display_related_posts_blog_thumbnails = $wpl_exe_wp->get_option( 'display_related_posts_blog_thumbnails', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_related_posts_blog_thumbnails, false, 'posts', 'display_related_posts_blog_thumbnails'); ?>
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-blog-settings"<?php echo $display_related_posts_blog ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Show excerpts', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+				
+						<?php
+							$display_related_posts_blog_excerpts = $wpl_exe_wp->get_option( 'display_related_posts_blog_excerpts', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_related_posts_blog_excerpts, false, 'posts', 'display_related_posts_blog_excerpts'); ?>
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-blog-settings"<?php echo $display_related_posts_blog ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( '"Read more" link text', 'wproto' ); ?>:</label>
+						<p class="description"><?php _e( 'Leave it blank to hide that link', 'wproto' ); ?></p>
+					</th>
+					<td>
+					
+						<?php
+							$related_posts_blog_read_more_text = $wpl_exe_wp->get_option( 'related_posts_blog_read_more_text', 'posts' ); 
+						?>
+				
+						<input type="text" name="posts[related_posts_blog_read_more_text]" value="<?php echo esc_attr( $related_posts_blog_read_more_text ); ?>" />
+				
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="wproto-settings-box">
+
+			<h3 class="title"><?php _e( 'Portfolio single post layout', 'wproto' ); ?></h3>
+			<!--
+			
+				Portfolio posts
+				
+			-->
+		
+			<table class="form-table wproto-form-table">
+				<tr class="without-space noborder">
+					<td colspan="2"><h4 class="header"><?php _e('Single post style', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th><label><?php _e( 'Single post style', 'wproto' ); ?>:</label></th>
+					<td>
+						<select class="select" name="posts[portfolio_single_style]">
+							<?php $portfolio_single_style = $wpl_exe_wp->get_option( 'portfolio_single_style', 'posts' ); ?>
+							<?php foreach( $wpl_exe_wp->system_config['portfolio_single_styles'] as $k=>$v): ?>
+							<option <?php echo $portfolio_single_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Appearance', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Enable comments for portfolio', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$portfolio_comments = $wpl_exe_wp->get_option( 'portfolio_comments', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $portfolio_comments, 'tr.tr-portfolio-styles', 'posts', 'portfolio_comments'); ?>
+					
+					</td>
+				</tr>
+				<tr <?php echo $portfolio_comments ? '' : 'style="display: none"'; ?> class="tr-portfolio-styles">
+					<th><label><?php _e( 'Comments style', 'wproto' ); ?>:</label></th>
+					<td>
+						<select class="select" name="posts[portfolio_comments_style]">
+							<?php $portfolio_comments_style = $wpl_exe_wp->get_option( 'portfolio_comments_style', 'posts' ); ?>
+							<?php foreach( $wpl_exe_wp->system_config['comments_styles'] as $k=>$v): ?>
+							<option <?php echo $portfolio_comments_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show previous / Next post links', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$show_posts_links_portfolio = $wpl_exe_wp->get_option( 'show_posts_links_portfolio', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $show_posts_links_portfolio, false, 'posts', 'show_posts_links_portfolio'); ?>
+					
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Related posts', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show related posts', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_portfolio = $wpl_exe_wp->get_option( 'display_related_posts_portfolio', 'posts' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_related_posts_portfolio, 'tr.wproto-related-posts-portfolio-settings', 'posts', 'display_related_posts_portfolio'); ?>
+						
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-portfolio-settings"<?php echo $display_related_posts_portfolio ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Block title', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_portfolio_block_title = $wpl_exe_wp->get_option( 'display_related_posts_portfolio_block_title', 'posts' ); 
+						?>
+				
+						<input type="text" name="posts[display_related_posts_portfolio_block_title]" value="<?php echo esc_attr( $display_related_posts_portfolio_block_title ); ?>" />
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-portfolio-settings"<?php echo $display_related_posts_portfolio ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Block description', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_portfolio_block_desc = $wpl_exe_wp->get_option( 'display_related_posts_portfolio_block_desc', 'posts' ); 
+						?>
+				
+						<textarea name="posts[display_related_posts_portfolio_block_desc]" class="textarea"><?php echo esc_textarea( $display_related_posts_portfolio_block_desc ); ?></textarea>
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-portfolio-settings"<?php echo $display_related_posts_portfolio ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Maximum posts count', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_portfolio_count = $wpl_exe_wp->get_option( 'display_related_posts_portfolio_count', 'posts' ); 
+							
+							$display_related_posts_portfolio_count = absint( $display_related_posts_portfolio_count ) == 0 ? 8 : $display_related_posts_portfolio_count;
+						?>
+				
+						<input type="number" name="posts[display_related_posts_portfolio_count]" value="<?php echo esc_attr( $display_related_posts_portfolio_count ); ?>" />
+				
+					</td>
+				</tr>
+				<tr class="wproto-related-posts-portfolio-settings"<?php echo $display_related_posts_portfolio ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Query type', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_related_posts_portfolio_query_type = $wpl_exe_wp->get_option( 'display_related_posts_portfolio_query_type', 'posts' ); 
+						?>
+				
+						<select class="select" name="posts[display_related_posts_portfolio_query_type]">
+							<option value="same"><?php _e( 'Display related posts from same category', 'wproto' ); ?></option>
+							<option <?php echo $display_related_posts_portfolio_query_type == 'any' ? 'selected="selected"' : ''; ?> value="any"><?php _e( 'Display random posts from any category', 'wproto' ); ?></option>
+						</select>
+				
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+	
+</div>

@@ -1,0 +1,249 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Branding', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="branding" />
+	
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+	
+		<!--
+	
+			Site title and tagline
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Site title and tagline', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Site title and tagline', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$site_title = get_bloginfo( 'name' );
+							$site_tagline = get_bloginfo( 'description' );
+						?>
+					
+						<p>
+							<input type="text" id="wproto-site-title-input" class="text" name="branding[site_title]" value="<?php echo esc_attr( $site_title ); ?>" placeholder="<?php _e( 'Enter site title here', 'wproto' ); ?>" />
+						</p>
+						<p>
+							<input type="text" class="text" name="branding[site_tagline]" value="<?php echo esc_attr( $site_tagline ); ?>" placeholder="<?php _e( 'Enter site tagline here', 'wproto' ); ?>" /><br />
+							<span class="description"><?php _e( 'In a few words, explain what this site is about.', 'wproto' ); ?></span>
+						</p>
+					
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<!--
+	
+			Header logo
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Header logo', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Logo type', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+
+						<?php
+							$header_logo = $wpl_exe_wp->get_option( 'header_logo', 'branding' ); 
+						?>
+
+						<label><input class="wproto-header-logo-input" <?php echo $header_logo == 'default' ? 'checked="checked"' : ''; ?> type="radio" name="branding[header_logo]" value="default" /> <?php _e( 'Default (site title and tagline)', 'wproto' ); ?></label><br />
+						<label><input class="wproto-header-logo-input" <?php echo $header_logo == 'image' ? 'checked="checked"' : ''; ?> type="radio" name="branding[header_logo]" value="image" /> <?php _e( 'Image logo', 'wproto' ); ?></label><br />
+						<label><input class="wproto-header-logo-input" type="radio" name="branding[header_logo]" <?php echo $header_logo == 'text' ? 'checked="checked"' : ''; ?> value="text" /> <?php _e( 'Site title only', 'wproto' ); ?></label><br />
+	
+					</td>
+				</tr>
+				<tr id="wproto-upload-custom-logo-header" <?php echo $header_logo == 'image' ? '' : ' style="display: none;"'; ?>>
+					<th><label><?php _e( 'Custom website logo', 'wproto' ); ?>:</label></th>
+					<td>
+					
+						<?php
+							$noimg = WPROTO_THEME_URL . '/images/admin/noimage-2x.gif';
+							$custom_logo_url = $wpl_exe_wp->get_option( 'custom_logo_url', 'branding' ); 
+							
+							$custom_logo_url_2x = $wpl_exe_wp->get_option( 'custom_logo_url_2x', 'branding' ); 
+						?>
+					
+						<div style="float: left; width: 50%">
+						<img style="max-width: 100px" src="<?php echo isset( $custom_logo_url ) && $custom_logo_url <> '' ? $custom_logo_url : $noimg; ?>" id="wproto-site-logo-image" alt="<?php _e( 'Your website logo', 'wproto' ); ?>" />
+						<p>
+							<input type="hidden" id="wproto-logo-url-input" name="branding[custom_logo_url]" value="<?php echo esc_attr( $custom_logo_url ); ?>" />
+							<a href="javascript:;" data-url-input="#wproto-logo-url-input" data-src-target="#wproto-site-logo-image" class="button wproto-image-selector"><?php _e( 'Upload', 'wproto' ); ?></a> 
+							<a href="javascript:;" data-url-input="#wproto-logo-url-input" data-src-target="#wproto-site-logo-image" data-default-img="<?php echo esc_attr( $noimg ); ?>" class="button wproto-image-remover"><?php _e( 'Remove logo', 'wproto' ); ?></a>
+							<br />
+							<span class="description"><?php _e( 'Upload a logo for your theme.', 'wproto' ); ?></span>
+						</p>
+						</div>
+						<?php if( wpl_exe_wp_utils::is_retina_enabled() ): ?>
+						<div style="float: left; width: 50%">
+							<img style="max-width: 100px" src="<?php echo isset( $custom_logo_url_2x ) && $custom_logo_url_2x <> '' ? $custom_logo_url_2x : $noimg; ?>" id="wproto-site-logo-image-2x" alt="<?php _e( 'Your website logo', 'wproto' ); ?>" />
+							<p>
+								<input type="hidden" id="wproto-logo-url-input-2x" name="branding[custom_logo_url_2x]" value="<?php echo esc_attr( $custom_logo_url_2x ); ?>" />
+								<a href="javascript:;" data-url-input="#wproto-logo-url-input-2x" data-src-target="#wproto-site-logo-image-2x" class="button wproto-image-selector"><?php _e( 'Upload', 'wproto' ); ?></a> 
+								<a href="javascript:;" data-url-input="#wproto-logo-url-input-2x" data-src-target="#wproto-site-logo-image-2x" data-default-img="<?php echo esc_attr( $noimg ); ?>" class="button wproto-image-remover"><?php _e( 'Remove logo', 'wproto' ); ?></a>
+								<br />
+								<span class="description"><?php _e( 'Hi-resolution logo website logo for Retina Displays (should have a twice size).', 'wproto' ); ?></span>
+							</p>
+						</div>
+						<?php endif; ?>
+					</td>
+				</tr>
+				<tr id="wproto-upload-custom-logo-header-size" <?php echo $header_logo == 'image' ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Logo width and height in pixels', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$custom_logo_width = $wpl_exe_wp->get_option( 'custom_logo_width', 'branding' ); 
+							
+							$custom_logo_height = $wpl_exe_wp->get_option( 'custom_logo_height', 'branding' ); 
+						?>
+					
+						<input type="number" name="branding[custom_logo_width]" value="<?php echo esc_attr( $custom_logo_width ); ?>" />x<input type="number" name="branding[custom_logo_height]" value="<?php echo esc_attr( $custom_logo_height ); ?>" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Custom logo margins (top / right / bottom / left) in pixels', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$custom_logo_margin_top = $wpl_exe_wp->get_option( 'custom_logo_margin_top', 'branding' );
+							$custom_logo_margin_right = $wpl_exe_wp->get_option( 'custom_logo_margin_right', 'branding' );
+							$custom_logo_margin_bottom = $wpl_exe_wp->get_option( 'custom_logo_margin_bottom', 'branding' );
+							$custom_logo_margin_left = $wpl_exe_wp->get_option( 'custom_logo_margin_left', 'branding' );  
+						?>
+					
+						<input type="number" name="branding[custom_logo_margin_top]" value="<?php echo esc_attr( $custom_logo_margin_top ); ?>" /> /
+						<input type="number" name="branding[custom_logo_margin_right]" value="<?php echo esc_attr( $custom_logo_margin_right ); ?>" /> /
+						<input type="number" name="branding[custom_logo_margin_bottom]" value="<?php echo esc_attr( $custom_logo_margin_bottom ); ?>" /> /
+						<input type="number" name="branding[custom_logo_margin_left]" value="<?php echo esc_attr( $custom_logo_margin_left ); ?>" />  
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Custom logo paddings (top / right / bottom / left) in pixels', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$custom_logo_padding_top = $wpl_exe_wp->get_option( 'custom_logo_padding_top', 'branding' );
+							$custom_logo_padding_right = $wpl_exe_wp->get_option( 'custom_logo_padding_right', 'branding' );
+							$custom_logo_padding_bottom = $wpl_exe_wp->get_option( 'custom_logo_padding_bottom', 'branding' );
+							$custom_logo_padding_left = $wpl_exe_wp->get_option( 'custom_logo_padding_left', 'branding' );  
+						?>
+					
+						<input type="number" name="branding[custom_logo_padding_top]" value="<?php echo esc_attr( $custom_logo_padding_top ); ?>" /> /
+						<input type="number" name="branding[custom_logo_padding_right]" value="<?php echo esc_attr( $custom_logo_padding_right ); ?>" /> /
+						<input type="number" name="branding[custom_logo_padding_bottom]" value="<?php echo esc_attr( $custom_logo_padding_bottom ); ?>" /> /
+						<input type="number" name="branding[custom_logo_padding_left]" value="<?php echo esc_attr( $custom_logo_padding_left ); ?>" />  
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+
+		
+		<!--
+	
+			Favicon & Apple touch icons
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Favicon &amp; Apple touch icons', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Favicon', 'wproto' ); ?>:</label>
+						<p class="description"><?php _e( sprintf( 'Upload a 16px x 16px <a href="%s" target="_blank">ico image</a> that will represent your website\'s favicon.', 'http://favicon-generator.org/' ), 'wproto' ); ?></p></th>
+					</th>
+					<td>
+					
+						<?php
+							$favicon = $wpl_exe_wp->get_option( 'favicon', 'branding' ); 
+						?>
+						
+						<p>
+							<input type="text" id="wproto-favicon-input" class="text" name="branding[favicon]" value="<?php echo esc_attr( @$favicon ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-favicon-input"><?php _e( 'Upload', 'wproto' ); ?></a> <a href="javascript:;" class="button wproto-remove-favicon"><?php _e( 'Remove', 'wproto' ); ?></a><br />
+							<span class="description"><?php _e( sprintf( 'Your website favicon' ), 'wproto' ); ?></span>
+						</p>
+					
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Apple Touch Icons', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$apple_touch_57 = $wpl_exe_wp->get_option( 'apple_touch_icon_57x57', 'branding' ); 
+							$apple_touch_114 = $wpl_exe_wp->get_option( 'apple_touch_icon_114x114', 'branding' ); 
+							$apple_touch_72 = $wpl_exe_wp->get_option( 'apple_touch_icon_72x72', 'branding' ); 
+							$apple_touch_144 = $wpl_exe_wp->get_option( 'apple_touch_icon_144x144', 'branding' ); 
+						?>
+						
+						<p>
+							<input type="text" id="wproto-apple-touch-input-57" class="text" name="branding[apple_touch_icon_57x57]" value="<?php echo esc_attr( @$apple_touch_57 ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-apple-touch-input-57"><?php _e( 'Upload', 'wproto' ); ?></a> <a href="javascript:;" class="button wproto-remove-favicon"><?php _e( 'Remove', 'wproto' ); ?></a><br />
+							<span class="description"><?php _e( sprintf( 'Apple touch icon 57x57 pixels (Standard iPhone)' ), 'wproto' ); ?></span>
+						</p>
+						<?php if( wpl_exe_wp_utils::is_retina_enabled() ): ?>
+						<p>
+							<input type="text" id="wproto-apple-touch-input-114" class="text" name="branding[apple_touch_icon_114x114]" value="<?php echo esc_attr( @$apple_touch_114 ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-apple-touch-input-114"><?php _e( 'Upload', 'wproto' ); ?></a> <a href="javascript:;" class="button wproto-remove-favicon"><?php _e( 'Remove', 'wproto' ); ?></a><br />
+							<span class="description"><?php _e( sprintf( 'Apple touch icon 114x114 pixels (Retina iPhone)' ), 'wproto' ); ?></span>
+						</p>
+						<?php endif; ?>
+						<p>
+							<input type="text" id="wproto-apple-touch-input-72" class="text" name="branding[apple_touch_icon_72x72]" value="<?php echo esc_attr( @$apple_touch_72 ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-apple-touch-input-72"><?php _e( 'Upload', 'wproto' ); ?></a> <a href="javascript:;" class="button wproto-remove-favicon"><?php _e( 'Remove', 'wproto' ); ?></a><br />
+							<span class="description"><?php _e( sprintf( 'Apple touch icon 72x72 pixels (Standard iPad)' ), 'wproto' ); ?></span>
+						</p>
+						<?php if( wpl_exe_wp_utils::is_retina_enabled() ): ?>
+						<p>
+							<input type="text" id="wproto-apple-touch-input-144" class="text" name="branding[apple_touch_icon_144x144]" value="<?php echo esc_attr( @$apple_touch_144 ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-apple-touch-input-144"><?php _e( 'Upload', 'wproto' ); ?></a> <a href="javascript:;" class="button wproto-remove-favicon"><?php _e( 'Remove', 'wproto' ); ?></a><br />
+							<span class="description"><?php _e( sprintf( 'Apple touch icon 144x144 pixels (Retina iPad)' ), 'wproto' ); ?></span>
+						</p>
+						<?php endif; ?>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+	
+	</form>
+</div>

@@ -1,0 +1,33 @@
+<!--
+					
+	POST GALLERY
+						
+-->
+<?php
+	global $wpl_exe_wp_related_posts_gallery, $wpl_exe_wp_g_width, $wpl_exe_wp_g_height;
+?>
+<div class="post-gallery-shortcode" data-items="1" data-autoplay-speed="0" data-display-nav="true">
+	<div class="g-items">
+	<?php foreach( $data['items'] as $item ): ?>
+	
+	<div class="g-item">
+		<?php if( isset( $wpl_exe_wp_related_posts_gallery ) && $wpl_exe_wp_related_posts_gallery ): ?>
+			<?php echo wpl_exe_image( wp_get_attachment_url( $item->ID ), 270, 150 ); ?>
+		<?php elseif( isset( $wpl_exe_wp_g_width ) && isset( $wpl_exe_wp_g_height ) ): ?>
+			<?php echo wpl_exe_image( wp_get_attachment_url( $item->ID ), $wpl_exe_wp_g_width, $wpl_exe_wp_g_height ); ?>
+		<?php else: ?>
+			<?php
+				$image = wp_get_attachment_image_src( $item->ID, 'full' );
+			?>
+			<img src="<?php echo $image[0]; ?>" alt="" />
+		<?php endif; ?>
+		
+	</div>
+	<?php endforeach; ?>
+	</div>
+</div>
+
+<?php
+	unset( $wpl_exe_wp_related_posts_gallery );
+	unset( $wpl_exe_wp_g_width );
+	unset( $wpl_exe_wp_g_height );

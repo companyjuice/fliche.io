@@ -1,0 +1,64 @@
+<?php
+	global $wpl_exe_wp;
+	$wproto_post_hide_title = isset( $data['wproto_post_hide_title'] ) ? $data['wproto_post_hide_title'] : false;
+	$display_onepage = isset( $data['wproto_display_onepage'] ) ? $data['wproto_display_onepage'] : false;
+	$wproto_header_style = isset( $data['wproto_header_style'] ) ? $data['wproto_header_style'] : '';
+	$breadcrumbs_bar_style = isset( $data['breadcrumbs_bar_style'] ) ? $data['breadcrumbs_bar_style'] : '';
+	$custom_page_menu = isset( $data['custom_page_menu'] ) ? $data['custom_page_menu'] : '';
+?>
+
+<table class="form-table wproto-form-table">
+	<?php if( $data['post_type'] == 'page' ): ?>
+	<tr>
+		<th><p><?php _e( 'Enable One-Page menu', 'wproto' ); ?>:</p></th>
+		<td>
+					
+			<?php wpl_exe_wp_admin_utils::switcher( $display_onepage, false, 'wproto_settings', 'wproto_display_onepage'); ?>
+					
+		</td>
+	</tr>
+	<tr>
+		<th><p><?php _e( 'Page header menu', 'wproto' ); ?>:</p></th>
+		<td>
+					
+			<?php
+				$menus = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
+			?>
+			
+			<select name="wproto_settings[custom_page_menu]" class="select">
+				<option value="">&mdash; <?php _e('Default theme menu', 'wproto'); ?> &mdash;</option>
+				<?php if( is_array( $menus ) && count( $menus ) > 0 ): ?>
+				
+					<?php foreach( $menus as $menu_item ): ?>
+					<option <?php echo $custom_page_menu == $menu_item->slug ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $menu_item->slug ); ?>"><?php echo esc_html( $menu_item->name ); ?></option>
+					<?php endforeach; ?>
+				
+				<?php endif; ?>
+			</select>
+					
+		</td>
+	</tr>
+	<?php endif; ?>
+	<tr>
+		<th><label><?php _e( 'Page header style', 'wproto' ); ?>:</label></th>
+		<td>
+			<select id="wproto-post-header-style" class="select" name="wproto_settings[wproto_header_style]">
+				<option value="">&mdash; <?php _e('Default skin header', 'wproto'); ?> &mdash;</option>
+				<?php foreach( $wpl_exe_wp->system_config['header_styles'] as $k=>$v): ?>
+				<option <?php echo $wproto_header_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Breadcrumbs bar style', 'wproto' ); ?>:</label></th>
+		<td>
+			<select class="select" name="wproto_settings[breadcrumbs_bar_style]">
+				<option value="">&mdash; <?php _e('Default', 'wproto'); ?> &mdash;</option>
+				<?php foreach( $wpl_exe_wp->system_config['breadcrumbs_bar_styles'] as $k=>$v): ?>
+				<option <?php echo $breadcrumbs_bar_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,23 @@
+<?php if( is_array( $data['progress_items'] ) && count( $data['progress_items'] ) > 0 ): ?>
+
+	<?php foreach( $data['progress_items'] as $k=>$v ): ?>
+
+		<div class="wproto-progress style-<?php echo esc_attr( $data['style'] ); ?>">
+			<div class="wproto-progress-title"><?php echo wp_kses_post( $v['title'] ); ?></div>
+			<div class="wproto-progress-value">
+				<div class="wproto-progress-value-inner">
+					<?php if( in_array( $data['style'], array('flat', 'flat_gradient', 'thermometer', 'colored_bar') ) ): ?>
+					<div class="value wow animationProgressBar" data-wow-delay="0.1s" data-width="<?php echo esc_attr( $v['value'] ); ?>%" style="width: 0%"></div>
+					<div class="wproto-value-title"><?php echo wp_kses_post( $v['value'] ); ?><?php echo wp_kses_post( $data['unit'] ); ?></div>					
+					<?php else: ?>
+					<div class="value wow animationProgressBar" data-wow-delay="0.1s" data-width="<?php echo esc_attr( $v['value'] ); ?>%" style="width: 0%">
+						<div class="wproto-value-title"><?php echo wp_kses_post( $v['value'] ); ?><?php echo wp_kses_post( $data['unit'] ); ?></div>
+					</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	
+	<?php endforeach; ?>
+
+<?php endif;

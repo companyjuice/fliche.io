@@ -1,0 +1,14 @@
+<div class="wproto_latest_tweets wproto_latest_tweets_shortcode style-<?php echo esc_attr( $data['style'] ); ?>" data-style="<?php echo esc_attr( $data['style'] ); ?>" data-count="<?php echo esc_attr( $data['count'] ); ?>" data-autoplay-speed="<?php echo $data['autoplay'] ? esc_attr( $data['autoplay_speed'] ) : '0'; ?>">
+	<i class="fa fa-twitter twitter-animation show-animation"></i>
+	<p class="loading tweets-carousel"><?php _e('Loading latest tweets, please wait...', 'wproto'); ?></p>
+</div>
+<?php
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initLatestTweets();
+		}
+	</script>
+<?php endif;

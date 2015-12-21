@@ -1,0 +1,133 @@
+<?php
+	global $wpl_exe_wp;
+?>
+
+<?php if( $data['posts']->have_posts() ): ?>
+
+	<?php if( $data['style'] == 'grid' ): ?>
+
+	<div class="wproto-staff-grid">
+		<div class="container-fluid">
+			<div class="row">
+				<?php $post_anim = 0.0; while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+				<div data-wow-delay="<?php echo $post_anim; ?>s" class="fadeInLeft wow <?php echo esc_attr( $data['columns'] ); ?> col-xs-6 col-sm-6 col-item">
+					<div class="inside">
+					
+						<?php
+							$member_data = get_post_custom();
+							
+							$connect_with_wp_author = isset( $member_data['connect_with_wp_author'][0] ) ? $member_data['connect_with_wp_author'][0] : '';
+							$author_id = isset( $member_data['author_id'][0] ) ? $member_data['author_id'][0] : '';
+							
+							$icon = isset( $member_data['icon'][0] ) ? esc_attr( $member_data['icon'][0] ) : '';
+							$position = isset( $member_data['position'][0] ) ? esc_attr( $member_data['position'][0] ) : '';
+							$custom_url = !$connect_with_wp_author && isset( $member_data['custom_url'][0] ) ? esc_attr( $member_data['custom_url'][0] ) : get_author_posts_url( $author_id );
+						?>
+						
+						<?php if( has_post_thumbnail() ): ?>
+						<div class="photo">
+							<?php echo wpl_exe_image( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ), 370, 233 ); ?>
+							<div class="clearfix"></div>
+							
+							<div class="overlay">
+								<div class="links">
+								<?php
+									$_si_type = $connect_with_wp_author ? 'user' : 'post';
+									wpl_exe_wp_front::social_icons( $_si_type, 's', $author_id, get_the_ID() );
+								?>
+								</div>
+							</div>
+							
+						</div>
+						<?php endif; ?>
+						
+						<div class="about">
+							<h4><?php if( $custom_url <> '' ): ?><a href="<?php echo $custom_url <> '' ? $custom_url : 'javascript:;'; ?>"><?php endif; ?><?php the_title(); ?><?php if( $custom_url <> '' ): ?></a><?php endif; ?></h4>
+							<?php if( $position <> '' ): ?>
+							<div class="position"><?php echo wp_kses_post( $position ); ?></div>
+							<?php endif; ?>
+						</div>
+					
+					</div>
+				</div>
+				<?php $post_anim = $post_anim + 0.2; endwhile; ?>
+			</div>
+		</div>
+	</div>
+	
+	<?php elseif( $data['style'] == 'carousel' ): ?>
+	
+	<div class="wproto-staff-carousel">
+	
+		<?php if( $data['carousel_title'] <> '' ): ?>
+		<h2 class="header_with_line"><?php echo esc_html( $data['carousel_title'] ); ?></h2>
+		<?php endif; ?>
+	
+		<div class="items" data-autoplay-speed="<?php echo $data['autoplay'] ? esc_attr( $data['autoplay_speed'] ) : '0'; ?>" data-display-nav="<?php echo esc_attr( $data['nav'] ); ?>" data-items="<?php echo esc_attr( $data['items'] ); ?>">
+		
+			<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+			<div class="item">
+				<div class="inside">
+				
+					<?php
+						$member_data = get_post_custom();
+						
+						$connect_with_wp_author = isset( $member_data['connect_with_wp_author'][0] ) ? $member_data['connect_with_wp_author'][0] : '';
+						$author_id = isset( $member_data['author_id'][0] ) ? $member_data['author_id'][0] : '';
+						
+						$icon = isset( $member_data['icon'][0] ) ? esc_attr( $member_data['icon'][0] ) : '';
+						$position = isset( $member_data['position'][0] ) ? esc_attr( $member_data['position'][0] ) : '';
+						$custom_url = !$connect_with_wp_author && isset( $member_data['custom_url'][0] ) ? esc_attr( $member_data['custom_url'][0] ) : get_author_posts_url( $author_id );
+						
+						$thumb = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+					?>
+					
+					<?php if( has_post_thumbnail() ): ?>
+					<div class="photo">
+						<?php echo wpl_exe_image( $thumb, 270, 242 ); ?>
+						<div class="clearfix"></div>
+						
+						<div class="overlay">
+							<div class="links">
+								<a href="<?php echo $thumb; ?>" class="photo-larger lightbox"><span class="hover_pulse_ray"></span></a>
+								<?php if( $custom_url <> '' ): ?><a href="<?php echo $custom_url; ?>" class="link"><span class="hover_pulse_ray"></span></a><?php endif; ?>
+							</div>
+						</div>
+						
+					</div>
+					<?php endif; ?>
+					
+					<div class="about">
+						<h4><?php if( $custom_url <> '' ): ?><a href="<?php echo $custom_url <> '' ? $custom_url : 'javascript:;'; ?>"><?php endif; ?><?php the_title(); ?><?php if( $custom_url <> '' ): ?></a><?php endif; ?></h4>
+						<?php if( $position <> '' ): ?>
+						<div class="position"><?php echo wp_kses_post( $position ); ?></div>
+						<?php endif; ?>
+						<div class="icons">
+							<?php
+								$_si_type = $connect_with_wp_author ? 'user' : 'post';
+								wpl_exe_wp_front::social_icons( $_si_type, 's', $author_id, get_the_ID() );
+							?>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+			<?php endwhile; ?>
+		
+		</div>
+	
+	</div>
+	
+	<?php endif; ?>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initCarousels();
+		}
+	</script>
+<?php endif;

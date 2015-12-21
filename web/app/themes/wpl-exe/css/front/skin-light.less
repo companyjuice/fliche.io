@@ -1,0 +1,151 @@
+/** fonts settings **/
+@primary_font: Roboto;
+@secondary_font: Raleway;
+
+@primary_font_weight: normal;
+@primary_font_style: normal;
+@primary_font_transform: none;
+
+@primary_font_size: 1.4; //REM
+@primary_font_size_mobile: 1.4; //REM
+@primary_line_height: 20; //PX
+@primary_line_height_mobile: 20; //PX
+
+@h1_font_weight: bold;
+@h1_font_style: normal;
+@h1_font: @secondary_font;
+@h1_font_transform: none;
+@h1_font_size: 3.6; //REM
+@h1_font_size_mobile: 3.6; //REM
+@h1_line_height: 44; //PX
+@h1_line_height_mobile: 44; //PX
+
+@h2_font_weight: 600;
+@h2_font_style: normal;
+@h2_font: @secondary_font;
+@h2_font_transform: none;
+@h2_font_size: 3.0; //REM
+@h2_font_size_mobile: 3.0; //REM
+@h2_line_height: 34; //PX
+@h2_line_height_mobile: 34; //PX
+
+@h3_font_weight: bold;
+@h3_font_style: normal;
+@h3_font: @secondary_font;
+@h3_font_transform: none;
+@h3_font_size: 2.4; //REM
+@h3_font_size_mobile: 2.4; //REM
+@h3_line_height: 30; //PX
+@h3_line_height_mobile: 30; //PX
+
+@h4_font_weight: bold;
+@h4_font_style: normal;
+@h4_font: @secondary_font;
+@h4_font_transform: none;
+@h4_font_size: 1.8; //REM
+@h4_font_size_mobile: 1.8; //REM
+@h4_line_height: 22; //PX
+@h4_line_height_mobile: 22; //PX
+
+@h5_font_weight: bold;
+@h5_font_style: normal;
+@h5_font: @secondary_font;
+@h5_font_transform: none;
+@h5_font_size: 1.4; //REM
+@h5_font_size_mobile: 1.4; //REM
+@h5_line_height: 20; //PX
+@h5_line_height_mobile: 20; //PX
+
+@h6_font_weight: bold;
+@h6_font_style: normal;
+@h6_font: @secondary_font;
+@h6_font_transform: none;
+@h6_font_size: 1.4; //REM
+@h6_font_size_mobile: 1.4; //REM
+@h6_line_height: 20; //PX
+@h6_line_height_mobile: 20; //PX
+
+/** other settings **/
+@header_height: wprotoSystemNoValue;
+@body_min_height: '';
+@rounded_radius: 3px;
+
+@box_outer_background_image: '';
+@box_outer_background_image_repeat: '';
+@box_outer_background_image_pos: '';
+
+@top_bar_background_image: '';
+@top_bar_background_image_repeat: '';
+@top_bar_background_image_pos: '';
+
+@header_background_image: '';
+@header_background_image_repeat: '';
+@header_background_image_pos: '';
+
+@body_background_image: '';
+@body_background_image_repeat: '';
+@body_background_image_pos: '';
+
+@footer_background_image: '';
+@footer_background_image_repeat: '';
+@footer_background_image_pos: '';
+
+@bottom_bar_background_image: '';
+@bottom_bar_background_image_repeat: '';
+@bottom_bar_background_image_pos: '';
+
+/** primary theme colors **/
+@bg_body: #fff;
+@bg_outer_box: #363636;
+@bg_alter: #fafafa;
+@bg_alter2: #e1e1e1;
+
+@color_primary_text: #959595;
+@color_alt_text: #c8c8c8;
+@color_alt_text2: #e1e1e1;
+@color_headers_text: #363636;
+@color_accent: #e5493a;
+@color_accent_2: #8dc63f;
+@color_accent_3: #363636;
+@color_accent_4: #00aeef;
+@color_accent_5: #8560a8;
+@color_accent_6: #fecc17;
+@color_accent_inner: #fff;
+@color_borders: #e1e1e1;
+@color_borders_light: #fafafa;
+@color_icons: #e1e1e1;
+@color_icons_light: #fafafa;
+
+@footer_bg: #252525;
+@footer_bottom_bar_bg: #111;
+@footer_text_color: #636363;
+@footer_alt_text_color: #464646;
+@footer_accent_color: @color_accent;
+@footer_accent_inner_color: #fff;
+@footer_widget_link_color: #959595;
+@footer_headers_color: #fff;
+@footer_border_color: #343434;
+@footer_icon_color: #464646;
+
+/** LESS functions **/
+@import "../mixins.less";
+
+/** grid and layout **/
+@import "layout/grid.less";
+@import "layout/libs.less";
+@import "layout/shared.less";
+@import "layout/header.less";
+@import "layout/content.less";
+@import "layout/sides.less";
+@import "layout/footer.less";
+@import "layout/widgets_shortcodes.less";
+
+/** plugins additional styles **/
+@import "plugins/visual_composer.less";
+@import "plugins/revslider.less";
+@import "plugins/ninjaforms.less";
+@import "plugins/woocommerce.less";
+@import "plugins/wpml.less";
+
+/** fonts, colors, backgrounds and other variable styles **/
+@import "style.less";

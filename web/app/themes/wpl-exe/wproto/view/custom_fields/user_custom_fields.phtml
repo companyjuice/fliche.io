@@ -1,0 +1,16 @@
+<h3><?php _e('Theme custom fields', 'wproto'); ?></h3>
+
+<table class="form-table">
+	<tr>
+		<th><label for="wproto_profession"><?php _e('Profession', 'wproto'); ?></label></th>
+		<td>
+			<input type="text" name="wproto_profession" id="wproto_profession" value="<?php echo esc_attr( get_the_author_meta( 'wproto_profession', $data['user']->ID ) ); ?>" class="regular-text" /><br />
+		</td>
+	</tr>
+</table>
+
+<h3><?php _e('Links to social profiles', 'wproto'); ?></h3>
+
+<table class="form-table">
+	<?php wpl_exe_wp_admin_utils::social_icons_form( 'user', $data['user']->ID ); ?>	
+</table>

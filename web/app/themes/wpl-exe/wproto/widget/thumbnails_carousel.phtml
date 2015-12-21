@@ -1,0 +1,132 @@
+<?php
+
+	add_action( 'widgets_init', 'register_wpl_exe_wp_thumbnails_carousel_widget' );
+	
+	function register_wpl_exe_wp_thumbnails_carousel_widget() {
+		register_widget( 'wpl_exe_wp_thumbnails_carousel_widget' );
+	}
+	
+	class wpl_exe_wp_thumbnails_carousel_widget extends WP_Widget {
+		
+		function __construct() {
+			$widget_ops = array( 'classname' => 'wproto_thumbnails_carousel_widget', 'description' => __('A widget that displays a posts carousel. Important! This widget is not compatible with Mega Menu (it will be hidden if it displayed as a part of Mega Menu).', 'wproto') );
+		
+			$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wproto_thumbnails_carousel_widget' );
+		
+			parent::__construct( 'wproto_thumbnails_carousel_widget', __( '[EXE] Portfolio Slideshow', 'wproto' ), $widget_ops, $control_ops );
+		}
+		
+		function widget( $args, $instance ) {
+			global $wpl_exe_wp;
+			
+			$data = array();
+			$data['title'] = apply_filters( 'widget_title', $instance['title'] );
+			
+			$data['instance'] = $instance;
+			$data['args'] = $args;
+
+			$wpl_exe_wp->view->load_partial( 'widgets/thumbnails_carousel', $data );
+		}
+		
+		function update( $new_instance, $old_instance ) {
+			$instance = $old_instance;
+
+			//Strip tags from title and name to remove HTML 
+			$instance['title'] = strip_tags( str_replace( '\'', "&#39;", $new_instance['title'] ) );
+			$instance['posts_count'] = isset( $new_instance['posts_count'] ) ? absint( $new_instance['posts_count'] ) : 1;
+			$instance['display_categories'] = isset( $new_instance['display_categories'] ) ? strip_tags( $new_instance['display_categories'] ) : 'all';
+			$instance['link_type'] = isset( $new_instance['link_type'] ) ? strip_tags( $new_instance['link_type'] ) : 'post';
+			$instance['order_by'] = isset( $new_instance['order_by'] ) ? strip_tags($new_instance['order_by']) : 'id';
+			$instance['sort'] = isset( $new_instance['sort'] ) ? strip_tags($new_instance['sort']) : 'DESC';
+			$instance['featured_only'] = isset( $new_instance['featured_only'] ) ? (bool)$new_instance['featured_only'] : false;
+			$instance['open_at_new_tab'] = isset( $new_instance['open_at_new_tab'] ) ? (bool)$new_instance['open_at_new_tab'] : false;
+			$instance['autoplay_speed'] = isset( $new_instance['autoplay_speed'] ) ? absint( $new_instance['autoplay_speed'] ) : 2000;
+
+			return $instance;
+		}
+		
+		function form( $instance ) {
+			
+			//Set up some default widget settings.
+			$defaults = array(
+				'title' => __( 'Slideshow image widget', 'wproto' ),
+				'posts_count' => 7,
+				'display_categories' => 'all',
+				'link_type' => 'post',
+				'order_by' => 'id',
+				'sort' => 'DESC',
+				'autoplay_speed' => 2000,
+				'open_at_new_tab' => false
+			);
+			
+			$instance = wp_parse_args( (array) $instance, $defaults );
+			
+			?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Widget title:', 'wproto'); ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'posts_count' ); ?>"><?php _e('Number of items to display:', 'wproto'); ?></label>
+				<input class="widefat" type="number" min="1" name="<?php echo $this->get_field_name( 'posts_count' ); ?>" id="<?php echo $this->get_field_id( 'posts_count' ); ?>" value="<?php echo esc_attr( $instance['posts_count'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'link_type' ); ?>"><?php _e('Link image to:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'link_type' ); ?>" name="<?php echo $this->get_field_name( 'link_type' ); ?>">
+					<option <?php echo $instance['link_type'] == 'post' ? 'selected="selected"' : ''; ?> value="post"><?php _e( 'Link to post', 'wproto'); ?></option>
+					<option <?php echo $instance['link_type'] == 'project' ? 'selected="selected"' : ''; ?> value="project"><?php _e( 'Link to project URL', 'wproto'); ?></option>
+					<option <?php echo $instance['link_type'] == 'image' ? 'selected="selected"' : ''; ?> value="image"><?php _e( 'Open full image in lightbox', 'wproto'); ?></option>
+				</select>
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php if( isset( $instance['featured_only'] ) ) checked( $instance['featured_only'] ); ?> id="<?php echo $this->get_field_id( 'featured_only' ); ?>" name="<?php echo $this->get_field_name( 'featured_only' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'featured_only' ); ?>"><?php _e('Featured only', 'wproto'); ?></label>  
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'display_categories' ); ?>"><?php _e('Display from categories:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'display_categories' ); ?>" name="<?php echo $this->get_field_name( 'display_categories' ); ?>">
+					<option <?php echo $instance['display_categories'] == '' ? 'selected="selected"' : ''; ?> value=""><?php _e( 'All categories', 'wproto'); ?></option>
+					<?php
+						$categories = get_terms( 'wproto_portfolio_category', array(
+							'hide_empty' => 0
+						));
+						if( is_array( $categories ) && count( $categories ) > 0 ):
+						foreach( $categories as $cat ):
+					?>
+					<option <?php echo $instance['display_categories'] == $cat->slug ? 'selected="selected"' : ''; ?> value="<?php echo $cat->slug; ?>"><?php echo $cat->name; ?></option>
+					<?php
+						endforeach;
+						endif;
+					?>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'order_by' ); ?>"><?php _e('Order logos by:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'order_by' ); ?>" name="<?php echo $this->get_field_name( 'order_by' ); ?>">
+					<option <?php echo $instance['order_by'] == 'ID' ? 'selected="selected"' : ''; ?> value="ID"><?php _e( 'ID', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'date' ? 'selected="selected"' : ''; ?> value="date"><?php _e( 'Date', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'modified' ? 'selected="selected"' : ''; ?> value="modified"><?php _e( 'Modified', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'title' ? 'selected="selected"' : ''; ?> value="title"><?php _e( 'Title', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'rand' ? 'selected="selected"' : ''; ?> value="rand"><?php _e( 'Random', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'menu' ? 'selected="selected"' : ''; ?> value="menu"><?php _e( 'Menu order', 'wproto' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'sort' ); ?>"><?php _e('Sort:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'sort' ); ?>" name="<?php echo $this->get_field_name( 'sort' ); ?>">
+					<option <?php echo $instance['sort'] == 'ASC' ? 'selected="selected"' : ''; ?> value="ASC"><?php _e( 'Ascending', 'wproto' ); ?></option>
+					<option <?php echo $instance['sort'] == 'DESC' ? 'selected="selected"' : ''; ?> value="DESC"><?php _e( 'Descending', 'wproto' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'autoplay_speed' ); ?>"><?php _e('Carousel autoplay speed (in milliseconds):', 'wproto'); ?></label>
+				<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'autoplay_speed' ); ?>" name="<?php echo $this->get_field_name( 'autoplay_speed' ); ?>" value="<?php echo $instance['autoplay_speed']; ?>" />
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php checked( $instance['open_at_new_tab'] ); ?> id="<?php echo $this->get_field_id( 'open_at_new_tab' ); ?>" name="<?php echo $this->get_field_name( 'open_at_new_tab' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'open_at_new_tab' ); ?>"><?php _e('Open posts at new window?', 'wproto'); ?></label>  
+			</p>
+			<?php
+		}
+		
+	}

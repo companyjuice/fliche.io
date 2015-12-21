@@ -1,0 +1,38 @@
+<div class="wproto-shortcode-contact-details">
+	<?php if( isset( $data['title'] ) && $data['title'] <> '' ): ?>
+	<h3 class="header_with_line"><?php echo wp_kses_post( $data['title'] ); ?></h3>
+	<?php endif; ?>
+
+	<?php if( isset( $data['subtext'] ) && $data['subtext'] <> '' ): ?>
+	<p class="subtext"><?php echo wp_kses_post( $data['subtext'] ); ?></p>
+	<?php endif; ?>
+
+	<?php if( isset( $data['address'] ) && $data['address'] <> '' ): ?>
+	<dl>
+		<dt><?php _e('Address', 'wproto'); ?>:</dt>
+		<dd><?php echo wp_kses_post( $data['address'] ); ?></dd>
+	</dl>
+	<?php endif; ?>
+
+	<?php if( isset( $data['phone'] ) && $data['phone'] <> '' ): ?>	
+	<dl>
+		<dt><?php _e('Phone', 'wproto'); ?>:</dt>
+		<dd class="phones"><?php echo wp_kses_post( $data['phone'] ); ?></dd>
+	</dl>
+	<?php endif; ?>
+
+	<?php if( isset( $data['email'] ) && $data['email'] <> '' ): ?>	
+	<dl>		
+		<dt><?php _e('Email', 'wproto'); ?>:</dt>
+		<dd><?php echo wpl_exe_wp_front::emailize( $data['email'] ); ?></dd>
+	</dl>
+	<?php endif; ?>
+	
+	<?php if( isset( $data['display_social_icons'] ) && $data['display_social_icons'] ): ?>		
+	<dl>	
+		<dt><?php _e('Follow us', 'wproto'); ?>:</dt>
+		<dd class="social"><?php wpl_exe_wp_front::social_icons('global'); ?></dd>
+	</dl>
+	<?php endif; ?>
+	
+</div>

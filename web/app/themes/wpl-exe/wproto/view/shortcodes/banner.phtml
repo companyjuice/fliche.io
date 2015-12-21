@@ -1,0 +1,69 @@
+<?php
+
+	$_uniqid = uniqid();
+
+	$link = ($data['link']=='||') ? '' : $data['link'];
+	$link = function_exists('vc_build_link') ? vc_build_link($link) : $link;
+	$a_href = esc_attr( $link['url'] );
+	$a_target = esc_attr( $link['target'] );
+
+	$banner_css = '';
+
+	if( $data['padding_top'] <> '' ) $banner_css = 'padding-top: ' . $data['padding_top'] . 'px; ';
+	if( $data['padding_right'] <> '' ) $banner_css .= 'padding-right: ' . $data['padding_right'] . 'px; ';
+	if( $data['padding_bottom'] <> '' ) $banner_css .= 'padding-bottom: ' . $data['padding_bottom'] . 'px; ';
+	if( $data['padding_left'] <> '' ) $banner_css .= 'padding-left: ' . $data['padding_left'] . 'px; ';
+	
+	if( $data['border'] ) {
+		$banner_css .= 'border-width: 3px; border-style: solid; ';
+	}
+	
+	if( $data['border_color'] <> '' ) {
+		$banner_css .= 'border-color: ' . $data['border_color'] . '; ';
+	}
+	
+	if( $data['text_align'] <> '' ) {
+		$banner_css .= 'text-align: ' . $data['text_align'] . '; ';
+	}
+	
+	if( $data['type'] == 'image' ) {
+		
+		if( $data['image'] <> '' ) {
+			$bg_img = wp_get_attachment_url( absint( $data['image'] ) );
+			$banner_css .= 'background-image: url(' . $bg_img . '); background-repeat: no-repeat; background-position: left top; background-size: cover;';
+		}
+	}
+	
+	$banner_css = esc_attr( $banner_css );
+	
+?>
+<a id="wproto-banner-<?php echo $_uniqid; ?>" href="<?php echo $a_href; ?>" target="<?php echo $a_target; ?>" class="wproto-banner <?php if( $data['animation'] <> '' ): ?>wow <?php echo esc_attr( $data['animation'] ); ?><?php endif; ?> type-<?php echo esc_attr( $data['type'] ); ?>" <?php if( $data['animation'] <> '' ): ?>data-wow-delay="<?php echo esc_attr( $data['animation_delay'] ); ?>"<?php endif; ?> style="<?php echo esc_attr( $banner_css ); ?>">
+
+	<?php if( $data['header_text'] <> '' ): ?>
+	<h2 style="<?php echo $data['header_color'] <> '' ? 'color: ' . esc_attr( $data['header_color'] ) . ';' : ''; ?>"><?php echo wp_kses_post( $data['header_text'] ); ?></h2>
+	<?php endif; ?>
+	
+	<?php if( $data['description_text'] <> '' ): ?>
+	<p style="<?php echo $data['description_color'] <> '' ? 'color: ' . esc_attr( $data['description_color'] ) . ';' : ''; ?>"><?php echo wp_kses_post( $data['description_text'] ); ?></p>
+	<?php endif; ?>
+	
+	<?php if( $data['read_more_text'] <> '' ): ?>
+	<div class="more <?php if( $data['type'] == 'text' ): ?>button<?php endif; ?>" style="<?php echo $data['image'] == 'text' && $data['read_more_color'] <> '' ? 'color: ' . esc_attr( $data['read_more_color'] ) . ';' : ''; ?>"><?php echo wp_kses_post( $data['read_more_text'] ); ?></div>
+	<?php endif; ?>
+
+</a>
+<style type="text/css">
+	#wproto-banner-<?php echo $_uniqid; ?> mark {
+		<?php if( $data['accent_text_color'] <> '' ): ?>
+		color: <?php echo esc_attr( $data['accent_text_color'] ); ?> !important;
+		<?php endif; ?>
+		<?php if( $data['accent_background_color'] <> '' ): ?>
+		background-color: <?php echo esc_attr( $data['accent_background_color'] ); ?> !important;
+		<?php endif; ?>
+	}
+	<?php if( $data['border_color'] <> '' ): ?>
+	#wproto-banner-<?php echo $_uniqid; ?>.type-image:hover {
+		border-color: <?php echo esc_attr( $data['border_color'] ); ?> !important;
+	}
+	<?php endif; ?>
+</style>

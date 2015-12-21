@@ -1,0 +1,16 @@
+<p>
+	<label><input type="radio" class="wproto_connect_with_wp_author" name="connect_with_wp_author" <?php echo ! $data['connect_with_wp_author'] ? 'checked="checked"' : ''; ?> value="0" /> <?php _e( 'Do not connect this team member with existing user', 'wproto'); ?></label>
+</p>
+<p>
+	<label>
+	
+		<input type="radio" class="wproto_connect_with_wp_author" name="connect_with_wp_author" <?php echo $data['connect_with_wp_author'] ? 'checked="checked"' : ''; ?> value="1" /> <?php _e( 'Connect with existing blog author', 'wproto'); ?>
+	
+		<select id="wproto-team-author-id" name="author_id" style="<?php echo ! $data['connect_with_wp_author'] ? 'display: none' : ''; ?>">
+			<?php foreach( $data['blog_authors'] as $user ): ?>
+			<option <?php echo $data['author_id'] == $user->ID ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $user->ID ); ?>"><?php echo esc_html( $user->display_name ); ?></option>
+			<?php endforeach; ?>
+		</select>
+	
+	</label>
+</p>

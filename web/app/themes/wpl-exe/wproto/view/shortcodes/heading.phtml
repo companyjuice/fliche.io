@@ -1,0 +1,38 @@
+<?php
+	$style_string = '';
+	$class_string = 'wproto-header-shortcode ';
+	
+	if( $data['header_line'] && $data['weight'] != 'light' ) $class_string .= 'header_with_line ';
+	if( $data['header_line'] && $data['weight'] == 'light' ) $class_string .= 'header_with_thin_line ';
+	
+	if( $data['header_line_accent'] ) $class_string .= 'line_accent ';
+	
+	if( $data['subtext'] <> '' ) $class_string .= 'with_subtext ';
+	
+	if( $data['align'] == 'center' ) {
+		$class_string .= 'centered ';
+	} elseif( $data['align'] == 'right' ) {
+		$class_string .= 'right ';
+	}
+	
+	if( $data['color'] <> '' ) $style_string .= 'color: ' . $data['color'] . '; ';
+	if( $data['align'] <> '' ) $style_string .= 'text-align: ' . $data['align'] . '; ';
+	if( $data['transform'] <> '' ) $style_string .= 'text-transform: ' . $data['transform'] . '; ';
+	if( $data['font_style'] <> '' ) $style_string .= 'font-style: ' . $data['font_style'] . '; ';
+	if( $data['weight'] <> '' ) $style_string .= 'font-weight: ' . $data['weight'] . '; ';
+	
+?>
+
+<?php if( isset( $data['text'] ) && $data['text'] <> '' ): ?>
+
+	<<?php echo esc_html( $data['tag'] ); ?> class="<?php echo trim( $class_string ); ?>" style="<?php echo trim( $style_string ); ?>">
+	
+		<?php echo wp_kses_post( $data['text'] ); ?>
+		
+		<?php if( isset( $data['subtext'] ) && $data['subtext'] <> ''): ?>
+		<span class="header-subtext" style="<?php echo isset( $data['subtext_color'] ) && $data['subtext_color'] <> '' ? 'color: ' . esc_attr( $data['subtext_color'] ) . ';' : ''; ?> "><?php echo wp_kses_post( $data['subtext'] ); ?></span>
+		<?php endif; ?>
+		
+	</<?php echo esc_html( $data['tag'] ); ?>>
+
+<?php endif;

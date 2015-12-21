@@ -1,0 +1,145 @@
+<?php global $wpl_exe_wp; ?>
+<table class="form-table wproto-form-table">
+	<tr class="without-space noborder">
+		<td colspan="2"><h4 class="header"><?php _e('"Buy it" button', 'wproto'); ?></h4></td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Display "Buy" button', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php
+				$display_buy_button = isset( $data['display_buy_button'] ) && $data['display_buy_button'] ? $data['display_buy_button'] : false;
+				wpl_exe_wp_admin_utils::switcher( $display_buy_button, 'tr.wproto_buy_button_settings', 'wproto_settings', 'display_buy_button');
+			?>
+
+		</td>
+	</tr>
+	<tr class="wproto_buy_button_settings" style="<?php echo ! $display_buy_button ? 'display: none' : ''; ?>">
+		<th><label><?php _e( '"Buy" button custom text', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php $buy_button_custom_text = isset( $data['buy_button_custom_text'] ) && $data['buy_button_custom_text'] ? $data['buy_button_custom_text'] : ''; ?>
+			<input type="text" class="text" name="wproto_settings[buy_button_custom_text]" value="<?php echo esc_attr( $buy_button_custom_text ); ?>" />
+			
+		</td>
+	</tr>
+	<tr class="wproto_buy_button_settings" style="<?php echo ! $display_buy_button ? 'display: none' : ''; ?>">
+		<th><label><?php _e( '"Buy" button URL', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php $buy_button_url = isset( $data['buy_button_url'] ) && $data['buy_button_url'] ? $data['buy_button_url'] : ''; ?>
+			<input type="text" class="text" name="wproto_settings[buy_button_url]" value="<?php echo esc_attr( $buy_button_url ); ?>" />
+
+		</td>
+	</tr>
+	<tr class="without-space">
+		<td colspan="2"><h4 class="header"><?php _e('"Download it" button', 'wproto'); ?></h4></td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Display "Download" button', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php
+				$display_download_button = isset( $data['display_download_button'] ) && $data['display_download_button'] ? $data['display_download_button'] : false;
+				wpl_exe_wp_admin_utils::switcher( $display_buy_button, 'tr.wproto_download_button_settings', 'wproto_settings', 'display_download_button');
+			?>
+
+		</td>
+	</tr>
+	<tr class="wproto_download_button_settings" style="<?php echo ! $display_download_button ? 'display: none' : ''; ?>">
+		<th><label><?php _e( '"Download" button custom text', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php $download_button_custom_text = isset( $data['download_button_custom_text'] ) && $data['download_button_custom_text'] ? $data['download_button_custom_text'] : ''; ?>
+			<input type="text" class="text" name="wproto_settings[download_button_custom_text]" value="<?php echo esc_attr( $download_button_custom_text ); ?>" />
+
+		</td>
+	</tr>
+	<tr class="wproto_download_button_settings" style="<?php echo ! $display_download_button ? 'display: none' : ''; ?>">
+		<th><label><?php _e( '"Download" button URL', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php $download_button_url = isset( $data['download_button_url'] ) && $data['download_button_url'] ? $data['download_button_url'] : ''; ?>
+			<input type="text" class="text" name="wproto_settings[download_button_url]" value="<?php echo esc_attr( $download_button_url ); ?>" />
+			
+			<p class="description"><?php _e('If "download url" is not specified, a link to the full-size thumbnail image will be used', 'wproto'); ?></p>
+			
+		</td>
+	</tr>
+	<tr class="without-space">
+		<td colspan="2"><h4 class="header"><?php _e('Project information', 'wproto'); ?></h4></td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Display categories', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php
+				$display_categories = isset( $data['display_categories'] ) && $data['display_categories'] ? $data['display_categories'] : false;
+				wpl_exe_wp_admin_utils::switcher( $display_categories, false, 'wproto_settings', 'display_categories');
+			?>
+
+		</td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Display information about Client', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php
+				$display_client = isset( $data['display_client'] ) && $data['display_client'] ? $data['display_client'] : false;
+				wpl_exe_wp_admin_utils::switcher( $display_client, 'tr.wproto_display_client_settings', 'wproto_settings', 'display_client');
+			?>
+
+		</td>
+	</tr>
+	<tr class="wproto_display_client_settings" style="<?php echo ! $display_client ? 'display: none' : ''; ?>">
+		<th><label><?php _e( 'Client name', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php $client_name = isset( $data['client_name'] ) && $data['client_name'] ? $data['client_name'] : ''; ?>
+			<input type="text" class="text" name="wproto_settings[client_name]" value="<?php echo esc_attr( $client_name ); ?>" />
+
+		</td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Display project link', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php
+				$display_link = isset( $data['display_link'] ) && $data['display_link'] ? $data['display_link'] : false;
+				wpl_exe_wp_admin_utils::switcher( $display_link, 'tr.wproto_link_settings', 'wproto_settings', 'display_link');
+			?>
+
+		</td>
+	</tr>
+	<tr class="wproto_link_settings" style="<?php echo ! $display_link ? 'display: none' : ''; ?>">
+		<th><label><?php _e( 'Project URL', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php $project_url = isset( $data['project_url'] ) && $data['project_url'] ? $data['project_url'] : ''; ?>
+			<input type="text" class="text" name="wproto_settings[project_url]" value="<?php echo esc_attr( $project_url ); ?>" />
+
+		</td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Display date', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php
+				$display_date = isset( $data['display_date'] ) && $data['display_date'] ? $data['display_date'] : false;
+				wpl_exe_wp_admin_utils::switcher( $display_date, false, 'wproto_settings', 'display_date');
+			?>
+
+		</td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Display share icons', 'wproto' ); ?>:</label></th>
+		<td>
+
+			<?php
+				$display_share_icons = isset( $data['display_share_icons'] ) && $data['display_share_icons'] ? $data['display_share_icons'] : false;
+				wpl_exe_wp_admin_utils::switcher( $display_share_icons, false, 'wproto_settings', 'display_share_icons');
+			?>
+
+		</td>
+	</tr>
+</table>

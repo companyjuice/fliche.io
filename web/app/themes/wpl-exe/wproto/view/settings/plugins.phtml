@@ -1,0 +1,103 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Additional settings for third-party plugins', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="plugins" />
+		
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+		
+		<!--
+	
+			Custom Forms
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Forms styling', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Disable JS appearance customization for form inputs', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$disable_form_style_plugins = $wpl_exe_wp->get_option( 'disable_form_style_plugins', 'plugins' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $disable_form_style_plugins, false, 'plugins', 'disable_form_style_plugins'); ?>
+						
+						<p class="description"><?php _e( 'Disable jQuery style plugins for Dropdowns, Checkboxes and Radios form inputs', 'wproto' ); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+		</div>	
+		
+		<!--
+	
+			Visual Composer
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Visual Composer', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Disable bundled mode for Visual Composer', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$disable_bundled_vc = $wpl_exe_wp->get_option( 'disable_bundled_vc', 'plugins' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $disable_bundled_vc, false, 'plugins', 'disable_bundled_vc'); ?>
+						
+						<p class="description"><?php _e('Enable this option if you\'re going to use a separate license for Visual Composer to receive auto-updates for it.', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Use stand-alone version of Visual Composer', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$use_stand_alone_vc = $wpl_exe_wp->get_option( 'use_stand_alone_vc', 'plugins' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $use_stand_alone_vc, false, 'plugins', 'use_stand_alone_vc'); ?>
+						
+						<p class="description"><?php _e('<strong>Important!</strong> We can guarantee the correct work and support only VC widgets that were presented in our demo. By enabling this mode, you understand that some unsupported widgets may not work correctly. Enable this option only if you are sure that you need it, at your own risk.', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+</div>

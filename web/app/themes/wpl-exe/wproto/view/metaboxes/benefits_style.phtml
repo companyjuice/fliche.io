@@ -1,0 +1,39 @@
+<?php global $wpl_exe_wp; ?>
+<p>
+	<label><?php _e('Custom link', 'wproto'); ?></label>
+	<input type="text" name="wproto_benefit_link" value="<?php echo esc_attr( $data['link'] ); ?>" />
+</p>
+<p>
+	<label><?php _e('Animation settings', 'wproto'); ?></label>
+	<select name="wproto_benefit_animation">
+		<?php foreach( $wpl_exe_wp->system_config['animations'] as $k=>$v ): ?>
+		<option <?php echo $data['animation'] == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+		<?php endforeach; ?>
+	</select>
+</p>
+<p>
+	<label style="display: block"><?php _e('Animation delay in seconds', 'wproto'); ?></label>
+	<input type="text" name="wproto_benefit_animation_delay" value="<?php echo $data['animation_delay'] == '' ? '0.0' : esc_attr( $data['animation_delay'] ); ?>" />
+	<div class="description"><?php _e('(for example: 0.3s, or 1800ms)', 'wproto'); ?></div>
+</p>
+<p>
+	<label><input type="radio" class="wproto-benefit-style-chooser" <?php echo $data['style'] == '' || $data['style'] == 'image' ? 'checked="checked"' : ''; ?> name="wproto_benefit_style" value="image" /> <?php _e( 'Use Featured Image as benefit icon', 'wproto' ); ?></label>
+</p>
+<p>
+	<label><input type="radio" class="wproto-benefit-style-chooser" <?php echo $data['style'] == 'icon' ? 'checked="checked"' : ''; ?> name="wproto_benefit_style" value="icon" /> <?php _e( 'Select an icon from the library', 'wproto' ); ?></label>
+</p>
+<p>
+	<label><input type="radio" class="wproto-benefit-style-chooser" <?php echo $data['style'] == 'svg' ? 'checked="checked"' : ''; ?> name="wproto_benefit_style" value="svg" /> <?php _e( 'Upload SVG image', 'wproto' ); ?></label>
+</p>
+<p id="wproto-benefit-icon-chooser" <?php echo $data['style'] == '' || $data['style'] == 'image' || $data['style'] == 'svg' ? ' style="display: none;"' : ''; ?>>
+	<?php echo $data['icon'] <> '' ? '<i data-name="' . esc_attr( $data['icon'] ) . '" class="wproto-icon-holder ' . esc_attr( $data['icon'] ) . ' fa-4x"></i> <a href="javascript:;" class="wproto-icon-chooser">' . __( 'Change', 'wproto') . '</a>' : '<i data-name="" class="wproto-icon-holder icon-2x"></i> <a href="javascript:;" class="wproto-icon-chooser">' . __( 'Select icon', 'wproto') . '</a>'; ?>
+	<input type="hidden" value="<?php echo esc_attr( $data['icon'] ); ?>" name="wproto_benefit_icon_name" class="wproto-icon-holder-input" />
+</p>
+<p id="wproto-benefit-svg-params" <?php echo $data['style'] == '' || $data['style'] == 'image' ? ' style="display: none;"' : ''; ?>>
+	<input style="width: 90px" type="text" id="wproto-benefit-svg-image" name="wproto_benefit_svg_image" value="<?php echo esc_attr( $data['svg_image'] ); ?>" />
+	<a href="javascript:;" data-url-input="#wproto-benefit-svg-image" class="button wproto-image-selector"><?php _e( 'Upload', 'wproto' ); ?></a> 
+	<a href="javascript:;" data-url-input="#wproto-benefit-svg-image" class="button wproto-image-remover"><?php _e( 'Remove', 'wproto' ); ?></a>
+	<br /><br />
+	<?php _e('SVG image width and height in pixels', 'wproto'); ?>:<br />
+	<input type="text" style="width: 45px;" name="wproto_benefit_svg_image_width" value="<?php echo esc_attr( $data['svg_image_width'] ); ?>" />x<input style="width: 45px;" type="text" name="wproto_benefit_svg_image_height" value="<?php echo esc_attr( $data['svg_image_height'] ); ?>" />
+</p>

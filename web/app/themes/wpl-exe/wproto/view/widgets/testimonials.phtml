@@ -1,0 +1,20 @@
+<?php echo $data['args']['before_widget']; ?>
+
+<!-- widget title -->
+<?php if ( isset( $data['title'] ) && $data['title'] <> '' ) : ?>
+
+	<?php echo $data['args']['before_title']; ?>
+	
+		<?php echo apply_filters( 'widget_title', $data['title'] ); ?>
+		
+	<?php echo $data['args']['after_title']; ?>
+	
+<?php endif; ?>
+
+<!-- widget content -->
+
+<?php
+
+	$autoplay = isset( $data['instance']['autoplay_speed'] ) && isset( $data['instance']['autoplay_speed'] ) <> '';
+	echo do_shortcode( '[wproto_testimonials style="' . esc_attr( $data['instance']['style'] ) . '" autoplay="' . esc_attr( $autoplay )  . '" autoplay_speed="' . esc_attr( $data['instance']['autoplay_speed'] ) . '" count="' . esc_attr( $data['instance']['posts_count'] ) . '" category="' . esc_attr( $data['instance']['display_categories'] ) . '" order_by="' . esc_attr( $data['instance']['order_by'] ) . '" sort="' . esc_attr( $data['instance']['sort'] ) . '"]' ); 
+	echo $data['args']['after_widget'];

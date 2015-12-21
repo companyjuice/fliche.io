@@ -1,0 +1,113 @@
+<?php
+	global $wpl_exe_wp;
+	if( $data['posts']->have_posts() ):
+?>
+
+	<?php
+		$_uniqid = uniqid();
+	?>
+
+	<?php if( ! $data['ajax_load'] ): ?>
+	
+	<?php if( $data['display_filters'] ): ?>
+	<div class="wproto-filters container-fluid">
+		<div class="row">
+			<div class="<?php if( $data['display_sort_filters'] && $data['display_view_switcher'] ): ?>col-md-8<?php else: ?>col-md-10<?php endif; ?> filters-list" data-grid-id="wproto-posts-grid-id-<?php echo $_uniqid; ?>">
+				<a href="javascript:;" class="current filter-link" data-filter="*"><?php _e('All', 'wproto'); ?></a>
+				<?php
+					$cat_args = array(
+				    'parent'			=> 0,
+				    'number'			=> 10,
+				    'hide_empty'	=> false           
+					);
+					
+					if( $data['categories'] <> '' ) {
+						$cat_args['slug'] = explode( ',', $data['categories'] );
+					}
+					
+					$categories = get_terms( 'wproto_portfolio_category' , $cat_args ); 
+					if( is_array( $categories ) ): foreach( $categories as $k=>$cat ): 
+				?>
+				<a href="javascript:;" class="filter-link" data-filter=".<?php echo $cat->slug; ?>"><?php echo $cat->name; ?></a>
+				<?php endforeach; endif; ?>
+			</div>
+
+			<?php if( $data['display_view_switcher'] ): ?>
+			<div class="col-md-2 view-switcher">
+				<select data-grid-id="wproto-posts-grid-id-<?php echo $_uniqid; ?>" name="">
+					<option <?php echo in_array( $data['style'], array('cols_2_masonry', 'cols_2_masonry_no_gap', 'cols_2_masonry_with_desc')) ? 'selected="selected"' : ''; ?> value="2"><?php _e('Columns: 2', 'wproto'); ?></option>
+					<option <?php echo in_array( $data['style'], array('cols_3_masonry', 'cols_3_masonry_no_gap', 'cols_3_masonry_with_desc')) ? 'selected="selected"' : ''; ?> value="3"><?php _e('Columns: 3', 'wproto'); ?></option>
+					<option <?php echo in_array( $data['style'], array('cols_4_masonry', 'cols_4_masonry_no_gap', 'cols_4_masonry_with_desc')) ? 'selected="selected"' : ''; ?> value="4"><?php _e('Columns: 4', 'wproto'); ?></option>
+				</select>
+			</div>
+			<?php endif; ?>
+		
+			<?php if( $data['display_sort_filters'] ): ?>
+			<div class="col-md-2 sort-filters">
+				<select name="">
+					<option value="date"><?php _e('Sort by: Date', 'wproto'); ?></option>
+					<option value="title"><?php _e('Sort by: Title', 'wproto'); ?></option>
+				</select>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php endif; ?>
+	
+	<div id="wproto-posts-grid-id-<?php echo $_uniqid; ?>" class="wproto-posts-grid wproto-posts-grid-portfolio masonry-posts portfolio-style-<?php echo esc_attr( $data['style'] ); ?>">
+	<?php endif; ?>
+			
+	<?php $i=1; while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+
+		<?php
+			$post_terms = wp_get_post_terms( get_the_ID(), 'wproto_portfolio_category' );
+			$post_terms_list = '';
+			if( is_array( $post_terms ) ) {
+				foreach( $post_terms as $k=>$v ) {
+					$post_terms_list .= $v->slug . ' ';
+				}
+			}
+		?>
+
+		<div data-title="<?php the_title(); ?>" data-date="<?php the_time('Y-m-d'); ?>" class="item <?php echo $post_terms_list; ?>">
+			<?php get_template_part('part', 'portfolio_content'); ?>
+		</div>
+
+	<?php endwhile; ?>
+	
+	<?php if( ! $data['ajax_load'] ): ?>
+	</div>
+	<?php endif; ?>
+	
+	<?php if( (bool)$data['display_pagination'] && ! $data['ajax_load'] ): ?>
+	<div class="wproto-portfolio-pagination-block">
+		<?php
+			wpl_exe_wp_front::pagination( array(
+				'pagination_style' => $data['pagination_style'],
+				'custom_query' => $data['posts'],
+				'ajax_target' => '#wproto-posts-grid-id-' . $_uniqid,
+				'append_type' => 'masonry',
+				'shortcode' => 'wproto_portfolio'
+			), $data );
+		?>
+	</div>
+	<?php endif; ?>
+
+<?php elseif( ! $data['ajax_load'] ): ?>
+
+	<?php get_template_part('part', 'no_posts'); ?>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initMasonry();
+			window.wprotoFrontCore.initLightbox();
+			
+			setTimeout(function() { window.wprotoFrontCore.initMasonry(); }, 2000);
+		}
+	</script>
+<?php endif;

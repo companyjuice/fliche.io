@@ -1,0 +1,50 @@
+<table class="form-table">
+	<tr>
+		<th>
+			<label><?php _e('Font family', 'wproto'); ?>:</label>
+		</th>
+		<td>
+			<input type="text" name="font_family" value="<?php echo esc_attr( $data['font_family'] ); ?>" />
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<label><?php _e('Font file in EOT format', 'wproto'); ?>:</label>
+		</th>
+		<td>
+			<input type="text" id="wproto-eot-input" class="text" name="file_eot" value="<?php echo esc_attr( $data['file_eot'] ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-eot-input"><?php _e( 'Upload', 'wproto' ); ?></a> 
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<label><?php _e('Font file in WOFF2 format', 'wproto'); ?>:</label>
+		</th>
+		<td>
+			<input type="text" id="wproto-woff2-input" class="text" name="file_woff2" value="<?php echo esc_attr( $data['file_woff2'] ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-woff2-input"><?php _e( 'Upload', 'wproto' ); ?></a> 
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<label><?php _e('Font file in WOFF format', 'wproto'); ?>:</label>
+		</th>
+		<td>
+			<input type="text" id="wproto-woff-input" class="text" name="file_woff" value="<?php echo esc_attr( $data['file_woff'] ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-woff-input"><?php _e( 'Upload', 'wproto' ); ?></a> 
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<label><?php _e('Font file in TrueType format', 'wproto'); ?>:</label>
+		</th>
+		<td>
+			<input type="text" id="wproto-truetype-input" class="text" name="file_truetype" value="<?php echo esc_attr( $data['file_truetype'] ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-truetype-input"><?php _e( 'Upload', 'wproto' ); ?></a> 
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<label><?php _e('Font file in SVG format', 'wproto'); ?>:</label>
+		</th>
+		<td>
+			<input type="text" id="wproto-svg-input" class="text" name="file_svg" value="<?php echo esc_attr( $data['file_svg'] ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-svg-input"><?php _e( 'Upload', 'wproto' ); ?></a> 
+		</td>
+	</tr>
+</table>

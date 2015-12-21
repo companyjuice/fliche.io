@@ -1,0 +1,851 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'General Settings', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="general" />
+	
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+	
+		<!--
+	
+			Preloader and animations
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Page preloader and animations', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr class="without-space noborder">
+					<td colspan="2"><h4 class="header"><?php _e('Animation for Mobiles', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Disable animation for mobile devices?', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$disble_mobile_animations = $wpl_exe_wp->get_option( 'disble_mobile_animations', 'general' );
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $disble_mobile_animations, false, 'general', 'disble_mobile_animations'); ?>
+						
+					</td>
+				</tr>
+				<tr class="preloader_options">
+					<td colspan="2"><h4 class="header"><?php _e('Page preloader', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Use page preloader', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$use_preloader = $wpl_exe_wp->get_option( 'use_preloader', 'general' );
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $use_preloader, 'tr.preloader_options', 'general', 'use_preloader'); ?>
+						
+					</td>
+				</tr>
+				<tr class="preloader_options"<?php echo $use_preloader ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Preloader style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$preloader_style = $wpl_exe_wp->get_option( 'preloader_style', 'general' );
+						?>
+						
+						<select class="select" name="general[preloader_style]">
+							<?php foreach( $wpl_exe_wp->system_config['preloader_styles'] as $k=>$v ): ?>
+							<option <?php echo $preloader_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>						
+						</select>
+					
+					</td>
+				</tr>
+				<tr class="preloader_options" <?php echo $use_preloader ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Custom preloader image', 'wproto' ); ?>:</label>
+						<p class="description"><?php _e( 'Leave it blank to use default preloader', 'wproto' ); ?></p></th>
+					</th>
+					<td>
+					
+						<?php
+							$preloader_custom_image = $wpl_exe_wp->get_option( 'preloader_custom_image', 'general' ); 
+						?>
+						
+						<p>
+							<input type="text" id="wproto-preloader-custom-image-input" class="text" name="general[preloader_custom_image]" value="<?php echo esc_attr( @$preloader_custom_image ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-preloader-custom-image-input"><?php _e( 'Upload', 'wproto' ); ?></a> <a href="javascript:;" class="button wproto-remove-favicon"><?php _e( 'Remove', 'wproto' ); ?></a><br />
+						</p>
+					
+					</td>
+				</tr>
+				<?php if( wpl_exe_wp_utils::is_retina_enabled() ): ?>
+				<tr class="preloader_options" <?php echo $use_preloader ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Custom preloader image for Retina displays', 'wproto' ); ?>:</label>
+						<p class="description"><?php _e( 'Use same picture in double size', 'wproto' ); ?></p></th>
+					</th>
+					<td>
+					
+						<?php
+							$preloader_custom_image_2x = $wpl_exe_wp->get_option( 'preloader_custom_image_2x', 'general' ); 
+						?>
+						
+						<p>
+							<input type="text" id="wproto-preloader-custom-image-input-2x" class="text" name="general[preloader_custom_image_2x]" value="<?php echo esc_attr( @$preloader_custom_image_2x ); ?>" /> <a href="javascript:;" class="button wproto-image-selector" data-url-input="#wproto-preloader-custom-image-input-2x"><?php _e( 'Upload', 'wproto' ); ?></a> <a href="javascript:;" class="button wproto-remove-favicon"><?php _e( 'Remove', 'wproto' ); ?></a><br />
+						</p>
+					
+					</td>
+				</tr>
+				<?php endif; ?>
+				<tr class="preloader_options" <?php echo $use_preloader ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Custom preloader image size', 'wproto' ); ?>:</label>
+						<p class="description"><?php _e( 'Set image width and height in pixels', 'wproto' ); ?></p></th>
+					</th>
+					<td>
+					
+						<?php
+							$preloader_custom_image_width = $wpl_exe_wp->get_option( 'preloader_custom_image_width', 'general' );
+							$preloader_custom_image_height = $wpl_exe_wp->get_option( 'preloader_custom_image_height', 'general' ); 
+						?>
+						
+						<p>
+							<input style="width: 45px" type="text" name="general[preloader_custom_image_width]" value="<?php echo esc_attr( @$preloader_custom_image_width ); ?>" />x<input style="width: 45px" type="text" name="general[preloader_custom_image_height]" value="<?php echo esc_attr( @$preloader_custom_image_height ); ?>" />
+						</p>
+					
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Page unloader', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Use unloader effect', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$use_unloader = $wpl_exe_wp->get_option( 'use_unloader', 'general' );
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $use_unloader, 'tr.unloader-settings', 'general', 'use_unloader'); ?>
+						
+					</td>
+				</tr>
+				<tr class="unloader-settings"<?php echo $use_unloader ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Unloader style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$unloader_style = $wpl_exe_wp->get_option( 'unloader_style', 'general' );
+						?>
+						
+						<select class="select" name="general[unloader_style]">
+							<?php foreach( $wpl_exe_wp->system_config['unloader_styles'] as $k=>$v ): ?>
+							<option <?php echo $unloader_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>						
+						</select>
+					
+					</td>
+				</tr>
+
+			</table>
+		
+		</div>
+	
+		<!--
+	
+			Disable custom post types
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Enable / Disable build-in custom post types', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Portfolio', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$portfolio_enabled = $wpl_exe_wp->get_option( 'portfolio_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $portfolio_enabled, false, 'general', 'portfolio_enabled'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Pricing Tables', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$pricing_tables_enabled = $wpl_exe_wp->get_option( 'pricing_tables_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $pricing_tables_enabled, false, 'general', 'pricing_tables_enabled'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Team Members', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$team_members_enabled = $wpl_exe_wp->get_option( 'team_members_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $team_members_enabled, false, 'general', 'team_members_enabled'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Benefits', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$benefits_enabled = $wpl_exe_wp->get_option( 'benefits_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $benefits_enabled, false, 'general', 'benefits_enabled'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Partners / Clients', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$partners_clients_enabled = $wpl_exe_wp->get_option( 'partners_clients_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $partners_clients_enabled, false, 'general', 'partners_clients_enabled'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Testimonials', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$testimonials_enabled = $wpl_exe_wp->get_option( 'testimonials_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $testimonials_enabled, false, 'general', 'testimonials_enabled'); ?>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<!--
+	
+			Captcha
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Spam Bot protection', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Display captcha in a comment form (for guests)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$comments_captcha_enabled = $wpl_exe_wp->get_option( 'comments_captcha_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $comments_captcha_enabled, false, 'general', 'comments_captcha_enabled'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Display captcha in a signup form', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$signup_captcha_enabled = $wpl_exe_wp->get_option( 'signup_captcha_enabled', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $signup_captcha_enabled, false, 'general', 'signup_captcha_enabled'); ?>
+						
+					</td>
+				</tr>				
+				<tr>
+					<th>
+						<label><?php _e( 'Arithmetic actions for captcha', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$captcha_difficult = $wpl_exe_wp->get_option( 'captcha_difficult', 'general' ); 
+						?>
+					
+						<label><input value="minus" <?php echo @in_array( 'minus', $captcha_difficult ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[captcha_difficult][]" /> <?php _e( 'Minus (-)', 'wproto' ); ?></label><br />
+						<label><input value="plus" <?php echo @in_array( 'plus', $captcha_difficult ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[captcha_difficult][]" /> <?php _e( 'Plus (+)', 'wproto' ); ?></label><br />
+						<label><input value="division" <?php echo @in_array( 'division', $captcha_difficult ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[captcha_difficult][]" /> <?php _e( 'Division (/)', 'wproto' ); ?></label><br />
+						<label><input value="multiply" <?php echo @in_array( 'multiply', $captcha_difficult ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[captcha_difficult][]" /> <?php _e( 'Multiply (*)', 'wproto' ); ?></label>
+					
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			Login / Signup protection
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Login / Signup form settings', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Email notifications', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$signup_notifications = $wpl_exe_wp->get_option( 'signup_notifications', 'general' );							 
+						?>
+						<select class="select" name="general[signup_notifications]">
+							<option value=""><?php _e('Notifications disabled', 'wproto') ?></option>
+							<option <?php echo $signup_notifications == 'admin' ? 'selected="selected"' : ''; ?> value="admin"><?php _e('Notify admin about new user registration', 'wproto') ?></option>
+							<option <?php echo $signup_notifications == 'all' ? 'selected="selected"' : ''; ?> value="both"><?php _e('Notify admin and send welcome email to the user', 'wproto') ?></option>					
+						</select>
+						
+					</td>
+				</tr>	
+				<tr>
+					<th>
+						<label><?php _e( 'A visitior should accept user agreement to register', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$signup_agreement = $wpl_exe_wp->get_option( 'signup_agreement', 'general' );							 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $signup_agreement, 'tr.wproto-signup-agreement', 'general', 'signup_agreement'); ?>
+						
+					</td>
+				</tr>			
+				<tr class="wproto-signup-agreement" style="<?php echo $signup_agreement ? '' : 'display: none'; ?>">
+					<th>
+						<label><?php _e( 'Choose a page with agreement text', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$signup_agreement_page = $wpl_exe_wp->get_option( 'signup_agreement_page', 'general' );							 
+						?>
+					
+						<?php wp_dropdown_pages(array( 'name' => 'general[signup_agreement_page]', 'selected' => $signup_agreement_page )); ?>
+						
+					</td>
+				</tr>		
+			</table>
+		
+		</div>
+	
+		<!--
+	
+			Additional icons
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Fonts settings', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Iconic Fonts Libraries', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$icomoon_enabled = $wpl_exe_wp->get_option( 'icomoon_enabled', 'general' ); 
+						?>
+					
+						<label><input type="checkbox" checked="checked" disabled="disabled" /> Font Awesome</label> <br />
+						<label><input type="checkbox" <?php echo $icomoon_enabled ? 'checked="checked"' : ''; ?> value="true" name="general[icomoon_enabled]" /> IcoMoon Ultimate</label>
+						
+						<p class="description"><?php _e('Enabling additional font libraries will add ~2000+ free and premium icons, but may affect site loading speed.', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Additional Google font subsets', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$additional_subsets = $wpl_exe_wp->get_option( 'additional_subsets', 'general' );
+							$additional_subsets = is_array( $additional_subsets ) ? $additional_subsets : array();
+						?>
+					
+						<label><input value="latin-ext" <?php echo @in_array( 'latin-ext', $additional_subsets ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[additional_subsets][]" /> <?php _e( 'Latin Extended', 'wproto' ); ?></label><br />
+						<label><input value="greek" <?php echo @in_array( 'greek', $additional_subsets ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[additional_subsets][]" /> <?php _e( 'Greek', 'wproto' ); ?></label><br />
+						<label><input value="greek-ext" <?php echo @in_array( 'greek-ext', $additional_subsets ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[additional_subsets][]" /> <?php _e( 'Greek Extended', 'wproto' ); ?></label><br />
+						<label><input value="vietnamese" <?php echo @in_array( 'vietnamese', $additional_subsets ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[additional_subsets][]" /> <?php _e( 'Vietnamese', 'wproto' ); ?></label><br />
+						
+						<label><input value="cyrillic" <?php echo @in_array( 'cyrillic', $additional_subsets ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[additional_subsets][]" /> <?php _e( 'Cyrillic', 'wproto' ); ?></label><br />
+						<label><input value="cyrillic-ext" <?php echo @in_array( 'cyrillic-ext', $additional_subsets ) ? 'checked="checked"' : ''; ?> type="checkbox" name="general[additional_subsets][]" /> <?php _e( 'Cyrillic Extended', 'wproto' ); ?></label><br />
+						
+						<p class="description"><?php _e('Enabling additional font subsets may affect site loading speed, but resolve a problem with displaying of non-english chars.', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+	
+		<!--
+	
+			Hash change for one-page navigation
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'One-page menu settings', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Display anchors at address bar for one-page navigation?', 'wproto' ); ?></label>
+					</th>
+					<td>
+					
+						<?php
+							$display_one_page_anchors = $wpl_exe_wp->get_option( 'display_one_page_anchors', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_one_page_anchors, false, 'general', 'display_one_page_anchors'); ?>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+				
+		<!--
+	
+			Smooth scrolling
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Smooth scrolling', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Enable smooth scrolling', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$smooth_scroll = $wpl_exe_wp->get_option( 'smooth_scroll', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $smooth_scroll, false, 'general', 'smooth_scroll'); ?>
+						
+						<p class="description"><?php _e('Enable smooth mouse wheel behavior', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			GoTop link
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( '"Go Top" link', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Display "Go Top" link when scrolling down', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_gotop = $wpl_exe_wp->get_option( 'display_gotop', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_gotop, false, 'general', 'display_gotop'); ?>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			Retina support
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'High-DPI (retina) images', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Retina Support', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$retina_support = $wpl_exe_wp->get_option( 'retina_support', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $retina_support, false, 'general', 'retina_support'); ?>
+						
+						<p class="description"><?php _e('Disabling this option will reduce the space occupied by the site, but some images will be blurred at high pixel density displays.', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			Breadcrumbs
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Breadcrumbs', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Display Breadcrumbs', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_breadcrumbs = $wpl_exe_wp->get_option( 'display_breadcrumbs', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_breadcrumbs, false, 'general', 'display_breadcrumbs'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( '"Blog" root page in Breadcrumbs', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$breadcrumbs_blog_page = $wpl_exe_wp->get_option( 'breadcrumbs_blog_page', 'general' ); 
+						?>
+					
+						<?php
+							wp_dropdown_pages( array(
+								'selected' => $breadcrumbs_blog_page,
+								'name' => 'general[breadcrumbs_blog_page]',
+								'show_option_none' => __('-- Use default "Page for posts" --', 'wproto'),
+								'option_none_value' => ''
+							));
+						?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( '"Portfolio" root page in Breadcrumbs', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$breadcrumbs_portfolio_page = $wpl_exe_wp->get_option( 'breadcrumbs_portfolio_page', 'general' ); 
+						?>
+					
+						<?php
+							wp_dropdown_pages( array(
+								'selected' => $breadcrumbs_portfolio_page,
+								'name' => 'general[breadcrumbs_portfolio_page]',
+								'show_option_none' => __('-- Use default template --', 'wproto'),
+								'option_none_value' => ''
+							));
+						?>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+	
+		<!--
+	
+			Admin bar
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Admin area access', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Do not display admin bar for logged non-admins at front-end part', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$hide_adminbar_for_non_admins = $wpl_exe_wp->get_option( 'hide_adminbar_for_non_admins', 'general' );
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $hide_adminbar_for_non_admins, false, 'general', 'hide_adminbar_for_non_admins'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Disable access to WP admin for logged non-admin users', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$disable_wp_admin_for_non_admins = $wpl_exe_wp->get_option( 'disable_wp_admin_for_non_admins', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $disable_wp_admin_for_non_admins, false, 'general', 'disable_wp_admin_for_non_admins'); ?>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			Change default slugs
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Modify custom post types', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr class="without-space noborder">
+					<td colspan="2"><h4 class="header"><?php _e('Portfolio', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Portfolio post type title', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$portfolio_title = $wpl_exe_wp->get_option( 'portfolio_title', 'general' );
+						?>
+					
+						<input type="text" name="general[portfolio_title]" value="<?php echo esc_attr( $portfolio_title ); ?>" />
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Portfolio slug', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$portfolio_slug = $wpl_exe_wp->get_option( 'portfolio_slug', 'general' );
+						?>
+					
+						<input type="text" name="general[portfolio_slug]" value="<?php echo esc_attr( $portfolio_slug ); ?>" />
+						
+						<p class="description"><?php _e( 'If 404 error occurs, flush rewrite rules through "Tools" screen. Use only the alphabet and -_ chars here. Do not use a space, it can cause problems!', 'wproto' ); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!--
+	
+			RSS
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'RSS Feed', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'RSS Feed', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$rss_enabled = $wpl_exe_wp->get_option( 'rss_enabled', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $rss_enabled, '#wproto-enable-rss-thumbs', 'general', 'rss_enabled'); ?>
+						
+					</td>
+				</tr>
+				<tr id="wproto-enable-rss-thumbs" <?php echo $rss_enabled ? '' : ' style="display: none;"'; ?>>
+					<th style="vertical-align: middle"><label><?php _e( 'Display thumbnails at RSS feed', 'wproto' ); ?>:</label></th>
+					<td>
+					
+						<?php
+							$rss_display_thumbs = $wpl_exe_wp->get_option( 'rss_display_thumbs', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $rss_display_thumbs, false, 'general', 'rss_display_thumbs'); ?>
+
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			Custom CSS code
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Custom CSS', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Your Custom CSS code', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+
+						<?php
+							$custom_css = $wpl_exe_wp->get_option( 'custom_css', 'general' );
+						?>
+					
+						<textarea id="wproto-custom-css-code" name="general[custom_css]" rows="8"><?php echo @$custom_css; ?></textarea><br />
+						<p class="description"><?php _e( '[TAB] button is enabled at this field', 'wproto' ); ?></p><br />
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+	
+			Google Analytics
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Custom JS code (e.g. Tracking code like Google Analytics or TypeKit code)', 'wproto' ); ?></h3>
+			
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Custom JavaScript (footer)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$analytics_code = $wpl_exe_wp->get_option( 'analytics_code', 'general' );
+						?>
+					
+						<textarea name="general[analytics_code]" rows="8"><?php echo @$analytics_code; ?></textarea>
+					
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+		<!--
+	
+			Information about speed
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Information for Developers', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Display page generation time and SQL queries count', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_speed_info = $wpl_exe_wp->get_option( 'display_speed_info', 'general' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_speed_info, false, 'general', 'display_speed_info'); ?>
+						
+						<p class="description"><?php _e('This information will be displayed in HTML comment after each primary &lt;footer> tag.', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+	
+</div>

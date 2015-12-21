@@ -1,0 +1,17 @@
+<?php echo $data['args']['before_widget']; ?>
+
+<!-- widget title -->
+<?php if ( isset( $data['title'] ) && $data['title'] <> '' ) : ?>
+
+	<?php echo $data['args']['before_title']; ?>
+	
+		<?php echo apply_filters( 'widget_title', $data['title'] ); ?>
+		
+	<?php echo $data['args']['after_title']; ?>
+	
+<?php endif; ?>
+
+<!-- widget content -->
+<?php echo do_shortcode('[wproto_contact_information address="' . wp_kses_post( $data['instance']['address'] ) . '" phone="' . wp_kses_post( $data['instance']['phone'] ) . '" email="' . wp_kses_post( $data['instance']['email'] ) . '" display_social_icons="' . wp_kses_post( $data['instance']['display_social_icons'] ) . '"]'); ?>
+
+<?php echo $data['args']['after_widget'];

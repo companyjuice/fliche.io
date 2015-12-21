@@ -1,0 +1,54 @@
+<?php if( $data['posts']->have_posts() ): ?>
+<div class="wproto-benefits style-<?php echo esc_attr( $data['style'] ); ?>">
+<div class="container-fluid">
+	<div class="row">
+	<?php $i=1; while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+	
+	<?php
+		$id = get_the_ID();
+		
+		$post_custom_fiels = get_post_custom( $id );
+		
+		$icon_style = isset( $post_custom_fiels['wproto_benefit_style'][0] ) ? $post_custom_fiels['wproto_benefit_style'][0] : 'image';
+		$icon_style = $icon_style == '' ? 'image' : esc_attr( $icon_style );
+		
+		$link = isset( $post_custom_fiels['wproto_benefit_link'][0] ) ? esc_attr( $post_custom_fiels['wproto_benefit_link'][0] ) : '';
+		$icon_name = isset( $post_custom_fiels['wproto_benefit_icon_name'][0] ) ? esc_attr( $post_custom_fiels['wproto_benefit_icon_name'][0] ) : '';
+		$animation = isset( $post_custom_fiels['wproto_benefit_animation'][0] ) ? esc_attr( $post_custom_fiels['wproto_benefit_animation'][0] ) : '';
+		$animation = $animation == '' ? 'fadeIn' : $animation;
+		$animation_delay = isset( $post_custom_fiels['wproto_benefit_animation_delay'][0] ) ? esc_attr( $post_custom_fiels['wproto_benefit_animation_delay'][0] ) : '';
+		
+		$svg_image = isset( $post_custom_fiels['wproto_benefit_svg_image'][0] ) ? esc_attr( $post_custom_fiels['wproto_benefit_svg_image'][0] ) : '';
+		$svg_width = isset( $post_custom_fiels['wproto_benefit_svg_image_width'][0] ) ? esc_attr( $post_custom_fiels['wproto_benefit_svg_image_width'][0] ) : '';
+		$svg_height = isset( $post_custom_fiels['wproto_benefit_svg_image_height'][0] ) ? esc_attr( $post_custom_fiels['wproto_benefit_svg_image_height'][0] ) : '';
+	?>
+	
+	<div class="item <?php if( $animation <> '' ): ?>wow <?php echo esc_attr( $animation ); ?><?php endif; ?> num-<?php echo $i; ?> <?php echo esc_attr( $data['columns'] ); ?>" data-wow-delay="<?php echo esc_attr( $animation_delay ); ?>">
+		<div class="unit-inside" style="<?php echo isset( $data['min_height'] ) && $data['min_height'] <> '' ? 'min-height: ' . $data['min_height'] . 'px;' : ''; ?>">								
+			<a target="<?php echo esc_attr( $data['target'] ); ?>" href="<?php echo $link == '' ? 'javascript:;' : $link; ?>" class="icon">
+
+				<span class="bg">
+					<?php if( $icon_style == 'icon' ): ?>
+						<i class="<?php echo esc_attr( $icon_name ); ?>"></i>
+					<?php elseif( $icon_style == 'svg' ): ?>
+						<img class="svg-img" width="<?php echo esc_attr( $svg_width ); ?>" height="<?php echo esc_attr( $svg_height ); ?>" src="<?php echo esc_attr( $svg_image ); ?>" alt="" />
+					<?php else: ?>
+						<?php echo wpl_exe_image( wp_get_attachment_url( get_post_thumbnail_id( $id ) ), 40, 40 ); ?>
+					<?php endif; ?>
+					<div class="hover_pulse_ray"></div>
+				</span>
+
+			</a>
+			
+			<div class="benefit-content">
+				<h3><a target="<?php echo esc_attr( $data['target'] ); ?>" href="<?php echo $link == '' ? 'javascript:;' : $link; ?>"><?php the_title(); ?></a></h3>
+				<?php the_content(); ?>
+			</div>
+			
+		</div>
+	</div>
+	<?php $i++; endwhile; wp_reset_postdata(); ?>
+	</div>
+</div>
+</div>
+<?php endif;

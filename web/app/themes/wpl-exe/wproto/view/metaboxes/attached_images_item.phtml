@@ -1,0 +1,37 @@
+<?php
+	$id = isset( $id ) ? $id : $data['id'];
+	// get image
+	$image = get_post( $id );
+	$image_data = get_post_custom( $id );
+	
+?>
+<div class="wproto-attached-image-item">
+	<input type="hidden" class="wproto-attached-image-item-id" name="wproto_attached_images[]" value="<?php echo esc_attr( $id ); ?>" />
+	
+	<?php echo wpl_exe_image( wp_get_attachment_url( $id ), 150, 150 ); ?>
+	
+	<div class="wproto-attached-image-details-holder">
+	
+		<table class="wproto-attached-image-details">
+			<tr>
+				<th><?php _e( 'Title', 'wproto'); ?>:</th>
+				<td><?php echo apply_filters( 'the_title', $image->post_title ); ?></td>
+			</tr>
+			<tr>
+				<th><?php _e( 'Alternative text', 'wproto'); ?>:</th>
+				<td><?php echo isset( $image_data['_wp_attachment_image_alt'][0] ) ? $image_data['_wp_attachment_image_alt'][0] : ''; ?></td>
+			</tr>
+			<tr>
+				<th><?php _e( 'Caption', 'wproto'); ?>:</th>
+				<td><?php echo wp_kses_post( $image->post_excerpt ); ?></td>
+			</tr>
+			<tr>
+				<th><?php _e( 'Description', 'wproto'); ?>:</th>
+				<td><?php echo wp_kses_post( $image->post_content ); ?></td>
+			</tr>
+		</table>
+	</div>
+	
+	<a href="javascript:;" class="wproto-attached-image-edit" data-id="<?php echo esc_attr( $id ); ?>"></a>
+	<a href="javascript:;" class="wproto-attached-image-delete" data-id="<?php echo esc_attr( $id ); ?>"></a>
+</div>

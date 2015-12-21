@@ -1,0 +1,28 @@
+<?php if( in_array( $data['style'], array('style_1', 'style_2', 'style_3', 'style_4') ) ): ?>
+<div class="wproto-shortcode-facts-in-digits-circle style-<?php echo esc_attr( $data['style'] ); ?>">
+	<div class="circle wow animationCircleProgress" data-grad-color="<?php echo esc_attr( $data['grad_color'] ); ?>" data-grad-color-alt="<?php echo esc_attr( $data['grad_color_alt'] ); ?>" data-color="<?php echo esc_attr( $data['color'] ); ?>" data-unit="<?php echo esc_attr( $data['unit'] ); ?>" data-value="<?php echo $data['count'] == 0 ? $data['count'] : floatval( $data['count'] / 100 ); ?>">
+		<div class="bg"></div>
+		<strong style="<?php echo $data['style'] == 'style_2' && $data['grad_color'] <> '' ? 'color: ' . $data['grad_color'] . ';' : ''; ?>">0</strong>
+	</div>
+	<div class="desc">
+		<?php if( $data['title'] ): ?><h3 style="<?php echo $data['title_color'] <> '' ? 'color: ' . esc_attr( $data['title_color'] ) . ';' : ''; ?>"><?php echo wp_kses_post( $data['title'] ); ?></h3><?php endif; ?>
+		<?php if( $data['description'] ): ?><p style="<?php echo $data['text_color'] <> '' ? 'color: ' . esc_attr( $data['text_color'] ) . ';' : ''; ?>"><?php echo wp_kses_post( $data['description'] ); ?></p><?php endif; ?>
+	</div>
+</div>
+<?php elseif( in_array( $data['style'], array('style_5', 'style_6') ) ): ?>
+<div class="wproto-shortcode-facts-in-digits style-<?php echo esc_attr( $data['style'] ); ?>">
+	<?php if( $data['icon'] ): ?>
+	
+	<div class="icon">
+		<i style="<?php echo $data['icon_color'] <> '' ? 'color: ' . esc_attr( $data['icon_color'] ) . ';' : ''; ?>" class="<?php echo esc_attr( $data['icon'] ); ?>"></i>
+	</div>
+	<?php endif; ?>
+	
+	<div class="digit wow animationNuminate" data-to="<?php echo esc_attr( $data['count'] ); ?>">0</div>
+	
+	<div class="desc">
+		<?php if( $data['title'] ): ?><h3 style="<?php echo $data['title_color'] <> '' ? 'color: ' . esc_attr( $data['title_color'] ) . ';' : ''; ?>"><?php echo wp_kses_post( $data['title'] ); ?></h3><?php endif; ?>
+		<?php if( $data['description'] ): ?><p style="<?php echo $data['text_color'] <> '' ? 'color: ' . esc_attr( $data['text_color'] ) . ';' : ''; ?>"><?php echo wp_kses_post( $data['description'] ); ?></p><?php endif; ?>
+	</div>
+</div>
+<?php endif;

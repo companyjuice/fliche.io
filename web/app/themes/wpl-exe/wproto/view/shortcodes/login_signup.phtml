@@ -1,0 +1,115 @@
+<?php global $wpl_exe_wp; ?>
+
+<?php if( !is_user_logged_in() ): ?>
+<div class="wproto-shortcode-login-signup <?php echo esc_attr( $data['style'] ); ?> <?php echo $data['allow_register'] ? '' : 'no-signup'; ?>">
+ 
+ 	<?php if( $data['allow_register'] ): ?>
+ 	<div class="navigation">
+	
+		<a href="javascript:;" class="go-to-login current"><?php _e('Sign In', 'wproto'); ?></a>
+		<a href="javascript:;" class="go-to-register"><?php _e('Sign Up', 'wproto'); ?></a>
+	 	<div class="clearfix"></div>
+	 	
+	</div>
+	<?php endif; ?>
+ 	
+ 	<div class="pages">
+		<div class="page page-login">
+		
+			<form class="login" action="javascript:;" autocomplete="off" method="post">
+				
+				<div class="form-row">
+					<input type="text" name="login" value="" placeholder="<?php _e('Login or Email address', 'wproto'); ?>" />
+				</div>
+				
+				<div class="form-row">
+					<input type="password" name="password" value="" placeholder="<?php _e('Password', 'wproto'); ?>" />
+				</div>
+				
+				<div class="form-row form-submit-row">
+					<input type="submit" value="<?php _e('Login', 'wproto'); ?>" />
+					
+					<a href="javascript:;" class="go-to-forgot-password"><?php _e('Forgot password?', 'wproto'); ?></a>
+					
+				</div>
+				
+			</form>
+		
+		</div>
+		
+		<div class="page page-register" style="display: none">
+		
+			<form class="register" action="javascript:;" autocomplete="off" method="post">
+			
+				<div class="form-row">
+					<input type="email" name="email" value="" placeholder="<?php _e('Email address', 'wproto'); ?>" />
+				</div>
+				
+				<div class="form-row">
+					<input type="password" name="password" value="" placeholder="<?php _e('Your password', 'wproto'); ?>" />
+				</div>
+				
+				<div class="form-row">
+					<input type="password" name="password2" value="" placeholder="<?php _e('Type password again', 'wproto'); ?>" />
+				</div>
+				
+				<div class="form-row">
+					<input type="text" name="first_name" value="" placeholder="<?php _e('First name (optional)', 'wproto'); ?>" />
+				</div>
+				
+				<div class="form-row">
+					<input type="text" name="last_name" value="" placeholder="<?php _e('Last name (optional)', 'wproto'); ?>" />
+				</div>
+			
+				<?php if( $wpl_exe_wp->get_option('signup_agreement', 'general') ): ?>
+					
+					<?php $agreement_page = $wpl_exe_wp->get_option('signup_agreement_page', 'general'); ?>
+					
+					<div class="form-row agree-row">
+						<label><input type="checkbox" name="terms" value="1" /> <?php printf( __('I agree with the <a target="_blank" href="%s">terms and conditions</a>', 'wproto'), get_permalink( $agreement_page ) ); ?></label>
+					</div>
+				
+				<?php endif; ?>
+				
+				<div class="form-row form-submit-row">
+					<input type="submit" value="<?php _e('Create an account', 'wproto'); ?>" />
+				</div>
+			
+			</form>
+			
+		</div>
+		
+		<div class="page page-password-restore" style="display: none">
+		
+			<form class="lostpass" action="javascript:;" autocomplete="off" method="post">
+			
+				<div class="form-row">
+					<input type="text" name="login" value="" placeholder="<?php _e('Your Login or Email address', 'wproto'); ?>" />
+				</div>
+				
+				<div class="form-row form-submit-row">
+					<input type="submit" value="<?php _e('Restore password', 'wproto'); ?>" />
+					
+					<?php if( ! $data['allow_register'] ): ?>
+					<a href="javascript:;" class="go-to-login"><?php _e('Ready to login?', 'wproto'); ?></a>
+					<?php endif; ?>
+					
+				</div>
+			
+			</form>
+		
+		</div>
+
+ </div>
+</div>
+<?php endif; 
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initLoginRegister();
+		}
+	</script>
+<?php endif;

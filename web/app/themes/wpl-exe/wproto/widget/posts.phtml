@@ -1,0 +1,98 @@
+<?php
+
+	add_action( 'widgets_init', 'register_wpl_exe_wp_posts_widget' );
+	
+	function register_wpl_exe_wp_posts_widget() {
+		register_widget( 'wpl_exe_wp_posts_widget' );
+	}
+	
+	class wpl_exe_wp_posts_widget extends WP_Widget {
+		
+		function __construct() {
+			$widget_ops = array( 'classname' => 'wproto_posts_widget', 'description' => __('A widget that displays blog / portfolio posts. ', 'wproto') );
+		
+			$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wproto_posts_widget' );
+		
+			parent::__construct( 'wproto_posts_widget', __( '[EXE] Posts', 'wproto' ), $widget_ops, $control_ops );
+		}
+		
+		function widget( $args, $instance ) {
+			global $wpl_exe_wp;
+			
+			$data = array();
+			$data['title'] = apply_filters( 'widget_title', $instance['title'] );
+			
+			//$data['posts'] = $wpl_exe_wp->model('post')->get_posts( $instance['post_type'], $instance['count'] );
+			
+			$data['instance'] = $instance;
+			$data['args'] = $args;
+
+			$wpl_exe_wp->view->load_partial( 'widgets/posts', $data );
+
+		}
+		
+		function update( $new_instance, $old_instance ) {
+			$instance = $old_instance;
+
+			//Strip tags from title and name to remove HTML 
+			$instance['title'] = strip_tags( str_replace( '\'', "&#39;", $new_instance['title'] ) );
+			$instance['post_type'] = isset( $new_instance['post_type'] ) ? strip_tags( $new_instance['post_type'] ) : 'post';
+			$instance['query_type'] = isset( $new_instance['query_type'] ) ? strip_tags( $new_instance['query_type'] ) : 'recent';
+			$instance['count'] = isset( $new_instance['count'] ) ? absint( $new_instance['count'] ) : 1;
+			$instance['display_thumbnails'] = isset( $new_instance['display_thumbnails'] ) ? absint($new_instance['display_thumbnails']) : 0;
+
+			return $instance;
+		}
+		
+		function form( $instance ) {
+			
+			//Set up some default widget settings.
+			$defaults = array(
+				'title' => __( 'Featured posts', 'wproto' ),
+				'post_type' => 'post',
+				'query_type' => 'recent',
+				'display_thumbnails' => 1,
+				'count' => 3,
+			);
+			
+			$instance = wp_parse_args( (array) $instance, $defaults );
+			
+			?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Widget title:', 'wproto'); ?></label>
+				<input style="width: 97%;" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e('Post type:', 'wproto'); ?></label>
+				<select name="<?php echo $this->get_field_name( 'post_type' ); ?>" id="<?php echo $this->get_field_id( 'post_type' ); ?>" class="widefat">
+					<option <?php echo $instance['post_type'] == 'post' ? 'selected="selected"' : ''; ?> value="post"><?php _e('Blog posts', 'wproto'); ?></option>
+					<option <?php echo $instance['post_type'] == 'wproto_portfolio' ? 'selected="selected"' : ''; ?> value="wproto_portfolio"><?php _e('Portfolio', 'wproto'); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'query_type' ); ?>"><?php _e('Display type:', 'wproto'); ?></label>
+				<select name="<?php echo $this->get_field_name( 'query_type' ); ?>" id="<?php echo $this->get_field_id( 'query_type' ); ?>" class="widefat">
+					<option <?php echo $instance['query_type'] == 'recent' ? 'selected="selected"' : ''; ?> value="recent"><?php _e('Recent posts', 'wproto'); ?></option>
+					<option <?php echo $instance['query_type'] == 'featured' ? 'selected="selected"' : ''; ?> value="featured"><?php _e('Featured posts', 'wproto'); ?></option>
+					<option <?php echo $instance['query_type'] == 'most_commented' ? 'selected="selected"' : ''; ?> value="most_commented"><?php _e('Most commented posts', 'wproto'); ?></option>
+					<option <?php echo $instance['query_type'] == 'random' ? 'selected="selected"' : ''; ?> value="random"><?php _e('Random posts', 'wproto'); ?></option>
+					<option <?php echo $instance['query_type'] == 'tabs' ? 'selected="selected"' : ''; ?> value="tabs"><?php _e('Recent & Most commented (in tabs)', 'wproto'); ?></option>
+				</select>
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php checked( $instance['display_thumbnails'] ); ?> id="<?php echo $this->get_field_id( 'display_thumbnails' ); ?>" name="<?php echo $this->get_field_name( 'display_thumbnails' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'display_thumbnails' ); ?>"><?php _e('Display post thumbnails', 'wproto'); ?></label>  
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e('Posts count:', 'wproto'); ?></label>
+				<select name="<?php echo $this->get_field_name( 'count' ); ?>" id="<?php echo $this->get_field_id( 'count' ); ?>" class="widefat">
+					<?php for( $i=1; $i<11; $i++ ): ?>
+					<option <?php echo $instance['count'] == $i ? 'selected="selected"' : ''; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
+					<?php endfor; ?>
+				</select>
+			</p>
+
+			<?php
+		}
+		
+	}

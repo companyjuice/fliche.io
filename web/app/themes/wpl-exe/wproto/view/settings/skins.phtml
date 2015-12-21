@@ -1,0 +1,74 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Skins', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="skins" />
+	
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+		
+		<!--
+	
+			Skins
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Theme skins', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Choose alternative theme skin', 'wproto' ); ?>:</label>
+					</th>
+					<td class="wproto-skin-selector">
+					
+						<?php
+							$skins_list = $wpl_exe_wp->system_config['skins_params']; 
+							$skin = $wpl_exe_wp->get_option( 'skin', 'skins' ); 
+						?>
+					
+						<select style="display: none" id="wproto-skin-select-input" class="select" name="skins[skin]">
+							<?php foreach( $skins_list as $k=>$v ): ?>
+							<option <?php echo $skin == $k ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $k ); ?>"></option>
+							<?php endforeach; ?>
+						</select>
+						
+						<?php $i=0; foreach( $skins_list as $k=>$v ): $i++; ?>
+						
+						<p>
+							<a href="javascript:;" class="skin-selector" data-skin="<?php echo esc_attr( $k ); ?>">
+								<img title="<?php echo ucfirst( $k ); ?>" <?php echo $skin == $k ? 'class="current"' : ''; ?> width="255" src="<?php echo get_template_directory_uri(); ?>/images/admin/skins/<?php echo $i; ?>.png" alt="" />
+							</a>
+						</p>
+						
+						<?php endforeach; ?>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+		
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+</div>

@@ -1,0 +1,17 @@
+<div id="wproto-first-activation-notice" class="updated">
+
+	<?php $theme_name = wp_get_theme(); ?>
+
+	<h3><?php _e('Dear customer!', 'wproto'); ?></h3>
+	<p><?php _e( sprintf( 'Thank you for purchasing and activating <strong>&laquo;%s&raquo;</strong> theme!', $theme_name ), 'wproto' ); ?></p>
+	
+	<p><?php echo sprintf( __('If you liked our theme, please <a target="_blank" href="%s">rate it with 5 stars</a>, it will help us to make regular updates and support this theme as long as it will be in demand.', 'wproto'), 'http://themeforest.net/downloads' ); ?></p>
+	
+	<p><?php _e('If you are not satisfied with our product, please do not rush to put a bad rating, contact us about your wishes. We can not guarantee that all of them will be implemented, but the most interesting and popular ideas will be added necessarily!', 'wproto'); ?></p>
+	
+	<p><?php _e('Theme rating is related to further theme development and support directly, please encourage our work!', 'wproto'); ?></p>
+	
+	<p><?php _e('Thank you, and Good luck. Best regards, <strong>WPlab</strong> team.', 'wproto'); ?></p>
+	
+	<p><strong><?php _e( '<a href="javascript:;" id="wproto-hide-demo-data-message">Hide this message</a>', 'wproto' ); ?> <img width="16" height="16" style="display: none;" id="wproto-dismiss-demodata-loader" src="<?php echo WPROTO_THEME_URL; ?>/images/admin/ajax-loader@2x.gif" alt="" /></strong></p>
+</div>

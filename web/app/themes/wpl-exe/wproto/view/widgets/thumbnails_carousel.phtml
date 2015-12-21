@@ -1,0 +1,66 @@
+<?php
+	global $wpl_exe_wp;
+	$type = $data['instance']['display_categories'] == '' ? 'all' : 'category';
+	$posts = $wpl_exe_wp->model('post')->get( $type, $data['instance']['posts_count'], $data['instance']['display_categories'], $data['instance']['order_by'], $data['instance']['sort'], 'wproto_portfolio', 'wproto_portfolio_category', (bool)$data['instance']['featured_only'], false, true );
+?>
+
+<?php if( $posts->have_posts() ): ?>
+
+	<?php echo $data['args']['before_widget']; ?>
+	
+	<!-- widget title -->
+	<?php if ( isset( $data['title'] ) && $data['title'] <> '' ) : ?>
+	
+		<?php echo $data['args']['before_title']; ?>
+		
+			<?php echo apply_filters( 'widget_title', $data['title'] ); ?>
+			
+		<?php echo $data['args']['after_title']; ?>
+		
+	<?php endif; ?>
+
+	<!-- widget content -->
+	
+	<div class="photoalbums-carousel" data-items="1" data-display-nav="true" data-autoplay-speed="<?php echo isset( $data['instance']['autoplay_speed'] ) ? (int)$data['instance']['autoplay_speed'] : 0; ?>">
+	
+		<?php while( $posts->have_posts() ): $posts->the_post(); ?>
+		<div class="item">
+		
+		<?php 
+			$permalink = '';
+			$lingtbox = false;
+			if( isset( $data['instance']['link_type'] ) && $data['instance']['link_type'] <> '' ) {
+				switch( $data['instance']['link_type'] ) {
+					default:
+					case( 'post'):
+						$permalink = get_permalink();
+					break;
+					case( 'project'):
+						$custom_fields = get_post_custom();
+						$permalink = isset( $custom_fields['project_url'][0] ) && $custom_fields['project_url'][0] <> '' ? $custom_fields['project_url'][0] : '';
+					break;
+					case( 'image'):
+						if( has_post_thumbnail() ) {
+							$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
+							$permalink = $img[0];	
+							$lingtbox = true;
+						}
+					break;
+				}
+			}
+		?>
+		
+		<a <?php if( isset( $data['instance']['open_at_new_tab'] ) && $data['instance']['open_at_new_tab'] ): ?>target="_blank"<?php endif; ?> class="<?php echo $lingtbox ? 'lightbox' : ''; ?>" href="<?php echo esc_attr( $permalink ); ?>">
+			<?php echo wpl_exe_image( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ), 265, 177 ); ?>
+		</a>
+	
+		</div>
+		<?php endwhile; ?>
+	
+	</div>
+
+<?php wp_reset_postdata(); ?>
+
+<?php echo $data['args']['after_widget']; ?> 
+
+<?php endif; 

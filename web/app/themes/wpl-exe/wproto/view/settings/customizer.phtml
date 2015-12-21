@@ -1,0 +1,417 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Colors and fonts customizer', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-customizer-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="customizer" />
+	
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+		
+		<!--
+	
+			Enable customizer
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Change theme style', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Enable customizer', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$customizer_enabled = $wpl_exe_wp->get_option( 'enabled', 'customizer' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $customizer_enabled, '.wproto-customizer-form-fields', 'customizer', 'enabled'); ?>
+						
+						<p class="description"><?php _e('Enable this option if you want to change system settings for colors and fonts', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+			</table>
+			
+			<p class="description"><strong><?php _e('Important Notice'); ?>:</strong> <?php _e('If you\'re using theme demo data as a start template, and some color\'s were not changed, check appropriate row options / content widget / element settings, since some elements have additional color settings by reason of a better flexibility.', 'wproto'); ?></p>
+		
+		</div>
+		
+		<!--
+			Customizer settings
+		-->
+		<div class="wproto-customizer-form-fields" style="<?php echo $customizer_enabled ? '' : 'display: none'; ?>">
+			
+			
+			<!--
+				Layout settings
+			-->
+			<div class="wproto-settings-box">
+				<h3 class="title"><?php _e( 'Layout Settings', 'wproto' ); ?></h3>
+			
+				<table class="form-table wproto-form-table">
+					<tr>
+						<th>
+							<label><?php _e( 'Custom header height (leave it blank to use default height)', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php
+								$header_height = $wpl_exe_wp->get_option( 'header_height', 'customizer' );
+								$header_height == NULL ? '' : absint( $header_height );
+							?>
+					
+							<input type="number" name="customizer[header_height]" style="width: 130px" value="<?php echo esc_attr( $header_height ); ?>" /> px
+						
+						</td>
+					</tr>		
+					<tr>
+						<th>
+							<label><?php _e( 'Minimum body height in pixels (leave it blank to use default height)', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php
+								$body_min_height = $wpl_exe_wp->get_option( 'body_min_height', 'customizer' );
+								$body_min_height == NULL ? '' : absint( $body_min_height );
+							?>
+					
+							<input type="number" name="customizer[body_min_height]" style="width: 130px" value="<?php echo esc_attr( $body_min_height ); ?>" /> px
+						
+						</td>
+					</tr>		
+					<tr>
+						<th>
+							<label><?php _e( 'Rounded corners radius', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php
+								$rounded_radius = $wpl_exe_wp->get_option( 'rounded_radius', 'customizer' );
+							?>
+						
+							<input type="number" name="customizer[rounded_radius]" min="0" max="20" value="<?php echo absint( $rounded_radius ); ?>" /> px
+							
+						</td>
+					</tr>		
+					<tr>
+						<th>
+							<label><?php _e( 'Layout style', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php
+								$layout_style = $wpl_exe_wp->get_option( 'layout_style', 'customizer' ); 
+							?>
+						
+							<select name="customizer[layout_style]">
+								<option value="default"><?php _e('Full width'); ?></option>
+								<option <?php echo $layout_style == 'boxed' ? 'selected="selected"' : ''; ?> value="boxed"><?php _e('Boxed'); ?></option>
+								<option <?php echo $layout_style == 'framed' ? 'selected="selected"' : ''; ?> value="framed"><?php _e('Framed'); ?></option>
+							</select>
+							
+						</td>
+					</tr>
+				</table>
+				
+				<table class="form-table wproto-form-table">
+					<tr>
+						<th>
+							<label><?php _e( 'Box outer background image', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::image_picker( 'customizer', 'box_outer_background_image' ); ?>
+						
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label><?php _e( 'Top bar background image', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::image_picker( 'customizer', 'top_bar_background_image' ); ?>
+						
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label><?php _e( 'Header background image', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::image_picker( 'customizer', 'header_background_image' ); ?>
+						
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label><?php _e( 'Body background image', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::image_picker( 'customizer', 'body_background_image' ); ?>
+						
+						</td>
+					</tr>
+				</table>
+				
+				<table class="form-table wproto-form-table">
+					<tr>
+						<th>
+							<label><?php _e( 'Footer background image', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::image_picker( 'customizer', 'footer_background_image' ); ?>
+						
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label><?php _e( 'Bottom bar background image', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::image_picker( 'customizer', 'bottom_bar_background_image' ); ?>
+						
+						</td>
+					</tr>
+				</table>
+			
+			</div>
+			
+			<!--
+				Colors settings
+			-->
+			<div class="wproto-settings-box">
+				<h3 class="title"><?php _e( 'Theme colors', 'wproto' ); ?></h3>
+			
+				<table class="form-table wproto-form-table">
+					
+					<?php
+						$current_skin = $wpl_exe_wp->get_option( 'skin', 'skins' ); 
+						foreach( $wpl_exe_wp->system_config['skins_params'][ $current_skin ]['colors'] as $k=>$v ):
+					?>
+					<tr>
+						<th>
+							<label><?php echo esc_html( $v['description'] ); ?>:</label>
+						</th>
+						<td>
+							
+							<?php
+								$color = $wpl_exe_wp->get_option( $v['var_name'], 'customizer' );
+								$color = $color != NULL ? $color : $v['value'];
+							?>
+							
+							<input class="wproto-color-picker" name="customizer[<?php echo esc_attr( $v['var_name'] ); ?>]" type="text" value="<?php echo esc_attr( $color ); ?>" data-default-color="<?php echo esc_attr( $v['value'] ); ?>">
+							
+						</td>
+					</tr>
+					<?php
+						endforeach;
+					?>
+							
+				</table>
+			</div>
+			
+			<!--
+				Fonts settings
+			-->
+			<div class="wproto-settings-box">
+				<h3 class="title"><?php _e( 'Theme fonts', 'wproto' ); ?></h3>
+			
+				<table class="form-table wproto-form-table">
+					<tr>
+						<th>
+							<label><?php _e( 'Primary font settings', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::font_picker( 'customizer', 'primary' ); ?>
+						
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label><?php _e( 'Secondary font family', 'wproto' ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::font_picker( 'customizer', 'secondary', true ); ?>
+						
+						</td>
+					</tr>
+					<?php for( $i=1; $i<7; $i++ ): ?>
+					<tr>
+						<th>
+							<label><?php printf( __( 'Header %d font settings', 'wproto' ), $i ); ?>:</label>
+						</th>
+						<td>
+						
+							<?php wpl_exe_wp_admin_utils::font_picker( 'customizer', 'h' . $i ); ?>
+						
+						</td>
+					</tr>
+					<?php endfor; ?>
+				</table>
+				
+			</div>
+			
+		</div>
+		
+		<!--
+	
+			Google map settings
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Customize google map', 'wproto' ); ?></h3>
+		
+			<?php
+				$google_map_default_colors = $wpl_exe_wp->system_config['customizer'];
+			?>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Customize google map colors (only for "custom colors" mode)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$customize_google_map_colors = $wpl_exe_wp->get_option( 'customize_google_map_colors', 'customizer' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $customize_google_map_colors, '.google-map-color-settings', 'customizer', 'customize_google_map_colors'); ?>
+					
+					</td>
+				</tr>
+				<tr class="google-map-color-settings"<?php echo $customize_google_map_colors ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Water color', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$google_map_water_color = $wpl_exe_wp->get_option( 'google_map_water_color', 'customizer' ); 
+						?>
+					
+						<input class="wproto-color-picker" name="customizer[google_map_water_color]" type="text" value="<?php echo esc_attr( $google_map_water_color ); ?>" data-default-color="<?php echo esc_attr( $google_map_default_colors['google_map_water_color'] ); ?>">
+					
+					</td>
+				</tr>
+				<tr class="google-map-color-settings"<?php echo $customize_google_map_colors ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Administrative labels', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$google_map_admin_labels_color = $wpl_exe_wp->get_option( 'google_map_admin_labels_color', 'customizer' ); 
+						?>
+					
+						<input class="wproto-color-picker" name="customizer[google_map_admin_labels_color]" type="text" value="<?php echo esc_attr( $google_map_admin_labels_color ); ?>" data-default-color="<?php echo esc_attr( $google_map_default_colors['google_map_admin_labels_color'] ); ?>">
+					
+					</td>
+				</tr>
+				<tr class="google-map-color-settings"<?php echo $customize_google_map_colors ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Landscape (natural)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$google_map_landscape_natural_color = $wpl_exe_wp->get_option( 'google_map_landscape_natural_color', 'customizer' ); 
+						?>
+					
+						<input class="wproto-color-picker" name="customizer[google_map_landscape_natural_color]" type="text" value="<?php echo esc_attr( $google_map_landscape_natural_color ); ?>" data-default-color="<?php echo esc_attr( $google_map_default_colors['google_map_landscape_natural_color'] ); ?>">
+					
+					</td>
+				</tr>
+				<tr class="google-map-color-settings"<?php echo $customize_google_map_colors ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Landscape (man made)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$google_map_landscape_man_color = $wpl_exe_wp->get_option( 'google_map_landscape_man_color', 'customizer' ); 
+						?>
+					
+						<input class="wproto-color-picker" name="customizer[google_map_landscape_man_color]" type="text" value="<?php echo esc_attr( $google_map_landscape_man_color ); ?>" data-default-color="<?php echo esc_attr( $google_map_default_colors['google_map_landscape_man_color'] ); ?>">
+					
+					</td>
+				</tr>
+				<tr class="google-map-color-settings"<?php echo $customize_google_map_colors ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Road color', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$google_map_road_color = $wpl_exe_wp->get_option( 'google_map_road_color', 'customizer' ); 
+						?>
+					
+						<input class="wproto-color-picker" name="customizer[google_map_road_color]" type="text" value="<?php echo esc_attr( $google_map_road_color ); ?>" data-default-color="<?php echo esc_attr( $google_map_default_colors['google_map_road_color'] ); ?>">
+					
+					</td>
+				</tr>
+				<tr class="google-map-color-settings"<?php echo $customize_google_map_colors ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Road (arterial) color', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$google_map_road_arterial_color = $wpl_exe_wp->get_option( 'google_map_road_arterial_color', 'customizer' ); 
+						?>
+					
+						<input class="wproto-color-picker" name="customizer[google_map_road_arterial_color]" type="text" value="<?php echo esc_attr( $google_map_road_arterial_color ); ?>" data-default-color="<?php echo esc_attr( $google_map_default_colors['google_map_road_arterial_color'] ); ?>">
+					
+					</td>
+				</tr>
+				<tr class="google-map-color-settings"<?php echo $customize_google_map_colors ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Transit and POI', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$google_map_transit_poi_color = $wpl_exe_wp->get_option( 'google_map_transit_poi_color', 'customizer' ); 
+						?>
+					
+						<input class="wproto-color-picker" name="customizer[google_map_transit_poi_color]" type="text" value="<?php echo esc_attr( $google_map_transit_poi_color ); ?>" data-default-color="<?php echo esc_attr( $google_map_default_colors['google_map_transit_poi_color'] ); ?>">
+					
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+	
+</div>

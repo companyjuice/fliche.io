@@ -1,0 +1,52 @@
+<?php
+	global $wpl_exe_wp;
+	$wproto_single_style = isset( $data['wproto_single_style'] ) ? $data['wproto_single_style'] : '';
+	$wproto_post_hide_featured_image = isset( $data['wproto_post_hide_featured_image'] ) ? $data['wproto_post_hide_featured_image'] : false;
+	$wproto_post_justified_size = isset( $data['wproto_post_justified_size'] ) ? $data['wproto_post_justified_size'] : 'long';
+	
+?>
+<table class="form-table wproto-form-table">
+	<!--
+		
+		SINGLE BLOG STYLE SETTINGS
+		
+	-->
+	<?php if( $data['post_type'] == 'post' ): ?>
+	<tr class="without-space noborder">
+		<td colspan="2"><h4 class="header"><?php _e('Single post style', 'wproto'); ?></h4></td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Single post style', 'wproto' ); ?>:</label></th>
+		<td>
+			<select class="select" name="wproto_settings[wproto_single_style]">
+				<option value="">&mdash; <?php _e('Default', 'wproto'); ?> &mdash;</option>
+				<?php foreach( $wpl_exe_wp->system_config['blog_single_styles'] as $k=>$v): ?>
+				<option <?php echo $wproto_single_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</td>
+	</tr>
+	<?php endif; ?>
+	<!--
+		
+		SINGLE PORTFOLIO POST STYLE SETTINGS
+		
+	-->
+	<?php if( $data['post_type'] == 'wproto_portfolio' ): ?>
+	<tr class="without-space noborder">
+		<td colspan="2"><h4 class="header"><?php _e('Single post style', 'wproto'); ?></h4></td>
+	</tr>
+	<tr>
+		<th><label><?php _e( 'Single post style', 'wproto' ); ?>:</label></th>
+		<td>
+			<select class="select" name="wproto_settings[wproto_single_style]">
+				<option value="">&mdash; <?php _e('Default', 'wproto'); ?> &mdash;</option>
+				<?php foreach( $wpl_exe_wp->system_config['portfolio_single_styles'] as $k=>$v): ?>
+				<option <?php echo $wproto_single_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</td>
+	</tr>
+	<?php endif; ?>
+
+</table>

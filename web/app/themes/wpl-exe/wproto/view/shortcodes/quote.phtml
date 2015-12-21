@@ -1,0 +1,13 @@
+<?php if( isset( $data['text'] ) && $data['text'] <> '' ): ?>
+
+<blockquote class="<?php echo esc_attr( $data['style'] ); ?>">
+	<div class="inner">
+		<p<?php if( $data['text_color'] <> ''): ?> style="color: <?php echo esc_attr( $data['text_color'] ); ?>"<?php endif; ?>><?php echo wp_kses_post( $data['text'] ); ?></p>
+	
+		<?php if( $data['author'] <> '' || $data['add_text'] <> '' ): ?>
+		<cite<?php if( $data['author_color'] <> ''): ?> style="color: <?php echo esc_attr( $data['author_color'] ); ?>"<?php endif; ?>><?php echo wp_kses_post( $data['author'] ); ?><?php if( $data['add_text'] <> '' ): ?><span<?php if( $data['additional_text_color'] <> ''): ?> style="color: <?php echo esc_attr( $data['additional_text_color'] ); ?>"<?php endif; ?>>, <?php echo wp_kses_post( $data['add_text'] ); ?></span><?php endif; ?></cite>
+		<?php endif; ?>
+	</div>
+</blockquote>
+
+<?php endif; 

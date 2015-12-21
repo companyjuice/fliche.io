@@ -1,0 +1,180 @@
+<?php
+	$_uniqid = uniqid();
+	$read_more = $data['read_more_text'];
+	if( $data['posts']->have_posts() ):
+	$taxonomy = $data['post_type'] == 'wproto_portfolio' ? 'wproto_portfolio_category' : 'category';
+?>
+
+	<?php if( $data['display_filters'] && !in_array( $data['style'], array('style_6', 'style_7') ) ): ?>
+		<!--
+			FILTERS
+		-->
+		<?php
+			$cat_args = array(
+		    'parent'			=> 0,
+		    'number'			=> 10,
+		    'hide_empty'	=> false           
+			);
+			$categories = get_terms( $taxonomy, $cat_args ); 
+			if( is_array( $categories ) ): 
+		?>
+		<div id="wproto-posts-carousel-shortcode-nav-<?php echo $_uniqid; ?>" data-id="<?php echo $_uniqid; ?>" class="wproto-carousel-filters">
+			<div class="inside">
+				<a href="javascript:;" class="filter-nav-left"></a>
+				<a href="javascript:;" class="current filter-link" data-filter=".swiper-slide"><?php _e('All', 'wproto'); ?></a>
+				<?php foreach( $categories as $k=>$cat ): ?>
+				<a href="javascript:;" class="filter-link" data-filter=".<?php echo $cat->slug; ?>"><?php echo $cat->name; ?></a>
+				<?php endforeach; ?> 
+				<a href="javascript:;" class="filter-nav-right"></a>
+			</div>
+		</div>
+		<div id="wproto-posts-carousel-temp-holder-<?php echo $_uniqid; ?>" style="display: none !important"></div>
+		<?php endif; ?>
+		
+	<?php endif; ?>
+	
+	<?php if( in_array( $data['style'], array('style_6', 'style_7') ) ): ?>
+	<div id="wproto-posts-carousel-block-title-<?php echo $_uniqid; ?>" class="wproto-posts-carousel-block-title">
+		<?php if( $data['block_title'] <> '' ): ?>
+			<h2><?php echo esc_html( $data['block_title'] ); ?></h2>
+		<?php endif; ?>
+	
+		<a href="javascript:;" class="filter-nav-left"></a>
+		<a href="javascript:;" class="filter-nav-right"></a>
+	</div>
+	<?php endif; ?>
+
+	<div id="wproto-posts-carousel-<?php echo $_uniqid; ?>" data-id="<?php echo $_uniqid; ?>" class="wproto-posts-carousel-shortcode wproto-posts-carousel-shortcode-style-<?php echo esc_attr( $data['style'] ); ?> swiper-container">
+		<div class="swiper-wrapper">
+		<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+		
+			<?php
+				$img_url = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+				$post_terms = wp_get_post_terms( get_the_ID(), $taxonomy );
+				$post_terms_list = '';
+				if( is_array( $post_terms ) ) {
+					foreach( $post_terms as $k=>$v ) {
+						$post_terms_list .= $v->slug . ' ';
+					}
+				}
+			?>
+		
+			<div class="swiper-slide <?php echo $post_terms_list; ?>">
+			
+				<div <?php post_class('inside '); ?>>
+				
+					<!-- THUMBNAIL -->
+					<div class="post-grid-media-header">
+						<div class="post-thumbnail wproto-post-image-area">
+							<?php if( $data['style'] == 'style_1' ): ?>
+							
+								<?php echo wpl_exe_image( $img_url, 384, 384 ); ?>
+							
+							<?php elseif( $data['style'] == 'style_2' ): ?>
+							
+								<?php echo wpl_exe_image( $img_url, 384, 258 ); ?>
+								
+							<?php elseif( $data['style'] == 'style_3' ): ?>
+							
+								<?php echo wpl_exe_image( $img_url, 384, 488 ); ?>
+								
+							<?php elseif( $data['style'] == 'style_4' ): ?>
+							
+								<?php echo wpl_exe_image( $img_url, 370, 237 ); ?>
+								
+							<?php elseif( $data['style'] == 'style_5' ): ?>
+							
+								<?php echo wpl_exe_image( $img_url, 270, 270 ); ?>
+								
+							<?php elseif( in_array( $data['style'], array('style_6', 'style_7') ) ): ?>
+							
+								<?php echo wpl_exe_image( $img_url, 270, 185 ); ?>
+							
+							<?php endif; ?>
+							
+							<div class="overlay">
+								<div class="overlay-inner">
+									<?php if( in_array( $data['style'], array('style_1', 'style_2', 'style_3')) ): ?>
+									<div class="overlay-info">
+										<?php if( $data['style'] == 'style_1' ): ?>
+											<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+											<div class="cats"><?php echo wpl_exe_wp_front::get_categories(); ?></div>
+										<?php else: ?>
+											<div class="cats"><?php echo wpl_exe_wp_front::get_categories(); ?></div>
+											<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+										<?php endif; ?>
+									</div>
+									<?php endif; ?>
+								
+									<div class="buttons">
+										<a class="lightbox zoom" href="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>"><span class="hover_pulse_ray"></span></a>
+										<a class="post-link" href="<?php the_permalink(); ?>"><span class="hover_pulse_ray"></span></a>
+									</div>
+								</div>
+							</div>
+							
+							<div class="post-format-icon"></div>
+							
+						</div>
+					</div>
+					
+					<?php if( in_array( $data['style'], array('style_4', 'style_5' )) ): ?>
+					<div class="item-description">
+						<div class="cats"><?php the_time( get_option('date_format')); ?> / <?php echo wpl_exe_wp_front::get_categories(); ?></div>
+						<h4 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						<div class="excerpt">
+							<?php echo wp_trim_words( get_the_excerpt(), 15, '...'); ?>
+						</div>
+						<?php if( $data['read_more_text'] <> '' ): ?>
+						<a class="more" href="<?php the_permalink(); ?>"><?php echo esc_html( $data['read_more_text'] ); ?></a>
+						<?php endif; ?>
+					</div>
+					<div class="clearfix"></div>
+					<?php endif; ?>
+					
+					<?php if( in_array( $data['style'], array('style_6' )) ): ?>
+					<div class="item-description">
+						<h4 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						<div class="cats"><?php echo wpl_exe_wp_front::get_categories(); ?></div>
+					</div>
+					<?php endif; ?>
+					
+					<?php if( in_array( $data['style'], array('style_7' )) ): ?>
+					<div class="item-description">
+						<div class="cats"><?php the_time( get_option('date_format')); ?> / <?php comments_number( __('no comments', 'wproto'), __('one comment', 'wproto'), __('% comments', 'wproto') ); ?></div>
+						<h4 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						<?php if( $data['read_more_text'] <> '' ): ?>
+						<a class="more" href="<?php the_permalink(); ?>"><?php echo esc_html( $data['read_more_text'] ); ?></a>
+						<?php endif; ?>
+					</div>
+					<div class="clearfix"></div>
+					<?php endif; ?>
+				
+				</div>
+			
+			</div>
+		<?php endwhile; ?>
+		</div>
+		
+		<?php if( $data['display_nav'] ): ?>
+			<!--
+				NAVIGATION
+			-->
+			<div class="swiper-pagination"></div>
+	    <div class="swiper-button-next"></div>
+	    <div class="swiper-button-prev"></div>
+		<?php endif; ?>
+		
+	</div>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initPostsCarousels();
+		}
+	</script>
+<?php endif;

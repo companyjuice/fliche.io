@@ -1,0 +1,28 @@
+<?php echo $data['args']['before_widget']; ?>
+
+<!-- widget title -->
+<?php if ( isset( $data['title'] ) && $data['title'] <> '' ) : ?>
+
+	<?php echo $data['args']['before_title']; ?>
+	
+		<?php echo apply_filters( 'widget_title', $data['title'] ); ?>
+		
+	<?php echo $data['args']['after_title']; ?>
+	
+<?php endif; ?>
+
+<ul>
+<?php wp_list_categories(
+	array(
+		'title_li' => '',
+		'orderby' => $data['instance']['order_by'],
+		'order' => $data['instance']['sort'],
+		'show_count' => $data['instance']['show_count'],
+		'hide_empty' => $data['instance']['hide_empty'],
+		'hierarchical' => $data['instance']['hierarchical'],
+		'taxonomy' => $data['instance']['taxonomy'],
+	)
+); ?> 
+</ul>
+
+<?php echo $data['args']['after_widget'];

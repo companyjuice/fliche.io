@@ -1,0 +1,108 @@
+<?php if( $data['posts']->have_posts() ): ?>
+
+	<div class="wproto-products-carousel style-<?php echo esc_attr( $data['style'] ); ?>">
+		<div class="items" data-display-nav-bullets="<?php echo $data['display_nav_bullets'] ? 'true' : 'false'; ?>" data-display-nav-arrows="<?php echo $data['display_nav_arrows'] ? 'true' : 'false'; ?>" data-v-desktop="<?php echo (int)$data['visible_desktop']; ?>" data-v-small-desktop="<?php echo (int)$data['visible_small_desktop']; ?>" data-v-phone-land="<?php echo (int)$data['visible_phone_landscape']; ?>" data-v-phone="<?php echo (int)$data['visible_phone']; ?>">
+		<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+		
+			<?php
+				$product = wc_get_product( get_the_ID() );
+				$product_images = array( get_post_thumbnail_id( get_the_ID() ) );
+				$product_images_ids = $product->get_gallery_attachment_ids();
+				if( is_array( $product_images_ids ) ) $product_images = array_merge( $product_images, $product_images_ids );
+			?>
+		
+			<div class="item">
+				<div class="inside">
+				
+					<?php if( !empty( $product_images ) ): ?>
+					<div class="thumb <?php echo count( $product_images ) == 1 ? 'hide-controls' : ''; ?>">
+						<?php if( $product->is_on_sale() ): ?>
+						<div class="onsale"><?php _e('Sale', 'wproto'); ?></div>
+						<?php endif; ?>
+						
+						<?php if( in_array( $data['style'], array('style_1', 'style_3', 'style_4') ) ): ?>
+						<a href="javascript:;" data-id="<?php the_ID(); ?>" title="<?php echo ! wpl_exe_wp_front::in_wishlist( get_the_ID() ) ? __('Add to my Wishlist', 'wproto') : ''; ?>" class="wproto-add-to-wishlist iconic-wishlist <?php echo wpl_exe_wp_front::in_wishlist( get_the_ID() ) ? 'active' : ''; ?>"></a>
+						<?php endif; ?>
+						
+						<div class="g-items">
+							<?php foreach( $product_images as $img_id ): ?>
+							
+								<?php if( $data['style'] == 'style_5' ): ?>
+									<?php echo wpl_exe_image( wp_get_attachment_url( $img_id ), 390, 390 ); ?>
+								<?php else: ?>
+									<?php echo wpl_exe_image( wp_get_attachment_url( $img_id ), 290, 350 ); ?>
+								<?php endif; ?>
+							
+							<?php endforeach; ?>
+						</div>
+					</div>
+					<?php endif; ?>
+				
+					<?php if( $data['style'] == 'style_5' ): ?>
+					
+					<div class="text">
+						<div class="categories">
+							<?php echo get_the_term_list( get_the_ID(), 'product_cat', '', ', ', '' ); ?>
+						</div>
+						<a href="<?php the_permalink(); ?>" class="product-title"><?php the_title(); ?></a>
+						<div class="excerpt">
+							<?php echo wp_trim_words( get_the_excerpt(), 12 ); ?>
+						</div>
+						<footer>
+							<div class="icons">
+								<a href="javascript:;" data-id="<?php the_ID(); ?>" title="<?php echo ! wpl_exe_wp_front::in_wishlist( get_the_ID() ) ? __('Add to my Wishlist', 'wproto') : ''; ?>" class="wproto-add-to-wishlist iconic-wishlist <?php echo wpl_exe_wp_front::in_wishlist( get_the_ID() ) ? 'active' : ''; ?>"></a>
+								<a href="<?php echo esc_attr( $product->add_to_cart_url() ); ?>" title="<?php _e('Add to Cart', 'wproto'); ?>" class="iconic-cart"></a>
+							</div>
+							<div class="product-price">
+								<?php echo $product->get_price_html(); ?>
+							</div>
+						</footer>
+					</div>
+					
+					<?php else: ?>
+					<div class="text">
+						<?php if( $data['style'] != 'style_4' ): ?>
+						<div class="categories">
+							<?php echo get_the_term_list( get_the_ID(), 'product_cat', '', ', ', '' ); ?>
+						</div>
+						<?php endif; ?>
+						<a href="<?php the_permalink(); ?>" class="product-title"><?php the_title(); ?></a>
+						<?php if( $data['style'] == 'style_3' ): ?>
+						<div class="product-rating">
+							<?php echo $product->get_rating_html(); ?>
+						</div>
+						<?php endif; ?>
+						<div class="product-price">
+							<?php echo $product->get_price_html(); ?>
+						</div>
+						<?php if( $data['style'] == 'style_2' ): ?>
+						<div class="icons">
+							<a href="javascript:;" data-id="<?php the_ID(); ?>" title="<?php echo ! wpl_exe_wp_front::in_wishlist( get_the_ID() ) ? __('Add to my Wishlist', 'wproto') : ''; ?>" class="wproto-add-to-wishlist iconic-wishlist <?php echo wpl_exe_wp_front::in_wishlist( get_the_ID() ) ? 'active' : ''; ?>"></a>
+							<a href="<?php echo esc_attr( $product->add_to_cart_url() ); ?>" title="<?php _e('Add to Cart', 'wproto'); ?>" class="iconic-cart"></a>
+						</div>
+						<?php endif; ?>
+						<?php if( in_array( $data['style'], array('style_1', 'style_3') ) ): ?>
+						<div class="product-add-button">
+							<a class="button" href="<?php echo esc_attr( $product->add_to_cart_url() ); ?>"><?php echo $product->add_to_cart_text(); ?></a>
+						</div>
+						<?php endif; ?>
+					</div>
+					<?php endif; ?>
+				
+				</div>
+			</div>
+		<?php endwhile; ?>
+		</div>
+	</div>
+
+<?php endif; 
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initProductsCarousels();
+		}
+	</script>
+<?php endif;

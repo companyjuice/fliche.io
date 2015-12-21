@@ -1,0 +1,211 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'API and Social', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="api" />
+	
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+	
+		<!--
+	
+			Google API
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Google API', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Google API key', 'wproto' ); ?>:</label>
+						<br /><span class="description"><?php _e( 'Will be used to grab Google Fonts', 'wproto' ); ?></span>
+					</th>
+					<td>
+					
+						<?php
+							$google_api_key = $wpl_exe_wp->get_option( 'google_api_key', 'api' );
+						?>
+					
+						<p>
+							<input type="text" class="text" name="api[google_api_key]" value="<?php echo esc_attr( $google_api_key ); ?>" />
+							<br />
+							<span class="description"><?php _e( sprintf( 'You can setup your Google key at <a href="%s" target="_blank">this page</a>.', 'https://code.google.com/apis/console' ), 'wproto' ); ?></span>
+						</p>
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+				
+		<!--
+	
+			Twitter API
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Twitter API Keys', 'wproto' ); ?></h3>
+			
+			<p class="description"><?php _e( sprintf( 'Information below will be used for getting your latest tweets. You can setup your Twitter Keys at <a href="%s" target="_blank">this page</a>.', 'https://apps.twitter.com/' ), 'wproto' ); ?></p>
+			
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label for="twitter-login-input"><?php _e( 'Your Twitter Login', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$twitter_login = $wpl_exe_wp->get_option( 'twitter_login', 'api' );
+						?>
+					
+						<p>
+							<input type="text" id="twitter-login-input" class="text" name="api[twitter_login]" value="<?php echo esc_attr( $twitter_login ); ?>" />
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="twitter-oauth-token-input"><?php _e( 'OAuth Access Token', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$twitter_oauth_token = $wpl_exe_wp->get_option( 'twitter_oauth_token', 'api' );
+						?>
+					
+						<p>
+							<input type="text" id="twitter-oauth-token-input" class="text" name="api[twitter_oauth_token]" value="<?php echo esc_attr( $twitter_oauth_token ); ?>" />
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="twitter-oauth-token-secret-input"><?php _e( 'OAuth Access Token Secret', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$twitter_oauth_token_secret = $wpl_exe_wp->get_option( 'twitter_oauth_token_secret', 'api' );
+						?>
+					
+						<p>
+							<input type="text" id="twitter-oauth-token-secret-input" class="text" name="api[twitter_oauth_token_secret]" value="<?php echo esc_attr( $twitter_oauth_token_secret ); ?>" />
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="twitter-cunsumer-key-input"><?php _e( 'Twitter Consumer Key', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$twitter_cunsumer_key = $wpl_exe_wp->get_option( 'twitter_cunsumer_key', 'api' );
+						?>
+					
+						<p>
+							<input type="text" id="twitter-cunsumer-key-input" class="text" name="api[twitter_cunsumer_key]" value="<?php echo esc_attr( $twitter_cunsumer_key ); ?>" />
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="twitter-cunsumer-secret-input"><?php _e( 'Twitter Consumer Secret', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$twitter_cunsumer_secret = $wpl_exe_wp->get_option( 'twitter_cunsumer_secret', 'api' );
+						?>
+					
+						<p>
+							<input type="text" id="twitter-cunsumer-secret-input" class="text" name="api[twitter_cunsumer_secret]" value="<?php echo esc_attr( $twitter_cunsumer_secret ); ?>" />
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="twitter-cache-time-input"><?php _e( 'Cache time (in seconds)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$twitter_cache_time = $wpl_exe_wp->get_option( 'twitter_cache_time', 'api' );
+						?>
+					
+						<p>
+							<input type="number" id="twitter-cache-time-input" class="text" name="api[twitter_cache_time]" value="<?php echo absint( $twitter_cache_time ); ?>" />
+						</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!--
+	
+			Social icons
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Social icons', 'wproto' ); ?></h3>
+			
+			<table class="form-table wproto-form-table">
+				<?php wpl_exe_wp_admin_utils::social_icons_form(); ?>																															
+			</table>
+			
+		</div>
+		
+		<!--
+	
+			Social icons links
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Social links target', 'wproto' ); ?></h3>
+			
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label for="wproto-enable-facebook-input"><?php _e( 'Open all social links at new tab', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$social_icons_at_new_tab = $wpl_exe_wp->get_option( 'social_icons_at_new_tab', 'api' );
+							$social_icons_at_new_tab = $social_icons_at_new_tab != NULL ? $social_icons_at_new_tab : true;
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $social_icons_at_new_tab, false, 'api', 'social_icons_at_new_tab'); ?>
+
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+	
+</div>

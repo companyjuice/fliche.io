@@ -1,0 +1,72 @@
+<?php global $wpl_exe_wp; ?>
+
+<?php
+	$customize_sidebar = isset( $data['customize_sidebar'] ) ? $data['customize_sidebar'] : false; 
+?>
+
+<table class="form-table wproto-form-table">
+	<tr>
+		<th>
+			<?php _e( 'Customize sidebar settings', 'wproto' ); ?>: &nbsp;
+		</th>
+		<td>
+		
+			<?php wpl_exe_wp_admin_utils::switcher( $customize_sidebar, '#wproto-page-sidebar-settings', 'wproto_settings', 'customize_sidebar'); ?>
+		
+		</td>
+	</tr>
+</table>
+
+<div id="wproto-page-sidebar-settings" class="wproto-metabox-layout-editor"<?php echo ! $customize_sidebar ? ' style="display: none"' : ''; ?>>
+
+	<hr />
+
+	<?php
+		// get values		
+		$page_sidebar = isset( $data['wproto_page_sidebar'] ) ? $data['wproto_page_sidebar'] : 'right';
+		$page_sidebar_id = isset( $data['wproto_page_sidebar_id'] ) ? $data['wproto_page_sidebar_id'] : 'sidebar-right';
+
+		$widgetized_footer = isset( $data['wproto_widgetized_footer'] ) ? $data['wproto_widgetized_footer'] : true;
+		
+		$page_footer_sidebar_id = isset( $data['wproto_page_footer_sidebar_id'] ) ? $data['wproto_page_footer_sidebar_id'] : 'sidebar-footer';
+	?>
+
+	<ul class="wproto-layout-type wproto-sidebars-layouts">
+		<li data-sidebar="left" class="ib <?php echo $page_sidebar == 'left' ? 'selected' : ''; ?>"><a href="javascript:;" class="layout-sidebar-link layout-sidebar-left"></a><a href="javascript:;"><?php _e( 'With Left Sidebar', 'wproto' ); ?></a></li>
+		<li data-sidebar="right" class="ib <?php echo $page_sidebar == 'right' ? 'selected' : ''; ?>"><a href="javascript:;" class="layout-sidebar-link layout-sidebar-right"></a><a href="javascript:;"><?php _e( 'With Right Sidebar', 'wproto' ); ?></a></li>
+		<li data-sidebar="none" class="ib <?php echo $page_sidebar == 'none' || $page_sidebar == NULL ? 'selected' : ''; ?>"><a href="javascript:;" class="layout-sidebar-link layout-no-sidebar"></a><a href="javascript:;"><?php _e( 'No Sidebar', 'wproto' ); ?></a></a></li>
+	</ul>
+	
+	<input type="hidden" id="wproto-layout-type-input" class="wproto-hidden" name="wproto_settings[wproto_page_sidebar]" value="<?php echo $page_sidebar == NULL ? 'none' : esc_attr( $page_sidebar ); ?>" />
+	
+	<div class="clear"></div>
+	
+	<div class="wproto-metabox-inside-bg wproto-layout-type-settings-inside wproto-layout-type-hide-if-no-sidebar <?php if( $page_sidebar == 'none' || $page_sidebar == NULL ): ?>hidden<?php endif; ?>">
+	
+		<div class="">
+		<h4><a href="javascript:;" class="inline-link wproto-toggle-form-block"><?php _e( 'Page sidebar', 'wproto' ); ?></a> <i class="icon-angle-right"></i></h4>
+		
+		<table class="form-table wproto-form-table" style="display: none;">
+			<tbody>
+				<tr>
+					<th><p><?php _e( 'Choose a widget area which will be displayed at sidebar', 'wproto' ); ?>:</p></th>
+					<td>
+						<select class="select" name="wproto_settings[wproto_page_sidebar_id]">
+							<option value="">&mdash;</option>
+							<?php if( is_array( $data['registered_sidebars'] ) && count( $data['registered_sidebars'] ) > 0 ): ?>
+				
+								<?php foreach( $data['registered_sidebars'] as $sidebar ): ?>
+								<option <?php echo $page_sidebar_id == $sidebar['id'] ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $sidebar['id'] ); ?>"><?php echo esc_html( $sidebar['name'] ); ?></option>
+								<?php endforeach; ?>
+				
+							<?php endif; ?>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	
+	</div>
+	
+</div>

@@ -1,0 +1,132 @@
+<?php
+	global $wpl_exe_wp;
+	if( $data['posts']->have_posts() ):
+?>
+<div class="wproto-full-width-portfolio">
+	<?php
+		$_uniqid = uniqid();
+	?>
+
+	<?php if( ! $data['ajax_load'] ): ?>
+	
+	<?php if( $data['display_filters'] ): ?>
+	<div data-grid-id="wproto-posts-grid-id-<?php echo $_uniqid; ?>" class="wproto-full-width-filters">
+		<div class="container">
+			<div class="row">
+				<div class="title col col-md-3">
+					<?php echo wp_kses_post( $data['block_title'] ); ?>
+				</div>
+				<div class="links filters-list col col-md-9">
+		
+					<a href="javascript:;" class="filter-link current" data-filter="*"><?php _e('All', 'wproto'); ?></a>
+					<?php
+						$cat_args = array(
+					    'parent'			=> 0,
+					    'number'			=> 10,
+					    'hide_empty'	=> false           
+						);
+						$categories = get_terms( 'wproto_portfolio_category' , $cat_args ); 
+						if( is_array( $categories ) ): foreach( $categories as $k=>$cat ): 
+					?>
+					<a href="javascript:;" class="filter-link" data-filter=".<?php echo $cat->slug; ?>"><?php echo esc_html( $cat->name ); ?></a>
+					<?php endforeach; endif; ?>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
+	
+	<div id="wproto-posts-grid-id-<?php echo $_uniqid; ?>" class="wproto-full-width-grid masonry-posts portfolio-style-<?php echo esc_attr( $data['style'] ); ?>">
+	<?php endif; ?>
+			
+	<?php $i=1; while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+
+		<?php
+			$post_terms = wp_get_post_terms( get_the_ID(), 'wproto_portfolio_category' );
+			$post_terms_list = '';
+			if( is_array( $post_terms ) ) {
+				foreach( $post_terms as $k=>$v ) {
+					$post_terms_list .= $v->slug . ' ';
+				}
+			}
+		?>
+
+		<div class="item <?php echo $post_terms_list; ?>">
+			<div class="inner post-grid-media-header">
+				<div class="post-thumbnail wproto-post-image-area">
+				<?php
+					$shortcode_params = get_query_var('wproto_shortcode_params');
+					$img_url = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+				?>
+				
+				<?php if( $data['style'] == 'full_width' ): ?>
+					<?php echo wpl_exe_image( $img_url, 384, 488 ); ?>
+				<?php else: ?>
+					<?php echo wpl_exe_image( $img_url, 384, 9999, false ); ?>
+				<?php endif; ?>
+					<div class="overlay">				
+						<div class="inside-overlay">
+							<?php if( in_array( $shortcode_params['style'], array('full_width_alt', 'full_width_third')) ): ?>
+							<div class="overlay-info">
+								<h5 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+								<div class="cats"><?php echo wpl_exe_wp_front::get_categories(); ?></div>
+							</div>
+							<?php endif; ?>
+						
+							<div class="buttons">
+								<a class="lightbox zoom" href="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>"><span class="hover_pulse_ray"></span></a>
+								<a class="post-link" href="<?php the_permalink(); ?>"><span class="hover_pulse_ray"></span></a>
+							</div>
+						</div>
+					</div>
+					
+					<?php if( in_array( $shortcode_params['style'], array('full_width')) ): ?>
+					<div class="post-info">
+						<h5 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+						<div class="cats"><?php echo wpl_exe_wp_front::get_categories(); ?></div>
+					</div>
+					<?php endif; ?>
+					
+				</div>
+			</div>
+		</div>
+
+	<?php endwhile; ?>
+	
+	<?php if( ! $data['ajax_load'] ): ?>
+	</div>
+	<?php endif; ?>
+	
+	<?php if( (bool)$data['display_pagination'] && ! $data['ajax_load'] ): ?>
+		<?php
+			wpl_exe_wp_front::pagination( array(
+				'pagination_style' => $data['pagination_style'],
+				'custom_query' => $data['posts'],
+				'ajax_target' => '#wproto-posts-grid-id-' . $_uniqid,
+				'append_type' => 'masonry',
+				'shortcode' => 'wproto_portfolio'
+			), $data );
+		?>
+	<?php endif; ?>
+
+</div>
+
+<?php elseif( ! $data['ajax_load'] ): ?>
+
+	<?php get_template_part('part', 'no_posts'); ?>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initMasonry();
+			window.wprotoFrontCore.initLightbox();
+			
+			setTimeout(function() { window.wprotoFrontCore.initMasonry(); }, 2000);
+		}
+	</script>
+<?php endif;

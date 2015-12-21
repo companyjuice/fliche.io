@@ -1,0 +1,35 @@
+FFmpeg version SVN-r26076, Copyright (c) 2000-2010 the FFmpeg developers
+  built on Dec 23 2010 04:14:14 with gcc 4.4.2
+  configuration: --enable-gpl --enable-version3 --enable-libgsm --enable-libvorbis --enable-libtheora --enable-libspeex --enable-libmp3lame --enable-libopenjpeg --enable-libschroedinger --enable-libopencore_amrwb --enable-libopencore_amrnb --enable-libvpx --disable-decoder=libvpx --arch=x86 --enable-runtime-cpudetect --enable-libxvid --enable-libx264 --enable-librtmp --extra-libs='-lrtmp -lpolarssl -lws2_32 -lwinmm' --target-os=mingw32 --enable-avisynth --enable-w32threads --cross-prefix=i686-mingw32- --cc='ccache i686-mingw32-gcc' --enable-memalign-hack
+  libavutil     50.36. 0 / 50.36. 0
+  libavcore      0.16. 0 /  0.16. 0
+  libavcodec    52.100. 0 / 52.100. 0
+  libavformat   52.88. 0 / 52.88. 0
+  libavdevice   52. 2. 2 / 52. 2. 2
+  libavfilter    1.69. 0 /  1.69. 0
+  libswscale     0.12. 0 /  0.12. 0
+[mpeg4 @ 0163f340] Invalid and inefficient vfw-avi packed B frames detected
+[mpeg4 @ 0163f340] frame skip 8
+
+Seems stream 0 codec frame rate differs from container frame rate: 30000.00 (30000/1) -> 25.00 (25/1)
+Input #0, avi, from 'D:\xampp\htdocs\gpjp-video\flowplayer\progress\GPJP prezentace.avi':
+  Duration: 00:01:46.60, start: 0.000000, bitrate: 4538 kb/s
+    Stream #0.0: Video: mpeg4, yuv420p, 352x388 [PAR 1:1 DAR 88:97], 25 fps, 25 tbr, 25 tbn, 30k tbc
+    Stream #0.1: Audio: pcm_s16le, 48000 Hz, 2 channels, s16, 1536 kb/s
+[buffer @ 01b76d00] w:352 h:388 pixfmt:yuv420p
+[libx264 @ 01b54aa0] using SAR=1/1
+[libx264 @ 01b54aa0] using cpu capabilities: MMX2 SSE2Fast SSSE3 FastShuffle SSE4.1 Cache64
+[libx264 @ 01b54aa0] profile High, level 2.1
+[libx264 @ 01b54aa0] 264 - core 112 r1834 a51816a - H.264/MPEG-4 AVC codec - Copyleft 2003-2010 - http://www.videolan.org/x264.html - options: cabac=1 ref=8 deblock=1:0:0 analyse=0x3:0x133 me=umh subme=9 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=2 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 sliced_threads=0 nr=0 decimate=1 interlaced=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=2 b_bias=0 direct=3 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=60 rc=abr mbtree=1 bitrate=200 ratetol=1.0 qcomp=0.60 qpmin=10 qpmax=25 qpstep=4 ip_ratio=1.41 aq=1:1.00
+Output #0, ipod, to 'D:\xampp\htdocs\gpjp-video\flowplayer\progress\GPJP prezentace.m4v':
+  Metadata:
+    encoder         : Lavf52.88.0
+    Stream #0.0: Video: libx264, yuv420p, 352x388 [PAR 1:1 DAR 88:97], q=10-25, 200 kb/s, 25 tbn, 25 tbc
+    Stream #0.1: Audio: aac, 48000 Hz, 2 channels, s16, 96 kb/s
+Stream mapping:
+  Stream #0.0 -> #0.0
+  Stream #0.1 -> #0.1
+Press [q] to stop encoding
+[mpeg4 @ 0163f340] Invalid and inefficient vfw-avi packed B frames detected
+[mpeg4 @ 0163f340] frame skip 8
+frame=   66 fps=  0 q=25.0 size=       0kB time=2.71 bitrate=   0.1kbits/s dup=1 drop=0    frame=   70 fps= 55 q=25.0 size=      62kB time=0.04 bitrate=12792.2kbits/s dup=1 drop=0    frame=   74 fps= 38 q=25.0 size=     130kB time=0.20 bitrate=5307.9kbits/s dup=1 drop=0    frame=   78 fps= 30 q=25.0 size=     189kB time=0.36 bitrate=4306.7kbits/s dup=1 drop=0    frame=   82 fps= 26 q=25.0 size=     242kB time=0.52 bitrate=3807.1kbits/s dup=1 drop=0    frame=   86 fps= 22 q=25.0 size=     303kB time=0.68 bitrate=3647.8kbits/s dup=1 drop=0    frame=   90 fps= 19 q=25.0 size=     366kB time=0.84 bitrate=3569.8kbits/s dup=1 drop=0    frame=   94 fps= 18 q=25.0 size=     429kB time=1.00 bitrate=3515.9kbits/s dup=1 drop=0    frame=   98 fps= 16 q=25.0 size=     492kB time=1.16 bitrate=3471.8kbits/s dup=1 drop=0    frame=  102 fps= 15 q=25.0 size=     554kB time=1.32 bitrate=3437.1kbits/s dup=1 drop=0    frame=  106 fps= 14 q=25.0 size=     616kB time=1.48 bitrate=3408.2kbits/s dup=1 drop=0    frame=  110 fps= 13 q=25.0 size=     675kB time=1.64 bitrate=3373.4kbits/s dup=1 drop=0    frame=  114 fps= 13 q=25.0 size=     735kB time=1.80 bitrate=3346.3kbits/s dup=1 drop=0    frame=  117 fps= 12 q=25.0 size=     781kB time=1.92 bitrate=3331.7kbits/s dup=1 drop=0    frame=  120 fps= 12 q=25.0 size=     816kB time=2.04 bitrate=3276.1kbits/s dup=1 drop=0    frame=  123 fps= 11 q=25.0 size=     861kB time=2.16 bitrate=3266.8kbits/s dup=1 drop=0    frame=  126 fps= 11 q=25.0 size=     907kB time=2.28 bitrate=3257.1kbits/s dup=1 drop=0    frame=  129 fps= 10 q=25.0 size=     952kB time=2.40 bitrate=3248.5kbits/s dup=1 drop=0    frame=  133 fps= 10 q=25.0 size=    1009kB time=2.56 bitrate=3229.5kbits/s dup=1 drop=0    frame=  137 fps= 10 q=25.0 size=    1064kB time=2.72 bitrate=3204.2kbits/s dup=1 drop=0    frame=  141 fps=  9 q=25.0 size=    1119kB time=2.88 bitrate=3183.7kbits/s dup=1 drop=0    frame=  144 fps=  9 q=25.0 size=    1153kB time=3.00 bitrate=3149.2kbits/s dup=1 drop=0    

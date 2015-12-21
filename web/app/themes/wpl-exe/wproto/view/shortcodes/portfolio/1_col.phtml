@@ -1,0 +1,60 @@
+<?php if( $data['posts']->have_posts() ): ?>
+
+	<?php
+		$_uniqid = uniqid();
+	?>
+
+	<?php if( ! $data['ajax_load'] ): ?>
+	<div id="wproto-posts-grid-id-<?php echo $_uniqid; ?>" class="wproto-posts-grid wproto-portfolio-posts style-<?php echo esc_attr( $data['style'] ); ?>">
+	<?php endif; ?>
+
+		<div class="container-fluid">
+		<?php $i=1; while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+	
+			<div class="item-num-<?php echo $i; ?>">
+			<?php
+				if( $data['style'] == 'cols_1_default' ) {
+					get_template_part('part', 'portfolio_content_1_col');
+				} else {
+					get_template_part('part', 'portfolio_content_1_col_alt');
+				}
+			?>
+			</div>
+	
+		<?php $i++; if( $i >= 3 ) $i = 1; endwhile; ?>
+		</div>
+	
+	<?php if( ! $data['ajax_load'] ): ?>
+	</div>
+	<?php endif; ?>
+	
+	<?php if( (bool)$data['display_pagination'] && ! $data['ajax_load'] ): ?>
+		<div class="wproto-portfolio-pagination-block">
+		<?php
+			wpl_exe_wp_front::pagination( array(
+				'pagination_style' => $data['pagination_style'],
+				'custom_query' => $data['posts'],
+				'ajax_target' => '#wproto-posts-grid-id-' . $_uniqid,
+				'append_type' => 'grid',
+				'shortcode' => 'wproto_portfolio'
+			), $data );
+		?>
+		</div>
+	<?php endif; ?>
+
+<?php elseif( ! $data['ajax_load'] ): ?>
+
+	<?php get_template_part('part', 'no_posts'); ?>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initCarousels();
+			window.wprotoFrontCore.initLightbox();
+		}
+	</script>
+<?php endif;

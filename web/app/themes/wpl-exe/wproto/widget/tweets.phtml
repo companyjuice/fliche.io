@@ -1,0 +1,68 @@
+<?php
+
+	add_action( 'widgets_init', 'register_wpl_exe_wp_twitter_widget' );
+	
+	function register_wpl_exe_wp_twitter_widget() {
+		register_widget( 'wpl_exe_wp_twitter_widget' );
+	}
+	
+	class wpl_exe_wp_twitter_widget extends WP_Widget {
+		
+		function __construct() {
+			$widget_ops = array( 'classname' => 'wproto_twitter_widget', 'description' => __('A widget that displays your latest tweets. ', 'wproto') );
+		
+			$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wproto_twitter_widget' );
+		
+			parent::__construct( 'wproto_twitter_widget', __( '[EXE] Latest Tweets', 'wproto' ), $widget_ops, $control_ops );
+		}
+		
+		function widget( $args, $instance ) {
+			global $wpl_exe_wp;
+			
+			$data = array();
+			$data['title'] = apply_filters( 'widget_title', $instance['title'] );
+			
+			$data['instance'] = $instance;
+			$data['args'] = $args;
+			
+			$data['count'] = isset( $instance['count'] ) ? absint( $instance['count'] ) : 5;
+
+			$wpl_exe_wp->view->load_partial( 'widgets/tweets', $data );
+
+		}
+		
+		function update( $new_instance, $old_instance ) {
+			global $wpl_exe_wp;
+			$instance = $old_instance;
+
+			//Strip tags from title and name to remove HTML 
+			$instance['title'] = strip_tags( str_replace( '\'', "&#39;", $new_instance['title'] ) );
+			$instance['count'] = isset( $new_instance['count'] ) ? absint( $new_instance['count'] ) : 5;
+		
+			return $instance;
+		}
+		
+		function form( $instance ) {
+			global $wpl_exe_wp;
+			//Set up some default widget settings.
+			$defaults = array(
+				'title' => __( 'Latest Tweets', 'wproto' ),
+				'count' => 5,
+			);
+			
+			$instance = wp_parse_args( (array) $instance, $defaults );
+			
+			?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Widget title:', 'wproto'); ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e('Number of tweets:', 'wproto'); ?></label>
+				<input class="widefat" type="number" min="1" name="<?php echo $this->get_field_name( 'count' ); ?>" id="<?php echo $this->get_field_id( 'count' ); ?>" value="<?php echo esc_attr( $instance['count'] ); ?>" />
+			</p>
+			<?php
+
+		}
+		
+	}

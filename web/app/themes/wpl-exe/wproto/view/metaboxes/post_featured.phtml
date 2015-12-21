@@ -1,0 +1,8 @@
+<p>
+	<div class="field switch">
+		<label title="<?php _e('Enable', 'wproto'); ?>" class="cb-enable <?php echo $data['featured'] ? 'selected' : ''; ?>"><span><i class="fa fa-check"></i></span></label>
+		<label title="<?php _e('Disable', 'wproto'); ?>" class="cb-disable <?php echo ! $data['featured'] ? 'selected' : ''; ?>"><span><i class="fa fa-times"></i></span></label>
+		<input name="featured" type="hidden" value="<?php echo esc_attr( $data['featured'] ); ?>" />
+		<div class="clear"></div>
+	</div>
+</p>

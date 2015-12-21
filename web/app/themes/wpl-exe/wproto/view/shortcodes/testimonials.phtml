@@ -1,0 +1,145 @@
+<?php if( $data['posts']->have_posts() ): ?>
+
+	<?php
+		/** *******************************************************************
+			SINGLE TESTIMONIAL 
+		******************************************************************* **/
+	?>
+
+	<?php if( in_array( $data['style'], array('boxed', 'boxed_alt', 'minimal', 'dark', 'dark_alt' ) ) ): ?>
+	
+		<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+		<div class="wproto-single-testimonial style-<?php echo esc_attr( $data['style'] ); ?>">
+		
+			<?php if( has_post_thumbnail() ): ?>
+			<div class="thumbnail">
+				<?php echo wpl_exe_image( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ), 92, 92 ); ?>
+				<div class="hover_pulse_ray"></div>
+			</div>
+			<?php endif; ?>
+			
+			<?php
+				$position = wp_kses_post( get_post_meta( get_the_ID(), 'position', true ) );
+				$url = esc_attr( get_post_meta( get_the_ID(), 'url', true ) );
+				$url_text = wp_kses_post( str_replace( 'https://', '', str_replace( 'http://', '', $url ) ) );
+			?>
+			
+			<div class="text <?php if( ! has_post_thumbnail() ): ?>no-thumb<?php endif; ?>">
+				<h4 class="name"><?php the_title(); ?></h4> 
+				
+				<?php if( in_array( $data['style'], array('boxed', 'boxed_alt', 'dark', 'dark_alt' ) ) ): ?>
+				<div class="info">
+					<span><?php echo $position; ?></span> <a rel="nofollow" href="<?php echo $url; ?>"><?php echo $url_text; ?></a>
+				</div>
+				<?php endif; ?>
+				
+				<div class="clearfix"></div>
+				<div class="text-content">
+					<?php the_content(); ?>
+				</div>
+				
+				<?php if( $data['style'] == 'minimal' ): ?>
+				<div class="info">
+					<span><?php echo $position; ?></span> <a rel="nofollow" href="<?php echo $url; ?>"><?php echo $url_text; ?></a>
+				</div>
+				<?php endif; ?>
+				
+			</div>
+		
+		</div>
+		<?php endwhile; ?>
+	
+	<?php
+		/** *******************************************************************
+			TESTIMONIALS CAROUSEL
+		******************************************************************* **/
+	?>
+	
+	<?php elseif( in_array( $data['style'], array('single_carousel_white', 'single_carousel_dark' ) ) ): ?>
+	
+		<div <?php if( $data['autoplay'] ): ?>data-autoplay-speed="<?php echo esc_attr( $data['autoplay_speed'] ); ?>"<?php endif; ?> class="wproto-testimonials-carousel style-<?php echo esc_attr( $data['style'] ); ?>">
+			<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+			
+			<?php
+				$position = wp_kses_post( get_post_meta( get_the_ID(), 'position', true ) );
+				$url = esc_attr( get_post_meta( get_the_ID(), 'url', true ) );
+				$url_text = wp_kses_post( str_replace( 'https://', '', str_replace( 'http://', '', $url ) ) );
+			?>
+			
+			<div class="item">
+			
+				<div class="text">
+					<?php the_content(); ?>
+				</div>
+				
+				<?php if( has_post_thumbnail() ): ?>
+				<div class="thumbnail">
+					<?php echo wpl_exe_image( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ), 100, 100 ); ?>
+					<div class="hover_pulse_ray"></div>
+				</div>
+				<?php endif; ?>
+				
+				<div class="info">
+					<h4 class="name"><?php the_title(); ?></h4> 
+					<span><?php echo $position; ?></span> <a rel="nofollow" href="<?php echo $url; ?>"><?php echo $url_text; ?></a>
+				</div>
+			
+			</div>
+			
+			<?php endwhile; ?>
+		</div>
+	
+	<?php
+		/** *******************************************************************
+			TESTIMONIALS WIDGET CAROUSEL
+		******************************************************************* **/
+	?>
+	<?php elseif( in_array( $data['style'], array('widget_1', 'widget_2', 'widget_3', 'widget_4', 'widget_5', 'widget_6', 'widget_7', 'widget_8' ) ) ): ?>
+	
+		<div <?php if( $data['autoplay'] ): ?>data-autoplay-speed="<?php echo esc_attr( $data['autoplay_speed'] ); ?>"<?php endif; ?> class="wproto-testimonials-widget style-<?php echo esc_attr( $data['style'] ); ?>">
+		
+			<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+			
+			<div class="item">
+			
+				<?php if( has_post_thumbnail() ): ?>
+				<div class="thumbnail">
+					<?php echo wpl_exe_image( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ), 100, 100 ); ?>
+					<div class="hover_pulse_ray"></div>
+				</div>
+				<?php endif; ?>
+				
+				<div class="text">
+					<?php the_content(); ?>
+				</div>
+				
+				<?php
+					$position = wp_kses_post( get_post_meta( get_the_ID(), 'position', true ) );
+					$url = esc_attr( get_post_meta( get_the_ID(), 'url', true ) );
+					$url_text = wp_kses_post( str_replace( 'https://', '', str_replace( 'http://', '', $url ) ) );
+				?>
+				
+				<div class="info">
+					<div class="name"><?php the_title(); ?></div> 
+					<span><?php echo $position; ?></span> <a rel="nofollow" href="<?php echo $url; ?>"><?php echo $url_text; ?></a>
+				</div>
+				
+			</div>
+			
+			<?php endwhile; ?>
+		
+		</div>
+	
+	<?php endif; ?>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initTestimonials();
+		}
+	</script>
+<?php endif;

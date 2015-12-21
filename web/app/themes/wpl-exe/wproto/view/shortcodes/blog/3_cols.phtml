@@ -1,0 +1,62 @@
+<?php if( $data['posts']->have_posts() ): ?>
+
+	<?php
+		$_uniqid = uniqid();
+	?>
+
+	<?php if( ! $data['ajax_load'] ): ?>
+	<div class="wproto-posts-grid style-<?php echo esc_attr( $data['style'] ); ?>">
+
+		<div class="container-fluid posts-holder">
+			<div id="wproto-posts-grid-id-<?php echo $_uniqid; ?>" class="row">
+	<?php endif; ?>
+			
+			
+			<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+				<div class="col col-md-4 col-sm-6 col-xs-6">
+					<?php get_template_part('part', 'post_content'); ?>
+				</div>
+		
+			<?php endwhile; ?>
+			
+			<?php if( ! $data['ajax_load'] ): ?>
+				</div>
+			</div>
+				
+			<?php if( (bool)$data['display_pagination'] && ! $data['ajax_load'] ): ?>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<?php
+							wpl_exe_wp_front::pagination( array(
+								'pagination_style' => $data['pagination_style'],
+								'custom_query' => $data['posts'],
+								'ajax_target' => '#wproto-posts-grid-id-' . $_uniqid,
+								'append_type' => 'grid',
+								'shortcode' => 'wproto_blog'
+							), $data );
+						?>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+				
+			</div>
+			<?php endif; ?>
+
+<?php elseif( ! $data['ajax_load'] ): ?>
+
+	<?php get_template_part('part', 'no_posts'); ?>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initCarousels();
+			window.wprotoFrontCore.initLightbox();
+		}
+	</script>
+<?php endif;

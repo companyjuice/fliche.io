@@ -1,0 +1,19 @@
+<?php
+	$list_marker = '';
+	$list_marker = $data['icon_type'] == 'numeric' ? $data['num'] : '<i class="' . esc_attr( $data['icon'] ) . '"></i>';
+	
+	$marker_style = '';
+	$marker_style .= $data['icon_color'] <> '' ? 'color: ' . esc_attr( $data['icon_color'] ) . ' !important; ' : '';
+	$boxed = $data['icon_background_color'] <> '' || $data['icon_border_color'] <> '' || $data['border_radius'] <> '';
+	$data['el_class'] .= $boxed ? ' wproto-num-container' : '';
+	
+	$boxed_marker_style = '';
+	if( $boxed ) {
+		$boxed_marker_style .= $data['icon_background_color'] <> '' ? 'background-color: ' .  $data['icon_background_color'] . '; ' : '';
+		$boxed_marker_style .= $data['icon_border_color'] <> '' ? 'border-color: ' .  $data['icon_border_color'] . '; ' : '';
+		$boxed_marker_style .= $data['border_radius'] <> '' ? 'border-radius: ' .  $data['border_radius'] . '; ' : '';
+	}
+	
+	$text_style = $data['text_color'] <> '' ? 'color: ' . $data['text_color'] . '; ' : '';
+?>
+<li class="<?php echo esc_attr( $data['el_class'] ); ?>"><span class="el-marker" style="<?php echo esc_attr( $marker_style ) . ' ' . esc_attr( $boxed_marker_style ); ?>"><?php echo $list_marker; echo !$boxed && $data['icon_type'] == 'numeric' ? '.' : ''; ?></span> <span style="<?php echo esc_attr( $text_style ); ?>"><?php echo wp_kses_post( $data['title'] ); ?></span></li>

@@ -1,0 +1,3 @@
+D:\xampp\htdocs\gpjp-video\flowplayer\progress\GPJP prezentace.avi
+D:\xampp\htdocs\gpjp-video\flowplayer\progress\GPJP prezentace.m4v
+ -acodec aac -ab 96k -vcodec libx264 -fpre "D:\xampp\htdocs\gpjp-video\flowplayer\progress\bin\libx264-slower.ffpreset" -qmax 25 -strict experimental -threads 0

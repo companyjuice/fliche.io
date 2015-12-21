@@ -1,0 +1,11 @@
+<p>
+	<label><?php _e( 'Position', 'wproto'); ?>: <input style="width: 100%" type="text" value="<?php echo esc_attr( $data['position'] ); ?>" name="position" /></label>
+</p>
+<div class="team-member-social-icons" style="<?php echo $data['connect_with_wp_author'] ? 'display: none' : ''; ?>">
+	<p>
+		<label><?php _e( 'Open following URL on click (if not connected with existing WordPress user)', 'wproto'); ?>: <input style="width: 100%" type="text" value="<?php echo esc_attr( $data['custom_url'] ); ?>" name="custom_url" /></label>
+	</p>
+	<table class="form-table">
+		<?php wpl_exe_wp_admin_utils::social_icons_form( 'post', 0, $data['post_id'] ); ?>
+	</table>
+</div>

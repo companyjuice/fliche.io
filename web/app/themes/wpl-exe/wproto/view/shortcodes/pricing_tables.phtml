@@ -1,0 +1,193 @@
+<?php
+	global $wpl_exe_wp;
+?>
+
+<div class="wproto-pricing-table <?php echo esc_attr( $data['style'] ); ?>">
+
+	<?php
+		$i=0; $j=1; $post_anim = 0.0;
+		foreach( $data['pricing_table']['packages']['names'] as $k=>$v ):
+		
+			// get the data
+			$featured = isset( $data['pricing_table']['pricing_table']['featured'] ) && ! is_array( $data['pricing_table']['pricing_table']['featured'] ) ? absint( $data['pricing_table']['pricing_table']['featured'] ) : -1;
+			$currency = isset($data['pricing_table']['features']['currency'][ $i ][0]) ? $data['pricing_table']['features']['currency'][ $i ][0] : '';
+			$price = isset($data['pricing_table']['features']['price'][ $i ][0]) ? $data['pricing_table']['features']['price'][ $i ][0] : '';
+			$period = isset($data['pricing_table']['features']['period'][ $i ][0]) ? $data['pricing_table']['features']['period'][ $i ][0] : '';
+			$icon = isset($data['pricing_table']['features']['icon'][ $i ][0]) ? $data['pricing_table']['features']['icon'][ $i ][0] : '';
+			$details = isset($data['pricing_table']['features']['details'][ $i ][0]) ? $data['pricing_table']['features']['details'][ $i ][0] : '';
+			$rating = isset($data['pricing_table']['features']['rating'][ $i ][0]) ? absint( $data['pricing_table']['features']['rating'][ $i ][0] ) : '';
+			
+			$full_price = '';
+			if( $currency == '$' ) {
+				$full_price = '<span class="money"><span class="currency">' . $currency . '</span>' . $price . '</span><span class="period">/ ' . $period . '</span>';
+			} else {
+				$full_price = '<span class="money">' . $price . ' <span class="currency">' . $currency . '</span></span><span class="period">/ ' . $period . '</span>';
+			}
+			
+			$button_style = '';
+			
+			switch( $data['style'] ) {
+				default:
+				case 'style_1':
+					$button_style = 'button-style-green button-size-medium';
+				break;
+				case 'style_2':
+					if( $j == 1 )
+						$button_style = 'button-style-blue-gradient button-size-medium';
+					if( $j == 2 )
+						$button_style = 'button-style-orange-gradient button-size-medium';
+					if( $j == 3 )
+						$button_style = 'button-style-green-gradient button-size-medium';
+					if( $j == 4 )
+						$button_style = 'button-style-purple-gradient button-size-medium';
+				break;
+				case 'style_3':
+					$button_style = 'button-style-black button-size-large';
+				break;
+				case 'style_5':
+					if( $j == 1 )
+						$button_style = 'button-style-black button-size-medium';
+					if( $j == 2 )
+						$button_style = 'button-style-blue button-size-medium';
+					if( $j == 3 )
+						$button_style = 'button button-size-medium';
+					if( $j == 4 )
+						$button_style = 'button-style-green button-size-medium';
+				break;
+				case 'style_6':
+					$button_style = 'button-style-black-stroke button-size-medium';
+				break;
+				case 'style_7':
+					if( $j == 1 )
+						$button_style = 'button-style-blue button-size-medium';
+					if( $j == 2 )
+						$button_style = 'button button-size-medium';
+					if( $j == 3 )
+						$button_style = 'button-style-green button-size-medium';
+					if( $j == 4 )
+						$button_style = 'button-style-purple button-size-medium';
+				break;
+				case 'style_8':
+					$button_style = 'button button-size-medium';
+				break;
+			}
+			
+			$button_text = isset($data['pricing_table']['features']['button_text'][ $i ][0]) ? $data['pricing_table']['features']['button_text'][ $i ][0] : '';
+			$button_text = str_replace( '[price]', $full_price, $button_text );
+			$button_url = isset($data['pricing_table']['features']['button_url'][ $i ][0]) ? $data['pricing_table']['features']['button_url'][ $i ][0] : '';
+	?>
+	<div <?php if( $i < 4 ): ?>data-wow-delay="<?php echo esc_attr( $post_anim ); ?>s" <?php endif; ?> class="wow fadeIn item num-<?php echo $j; ?> <?php echo esc_attr( $data['columns'] ); ?> <?php echo $k == $featured ? ' best-value' : ''; ?>">
+	
+		<div class="inside">
+		
+			<header>
+			
+				<?php if( in_array( $data['style'], array('style_1', 'style_2', 'style_7') ) ): ?>
+				
+				<div class="price">
+					<?php echo wp_kses_post( $full_price ); ?>
+				</div>
+				
+				<div class="desc">
+					<?php echo wp_kses_post( $details ); ?>
+				</div>
+				
+				<div class="plan-title">
+					<div class="helper"></div>
+					<h4><?php echo wp_kses_post( $v ); ?></h4>
+				</div>
+				
+				<?php elseif( in_array( $data['style'], array('style_3', 'style_4', 'style_8') ) ): ?>
+				
+				<div class="top">
+					<div class="plan-title">
+						<h4><?php echo wp_kses_post( $v ); ?></h4>
+					</div>
+					<div class="desc">
+						<?php echo wp_kses_post( $details ); ?>
+					</div>
+				</div>
+				
+				<div class="price">
+					<?php echo wp_kses_post( $full_price ); ?>
+				</div>
+				
+				<?php if( $rating > 0 ): ?>
+				<div class="rating">
+					<?php for( $x=1; $x<=5; $x++ ): ?>
+					<i class="star <?php echo $x <= $rating ? 'filled' : ''; ?>"></i>
+					<?php endfor; ?>
+				</div>
+				<?php endif; ?>
+				
+				<?php elseif( $data['style'] == 'style_5' ): ?>
+				
+				<div class="icon">
+					<i class="<?php echo esc_attr( $icon ); ?>"></i>
+				</div>
+				
+				<div class="plan-title-desc">
+					<div class="plan-title">
+						<h4><?php echo wp_kses_post( $v ); ?></h4>
+					</div>
+					<div class="desc">
+						<?php echo wp_kses_post( $details ); ?>
+					</div>
+				</div>
+				
+				<?php if( $rating > 0 ): ?>
+				<div class="rating">
+					<?php for( $x=1; $x<=5; $x++ ): ?>
+					<i class="star <?php echo $x <= $rating ? 'filled' : ''; ?>"></i>
+					<?php endfor; ?>
+				</div>
+				<?php endif; ?>
+				
+				<?php elseif( $data['style'] == 'style_6' ): ?>
+				
+				<div class="icon">
+					<i class="<?php echo esc_attr( $icon ); ?>"></i>
+					<div class="hover_pulse_ray"></div>
+				</div>
+				
+				<div class="plan-title-desc">
+					<div class="plan-title">
+						<h4><?php echo wp_kses_post( $v ); ?></h4>
+					</div>
+					<div class="price">
+						<?php echo wp_kses_post( $full_price ); ?>
+					</div>
+				</div>
+				
+				<?php if( $rating > 0 ): ?>
+				<div class="rating">
+					<?php for( $x=1; $x<=5; $x++ ): ?>
+					<i class="star <?php echo $x <= $rating ? 'filled' : ''; ?>"></i>
+					<?php endfor; ?>
+				</div>
+				<?php endif; ?>
+				
+				<?php endif; ?>
+			
+			</header>
+			
+			<ul class="features">
+				<?php foreach( $data['pricing_table']['features']['user_features_names'] as $key=>$val ): ?>
+				<li><?php echo isset( $val ) ? $val[0] : '' ?> <i class="val"><?php echo isset( $data['pricing_table']['features']['user_features_values'][$i][$key] ) ? $data['pricing_table']['features']['user_features_values'][$i][$key] : ''; ?></i></li>
+				<?php endforeach; ?>				
+			</ul>
+			
+			<?php if( $button_url <> '' ): ?>
+			<footer>
+				<a class="button <?php echo esc_attr( $button_style ); ?>" href="<?php echo esc_attr( $button_url ); ?>"><?php echo wp_kses_post( $button_text ); ?></a>
+			</footer>
+			<?php endif; ?>
+		
+		</div>
+	
+	</div>
+	<?php
+		$post_anim = $post_anim + 0.2; $i++; $j++; if( $j == 6 ) $j = 1; endforeach;
+	?>
+
+</div>

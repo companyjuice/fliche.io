@@ -1,0 +1,110 @@
+<?php
+
+	add_action( 'widgets_init', 'register_wpl_exe_wp_taxonomy_widget' );
+	
+	function register_wpl_exe_wp_taxonomy_widget() {
+		register_widget( 'wpl_exe_wp_taxonomy_widget' );
+	}
+	
+	class wpl_exe_wp_taxonomy_widget extends WP_Widget {
+		
+		function __construct() {
+			$widget_ops = array( 'classname' => 'wproto_taxonomy_widget', 'description' => __('A widget that displays list of custom taxonomies', 'wproto') );
+		
+			$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wproto_taxonomy_widget' );
+		
+			parent::__construct( 'wproto_taxonomy_widget', __( '[EXE] Taxonomy list', 'wproto' ), $widget_ops, $control_ops );
+		}
+		
+		function widget( $args, $instance ) {
+			global $wpl_exe_wp;
+			
+			$data = array();
+			$data['title'] = apply_filters( 'widget_title', $instance['title'] );
+			
+			$data['instance'] = $instance;
+			$data['args'] = $args;
+
+			$wpl_exe_wp->view->load_partial( 'widgets/taxonomy', $data );
+
+		}
+		
+		function update( $new_instance, $old_instance ) {
+			$instance = $old_instance;
+
+			//Strip tags from title and name to remove HTML 
+			$instance['title'] = strip_tags( str_replace( '\'', "&#39;", $new_instance['title'] ) );
+			$instance['taxonomy'] = isset( $new_instance['taxonomy'] ) ? strip_tags( $new_instance['taxonomy'] ) : '';
+			$instance['order_by'] = isset( $new_instance['order_by'] ) ? strip_tags( $new_instance['order_by'] ) : '';
+			$instance['sort'] = isset( $new_instance['sort'] ) ? strip_tags( $new_instance['sort'] ) : '';
+			$instance['hierarchical'] = isset( $new_instance['hierarchical'] );
+			$instance['first_level_only'] = isset( $new_instance['first_level_only'] );
+			$instance['hide_empty'] = isset( $new_instance['hide_empty'] );
+			$instance['show_count'] = isset( $new_instance['show_count'] );
+
+			return $instance;
+		}
+		
+		function form( $instance ) {
+			
+			//Set up some default widget settings.
+			$defaults = array(
+				'title' => __( 'Categories', 'wproto' ),
+				'taxonomy' => '',
+				'order_by' => 'ID',
+				'sort' => 'ASC',
+				'hierarchical' => true,
+				'first_level_only' => false,
+				'hide_empty' => false,
+				'show_count' => false,
+			);
+			
+			$instance = wp_parse_args( (array) $instance, $defaults );
+			
+			?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Widget title:', 'wproto'); ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><?php _e('Choose a taxonomy:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>">
+					<option <?php echo $instance['taxonomy'] == 'wproto_portfolio_category' ? 'selected="selected"' : ''; ?> value="wproto_portfolio_category"><?php _e( 'Portfolio category', 'wproto' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'order_by' ); ?>"><?php _e('Order by:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'order_by' ); ?>" name="<?php echo $this->get_field_name( 'order_by' ); ?>">
+					<option <?php echo $instance['order_by'] == 'ID' ? 'selected="selected"' : ''; ?> value="ID">ID</option>
+					<option <?php echo $instance['order_by'] == 'name' ? 'selected="selected"' : ''; ?> value="name"><?php _e( 'Name', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'slug' ? 'selected="selected"' : ''; ?> value="slug"><?php _e( 'Slug', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'count' ? 'selected="selected"' : ''; ?> value="count"><?php _e( 'Count', 'wproto' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'sort' ); ?>"><?php _e('Sort by:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'sort' ); ?>" name="<?php echo $this->get_field_name( 'sort' ); ?>">
+					<option <?php echo $instance['sort'] == 'ASC' ? 'selected="selected"' : ''; ?> value="ASC">ASC</option>
+					<option <?php echo $instance['sort'] == 'DESC' ? 'selected="selected"' : ''; ?> value="DESC">DESC</option>
+				</select>
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php checked( $instance['hierarchical'] ); ?> id="<?php echo $this->get_field_id( 'hierarchical' ); ?>" name="<?php echo $this->get_field_name( 'hierarchical' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'hierarchical' ); ?>"><?php _e('Display hierarchical', 'wproto'); ?></label>  
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php checked( $instance['first_level_only'] ); ?> id="<?php echo $this->get_field_id( 'first_level_only' ); ?>" name="<?php echo $this->get_field_name( 'first_level_only' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'first_level_only' ); ?>"><?php _e('Display only top level', 'wproto'); ?></label>  
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php checked( $instance['hide_empty'] ); ?> id="<?php echo $this->get_field_id( 'hide_empty' ); ?>" name="<?php echo $this->get_field_name( 'hide_empty' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'hide_empty' ); ?>"><?php _e('Hide empty', 'wproto'); ?></label>  
+			</p>
+			<p>
+				<input class="checkbox" value="1" type="checkbox" <?php checked( $instance['show_count'] ); ?> id="<?php echo $this->get_field_id( 'show_count' ); ?>" name="<?php echo $this->get_field_name( 'show_count' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'show_count' ); ?>"><?php _e('Show count', 'wproto'); ?></label>  
+			</p>
+			<?php
+		}
+		
+	}

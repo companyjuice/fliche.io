@@ -1,0 +1,37 @@
+<?php if( wpl_exe_wp_utils::isset_woocommerce() ): ?>
+<div class="wproto-shortcode-partners-clients">
+
+	<?php if( count( $data['terms'] ) > 0 ): ?>
+	<!-- logos carousel -->
+	<div class="items" data-autoplay-speed="<?php echo $data['autoplay'] ? esc_attr( $data['autoplay_speed'] ) : '0'; ?>" data-display-nav="<?php echo esc_attr( $data['nav'] ); ?>" data-items="<?php echo absint( $data['items'] ) > 0 ? $data['items'] : 1; ?>">
+
+		<?php foreach( $data['terms'] as $term ): ?>
+
+			<?php		
+				$thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
+				$image = wp_get_attachment_url( $thumbnail_id );
+				$url = get_term_link( $term );
+			?>
+
+			<div class="item">
+				<div class="inside">					
+					<a href="<?php echo esc_attr( $url ); ?>" rel="nofollow" target="_blank"><img src="<?php echo $image; ?>" alt="" /></a>
+				</div>
+			</div>
+	
+		<?php endforeach; ?>
+					
+	</div>
+	<?php endif; ?>
+</div>
+<?php endif; 
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initCarousels();
+		}
+	</script>
+<?php endif;

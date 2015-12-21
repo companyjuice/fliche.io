@@ -1,0 +1,188 @@
+<?php $uniqid = uniqid(); ?>
+
+<?php if( $data['address'] <> '' ): ?>
+
+	<?php
+		$addresses = isset( $data['address'] ) ? array_filter( explode( '|', $data['address'] ) ) : array();
+	?>
+
+<div class="wproto-responsive-map" style="padding-bottom: <?php echo esc_attr( $data['height'] ); ?>%; <?php echo isset( $data['min_height'] ) ? 'min-height: ' . $data['min_height'] . 'px;' : ''; ?>">
+	<div id="google-map-id-<?php echo $uniqid; ?>" class="wproto-google-map" style="width: 100%; height: 100%;"></div>
+</div>
+
+	<?php
+	
+		global $wpl_exe_wp;
+		
+		$google_map_mode = $data['map_mode'];
+	
+		// map colors		
+		$google_map_water_color = $wpl_exe_wp->get_option( 'google_map_water_color', 'customizer' );
+		$google_map_admin_labels_color = $wpl_exe_wp->get_option( 'google_map_admin_labels_color', 'customizer' );
+		$google_map_landscape_natural_color = $wpl_exe_wp->get_option( 'google_map_landscape_natural_color', 'customizer' );
+		$google_map_landscape_man_color = $wpl_exe_wp->get_option( 'google_map_landscape_man_color', 'customizer' );
+		$google_map_road_color = $wpl_exe_wp->get_option( 'google_map_road_color', 'customizer' );
+		$google_map_road_arterial_color = $wpl_exe_wp->get_option( 'google_map_road_arterial_color', 'customizer' );
+		$google_map_transit_poi_color = $wpl_exe_wp->get_option( 'google_map_transit_poi_color', 'customizer' );
+	?>
+
+<?php if( $addresses <> '' ): ?>
+<script>
+	
+(function($){
+	
+	function googleMapInitialize() {
+		var styles = [
+		{
+			"featureType": "water",
+ 			"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_water_color ); ?>" },
+   			{ "visibility": "simplified" }
+   		]
+ 		},{
+ 			"featureType": "administrative",
+  		"elementType": "labels",
+  		"stylers": [
+  			{ "weight": 0.1 },
+   			{ "color": "<?php echo esc_js( $google_map_admin_labels_color ); ?>" },
+    		{ "visibility": "on" }
+   		]
+ 		},{
+ 			"featureType": "landscape.natural",
+  		"elementType": "geometry",
+  		"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_landscape_natural_color ); ?>" }
+   		]
+ 		},{
+ 			"featureType": "landscape.man_made",
+  		"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_landscape_man_color ); ?>" },
+   			{ "visibility": "simplified" }
+   		]
+ 		},{
+ 			"featureType": "poi",
+  		"elementType": "geometry",
+  		"stylers": [
+  			{ "visibility": "off" }
+   		]
+ 		},{
+ 			"featureType": "road.highway",
+  		"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_road_color ); ?>" },
+   			{ "weight": 2.7 },
+   			{ "visibility": "simplified" }
+   		]
+ 		},{
+ 			"featureType": "road.arterial",
+  		"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_road_arterial_color ); ?>" },
+   			{ "visibility": "simplified" }
+   		]
+ 		},{
+ 			"featureType": "road.local",
+  		"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_road_color ); ?>" },
+   			{ "weight": 0.4 },
+    		{ "visibility": "simplified" }
+   		]
+ 		},{
+ 			"featureType": "road.local",
+  		"elementType": "labels",
+  		"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_road_color ); ?>" },
+  			{ "weight": 0.1 },
+   			{ "visibility": "off" }
+   		]
+ 		},{
+ 			"featureType": "transit",
+  		"elementType": "geometry",
+  		"stylers": [
+  			{ "color": "<?php echo esc_js( $google_map_transit_poi_color ); ?>" },
+   			{ "visibility": "on" }
+   		]
+ 		},{
+ 			"featureType": "transit",
+  		"elementType": "geometry",
+  		"stylers": [
+  			{ "visibility": "simplified" },
+   			{ "weight": 0.1 }
+   		]
+ 		},{
+ 			"featureType": "poi",
+  		"stylers": [
+  			{ "weight": 0.1 },
+   			{ "color": "<?php echo esc_js( $google_map_transit_poi_color ); ?>" },
+    		{ "visibility": "simplified" }
+   		]
+ 		},{
+ 			"featureType": "road.highway",
+  		"elementType": "labels",
+  		"stylers": [
+  			{ "weight": 0.1 },
+   			{ "visibility": "off" }
+ 			]
+		}
+	];
+	
+	$('.wproto-google-map').each( function() {
+		
+		var geocoder = new google.maps.Geocoder();
+	
+		var latlong;
+
+		var googleMapOptions = {
+			zoom: <?php echo absint( $data['map_zoom'] ); ?>,
+			center: new google.maps.LatLng(0, 0),
+			<?php if( $google_map_mode == 'custom_colors' || $google_map_mode == 'ROADMAP' ): ?>
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			<?php elseif( $google_map_mode == 'SATELLITE' ): ?>
+			mapTypeId: google.maps.MapTypeId.SATELLITE,
+			<?php endif; ?>
+			panControl: false,
+			zoomControl: false,
+			scrollwheel: false,
+			disableDoubleClickZoom: true,
+			disableDefaultUI: true,
+			draggable: <?php echo $data['draggable'] == 'yes' ? 'true' : 'false'; ?>,
+			scaleControl: false<?php if( $google_map_mode == 'custom_colors' ): ?>,
+			styles: styles<?php endif; ?>
+		};
+
+		var map = new google.maps.Map( document.getElementById('google-map-id-<?php echo $uniqid; ?>'), googleMapOptions );
+
+		<?php if( is_array( $addresses ) && count( $addresses ) > 0 ): $i=0; foreach( $addresses as $address ): ?>
+
+		geocoder.geocode( { 'address': '<?php echo esc_html( $address ); ?>'}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				latlong = results[0].geometry.location;
+		
+				var marker = new google.maps.Marker({
+					position: latlong,
+ 					map: map<?php if( $data['pointer_image'] <> '' ): ?>,
+ 					icon: '<?php $img = wp_get_attachment_image_src( absint( $data['pointer_image'] ) ); echo $img[0]; ?>'<?php endif; ?>
+				});
+			
+				<?php if( $i == 0 ): ?>
+				map.setCenter( latlong );
+				<?php endif; ?>
+
+				}
+			});
+		
+		<?php $i++; endforeach; endif; ?>
+		
+		});
+		
+	}
+	
+	googleMapInitialize();
+	
+})( window.jQuery );
+</script>
+
+<?php endif; ?>
+
+<?php
+else:
+	_e('Please enter Google Map address in a shortcode options.', 'wproto');
+endif;

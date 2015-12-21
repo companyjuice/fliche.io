@@ -1,0 +1,63 @@
+{
+  "name": "fliche/bedrock",
+  "type": "project",
+  "license": "MIT",
+  "description": "A modern WordPress stack for Fliche",
+  "homepage": "http://fliche.io/",
+  "authors": [
+    {
+      "name": "Marty McGee",
+      "email": "support@companyjuice.com",
+      "homepage": "http://companyjuice.com/"
+    }
+  ],
+  "keywords": [
+    "bedrock","roots","wordpress","stack","composer","vagrant","wp",
+    "ffmpeg","video","audio","mp4","flv","mp3"
+  ],
+  "support": {
+    "issues": "https://github.com/companyjuice/bedrock/issues",
+    "forum": "http://support.companyjuice.com/category/bedrock"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "composer/installers": "~1.0.12",
+    "vlucas/phpdotenv": "^2.0.1",
+    "johnpbloch/wordpress": "4.4",
+
+        "sybio/gif-creator": "~1.0.0",
+        "tedivm/stash": "0.13.*",
+        "monolog/monolog": "~1.17.2",
+        "videojs/video.js": "~5.4.4",
+
+        "aws/aws-sdk-php": "~3.11.7",
+        "php-console/php-console": "~3.1.5"
+  },
+        "suggest": {
+            "tedivm/stash": "Stash is required to utilise Fliches Default Cache class 'Cache_Stash', however you can build your own caching classes so that Stash is not required.",
+            "monolog/monolog": "Monolog is required to utilise Fliches Default Logging class 'Logger_Monolog', however you can build your own logger classes so that Monolog is not required."
+        },
+        "autoload": {
+            "psr-0": {
+                "Fliche\\": "src/",
+                "FFmpeg-PHP\\": "emulators/ffmpeg-php/"
+            }
+        },
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "web/wp"
+  }
+}

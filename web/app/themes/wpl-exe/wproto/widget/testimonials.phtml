@@ -1,0 +1,125 @@
+<?php
+
+	add_action( 'widgets_init', 'register_wpl_exe_wp_testimonials_widget' );
+	
+	function register_wpl_exe_wp_testimonials_widget() {
+		register_widget( 'wpl_exe_wp_testimonials_widget' );
+	}
+	
+	class wpl_exe_wp_testimonials_widget extends WP_Widget {
+		
+		function __construct() {
+			$widget_ops = array( 'classname' => 'wproto_testimonials_widget', 'description' => __('A widget that displays testimonials. Important! This widget is not compatible with Mega Menu (it will be hidden if it displayed as a part of Mega Menu).', 'wproto') );
+		
+			$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wproto_testimonials_widget' );
+		
+			parent::__construct( 'wproto_testimonials_widget', __( '[EXE] Testimonials Carousel', 'wproto' ), $widget_ops, $control_ops );
+		}
+		
+		function widget( $args, $instance ) {
+			global $wpl_exe_wp;
+			
+			$data = array();
+			$data['title'] = apply_filters( 'widget_title', $instance['title'] );
+			
+			$data['instance'] = $instance;
+			$data['args'] = $args;
+
+			$wpl_exe_wp->view->load_partial( 'widgets/testimonials', $data );
+		}
+		
+		function update( $new_instance, $old_instance ) {
+			$instance = $old_instance;
+
+			//Strip tags from title and name to remove HTML 
+			$instance['title'] = strip_tags( str_replace( '\'', "&#39;", $new_instance['title'] ) );
+			$instance['posts_count'] = isset( $new_instance['posts_count'] ) ? absint( $new_instance['posts_count'] ) : 1;
+			$instance['display_categories'] = isset( $new_instance['display_categories'] ) ? strip_tags( $new_instance['display_categories'] ) : 'all';
+			$instance['order_by'] = isset( $new_instance['order_by'] ) ? strip_tags($new_instance['order_by']) : 'id';
+			$instance['sort'] = isset( $new_instance['sort'] ) ? strip_tags($new_instance['sort']) : 'DESC';
+			$instance['autoplay_speed'] = isset( $new_instance['autoplay_speed'] ) ? absint( $new_instance['autoplay_speed'] ) : 5000;
+			$instance['style'] = isset( $new_instance['style'] ) ? strip_tags( $new_instance['style'] ) : 'style_1';
+
+			return $instance;
+		}
+		
+		function form( $instance ) {
+			
+			//Set up some default widget settings.
+			$defaults = array(
+				'title' => __( 'Testimonials', 'wproto' ),
+				'posts_count' => 7,
+				'display_categories' => 'all',
+				'order_by' => 'id',
+				'sort' => 'DESC',
+				'autoplay_speed' => 5000,
+				'style' => 'widget_1'
+			);
+			
+			$instance = wp_parse_args( (array) $instance, $defaults );
+			
+			?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Widget title:', 'wproto'); ?></label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'posts_count' ); ?>"><?php _e('Number of records to display:', 'wproto'); ?></label>
+				<input class="widefat" type="number" min="1" name="<?php echo $this->get_field_name( 'posts_count' ); ?>" id="<?php echo $this->get_field_id( 'posts_count' ); ?>" value="<?php echo esc_attr( $instance['posts_count'] ); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'display_categories' ); ?>"><?php _e('Display from categories:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'display_categories' ); ?>" name="<?php echo $this->get_field_name( 'display_categories' ); ?>">
+					<option <?php echo $instance['display_categories'] == '' ? 'selected="selected"' : ''; ?> value=""><?php _e( 'All categories', 'wproto'); ?></option>
+					<?php
+						$categories = get_terms( 'wproto_testimonials_category', array(
+							'hide_empty' => 0
+						));
+						if( is_array( $categories ) && count( $categories ) > 0 ):
+						foreach( $categories as $cat ):
+					?>
+					<option <?php echo $instance['display_categories'] == $cat->slug ? 'selected="selected"' : ''; ?> value="<?php echo $cat->slug; ?>"><?php echo $cat->name; ?></option>
+					<?php
+						endforeach;
+						endif;
+					?>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'order_by' ); ?>"><?php _e('Order by:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'order_by' ); ?>" name="<?php echo $this->get_field_name( 'order_by' ); ?>">
+					<option <?php echo $instance['order_by'] == 'id' ? 'selected="selected"' : ''; ?> value="id"><?php _e( 'ID', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'date' ? 'selected="selected"' : ''; ?> value="date"><?php _e( 'Date', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'modified' ? 'selected="selected"' : ''; ?> value="modified"><?php _e( 'Modified', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'title' ? 'selected="selected"' : ''; ?> value="title"><?php _e( 'Title', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'random' ? 'selected="selected"' : ''; ?> value="random"><?php _e( 'Random', 'wproto' ); ?></option>
+					<option <?php echo $instance['order_by'] == 'menu' ? 'selected="selected"' : ''; ?> value="menu"><?php _e( 'Menu order', 'wproto' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'sort' ); ?>"><?php _e('Sort:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'sort' ); ?>" name="<?php echo $this->get_field_name( 'sort' ); ?>">
+					<option <?php echo $instance['sort'] == 'ASC' ? 'selected="selected"' : ''; ?> value="ASC"><?php _e( 'Ascending', 'wproto' ); ?></option>
+					<option <?php echo $instance['sort'] == 'DESC' ? 'selected="selected"' : ''; ?> value="DESC"><?php _e( 'Descending', 'wproto' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'autoplay_speed' ); ?>"><?php _e('Carousel autoplay speed (in milliseconds):', 'wproto'); ?></label>
+				<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'autoplay_speed' ); ?>" name="<?php echo $this->get_field_name( 'autoplay_speed' ); ?>" value="<?php echo $instance['autoplay_speed']; ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e('Widget style:', 'wproto'); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
+					<option <?php echo $instance['style'] == 'widget_1' ? 'selected="selected"' : ''; ?> value="widget_1"><?php _e( 'Style', 'wproto' ); ?> 1</option>
+					<option <?php echo $instance['style'] == 'widget_2' ? 'selected="selected"' : ''; ?> value="widget_2"><?php _e( 'Style', 'wproto' ); ?> 2</option>
+					<option <?php echo $instance['style'] == 'widget_3' ? 'selected="selected"' : ''; ?> value="widget_3"><?php _e( 'Style', 'wproto' ); ?> 3</option>
+					<option <?php echo $instance['style'] == 'widget_4' ? 'selected="selected"' : ''; ?> value="widget_4"><?php _e( 'Style', 'wproto' ); ?> 4</option>
+					<option <?php echo $instance['style'] == 'widget_5' ? 'selected="selected"' : ''; ?> value="widget_5"><?php _e( 'Style', 'wproto' ); ?> 5</option>
+					<option <?php echo $instance['style'] == 'widget_6' ? 'selected="selected"' : ''; ?> value="widget_6"><?php _e( 'Style', 'wproto' ); ?> 6</option>
+					<option <?php echo $instance['style'] == 'widget_7' ? 'selected="selected"' : ''; ?> value="widget_7"><?php _e( 'Style', 'wproto' ); ?> 7</option>
+				</select>
+			</p>
+			<?php
+		}
+		
+	}

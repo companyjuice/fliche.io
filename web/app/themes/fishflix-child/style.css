@@ -1,0 +1,51 @@
+/*
+Theme Name: 	FishFlix Child
+Theme URI: 		http://www.carlvanderpal.com
+Author: 			Carl Vanderpal
+Author URI: 	http://www.carlvanderpal.com
+Description:	Child Theme for FishFlix - Premium WordPress Theme
+Template:			fishflix
+Version: 			1.5
+*/
+
+/* Theme customization starts here
+-------------------------------------------------------------- */
+
+.header-overlay.sticky-header {
+	/*margin-bottom: 10px;*/
+}
+
+.header-overlay.sticky-header .overlay-menu-toggle {
+	position: fixed;
+	margin-right: 10px;
+	top: 20px;
+	right: 10px;
+}
+
+#Sliding-top {
+  position: absolute;
+  top: 0;
+	right: 0;
+}
+
+#Sliding-top a.sliding-top-control {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+
+.video_header,
+.video_wrapper {
+	margin-top: 20px;
+}
+
+/* #Blank & #UnderConstruction
+================================================== */
+.page.hide-title-area:not(.with_aside) #Content,
+.no-content-padding:not(.with_aside) #Content,
+.template-blank #Content,
+.under-construction #Content { 
+	/*padding:0 !important;*/
+	min-height: 420px;
+}

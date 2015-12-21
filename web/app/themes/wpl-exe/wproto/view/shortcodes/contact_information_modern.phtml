@@ -1,0 +1,91 @@
+<div class="wproto-shortcode-contact-details-modern">
+
+	<?php
+		$id = uniqid();
+	?>
+
+	<?php if( isset( $data['title'] ) && $data['title'] <> '' ): ?>
+	<h1><?php echo esc_html( $data['title'] ); ?></h1>
+	<?php endif; ?>
+	
+	<?php if( isset( $data['subtext'] ) && $data['subtext'] <> '' ): ?>
+	<h2><?php echo esc_html( $data['subtext'] ); ?></h2>
+	<?php endif; ?>
+	
+	<div class="items wproto-equal">
+	
+		<?php if( isset( $data['address'] ) && $data['address'] <> '' ): ?>
+		<div class="item">
+			<div class="icon">
+				<div class="icon-inner">
+					<img width="32" height="30" class="svg-img" src="<?php echo get_template_directory_uri() . '/images/flag.svg'; ?>" alt="" />
+					<div class="hover_pulse_ray"></div>
+				</div>
+			</div>
+			<div class="inner matchHeight" data-mh="wproto-contact-<?php echo $id; ?>">
+				
+				<h3><?php _e('Address', 'wproto'); ?></h3>
+				
+				<p><?php echo wp_kses_post( $data['address'] ); ?></p>
+				
+			</div>
+		</div>
+		<?php endif; ?>
+		
+		<?php if( isset( $data['phone'] ) && $data['phone'] <> '' ): ?>
+		<div class="item">
+			<div class="icon">
+				<div class="icon-inner">
+					<img width="31" height="31" class="svg-img" src="<?php echo get_template_directory_uri() . '/images/phone.svg'; ?>" alt="" />
+					<div class="hover_pulse_ray"></div>
+				</div>
+			</div>
+			<div class="inner matchHeight" data-mh="wproto-contact-<?php echo $id; ?>">
+				
+				<h3><?php _e('Phone', 'wproto'); ?></h3>
+				
+				<p><?php echo wp_kses_post( $data['phone'] ); ?></p>
+				
+			</div>
+		</div>
+		<?php endif; ?>
+		
+		<?php if( isset( $data['email'] ) && $data['email'] <> '' ): ?>
+		<div class="item">
+			<div class="icon">
+				<div class="icon-inner">
+					<img width="31" height="31" class="svg-img" src="<?php echo get_template_directory_uri() . '/images/fly.svg'; ?>" alt="" />
+					<div class="hover_pulse_ray"></div>
+				</div>
+			</div>
+			<div class="inner matchHeight" data-mh="wproto-contact-<?php echo $id; ?>">
+				
+				<h3><?php _e('Email', 'wproto'); ?></h3>
+				
+				<p><?php echo wpl_exe_wp_front::emailize( $data['email'] ); ?></p>
+				
+			</div>
+		</div>
+		<?php endif; ?>
+		
+		<?php if( isset( $data['display_social_icons'] ) && $data['display_social_icons'] ): ?>	
+		<div class="item">
+			<div class="icon">
+				<div class="icon-inner">
+					<img width="28" height="33" class="svg-img" src="<?php echo get_template_directory_uri() . '/images/social.svg'; ?>" alt="" />
+					<div class="hover_pulse_ray"></div>
+				</div>
+			</div>
+			<div class="inner matchHeight" data-mh="wproto-contact-<?php echo $id; ?>">
+				
+				<h3><?php _e('Follow us', 'wproto'); ?></h3>
+				
+				<p class="social"><?php wpl_exe_wp_front::social_icons('global', 'n'); ?></p>
+				
+			</div>
+		</div>
+		<?php endif; ?>
+	
+	</div>
+
+</div>

@@ -1,0 +1,15 @@
+<?php
+	$link = ($data['link']=='||') ? '' : $data['link'];
+	$link = function_exists('vc_build_link') ? vc_build_link($link) : $link;
+	$a_href = $link['url'];
+	$a_title = $link['title'];
+	$a_target = $link['target'];
+	
+	$button_style_string = '';
+	$icon_style_string = '';
+	
+	if( $data['border_radius'] <> '' ) $button_style_string .= 'border-radius: ' . $data['border_radius'] . '; ';
+	if( $data['icon_radius'] <> '' ) $icon_style_string .= 'border-radius: ' . $data['icon_radius'] . '; ';
+?>
+
+<a style="<?php echo esc_attr( $button_style_string ); ?>" class="button wproto-button-shortcode button-style-<?php echo esc_attr( $data['style'] ); ?> button-size-<?php echo esc_attr( $data['size'] ); ?> <?php echo $data['icon'] <> '' ? 'with-icon' : ''; ?>" href="<?php echo esc_attr( $a_href ); ?>" title="<?php echo esc_attr( $a_title ); ?>" target="<?php echo esc_attr( $a_target ); ?>"><?php echo $data['icon'] <> '' ? '<span class="icon-holder" style="' . esc_attr( $icon_style_string ) . '"><i class="' . esc_attr( $data['icon'] ) . '"></i></span> ' : ''; ?><?php echo esc_html( $data['title'] ); ?></a>

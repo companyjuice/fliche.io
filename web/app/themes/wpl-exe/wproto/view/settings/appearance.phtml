@@ -1,0 +1,566 @@
+<?php global $wpl_exe_wp, $wp_registered_sidebars; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Appearance', 'wproto'); ?></a>
+	</h2>
+	
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="appearance" />
+	
+		<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+		<div class="updated">
+			<p><?php _e('Settings were saved', 'wproto'); ?></p>
+		</div>
+		<?php endif; ?>
+	
+		<!--
+	
+			HEADER SETTINGS
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Header', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr class="without-space noborder">
+					<td colspan="2"><h4 class="header"><?php _e('Top bar', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show top bar', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$show_top_bar = $wpl_exe_wp->get_option( 'show_top_bar', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $show_top_bar, 'tr.top-bar-settings', 'appearance', 'show_top_bar'); ?>
+						
+					</td>
+				</tr>
+				<tr class="top-bar-settings" <?php echo $show_top_bar ? '' : 'style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Top bar style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$top_bar_style = $wpl_exe_wp->get_option( 'top_bar_style', 'appearance' ); 
+						?>
+					
+						<select class="select" name="appearance[top_bar_style]">
+							<option value="light"><?php _e('Light', 'wproto'); ?></option>
+							<option <?php echo $top_bar_style == 'dark' ? 'selected="selected"' : ''; ?> value="dark"><?php _e('Dark', 'wproto'); ?></option>
+						</select>
+						
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Address', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$top_bar_address = $wpl_exe_wp->get_option( 'top_bar_address', 'appearance' );
+							$top_bar_address_on_desktop = $wpl_exe_wp->get_option( 'top_bar_address_on_desktop', 'appearance' );
+							$top_bar_address_on_tablets = $wpl_exe_wp->get_option( 'top_bar_address_on_tablets', 'appearance' );
+							$top_bar_address_on_phones = $wpl_exe_wp->get_option( 'top_bar_address_on_phones', 'appearance' );  
+						?>
+						<input type="text" placeholder="102580 Santa Monica BLVD Los Angeles" name="appearance[top_bar_address]" value="<?php echo esc_attr( $top_bar_address ); ?>" />
+						&nbsp;
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $top_bar_address_on_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_address_on_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $top_bar_address_on_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_address_on_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						<label title="<?php _e('Display on phones', 'wproto'); ?>"><input <?php echo $top_bar_address_on_phones ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_address_on_phones]" value="1" /> <i class="fa fa-phone"></i></label>
+					
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Phone', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$top_bar_phone = $wpl_exe_wp->get_option( 'top_bar_phone', 'appearance' );
+							$top_bar_phone_on_desktop = $wpl_exe_wp->get_option( 'top_bar_phone_on_desktop', 'appearance' );
+							$top_bar_phone_on_tablets = $wpl_exe_wp->get_option( 'top_bar_phone_on_tablets', 'appearance' );
+							$top_bar_phone_on_phones = $wpl_exe_wp->get_option( 'top_bar_phone_on_phones', 'appearance' ); 
+						?>
+					
+						<input type="text" placeholder="+123 456 7890" name="appearance[top_bar_phone]" value="<?php echo esc_attr( $top_bar_phone ); ?>" />
+						
+						&nbsp;
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $top_bar_phone_on_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_phone_on_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $top_bar_phone_on_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_phone_on_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						<label title="<?php _e('Display on phones', 'wproto'); ?>"><input <?php echo $top_bar_phone_on_phones ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_phone_on_phones]" value="1" /> <i class="fa fa-phone"></i></label>
+					
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Email', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$top_bar_email = $wpl_exe_wp->get_option( 'top_bar_email', 'appearance' ); 
+							$top_bar_email_on_desktop = $wpl_exe_wp->get_option( 'top_bar_email_on_desktop', 'appearance' );
+							$top_bar_email_on_tablets = $wpl_exe_wp->get_option( 'top_bar_email_on_tablets', 'appearance' );
+							$top_bar_email_on_phones = $wpl_exe_wp->get_option( 'top_bar_email_on_phones', 'appearance' );
+						?>
+					
+						<input type="text" placeholder="your@email.com" name="appearance[top_bar_email]" value="<?php echo esc_attr( $top_bar_email ); ?>" />
+						
+						&nbsp;
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $top_bar_email_on_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_email_on_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $top_bar_email_on_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_email_on_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						<label title="<?php _e('Display on phones', 'wproto'); ?>"><input <?php echo $top_bar_email_on_phones ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_email_on_phones]" value="1" /> <i class="fa fa-phone"></i></label>
+					
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Skype', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$top_bar_skype = $wpl_exe_wp->get_option( 'top_bar_skype', 'appearance' );
+							$top_bar_skype_on_desktop = $wpl_exe_wp->get_option( 'top_bar_skype_on_desktop', 'appearance' );
+							$top_bar_skype_on_tablets = $wpl_exe_wp->get_option( 'top_bar_skype_on_tablets', 'appearance' );
+							$top_bar_skype_on_phones = $wpl_exe_wp->get_option( 'top_bar_skype_on_phones', 'appearance' ); 
+						?>
+
+						<input type="text" placeholder="YourSkypeLogin" name="appearance[top_bar_skype]" value="<?php echo esc_attr( $top_bar_skype ); ?>" />
+						
+						&nbsp;
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $top_bar_skype_on_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_skype_on_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $top_bar_skype_on_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_skype_on_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						<label title="<?php _e('Display on phones', 'wproto'); ?>"><input <?php echo $top_bar_skype_on_phones ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_skype_on_phones]" value="1" /> <i class="fa fa-phone"></i></label>
+					
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Working hours', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$top_bar_working_hours = $wpl_exe_wp->get_option( 'top_bar_working_hours', 'appearance' );
+							$top_bar_wh_on_desktop = $wpl_exe_wp->get_option( 'top_bar_wh_on_desktop', 'appearance' );
+							$top_bar_wh_on_tablets = $wpl_exe_wp->get_option( 'top_bar_wh_on_tablets', 'appearance' );
+							$top_bar_wh_on_phones = $wpl_exe_wp->get_option( 'top_bar_wh_on_phones', 'appearance' ); 
+						?>
+
+						<input type="text" placeholder="10:00 - 19:00" name="appearance[top_bar_working_hours]" value="<?php echo esc_attr( $top_bar_working_hours ); ?>" />
+						
+						&nbsp;
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $top_bar_wh_on_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_wh_on_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $top_bar_wh_on_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_wh_on_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						<label title="<?php _e('Display on phones', 'wproto'); ?>"><input <?php echo $top_bar_wh_on_phones ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_wh_on_phones]" value="1" /> <i class="fa fa-phone"></i></label>
+					
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Additional info', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$top_bar_free_text = $wpl_exe_wp->get_option( 'top_bar_free_text', 'appearance' );
+							$top_bar_ft_on_deskop = $wpl_exe_wp->get_option( 'top_bar_ft_on_deskop', 'appearance' );
+							$top_bar_ft_on_tablets = $wpl_exe_wp->get_option( 'top_bar_ft_on_tablets', 'appearance' );
+							$top_bar_ft_on_phones = $wpl_exe_wp->get_option( 'top_bar_ft_on_phones', 'appearance' );  
+						?>
+					
+						<input type="text" placeholder="<?php _e('Additional info', 'wproto'); ?>" name="appearance[top_bar_free_text]" value="<?php echo esc_attr( $top_bar_free_text ); ?>" />
+						
+						&nbsp;
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $top_bar_ft_on_deskop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_ft_on_deskop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $top_bar_ft_on_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_ft_on_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						<label title="<?php _e('Display on phones', 'wproto'); ?>"><input <?php echo $top_bar_ft_on_phones ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[top_bar_ft_on_phones]" value="1" /> <i class="fa fa-phone"></i></label>
+					
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Display social icons', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_social_icons_top_bar_desktop = $wpl_exe_wp->get_option( 'display_social_icons_top_bar_desktop', 'appearance' );
+							$display_social_icons_top_bar_tablets = $wpl_exe_wp->get_option( 'display_social_icons_top_bar_tablets', 'appearance' );
+							$display_social_icons_top_bar_phones = $wpl_exe_wp->get_option( 'display_social_icons_top_bar_phones', 'appearance' ); 
+						?>
+					
+
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $display_social_icons_top_bar_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[display_social_icons_top_bar_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $display_social_icons_top_bar_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[display_social_icons_top_bar_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						<label title="<?php _e('Display on phones', 'wproto'); ?>"><input <?php echo $display_social_icons_top_bar_phones ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[display_social_icons_top_bar_phones]" value="1" /> <i class="fa fa-phone"></i></label>
+						
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Display Login / Register widget', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_login_top_bar_desktop = $wpl_exe_wp->get_option( 'display_login_top_bar_desktop', 'appearance' );
+							$display_login_top_bar_tablets = $wpl_exe_wp->get_option( 'display_login_top_bar_tablets', 'appearance' ); 
+						?>
+					
+
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $display_login_top_bar_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[display_login_top_bar_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $display_login_top_bar_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[display_login_top_bar_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						
+					</td>
+				</tr>
+				<tr class="top-bar-settings" <?php echo $show_top_bar ? '' : 'style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Login / register widget style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$login_register_top_bar_style = $wpl_exe_wp->get_option( 'login_register_top_bar_style', 'appearance' ); 
+						?>
+					
+						<select class="select" name="appearance[login_register_top_bar_style]">
+							<?php for( $i=1; $i<9; $i++ ): ?>
+							<option <?php echo $login_register_top_bar_style == 'style_' . $i ? 'selected="selected"' : ''; ?> value="style_<?php echo $i; ?>"><?php _e('Style', 'wproto'); ?> <?php echo $i; ?></option>
+							<?php endfor; ?>
+						</select>
+						
+					</td>
+				</tr>
+				<tr class="top-bar-settings"<?php echo $show_top_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Display WooCommerce Wishlist', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_wishlist_top_bar_desktop = $wpl_exe_wp->get_option( 'display_wishlist_top_bar_desktop', 'appearance' );
+							$display_wishlist_top_bar_tablets = $wpl_exe_wp->get_option( 'display_wishlist_top_bar_tablets', 'appearance' ); 
+						?>
+					
+
+						<label title="<?php _e('Display on desktop', 'wproto'); ?>"><input <?php echo $display_wishlist_top_bar_desktop ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[display_wishlist_top_bar_desktop]" value="1" /> <i class="fa fa-desktop"></i></label> &nbsp;
+						<label title="<?php _e('Display on tablets', 'wproto'); ?>"><input <?php echo $display_wishlist_top_bar_tablets ? 'checked="checked"' : ''; ?> type="checkbox" name="appearance[display_wishlist_top_bar_tablets]" value="1" /> <i class="fa fa-tablet"></i></label> &nbsp; 
+						
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Appearance settings', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Display search icon / form at header (only for classic headers)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_search_bar = $wpl_exe_wp->get_option( 'display_search_bar', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_search_bar, 'tr.wproto-search-form-style', 'appearance', 'display_search_bar'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Display WooCommerce cart widget at header (only for classic headers)', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_menu_cart = $wpl_exe_wp->get_option( 'display_menu_cart', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_menu_cart, 'tr.wproto-search-form-style', 'appearance', 'display_menu_cart'); ?>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Header menu scrolling', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$menu_scrolling = $wpl_exe_wp->get_option( 'menu_scrolling', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $menu_scrolling, 'tr.wproto-mobile-menu-scrolling', 'appearance', 'menu_scrolling'); ?>
+						
+					</td>
+				</tr>
+				<tr class="wproto-mobile-menu-scrolling" <?php echo $menu_scrolling ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Scroll menu at mobile devices', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$menu_mobile_scrolling = $wpl_exe_wp->get_option( 'menu_mobile_scrolling', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $menu_mobile_scrolling, false, 'appearance', 'menu_mobile_scrolling'); ?>
+						
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Header style', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Header style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$header_style = $wpl_exe_wp->get_option( 'header_style', 'appearance' ); 
+						?>
+					
+						<select class="select" name="appearance[header_style]">
+							<?php foreach( $wpl_exe_wp->system_config['header_styles'] as $k=>$v ): ?>
+							<option <?php echo $header_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Breadcrumbs bar style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$breadcrumbs_bar_style = $wpl_exe_wp->get_option( 'breadcrumbs_bar_style', 'appearance' ); 
+						?>
+					
+						<select class="select" name="appearance[breadcrumbs_bar_style]">
+							<?php foreach( $wpl_exe_wp->system_config['breadcrumbs_bar_styles'] as $k=>$v): ?>
+							<option <?php echo $breadcrumbs_bar_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+		
+		<!--
+	
+			Sidebar settings
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Sidebar', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Display sidebar at all pages', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$display_sidebar = $wpl_exe_wp->get_option( 'display_sidebar', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $display_sidebar, 'tr.sidebar-settings', 'appearance', 'display_sidebar'); ?>
+						
+					</td>
+				</tr>
+				<tr class="sidebar-settings"<?php echo $display_sidebar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Sidebar position', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$default_sidebar = $wpl_exe_wp->get_option( 'default_sidebar', 'appearance' ); 
+						?>
+					
+						<select class="select" name="appearance[default_sidebar]">
+							<option value="right"><?php _e( 'Right', 'wproto' ); ?></option>
+							<option <?php echo $default_sidebar == 'left' ? 'selected="selected"' : ''; ?> value="left"><?php _e( 'Left', 'wproto' ); ?></option>
+						</select>
+						
+					</td>
+				</tr>
+				<tr class="sidebar-settings"<?php echo $display_sidebar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Choose widget area', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$default_sidebar_id = $wpl_exe_wp->get_option( 'default_sidebar_id', 'appearance' ); 
+							
+							global $wp_registered_sidebars;
+						?>
+					
+						<select class="select" name="appearance[default_sidebar_id]">
+							<?php foreach( $wp_registered_sidebars as $sidebar ): ?>
+							<option <?php echo $default_sidebar_id == $sidebar['id'] ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $sidebar['id'] ); ?>"><?php echo esc_html( $sidebar['name'] ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+
+
+		<!--
+	
+			Footer settings
+		
+		-->
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Footer', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr class="without-space noborder">
+					<td colspan="2"><h4 class="header"><?php _e('Appearance', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Footer style', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$footer_style = $wpl_exe_wp->get_option( 'footer_style', 'appearance' ); 
+						?>
+					
+						<select class="select" name="appearance[footer_style]">
+							<?php foreach( $wpl_exe_wp->system_config['footer_styles'] as $k=>$v ): ?>
+							<option <?php echo $footer_style == $v ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $v ); ?>"><?php echo esc_html( $k ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Default widgetized footer area', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$widgetized_footer_sidebar_id = $wpl_exe_wp->get_option( 'widgetized_footer_sidebar_id', 'appearance' );
+						?>
+					
+						<select class="select" name="appearance[widgetized_footer_sidebar_id]">
+							<option value="">&mdash;</option>
+							<?php if( is_array( $wp_registered_sidebars ) && count( $wp_registered_sidebars ) > 0 ): ?>
+				
+								<?php foreach( $wp_registered_sidebars as $sidebar ): ?>
+								<option <?php echo $widgetized_footer_sidebar_id == $sidebar['id'] ? 'selected="selected"' : ''; ?> value="<?php echo esc_attr( $sidebar['id'] ); ?>"><?php echo esc_html( $sidebar['name'] ); ?></option>
+								<?php endforeach; ?>
+				
+							<?php endif; ?>
+						</select>
+					
+					</td>
+				</tr>
+				<tr class="without-space">
+					<td colspan="2"><h4 class="header"><?php _e('Bottom bar', 'wproto'); ?></h4></td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Show bottom bar', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$show_bottom_bar = $wpl_exe_wp->get_option( 'show_bottom_bar', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $show_bottom_bar, 'tr.bottom-bar-settings', 'appearance', 'show_bottom_bar'); ?>
+					
+					</td>
+				</tr>
+				<tr class="bottom-bar-settings"<?php echo $show_bottom_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Copyright information', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$copyright = $wpl_exe_wp->get_option( 'copyright', 'appearance' ); 
+						?>
+					
+						<textarea name="appearance[copyright]" rows="5" placeholder="&copy;<?php echo date('Y'); ?> YourCompany"><?php echo esc_textarea( $copyright ); ?></textarea>
+					
+					</td>
+				</tr>
+				<tr class="bottom-bar-settings"<?php echo $show_bottom_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Content to display after copyright', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php $content_after_copyright = $wpl_exe_wp->get_option( 'content_after_copyright', 'appearance' ); ?>
+					
+						<select class="select" name="appearance[content_after_copyright]">
+							<option value=""><?php _e('Do not display anything', 'wproto'); ?></option>
+							<option <?php echo $content_after_copyright == 'menu' ? 'selected="selected"' : ''; ?> value="menu"><?php _e('Bottom bar menu', 'wproto'); ?></option>
+							<option <?php echo $content_after_copyright == 'social_icons' ? 'selected="selected"' : ''; ?> value="social_icons"><?php _e('Social icons', 'wproto'); ?></option>
+						</select>
+					
+					</td>
+				</tr>
+				<tr class="bottom-bar-settings"<?php echo $show_bottom_bar ? '' : ' style="display: none;"'; ?>>
+					<th>
+						<label><?php _e( 'Give credits to WPlab', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+					
+						<?php
+							$wplab_copyright = $wpl_exe_wp->get_option( 'wplab_copyright', 'appearance' ); 
+						?>
+					
+						<?php wpl_exe_wp_admin_utils::switcher( $wplab_copyright, false, 'appearance', 'wplab_copyright'); ?>
+						
+						<p style="<?php echo ! $wplab_copyright ? 'display: none' : ''; ?>"><strong><?php _e( 'Thank you so much!', 'wproto' ); ?></strong></p>
+					
+					</td>
+				</tr>
+			</table>
+		
+		</div>	
+
+		
+		<!--
+		
+			Save button
+			
+		-->
+		<div class="wproto-settings-box save-box">
+			<input type="submit" name="wproto_reset_to_defaults" class="button alignleft" value="<?php _e( 'Reset to defaults', 'wproto' ); ?>" />
+			<input type="submit" class="button button-primary" value="<?php _e( 'Save settings', 'wproto' ); ?>" />
+		</div>
+		
+	</form>
+	
+</div>

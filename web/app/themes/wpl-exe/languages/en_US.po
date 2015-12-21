@@ -1,0 +1,6811 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: EXE\n"
+"POT-Creation-Date: 2015-10-14 18:03+0200\n"
+"PO-Revision-Date: 2015-10-14 18:04+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../comments.php:28
+#, php-format
+msgid "Required fields are marked %s"
+msgstr ""
+
+#: ../comments.php:50
+msgid "Full Name&#42;"
+msgstr ""
+
+#: ../comments.php:52
+msgid "Email Address&#42;"
+msgstr ""
+
+#: ../comments.php:54
+msgid "Your Website"
+msgstr ""
+
+#: ../comments.php:59
+msgid "Type Here Your Message&#42;"
+msgstr ""
+
+#: ../comments.php:63
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: ../comments.php:84
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:85
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:116
+msgid "Posted on"
+msgstr ""
+
+#: ../comments.php:117
+msgid "Reply"
+msgstr ""
+
+#: ../comments.php:140
+msgid "Pingback"
+msgstr ""
+
+#: ../footer.php:39
+msgid "Developed by"
+msgstr ""
+
+#: ../library/envato-wordpress-toolkit-library/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr ""
+
+#: ../library/envato-wordpress-toolkit-library/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr ""
+
+#: ../library/envato-wordpress-toolkit-library/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr ""
+
+#: ../library/envato-wordpress-toolkit-library/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr ""
+
+#: ../library/envato-wordpress-toolkit-library/class-envato-wordpress-theme-upgrader.php:290
+msgid "Downloading upgrade package from the Envato API&#8230;"
+msgstr ""
+
+#: ../library/envato-wordpress-toolkit-library/class-envato-wordpress-theme-upgrader.php:301
+msgid "Downloading install package from the Envato API&#8230;"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:161
+#: ../wproto/controller/base.php:115
+msgid "Install Required Plugins"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:162
+#: ../wproto/controller/base.php:116
+msgid "Install Plugins"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:163
+#: ../wproto/controller/base.php:117
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:164
+msgid "Something went wrong."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:175
+#: ../wproto/controller/base.php:129
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:176
+msgid "Return to the dashboard"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:177
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1956
+#: ../wproto/controller/base.php:130
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:178
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:179
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:180
+msgid "Dismiss this notice"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:532
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2173
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1167
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1348
+msgid "Private Repository"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1170
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1351
+msgid "Pre-Packaged"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1175
+msgid "WordPress Repository"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1178
+msgid "Required"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1178
+msgid "Recommended"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1181
+msgid "Not Installed"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1183
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1288
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1409
+msgid "Install"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1312
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1410
+msgid "Activate"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1372
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1388
+msgid "Plugin"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1389
+msgid "Source"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1390
+msgid "Type"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1391
+#: ../wproto/view/admin_filters/posts_filter.phtml:14
+msgid "Status"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1939
+msgid "Install package not available."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1940
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1941
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1942
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1943
+msgid "Plugin install failed."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1944
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:1955
+msgid "Plugin activation failed."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2069
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2070
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2070
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2079
+msgid "Show Details"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2070
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2079
+msgid "Hide Details"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2071
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2072
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2076
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2077
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2078
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2079
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2080
+msgid "All installations have been completed."
+msgstr ""
+
+#: ../library/tgm-plugin-activation/class-tgm-plugin-activation.php:2081
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../page-coming-soon.php:16
+msgid "days"
+msgstr ""
+
+#: ../page-coming-soon.php:22
+msgid "hours"
+msgstr ""
+
+#: ../page-coming-soon.php:28
+msgid "mins"
+msgstr ""
+
+#: ../page-coming-soon.php:34
+msgid "secs"
+msgstr ""
+
+#: ../part-breadcrumbs.php:21 ../wproto/helper/front.php:552
+#: ../wproto/helper/front.php:1466
+msgid "Shop"
+msgstr ""
+
+#: ../part-breadcrumbs.php:37
+msgid "Page not found"
+msgstr ""
+
+#: ../part-breadcrumbs.php:39 ../wproto/helper/front.php:584
+msgid "Password restore"
+msgstr ""
+
+#: ../part-breadcrumbs.php:43
+msgid "You are here"
+msgstr ""
+
+#: ../part-no_posts.php:2
+msgid "No posts were found"
+msgstr ""
+
+#: ../part-no_posts.php:3
+msgid ""
+"Unfortunately, we could not find the information relevant to your request."
+msgstr ""
+
+#: ../part-no_posts.php:4
+msgid "Go back to Home"
+msgstr ""
+
+#: ../part-post_content.php:40 ../part-post_content.php:133 ../single.php:63
+#: ../wproto/helper/front.php:1664
+msgid "By"
+msgstr ""
+
+#: ../part-post_content.php:41 ../part-post_content.php:134 ../single.php:64
+#: ../wproto/helper/front.php:1665
+msgid "In"
+msgstr ""
+
+#: ../part-post_content.php:43 ../part-post_content.php:136 ../single.php:66
+#: ../wproto/view/shortcodes/posts_carousel.phtml:144
+#: ../wproto/view/widgets/posts.phtml:89
+#: ../wproto/view/widgets/posts.phtml:142
+msgid "no comments"
+msgstr ""
+
+#: ../part-post_content.php:43 ../part-post_content.php:136 ../single.php:66
+#: ../wproto/view/shortcodes/posts_carousel.phtml:144
+#: ../wproto/view/widgets/posts.phtml:89
+#: ../wproto/view/widgets/posts.phtml:142
+msgid "one comment"
+msgstr ""
+
+#: ../part-post_content.php:43 ../part-post_content.php:136 ../single.php:66
+#: ../wproto/view/shortcodes/posts_carousel.phtml:144
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: ../part-product_content.php:24 ../shop/single-product/related.php:61
+#: ../shop/single-product/up-sells.php:63
+#: ../wproto/view/shortcodes/product_carousel.phtml:20
+msgid "Sale"
+msgstr ""
+
+#: ../part-product_content.php:27 ../shop/single-product/related.php:64
+#: ../shop/single-product/up-sells.php:66
+#: ../wproto/view/shortcodes/product_carousel.phtml:24
+#: ../wproto/view/shortcodes/product_carousel.phtml:53
+#: ../wproto/view/shortcodes/product_carousel.phtml:80
+msgid "Add to my Wishlist"
+msgstr ""
+
+#: ../part-product_content.php:119 ../part-product_content.php:146
+msgid "Add to Wishlist"
+msgstr ""
+
+#: ../portfolio/full_screen_slider.php:124
+#: ../portfolio/gallery_full_width_thumbnails.php:151
+#: ../portfolio/gallery_horizontal_thumbnails.php:146
+#: ../portfolio/gallery_vertical_thumbnails.php:148
+#: ../portfolio/image_and_details.php:137 ../portfolio/vertical_image.php:134
+msgid "Previous project"
+msgstr ""
+
+#: ../portfolio/full_screen_slider.php:126
+#: ../portfolio/gallery_full_width_thumbnails.php:153
+#: ../portfolio/gallery_horizontal_thumbnails.php:148
+#: ../portfolio/gallery_vertical_thumbnails.php:150
+#: ../portfolio/image_and_details.php:139 ../portfolio/vertical_image.php:136
+msgid "Next project"
+msgstr ""
+
+#: ../portfolio/gallery_full_width_thumbnails.php:82
+#: ../portfolio/gallery_horizontal_thumbnails.php:77
+#: ../portfolio/gallery_vertical_thumbnails.php:73
+#: ../portfolio/image_and_details.php:68 ../portfolio/vertical_image.php:65
+#: ../wproto/helper/front.php:591
+msgid "Category"
+msgstr ""
+
+#: ../portfolio/gallery_full_width_thumbnails.php:86
+#: ../portfolio/gallery_horizontal_thumbnails.php:81
+#: ../portfolio/gallery_vertical_thumbnails.php:77
+#: ../portfolio/image_and_details.php:72 ../portfolio/vertical_image.php:69
+msgid "Client"
+msgstr ""
+
+#: ../portfolio/gallery_full_width_thumbnails.php:90
+#: ../portfolio/gallery_horizontal_thumbnails.php:85
+#: ../portfolio/gallery_vertical_thumbnails.php:81
+#: ../portfolio/image_and_details.php:76 ../portfolio/vertical_image.php:73
+#: ../wproto/controller/admin_vc.php:803
+#: ../wproto/view/admin_filters/posts_filter.phtml:11
+msgid "Link"
+msgstr ""
+
+#: ../portfolio/gallery_full_width_thumbnails.php:94
+#: ../portfolio/gallery_horizontal_thumbnails.php:89
+#: ../portfolio/gallery_vertical_thumbnails.php:85
+#: ../portfolio/image_and_details.php:80 ../portfolio/vertical_image.php:77
+#: ../wproto/controller/admin_posts.php:377
+#: ../wproto/controller/admin_posts.php:420
+#: ../wproto/controller/admin_posts.php:446
+#: ../wproto/controller/admin_posts.php:517
+#: ../wproto/controller/admin_posts.php:560
+#: ../wproto/controller/admin_posts.php:603
+#: ../wproto/controller/admin_posts.php:648
+#: ../wproto/widget/testimonials.phtml:92
+#: ../wproto/widget/thumbnails_carousel.phtml:107
+msgid "Date"
+msgstr ""
+
+#: ../portfolio/gallery_full_width_thumbnails.php:98
+#: ../portfolio/gallery_horizontal_thumbnails.php:93
+#: ../portfolio/gallery_vertical_thumbnails.php:89
+#: ../portfolio/image_and_details.php:84 ../portfolio/vertical_image.php:81
+#: ../wproto/helper/front.php:1002
+msgid "Share"
+msgstr ""
+
+#: ../portfolio/gallery_horizontal_thumbnails.php:74
+#: ../portfolio/vertical_image.php:62
+msgid "Project Info"
+msgstr ""
+
+#: ../search-form-shop.php:3 ../search-form.php:3
+msgid "Type and hit Enter"
+msgstr ""
+
+#: ../shop/single-product/meta.php:26
+msgid "SKU:"
+msgstr ""
+
+#: ../shop/single-product/meta.php:27
+msgid "N/A"
+msgstr ""
+
+#: ../shop/single-product/product-image.php:42
+msgid "Placeholder"
+msgstr ""
+
+#: ../shop/single-product/related.php:42
+msgid "Related Products"
+msgstr ""
+
+#: ../shop/single-product/up-sells.php:44
+msgid "You may also like&hellip;"
+msgstr ""
+
+#: ../single.php:128 ../wproto/controller/admin_posts.php:374
+msgid "Tags"
+msgstr ""
+
+#: ../single.php:188
+msgid "Previous post"
+msgstr ""
+
+#: ../single.php:190
+msgid "Next post"
+msgstr ""
+
+#: ../vc_templates/vc_accordion_tab.php:8
+msgid "Empty section. Edit page to add content here."
+msgstr ""
+
+#: ../vc_templates/vc_tab.php:12
+msgid "Empty tab. Edit page to add content here."
+msgstr ""
+
+#: ../wproto/controller/admin.php:97 ../wproto/controller/admin_vc.php:51
+#: ../wproto/helper/admin_menu_walker.php:155
+#: ../wproto/view/metaboxes/benefits_style.phtml:29
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:71
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:72
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:73
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:192
+msgid "Select icon"
+msgstr ""
+
+#: ../wproto/controller/admin.php:98 ../wproto/controller/admin.php:359
+#: ../wproto/controller/admin.php:373 ../wproto/controller/admin_vc.php:1178
+#: ../wproto/controller/front.php:121
+#: ../wproto/view/dialog/icon_picker.phtml:68
+msgid "Error"
+msgstr ""
+
+#: ../wproto/controller/admin.php:99 ../wproto/helper/admin.php:170
+#: ../wproto/helper/admin_menu_walker.php:236 ../wproto/helper/front.php:1390
+#: ../wproto/view/metaboxes/benefits_style.phtml:35
+#: ../wproto/view/settings/branding.phtml:194
+#: ../wproto/view/settings/branding.phtml:214
+#: ../wproto/view/settings/branding.phtml:219
+#: ../wproto/view/settings/branding.phtml:224
+#: ../wproto/view/settings/branding.phtml:229
+#: ../wproto/view/settings/custom_modes.phtml:186
+#: ../wproto/view/settings/custom_modes.phtml:417
+#: ../wproto/view/settings/general.phtml:94
+#: ../wproto/view/settings/general.phtml:112
+msgid "Remove"
+msgstr ""
+
+#: ../wproto/controller/admin.php:100
+msgid "Rename"
+msgstr ""
+
+#: ../wproto/controller/admin.php:101
+msgid "Delete"
+msgstr ""
+
+#: ../wproto/controller/admin.php:102
+#: ../wproto/helper/admin_menu_walker.php:155
+#: ../wproto/view/metaboxes/benefits_style.phtml:29
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:192
+msgid "Change"
+msgstr ""
+
+#: ../wproto/controller/admin.php:103 ../wproto/controller/admin_posts.php:369
+msgid "Sticky"
+msgstr ""
+
+#: ../wproto/controller/admin.php:104 ../wproto/controller/admin.php:121
+msgid "Select"
+msgstr ""
+
+#: ../wproto/controller/admin.php:105
+msgid "Successfully"
+msgstr ""
+
+#: ../wproto/controller/admin.php:106
+msgid "Grabbing"
+msgstr ""
+
+#: ../wproto/controller/admin.php:107
+msgid "Cannot connect to Google"
+msgstr ""
+
+#: ../wproto/controller/admin.php:108
+msgid "Please, wait..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:109
+msgid "No images was found."
+msgstr ""
+
+#: ../wproto/controller/admin.php:110
+msgid "All done"
+msgstr ""
+
+#: ../wproto/controller/admin.php:111
+msgid "Rebuilding"
+msgstr ""
+
+#: ../wproto/controller/admin.php:112
+msgid "of"
+msgstr ""
+
+#: ../wproto/controller/admin.php:113
+msgid "Icon Picker"
+msgstr ""
+
+#: ../wproto/controller/admin.php:114
+msgid "Remove Icon"
+msgstr ""
+
+#: ../wproto/controller/admin.php:115
+msgid "Select Icon"
+msgstr ""
+
+#: ../wproto/controller/admin.php:116
+msgid "Select an image"
+msgstr ""
+
+#: ../wproto/controller/admin.php:117
+#: ../wproto/view/metaboxes/attached_images.phtml:31
+msgid "No images selected"
+msgstr ""
+
+#: ../wproto/controller/admin.php:118
+msgid "One image selected"
+msgstr ""
+
+#: ../wproto/controller/admin.php:119
+msgid "images selected"
+msgstr ""
+
+#: ../wproto/controller/admin.php:120
+msgid "Attach Images"
+msgstr ""
+
+#: ../wproto/controller/admin.php:122
+msgid ""
+"An AJAX error occurred when performing a query. Please contact Customer "
+"Support if the problem persists."
+msgstr ""
+
+#: ../wproto/controller/admin.php:123
+msgid ""
+"The script have received an invalid response from the server. Please contact "
+"Customer Support if the problem persists."
+msgstr ""
+
+#: ../wproto/controller/admin.php:124
+msgid "Confirm action"
+msgstr ""
+
+#: ../wproto/controller/admin.php:125
+msgid "Are you sure you want to delete? This action cannot be undone."
+msgstr ""
+
+#: ../wproto/controller/admin.php:126
+msgid "Value"
+msgstr ""
+
+#: ../wproto/controller/admin.php:127
+msgid "Feature name"
+msgstr ""
+
+#: ../wproto/controller/admin.php:128
+msgid "Package name"
+msgstr ""
+
+#: ../wproto/controller/admin.php:129
+msgid "Edit Toggles content"
+msgstr ""
+
+#: ../wproto/controller/admin.php:130
+msgid "Edit Progress bars"
+msgstr ""
+
+#: ../wproto/controller/admin.php:131
+msgid "Loading... Please wait..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:133
+msgid "Loading LESS files..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:134
+msgid "File loaded successfully."
+msgstr ""
+
+#: ../wproto/controller/admin.php:135
+msgid "Compilation LESS variables into CSS..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:136
+msgid "Cannot parse LESS. That's why: "
+msgstr ""
+
+#: ../wproto/controller/admin.php:137
+msgid "LESS code was successfully compiled."
+msgstr ""
+
+#: ../wproto/controller/admin.php:138
+msgid "Saving stylesheet..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:139
+msgid "Submitting the form..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:140
+#, php-format
+msgid "%s Installing demo data, please wait..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:141
+msgid ""
+"Seems something going wrong... We have received a wrong answer from the "
+"server."
+msgstr ""
+
+#: ../wproto/controller/admin.php:142
+msgid "Checking correct work of <code>file_get_content()</code> function..."
+msgstr ""
+
+#: ../wproto/controller/admin.php:143
+msgid ""
+"Theme can not read stylesheet file. For first, check that <code>customizer."
+"less</code> file exists on your server in <code>/css/</code> directory and "
+"it readable. If this does not help, <code>file_get_content()</code> function "
+"does not work properly on your hosting. This is not a theme bug, and You "
+"should contact your hosting provider to resolve that error."
+msgstr ""
+
+#: ../wproto/controller/admin.php:247
+#, php-format
+msgid ""
+"Cannot install the theme. PHP version > 5.3.0 is required. Your PHP version: "
+"%s"
+msgstr ""
+
+#: ../wproto/controller/admin.php:251
+#, php-format
+msgid ""
+"Cannot activate the theme. WordPress version > 3.8 is required. Your "
+"WordPress version: %s"
+msgstr ""
+
+#: ../wproto/controller/admin.php:277
+msgid "Once Weekly"
+msgstr ""
+
+#: ../wproto/controller/admin.php:307
+msgid ""
+"Maintenance mode is enabled. All pages of your website will be not "
+"availabled for visitors (<strong>users, with Administrator permissions are "
+"excluded</strong>) and search engines, while maintenance mode is enabled."
+msgstr ""
+
+#: ../wproto/controller/admin.php:307 ../wproto/controller/admin.php:311
+msgid "Settings page"
+msgstr ""
+
+#: ../wproto/controller/admin.php:311
+msgid ""
+"Coming soon mode is enabled. All pages of your website will be not "
+"availabled for visitors (<strong>users, with Administrator permissions are "
+"excluded</strong>) and search engines, while \"coming soon\" mode is enabled."
+msgstr ""
+
+#: ../wproto/controller/admin.php:361
+#, php-format
+msgid ""
+"New version of theme is available! <a href=\"%s\">Click here</a> to update a "
+"theme."
+msgstr ""
+
+#: ../wproto/controller/admin.php:363
+msgid "You are using latest version of theme"
+msgstr ""
+
+#: ../wproto/controller/admin.php:371
+msgid "Theme was successfully updated to newest version!"
+msgstr ""
+
+#: ../wproto/controller/admin.php:378
+msgid ""
+"Error. We can not find theme license in this Envato account, updating "
+"process canceled."
+msgstr ""
+
+#: ../wproto/controller/admin.php:386
+msgid "Please enter Envato username and API Key"
+msgstr ""
+
+#: ../wproto/controller/admin.php:400 ../wproto/controller/admin.php:401
+msgid "Theme Options"
+msgstr ""
+
+#: ../wproto/controller/admin.php:416 ../wproto/controller/admin.php:417
+#: ../wproto/view/settings/branding.phtml:6
+msgid "Branding"
+msgstr ""
+
+#: ../wproto/controller/admin.php:423 ../wproto/controller/admin.php:424
+msgid "Customizer"
+msgstr ""
+
+#: ../wproto/controller/admin.php:430 ../wproto/controller/admin.php:431
+#: ../wproto/controller/base.php:480 ../wproto/controller/base.php:504
+#: ../wproto/controller/base.php:506
+msgid "Custom fonts"
+msgstr ""
+
+#: ../wproto/controller/admin.php:436 ../wproto/controller/admin.php:437
+msgid "Widget areas"
+msgstr ""
+
+#: ../wproto/controller/admin.php:442 ../wproto/controller/admin.php:443
+#: ../wproto/view/settings/appearance.phtml:6
+#: ../wproto/view/settings/appearance.phtml:443
+#: ../wproto/view/settings/custom_posts.phtml:57
+#: ../wproto/view/settings/custom_posts.phtml:250
+msgid "Appearance"
+msgstr ""
+
+#: ../wproto/controller/admin.php:449 ../wproto/controller/admin.php:450
+#: ../wproto/view/settings/system_layouts.phtml:6
+msgid "System layouts"
+msgstr ""
+
+#: ../wproto/controller/admin.php:456 ../wproto/controller/admin.php:457
+msgid "Single layouts"
+msgstr ""
+
+#: ../wproto/controller/admin.php:463 ../wproto/controller/admin.php:464
+msgid "Plugins"
+msgstr ""
+
+#: ../wproto/controller/admin.php:470 ../wproto/controller/admin.php:471
+msgid "WooCommerce"
+msgstr ""
+
+#: ../wproto/controller/admin.php:477 ../wproto/controller/admin.php:478
+msgid "API & Social icons"
+msgstr ""
+
+#: ../wproto/controller/admin.php:484 ../wproto/controller/admin.php:485
+msgid "Coming soon & Maintenance modes"
+msgstr ""
+
+#: ../wproto/controller/admin.php:491 ../wproto/controller/admin.php:492
+#: ../wproto/view/settings/tools.phtml:6
+msgid "Tools"
+msgstr ""
+
+#: ../wproto/controller/admin.php:498 ../wproto/controller/admin.php:499
+msgid "Demo data"
+msgstr ""
+
+#: ../wproto/controller/admin.php:505 ../wproto/controller/admin.php:506
+#: ../wproto/view/settings/updater.phtml:6
+msgid "Update a theme"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:83
+msgid "Redirect Options"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:92
+msgid "Header options"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:103
+msgid "Featured post"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:115
+msgid "Post / Page appearance options"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:127
+#: ../wproto/view/settings/system_layouts.phtml:129
+msgid "Sidebar options"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:137
+msgid "Footer options"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:149
+msgid "Font properties"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:159
+#: ../wproto/view/settings/custom_modes.phtml:139
+#: ../wproto/view/settings/custom_modes.phtml:370
+msgid "Style settings"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:171
+msgid "Additional information"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:180
+msgid "Attached Images"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:193
+msgid "Connections"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:202
+msgid "Public information"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:213
+#: ../wproto/controller/admin_posts.php:224
+#: ../wproto/view/settings/appearance.phtml:174
+#: ../wproto/view/settings/appearance.phtml:185
+msgid "Additional info"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:238
+msgid "Pricing Table Editor"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:363
+#: ../wproto/controller/admin_posts.php:598
+#: ../wproto/controller/admin_posts.php:643
+msgid "Photo"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:364
+#: ../wproto/controller/admin_posts.php:599
+#: ../wproto/controller/admin_posts.php:644
+#: ../wproto/controller/admin_vc.php:3027 ../wproto/widget/taxonomy.phtml:79
+msgid "Name"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:370
+#: ../wproto/controller/admin_posts.php:558
+msgid "Featured"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:375
+#: ../wproto/controller/admin_posts.php:444
+#: ../wproto/controller/admin_posts.php:515
+#: ../wproto/controller/admin_posts.php:559
+#: ../wproto/controller/admin_posts.php:601
+#: ../wproto/controller/admin_posts.php:646
+#: ../wproto/controller/admin_vc.php:2398
+#: ../wproto/controller/admin_vc.php:2557
+#: ../wproto/controller/admin_vc.php:2662
+#: ../wproto/controller/admin_vc.php:2771
+#: ../wproto/controller/admin_vc.php:2921 ../wproto/controller/base.php:591
+#: ../wproto/widget/taxonomy.phtml:52
+msgid "Categories"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:376
+#: ../wproto/controller/admin_posts.php:419
+#: ../wproto/controller/admin_vc.php:649
+msgid "Author"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:417
+#: ../wproto/controller/admin_posts.php:442
+#: ../wproto/controller/admin_posts.php:514
+#: ../wproto/controller/admin_posts.php:557
+#: ../wproto/controller/admin_vc.php:1799
+#: ../wproto/view/metaboxes/attached_images_item.phtml:17
+#: ../wproto/view/widgets/widget_toggles_settings.phtml:18
+#: ../wproto/widget/testimonials.phtml:94
+#: ../wproto/widget/thumbnails_carousel.phtml:109
+msgid "Title"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:418
+msgid "Page template"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:441
+msgid "Icon / Image"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:443
+#: ../wproto/controller/admin_posts.php:645
+#: ../wproto/controller/admin_vc.php:611 ../wproto/controller/admin_vc.php:813
+#: ../wproto/controller/admin_vc.php:1082
+msgid "Text"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:513
+msgid "Logo"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:556
+#: ../wproto/controller/admin_vc.php:702 ../wproto/controller/admin_vc.php:710
+#: ../wproto/controller/woocommerce.php:333 ../wproto/helper/admin.php:167
+#: ../wproto/view/admin_filters/posts_filter.phtml:12
+msgid "Image"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:874
+msgid "page"
+msgstr ""
+
+#: ../wproto/controller/admin_posts.php:874
+msgid "post"
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:366
+msgid "Uploading demo images into WordPress gallery..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:409
+msgid "All images were uploaded successfully. Inserting blog posts..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:423
+msgid "All blog posts were inserted successfully. Inserting pricing tables..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:437
+msgid ""
+"All pricing tables were inserted successfully. Inserting partners / clients "
+"posts..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:451
+msgid ""
+"All partners / clients posts were inserted successfully. Inserting portfolio "
+"posts..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:465
+msgid ""
+"All portfolio posts were inserted successfully. Inserting team members..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:479
+msgid "All team members were inserted successfully. Inserting benefits..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:493
+msgid "All benefits were inserted successfully. Inserting testimonials..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:507
+msgid "All testimonials were inserted successfully. Inserting contact forms..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:519
+msgid "All forms were inserted successfully. Inserting demo slideshows..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:521
+msgid ""
+"NinjaForms plugin is NOT activated. Installing demo forms failed. Inserting "
+"demo slideshows..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:539
+msgid "All slideshows were inserted successfully. Inserting pages..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:543
+msgid ""
+"Revolution slider plugin is not activated. Inserting demo slides failed. "
+"Inserting pages..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:562
+msgid "All pages were inserted successfully. Inserting menus..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:576
+msgid "All menus were inserted successfully. Inserting widgets..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:590
+msgid "All widgets were inserted successfully. Writing settings..."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:645
+msgid "Wrong export string. Theme settings were NOT imported."
+msgstr ""
+
+#: ../wproto/controller/admin_settings.php:653
+msgid "Theme settings were imported successfully"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:65
+msgid "Blog Categories"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:66 ../wproto/controller/base.php:614
+msgid "Portfolio Categories"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:67
+msgid "Product category"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:230
+msgid "Tab icon"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:237 ../wproto/controller/admin_vc.php:241
+#: ../wproto/controller/admin_vc.php:242 ../wproto/controller/admin_vc.php:243
+#: ../wproto/controller/admin_vc.php:244 ../wproto/controller/admin_vc.php:245
+#: ../wproto/controller/admin_vc.php:246 ../wproto/controller/admin_vc.php:247
+#: ../wproto/controller/admin_vc.php:248 ../wproto/controller/admin_vc.php:249
+#: ../wproto/controller/admin_vc.php:250 ../wproto/controller/admin_vc.php:268
+#: ../wproto/controller/admin_vc.php:272 ../wproto/controller/admin_vc.php:273
+#: ../wproto/controller/admin_vc.php:274 ../wproto/controller/admin_vc.php:287
+#: ../wproto/controller/admin_vc.php:291 ../wproto/controller/admin_vc.php:292
+#: ../wproto/controller/admin_vc.php:293 ../wproto/controller/admin_vc.php:294
+#: ../wproto/controller/admin_vc.php:295 ../wproto/controller/admin_vc.php:296
+#: ../wproto/controller/admin_vc.php:297 ../wproto/controller/admin_vc.php:298
+#: ../wproto/controller/admin_vc.php:320 ../wproto/controller/admin_vc.php:324
+#: ../wproto/controller/admin_vc.php:325 ../wproto/controller/admin_vc.php:326
+#: ../wproto/controller/admin_vc.php:327 ../wproto/controller/admin_vc.php:328
+#: ../wproto/controller/admin_vc.php:329 ../wproto/controller/admin_vc.php:330
+#: ../wproto/controller/admin_vc.php:331 ../wproto/controller/admin_vc.php:353
+#: ../wproto/controller/admin_vc.php:357 ../wproto/controller/admin_vc.php:358
+#: ../wproto/controller/admin_vc.php:359 ../wproto/controller/admin_vc.php:378
+#: ../wproto/controller/admin_vc.php:382 ../wproto/controller/admin_vc.php:383
+#: ../wproto/controller/admin_vc.php:384 ../wproto/controller/admin_vc.php:385
+#: ../wproto/controller/admin_vc.php:386 ../wproto/controller/admin_vc.php:387
+#: ../wproto/controller/admin_vc.php:388 ../wproto/controller/admin_vc.php:389
+#: ../wproto/controller/admin_vc.php:390 ../wproto/controller/admin_vc.php:391
+#: ../wproto/controller/admin_vc.php:409 ../wproto/controller/admin_vc.php:418
+#: ../wproto/controller/admin_vc.php:430 ../wproto/controller/admin_vc.php:442
+#: ../wproto/controller/admin_vc.php:450 ../wproto/controller/admin_vc.php:528
+#: ../wproto/controller/admin_vc.php:539 ../wproto/controller/admin_vc.php:550
+#: ../wproto/controller/admin_vc.php:563 ../wproto/controller/admin_vc.php:569
+#: ../wproto/controller/admin_vc.php:575 ../wproto/controller/admin_vc.php:584
+#: ../wproto/controller/admin_vc.php:593 ../wproto/controller/admin_vc.php:620
+#: ../wproto/controller/admin_vc.php:621 ../wproto/controller/admin_vc.php:622
+#: ../wproto/controller/admin_vc.php:623 ../wproto/controller/admin_vc.php:624
+#: ../wproto/controller/admin_vc.php:625 ../wproto/controller/admin_vc.php:664
+#: ../wproto/controller/admin_vc.php:665 ../wproto/controller/admin_vc.php:666
+#: ../wproto/controller/admin_vc.php:667 ../wproto/controller/admin_vc.php:668
+#: ../wproto/controller/admin_vc.php:669 ../wproto/controller/admin_vc.php:670
+#: ../wproto/controller/admin_vc.php:671 ../wproto/controller/admin_vc.php:672
+#: ../wproto/controller/admin_vc.php:673 ../wproto/controller/admin_vc.php:675
+#: ../wproto/controller/admin_vc.php:681 ../wproto/controller/admin_vc.php:687
+#: ../wproto/controller/admin_vc.php:693 ../wproto/controller/admin_vc.php:765
+#: ../wproto/controller/admin_vc.php:773 ../wproto/controller/admin_vc.php:782
+#: ../wproto/controller/admin_vc.php:874 ../wproto/controller/admin_vc.php:880
+#: ../wproto/controller/admin_vc.php:886 ../wproto/controller/admin_vc.php:896
+#: ../wproto/controller/admin_vc.php:902 ../wproto/controller/admin_vc.php:908
+#: ../wproto/controller/admin_vc.php:914 ../wproto/controller/admin_vc.php:921
+#: ../wproto/controller/admin_vc.php:928 ../wproto/controller/admin_vc.php:935
+#: ../wproto/controller/admin_vc.php:942 ../wproto/controller/admin_vc.php:950
+#: ../wproto/controller/admin_vc.php:959
+#: ../wproto/controller/admin_vc.php:1194
+#: ../wproto/controller/admin_vc.php:1203
+#: ../wproto/controller/admin_vc.php:1211
+#: ../wproto/controller/admin_vc.php:1220
+#: ../wproto/controller/admin_vc.php:1234
+#: ../wproto/controller/admin_vc.php:1244
+#: ../wproto/controller/admin_vc.php:1254
+#: ../wproto/controller/admin_vc.php:1264
+#: ../wproto/controller/admin_vc.php:1274
+#: ../wproto/controller/admin_vc.php:1438
+#: ../wproto/controller/admin_vc.php:1500
+#: ../wproto/controller/admin_vc.php:1560
+#: ../wproto/controller/admin_vc.php:1575
+#: ../wproto/controller/admin_vc.php:1587
+#: ../wproto/controller/admin_vc.php:1597
+#: ../wproto/controller/admin_vc.php:1604
+#: ../wproto/controller/admin_vc.php:1627
+#: ../wproto/controller/admin_vc.php:1708
+#: ../wproto/controller/admin_vc.php:1731
+#: ../wproto/controller/admin_vc.php:1774
+#: ../wproto/controller/admin_vc.php:1775
+#: ../wproto/controller/admin_vc.php:1776
+#: ../wproto/controller/admin_vc.php:1777
+#: ../wproto/controller/admin_vc.php:1778
+#: ../wproto/controller/admin_vc.php:1779
+#: ../wproto/controller/admin_vc.php:1780
+#: ../wproto/controller/admin_vc.php:1781
+#: ../wproto/controller/admin_vc.php:1838
+#: ../wproto/controller/admin_vc.php:1848
+#: ../wproto/controller/admin_vc.php:1859
+#: ../wproto/controller/admin_vc.php:1870
+#: ../wproto/controller/admin_vc.php:1881
+#: ../wproto/controller/admin_vc.php:1888
+#: ../wproto/controller/admin_vc.php:1895
+#: ../wproto/controller/admin_vc.php:1906
+#: ../wproto/controller/admin_vc.php:1948
+#: ../wproto/controller/admin_vc.php:1954
+#: ../wproto/controller/admin_vc.php:1961
+#: ../wproto/controller/admin_vc.php:1981
+#: ../wproto/controller/admin_vc.php:1993
+#: ../wproto/controller/admin_vc.php:2006
+#: ../wproto/controller/admin_vc.php:2019
+#: ../wproto/controller/admin_vc.php:2031
+#: ../wproto/controller/admin_vc.php:2096
+#: ../wproto/controller/admin_vc.php:2104
+#: ../wproto/controller/admin_vc.php:2111
+#: ../wproto/controller/admin_vc.php:2118
+#: ../wproto/controller/admin_vc.php:2142
+#: ../wproto/controller/admin_vc.php:2152
+#: ../wproto/controller/admin_vc.php:2162
+#: ../wproto/controller/admin_vc.php:2170
+#: ../wproto/controller/admin_vc.php:2279
+#: ../wproto/controller/admin_vc.php:2290
+#: ../wproto/controller/admin_vc.php:2299
+#: ../wproto/controller/admin_vc.php:2311
+#: ../wproto/controller/admin_vc.php:2328
+#: ../wproto/controller/admin_vc.php:2337
+#: ../wproto/controller/admin_vc.php:2436
+#: ../wproto/controller/admin_vc.php:2572
+#: ../wproto/controller/admin_vc.php:2579
+#: ../wproto/controller/admin_vc.php:2586
+#: ../wproto/controller/admin_vc.php:2598
+#: ../wproto/controller/admin_vc.php:2674
+#: ../wproto/controller/admin_vc.php:2677
+#: ../wproto/controller/admin_vc.php:2686
+#: ../wproto/controller/admin_vc.php:2695
+#: ../wproto/controller/admin_vc.php:2702
+#: ../wproto/controller/admin_vc.php:2783
+#: ../wproto/controller/admin_vc.php:2786
+#: ../wproto/controller/admin_vc.php:2795
+#: ../wproto/controller/admin_vc.php:2808
+#: ../wproto/controller/admin_vc.php:2815
+#: ../wproto/controller/admin_vc.php:2833
+#: ../wproto/controller/admin_vc.php:2846
+#: ../wproto/controller/admin_vc.php:2859
+#: ../wproto/controller/admin_vc.php:2868
+#: ../wproto/controller/admin_vc.php:2933
+#: ../wproto/controller/admin_vc.php:2936
+#: ../wproto/controller/admin_vc.php:2945
+#: ../wproto/controller/admin_vc.php:2952
+#: ../wproto/controller/admin_vc.php:3088
+#: ../wproto/controller/admin_vc.php:3089
+#: ../wproto/controller/admin_vc.php:3090
+#: ../wproto/controller/admin_vc.php:3091
+#: ../wproto/controller/admin_vc.php:3092
+#: ../wproto/controller/admin_vc.php:3093
+#: ../wproto/view/settings/appearance.phtml:242
+#: ../wproto/widget/testimonials.phtml:113
+#: ../wproto/widget/testimonials.phtml:114
+#: ../wproto/widget/testimonials.phtml:115
+#: ../wproto/widget/testimonials.phtml:116
+#: ../wproto/widget/testimonials.phtml:117
+#: ../wproto/widget/testimonials.phtml:118
+#: ../wproto/widget/testimonials.phtml:119
+msgid "Style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:251 ../wproto/controller/admin_vc.php:252
+#: ../wproto/controller/admin_vc.php:253 ../wproto/controller/admin_vc.php:254
+#: ../wproto/controller/admin_vc.php:255 ../wproto/controller/admin_vc.php:256
+#: ../wproto/controller/admin_vc.php:392 ../wproto/controller/admin_vc.php:393
+#: ../wproto/controller/admin_vc.php:394 ../wproto/controller/admin_vc.php:395
+#: ../wproto/controller/admin_vc.php:396 ../wproto/controller/admin_vc.php:397
+#: ../wproto/controller/admin_vc.php:3094
+#: ../wproto/controller/admin_vc.php:3095
+#: ../wproto/controller/admin_vc.php:3096
+msgid "Style (for dark backgrounds)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:263 ../wproto/controller/admin_vc.php:282
+msgid "Responsive screen width breakpoint (in pixels)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:405 ../wproto/controller/admin_vc.php:438
+#: ../wproto/controller/admin_vc.php:769 ../wproto/controller/admin_vc.php:946
+#: ../wproto/controller/admin_vc.php:1207
+#: ../wproto/controller/admin_vc.php:1364
+msgid "Animation"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:413 ../wproto/controller/admin_vc.php:777
+#: ../wproto/controller/admin_vc.php:954
+#: ../wproto/controller/admin_vc.php:1215
+#: ../wproto/controller/admin_vc.php:1372
+msgid "Animation delay"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:417 ../wproto/controller/admin_vc.php:781
+#: ../wproto/controller/admin_vc.php:958
+#: ../wproto/controller/admin_vc.php:1219
+#: ../wproto/controller/admin_vc.php:1376
+msgid "For example: 0.1s"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:426
+msgid "Parallax speed"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:429
+msgid "For example: 2.5"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:446
+msgid "Animation delay (e.g. 0.2s)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:476
+#: ../wproto/widget/testimonials.phtml:102
+#: ../wproto/widget/thumbnails_carousel.phtml:117
+msgid "Ascending"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:477
+#: ../wproto/widget/testimonials.phtml:103
+#: ../wproto/widget/thumbnails_carousel.phtml:118
+msgid "Descending"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:484
+#: ../wproto/view/settings/appearance.phtml:27
+msgid "Header"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:485
+msgid "Displays a header and sub-header text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:488 ../wproto/controller/admin_vc.php:607
+#: ../wproto/controller/admin_vc.php:639 ../wproto/controller/admin_vc.php:706
+#: ../wproto/controller/admin_vc.php:799 ../wproto/controller/admin_vc.php:976
+#: ../wproto/controller/admin_vc.php:1061
+#: ../wproto/controller/admin_vc.php:1078
+#: ../wproto/controller/admin_vc.php:1165
+#: ../wproto/controller/admin_vc.php:1287
+#: ../wproto/controller/admin_vc.php:1406
+#: ../wproto/controller/admin_vc.php:1451
+#: ../wproto/controller/admin_vc.php:1531
+#: ../wproto/controller/admin_vc.php:1617
+#: ../wproto/controller/admin_vc.php:1662
+#: ../wproto/controller/admin_vc.php:1721
+#: ../wproto/controller/admin_vc.php:1758
+#: ../wproto/controller/admin_vc.php:1795
+#: ../wproto/controller/admin_vc.php:1919
+#: ../wproto/controller/admin_vc.php:2049
+#: ../wproto/controller/admin_vc.php:2173
+#: ../wproto/controller/admin_vc.php:2184
+#: ../wproto/controller/admin_vc.php:2275
+#: ../wproto/controller/admin_vc.php:2419
+#: ../wproto/controller/admin_vc.php:2503
+#: ../wproto/controller/admin_vc.php:2611
+#: ../wproto/controller/admin_vc.php:2720
+#: ../wproto/controller/admin_vc.php:2885
+#: ../wproto/controller/admin_vc.php:2970
+#: ../wproto/controller/admin_vc.php:3006
+#: ../wproto/controller/admin_vc.php:3075
+msgid "Content (by WPlab.Pro)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:492 ../wproto/controller/admin_vc.php:831
+#: ../wproto/controller/admin_vc.php:1291
+msgid "Header text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:495
+msgid "That text will be appeared as &lt;h> tag"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:499
+msgid "Sub-header text (optional)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:502
+msgid "That text will be appeared after header tag"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:506
+msgid "Header size"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:509
+msgid "Header 1 (H1)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:510
+msgid "Header 2 (H2)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:511
+msgid "Header 3 (H3)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:512
+msgid "Header 4 (H4)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:513
+msgid "Header 5 (H5)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:514
+msgid "Header 6 (H6)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:519
+msgid "Text align"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:522 ../wproto/controller/admin_vc.php:535
+#: ../wproto/controller/admin_vc.php:546 ../wproto/controller/admin_vc.php:557
+msgid "- Default -"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:523 ../wproto/controller/admin_vc.php:869
+#: ../wproto/view/settings/appearance.phtml:403
+#: ../wproto/view/settings/custom_modes.phtml:221
+#: ../wproto/view/settings/custom_modes.phtml:452
+#: ../wproto/view/settings/system_layouts.phtml:156
+#: ../wproto/view/settings/system_layouts.phtml:275
+#: ../wproto/view/settings/system_layouts.phtml:408
+#: ../wproto/view/settings/system_layouts.phtml:527
+#: ../wproto/view/settings/system_layouts.phtml:623
+#: ../wproto/view/settings/woo.phtml:107
+msgid "Left"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:524 ../wproto/controller/admin_vc.php:870
+#: ../wproto/view/settings/custom_modes.phtml:220
+#: ../wproto/view/settings/custom_modes.phtml:238
+#: ../wproto/view/settings/custom_modes.phtml:451
+#: ../wproto/view/settings/custom_modes.phtml:469
+msgid "Center"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:525 ../wproto/controller/admin_vc.php:871
+#: ../wproto/view/settings/appearance.phtml:402
+#: ../wproto/view/settings/custom_modes.phtml:222
+#: ../wproto/view/settings/custom_modes.phtml:453
+#: ../wproto/view/settings/system_layouts.phtml:157
+#: ../wproto/view/settings/system_layouts.phtml:276
+#: ../wproto/view/settings/system_layouts.phtml:409
+#: ../wproto/view/settings/system_layouts.phtml:528
+#: ../wproto/view/settings/system_layouts.phtml:624
+#: ../wproto/view/settings/woo.phtml:106
+msgid "Right"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:526 ../wproto/controller/admin_vc.php:872
+msgid "Justify"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:532
+msgid "Text transform"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:536 ../wproto/controller/admin_vc.php:760
+msgid "None"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:537
+msgid "Uppercase"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:543 ../wproto/helper/admin.php:349
+msgid "Font style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:547 ../wproto/controller/admin_vc.php:558
+#: ../wproto/helper/admin.php:342 ../wproto/helper/admin.php:354
+msgid "Normal"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:548 ../wproto/helper/admin.php:355
+msgid "Italic"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:554 ../wproto/helper/admin.php:337
+msgid "Font weight"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:559
+#: ../wproto/view/settings/appearance.phtml:58
+msgid "Light"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:560
+msgid "Bold"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:561
+msgid "Bolder"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:567
+msgid "Header text color (optional)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:573
+msgid "Subheader text color (optional)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:579
+msgid "Draw a line after header"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:588
+msgid "Use accent color for a line"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:603
+msgid "Dropcap text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:604
+msgid "Displays a text with a DropCap"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:617 ../wproto/controller/admin_vc.php:661
+msgid "Style preset"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:635
+#: ../wproto/view/admin_filters/posts_filter.phtml:13
+msgid "Quote"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:636
+msgid "Displays a styled Quote"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:643
+msgid "Quote Text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:655
+msgid "Additional text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:679
+msgid "Text custom color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:685
+msgid "Author text custom color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:691
+msgid "Additional text custom color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:703
+msgid "Image with support HDPI devices"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:716
+msgid "Image size"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:719
+msgid ""
+"Enter image size in pixels, e.g.: 200x100 (Width x Height). Leave empty to "
+"use full size."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:723
+msgid "Link this image"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:726
+msgid "Do not link"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:727
+msgid "Direct link to image"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:728
+msgid "Open full size of image in lightbox"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:729
+msgid "Custom link (type it in the next field)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:734
+#: ../wproto/view/metaboxes/benefits_style.phtml:3
+msgid "Custom link"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:744
+msgid "Link target"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:747
+msgid "_self"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:748
+msgid "_blank"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:757
+msgid "Image alignment"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:761
+msgid "Align Left"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:762
+msgid "Align Right"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:763
+msgid "Align Center"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:795
+msgid "Banner"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:796
+msgid "Animated banner"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:806 ../wproto/controller/admin_vc.php:816
+#: ../wproto/controller/admin_vc.php:827 ../wproto/controller/admin_vc.php:834
+#: ../wproto/controller/admin_vc.php:841 ../wproto/controller/admin_vc.php:849
+#: ../wproto/controller/admin_vc.php:862
+msgid "Settings"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:810
+msgid "Banner type"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:814
+msgid "Image with text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:820
+msgid "Background Image"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:838
+#: ../wproto/widget/logo_and_description.phtml:77
+msgid "Description text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:845
+msgid "\"Read more\" link / button text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:848
+msgid "Leave it blank to hide this line / button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:853
+msgid "Draw a border"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:866
+msgid "Text align inside"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:878
+msgid "Header text color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:884
+msgid "Description text color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:890
+msgid "\"Read more\" text color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:900
+msgid "Border color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:906
+msgid "Accent background color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:912
+msgid "Accent text color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:918
+msgid "Custom top padding (in pixels)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:925
+msgid "Custom right padding (in pixels)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:932
+msgid "Custom bottom padding (in pixels)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:939
+msgid "Custom left padding (in pixels)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:972
+msgid "Button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:973
+msgid "Theme styled button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:980
+#: ../wproto/controller/admin_vc.php:1325
+msgid "Button link"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:986
+msgid "Text on the button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:988
+#: ../wproto/controller/front_shortcodes.php:189
+msgid "My button title"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:992
+msgid "Button icon"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:998
+msgid "Button size"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1001
+msgid "Medium"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1002
+msgid "Mini"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1003
+msgid "Small"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1004
+msgid "Large"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1005
+msgid "Extra large"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1010
+msgid "Button style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1013
+msgid "Red"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1014
+msgid "Black"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1015
+msgid "Green"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1016
+msgid "Blue"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1017
+msgid "Red stroke"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1018
+msgid "Black stroke"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1019
+msgid "Green stroke"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1020
+msgid "Blue stroke"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1021
+msgid "Orange gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1022
+msgid "Purple gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1023
+msgid "Green gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1024
+msgid "Blue gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1025
+msgid "With shadow"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1026
+msgid "Iconic"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1027
+msgid "Iconic Gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1028
+msgid "Iconic Alt"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1029
+msgid "Iconic Stroke"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1034
+#: ../wproto/controller/admin_vc.php:1139
+msgid "Border radius"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1037
+msgid "Use % or px, e.g.: 50%, 10px etc."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1038
+#: ../wproto/controller/admin_vc.php:1045
+#: ../wproto/controller/admin_vc.php:1109
+#: ../wproto/controller/admin_vc.php:1115
+#: ../wproto/controller/admin_vc.php:1125
+#: ../wproto/controller/admin_vc.php:1135
+#: ../wproto/controller/admin_vc.php:1145
+#: ../wproto/controller/admin_vc.php:1152
+#: ../wproto/controller/admin_vc.php:1360
+#: ../wproto/controller/admin_vc.php:1368
+#: ../wproto/controller/admin_vc.php:1377
+#: ../wproto/controller/admin_vc.php:1387
+#: ../wproto/controller/admin_vc.php:1393
+msgid "Customize style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1042
+msgid "Icon holder radius"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1054
+msgid "Iconic list"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1055
+msgid "Lists with custom bullets"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1065
+#: ../wproto/controller/admin_vc.php:1149
+msgid "Extra class name"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1067
+#: ../wproto/controller/admin_vc.php:1151
+msgid ""
+"If you wish to style particular content element differently, then use this "
+"field to add a class name and then refer to it in your css file."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1074
+msgid "Iconic element"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1088
+msgid "Element icon"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1091
+msgid "Select an icon from library"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1092
+msgid "Numeric list"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1097
+msgid "Choose element icon"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1107
+#: ../wproto/controller/admin_vc.php:1228
+#: ../wproto/controller/admin_vc.php:1385
+msgid "Custom text color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1113
+msgid "Custom icon / number color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1119
+msgid "Number background color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1129
+msgid "Number border color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1161
+msgid "Message Box"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1162
+msgid "Displays alerts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1169
+msgid "Message text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1175
+msgid "Message Type"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1179
+msgid "Help"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1180
+msgid "Notice"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1181 ../wproto/controller/front.php:120
+msgid "Success"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1182
+msgid "Information"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1183
+msgid "General"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1188
+msgid "Custom icon"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1197
+#: ../wproto/controller/admin_vc.php:1734
+#: ../wproto/controller/admin_vc.php:2165 ../wproto/helper/admin.php:326
+#: ../wproto/helper/admin.php:341 ../wproto/helper/admin.php:353
+#: ../wproto/view/layout_editor/metabox_appearance.phtml:22
+#: ../wproto/view/layout_editor/metabox_appearance.phtml:43
+#: ../wproto/view/layout_editor/metabox_header.phtml:57
+msgid "Default"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1198
+msgid "Stroke"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1199
+#: ../wproto/controller/admin_vc.php:1571
+msgid "Gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1200
+#: ../wproto/controller/admin_vc.php:1431
+msgid "Flat"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1201
+msgid "Solid icon"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1238
+msgid "Custom icon color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1248
+msgid "Custom border color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1258
+#: ../wproto/controller/admin_vc.php:1391
+#: ../wproto/view/settings/custom_modes.phtml:163
+#: ../wproto/view/settings/custom_modes.phtml:394
+msgid "Custom background color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1268
+msgid "Custom icon background color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1283
+msgid "Call to action"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1284
+msgid "Text and button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1297
+msgid "Call to action text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1303
+#: ../wproto/controller/admin_vc.php:1702
+msgid "Block style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1306
+msgid "Centered, without buttons"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1307
+msgid "Centered, 2 buttons"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1308
+msgid "Centered, 1 button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1309
+msgid "Left Button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1310
+msgid "Right Button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1315
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:78
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:200
+msgid "Button text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1335
+msgid "Second button text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1345
+msgid "Second button link"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1355
+msgid "Display triangle at bottom"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1402
+msgid "Custom progress bars"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1403
+msgid "Styled progress bars"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1410
+msgid "Graphic values"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1413
+msgid ""
+"Input graph values here. Divide values with linebreaks (Enter). Example: 90|"
+"Development"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1417
+#: ../wproto/controller/admin_vc.php:1811
+msgid "Units"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1420
+msgid ""
+"Enter measurement units (if needed) Eg. %, px, points, etc. Graph value and "
+"unit will be appended to the graph title."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1424
+msgid "Progress bar style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1427
+msgid "Rounded, Filled"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1428
+msgid "Rounded Gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1429
+msgid "Rounded Stripes Thin"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1430
+msgid "Rounded Stripes Thick"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1432
+msgid "Flat Gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1433
+msgid "Thermometer"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1434
+msgid "Colored Bar"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1435
+msgid "Minimal white"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1436
+msgid "Minimal dark"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1447 ../wproto/controller/base.php:435
+#: ../wproto/controller/base.php:460 ../wproto/controller/base.php:462
+#: ../wproto/view/settings/general.phtml:257
+#: ../wproto/widget/testimonials.phtml:50
+msgid "Testimonials"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1448
+msgid "From Happy Clients"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1455
+#: ../wproto/controller/admin_vc.php:1535
+#: ../wproto/controller/admin_vc.php:1923
+#: ../wproto/controller/admin_vc.php:2188
+#: ../wproto/controller/admin_vc.php:2351
+#: ../wproto/controller/admin_vc.php:2985
+msgid "Posts count"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1461
+#: ../wproto/controller/admin_vc.php:1541
+#: ../wproto/controller/admin_vc.php:1929
+msgid "Display testimonials from category"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1464
+#: ../wproto/controller/admin_vc.php:1544
+msgid ""
+"Type here category slugs and separate multiple slugs by comma, e.g.: my-"
+"category,fresh-portfolio. Leave it blank to get posts from any category."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1468
+#: ../wproto/controller/admin_vc.php:1548
+#: ../wproto/controller/admin_vc.php:1936
+#: ../wproto/controller/admin_vc.php:2207
+#: ../wproto/controller/admin_vc.php:2366
+#: ../wproto/controller/admin_vc.php:2525
+#: ../wproto/controller/admin_vc.php:2630
+#: ../wproto/controller/admin_vc.php:2739
+#: ../wproto/controller/admin_vc.php:2896
+#: ../wproto/controller/admin_vc.php:3025
+msgid "Order by"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1474
+#: ../wproto/controller/admin_vc.php:1554
+#: ../wproto/controller/admin_vc.php:1942
+#: ../wproto/controller/admin_vc.php:2213
+#: ../wproto/controller/admin_vc.php:2373
+#: ../wproto/controller/admin_vc.php:2532
+#: ../wproto/controller/admin_vc.php:2637
+#: ../wproto/controller/admin_vc.php:2746
+#: ../wproto/controller/admin_vc.php:2903
+#: ../wproto/controller/admin_vc.php:3031
+msgid "Sort by"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1481
+msgid "Autoplay (only for carousel type)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1489
+#: ../wproto/controller/admin_vc.php:2027
+#: ../wproto/controller/admin_vc.php:2149
+#: ../wproto/controller/admin_vc.php:2236
+#: ../wproto/controller/admin_vc.php:3054
+msgid "Autoplay speed"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1492
+#: ../wproto/controller/admin_vc.php:2030
+#: ../wproto/controller/admin_vc.php:2239
+#: ../wproto/controller/admin_vc.php:3057
+msgid "In milliseconds, e.g.: 5000"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1503
+#: ../wproto/controller/admin_vc.php:1570
+#: ../wproto/view/settings/customizer.phtml:121
+msgid "Boxed"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1504
+msgid "Boxed Alt"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1505
+msgid "Minimal"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1506
+#: ../wproto/view/settings/appearance.phtml:59
+msgid "Dark"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1507
+msgid "Dark Alt"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1508
+msgid "Single Carousel (for white backgrounds)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1509
+msgid "Single Dark Carousel (for dark backgrounds)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1510
+msgid "Widget (style 1)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1511
+msgid "Widget (style 2)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1512
+msgid "Widget (style 3)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1513
+msgid "Widget (style 4)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1514
+msgid "Widget (style 5)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1515
+msgid "Widget (style 6)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1516
+msgid "Widget (style 7)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1517
+msgid "Widget (style 8)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1527 ../wproto/controller/base.php:341
+#: ../wproto/controller/base.php:366 ../wproto/controller/base.php:368
+#: ../wproto/view/settings/general.phtml:229
+msgid "Benefits"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1528
+msgid "Why we better than"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1563
+msgid "Rounded"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1564
+msgid "Rounded inverted"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1565
+msgid "Rounded medium left"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1566
+msgid "Rounded small left"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1567
+msgid "For dark backgrounds (style 1)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1568
+msgid "For dark backgrounds (style 2)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1569
+msgid "For dark backgrounds (style 3)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1572
+msgid "Rounded small left light"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1573
+msgid "Rounded small right light"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1579
+#: ../wproto/controller/admin_vc.php:1642
+#: ../wproto/controller/admin_vc.php:1969
+msgid "Columns"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1582
+#: ../wproto/controller/admin_vc.php:1645
+#: ../wproto/controller/admin_vc.php:1972
+#: ../wproto/controller/admin_vc.php:1988
+#: ../wproto/controller/admin_vc.php:2076
+msgid "Four"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1583
+#: ../wproto/controller/admin_vc.php:1646
+#: ../wproto/controller/admin_vc.php:1973
+#: ../wproto/controller/admin_vc.php:1989
+#: ../wproto/controller/admin_vc.php:2075
+msgid "Three"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1584
+#: ../wproto/controller/admin_vc.php:1647
+#: ../wproto/controller/admin_vc.php:1974
+#: ../wproto/controller/admin_vc.php:1990
+#: ../wproto/controller/admin_vc.php:2074
+msgid "Two"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1585
+#: ../wproto/controller/admin_vc.php:1648
+#: ../wproto/controller/admin_vc.php:1975
+#: ../wproto/controller/admin_vc.php:1991
+#: ../wproto/controller/admin_vc.php:2073
+msgid "One"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1591
+msgid "Links target"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1594
+msgid "Same page"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1595
+msgid "New tag"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1601
+msgid "Minimum height of elements"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1613
+msgid "Pricing tables"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1614
+msgid "Responsive table"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1621
+msgid "Choose a table"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1630
+#: ../wproto/controller/admin_vc.php:2439
+msgid "Style 1"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1631
+#: ../wproto/controller/admin_vc.php:2440
+msgid "Style 2"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1632
+#: ../wproto/controller/admin_vc.php:2441
+msgid "Style 3"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1633
+#: ../wproto/controller/admin_vc.php:2442
+msgid "Style 4"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1634
+msgid "Style 5"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1635
+msgid "Style 6"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1636
+msgid "Style 7"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1637
+msgid "Style 8"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1658
+msgid "Contact information"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1659
+msgid "Address, phones and email"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1666
+msgid "Header text (optional)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1672
+msgid "Text after header (optional)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1678
+#: ../wproto/controller/admin_vc.php:2053
+#: ../wproto/view/settings/appearance.phtml:66
+#: ../wproto/view/shortcodes/contact_information.phtml:12
+#: ../wproto/view/shortcodes/contact_information_modern.phtml:27
+msgid "Address"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1684
+#: ../wproto/helper/admin_menu_walker.php:216
+msgid "Phones"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1690
+msgid "Emails"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1696
+#: ../wproto/view/settings/appearance.phtml:196
+#: ../wproto/widget/contact_information.phtml:79
+msgid "Display social icons"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1698
+#: ../wproto/controller/admin_vc.php:2117
+#: ../wproto/controller/admin_vc.php:2222
+#: ../wproto/controller/admin_vc.php:2261
+#: ../wproto/controller/admin_vc.php:2382
+#: ../wproto/controller/admin_vc.php:2541
+#: ../wproto/controller/admin_vc.php:2585
+#: ../wproto/controller/admin_vc.php:2646
+#: ../wproto/controller/admin_vc.php:2755
+#: ../wproto/controller/admin_vc.php:3019
+#: ../wproto/controller/admin_vc.php:3040
+msgid "Yes"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1705
+msgid "Simple"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1706
+msgid "For backgrounds"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1717 ../wproto/widget/tweets.phtml:49
+msgid "Latest Tweets"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1718
+msgid "Displays few record from Twitter"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1725
+#: ../wproto/controller/admin_vc.php:2134
+msgid "Tweets count"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1735
+msgid "Widget"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1740
+msgid "Custom color (text, controls)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1754
+msgid "Login / Signup Form"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1755
+msgid "Allows to login / register"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1762
+msgid "Allow user to register?"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1763
+msgid ""
+"Important! User registration should be enabled in your WordPress settings, "
+"see General Settings screen"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1771
+msgid "Widget Style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1791
+msgid "Fact in digits"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1792
+msgid "Displays some of your statistic"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1805
+msgid "Number"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1818
+msgid "Enter units if needed, eg. %"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1822
+msgid "Short description"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1828
+msgid "Icon"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1841
+msgid "Circle, for white backgrounds"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1842
+msgid "Circle gradient"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1843
+msgid "Circle for colorful backgrounds"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1844
+msgid "Circle for images"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1845
+msgid "Facts in digits, iconic, style 1"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1846
+msgid "Facts in digits, iconic, style 2"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1852
+msgid "Progress fill color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1863
+msgid "Gradient color #1"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1874
+msgid "Gradient color #2"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1885
+msgid "Title color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1892
+msgid "Icon color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1903
+msgid "Description color"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1915
+msgid "Staff"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1916
+msgid "Displays information about your team / stuff"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1932
+msgid ""
+"Type here category slugs and separate multiple slugs by comma, e.g.: my-"
+"category,featured-staff. Leave it blank to get posts from any category."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1951
+msgid "Grid"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1952
+msgid "Carousel"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1958
+msgid "Carousel title"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:1985
+msgid "Visible elements"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2001
+msgid "Navigation links"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2014
+#: ../wproto/controller/admin_vc.php:2140
+msgid "Autoplay"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2045
+msgid "Google Map"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2046
+msgid "Customized style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2056
+msgid ""
+"If you want to use multiple pointers at Google Map, divide your addresses "
+"with \"|\" character, e.g.: Address 1|Address 2|Address 3 etc."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2060
+msgid "Map mode"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2063
+msgid "Road Map"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2064
+msgid "Satellite"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2065
+msgid "Custom colors"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2070
+msgid "Map zoom"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2077
+msgid "Five"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2078
+msgid "Six"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2079
+msgid "Seven"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2080
+msgid "Eight"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2081
+msgid "Nine"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2082
+msgid "Ten"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2083
+msgid "Eleven"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2084
+msgid "Twelve"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2085
+msgid "Thirteen"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2086
+msgid "Fourteen"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2087
+msgid "Fifteen"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2092
+msgid "Map height"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2095
+msgid "in percents %"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2100
+msgid "Minimum height"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2103
+msgid "in pixels (px)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2108
+msgid "Custom pointer on the map"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2115
+msgid "Map draggable"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2127
+msgid "Latest tweets"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2128
+msgid "Displays a carousel of your latest tweets"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2153
+msgid "In milliseconds, e.g.: 1800"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2166
+msgid "Alternate"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2167
+msgid "Third"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2168
+msgid "Fourth"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2180 ../wproto/controller/base.php:388
+#: ../wproto/controller/base.php:413 ../wproto/controller/base.php:415
+#: ../wproto/view/settings/general.phtml:243
+msgid "Partners / Clients"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2181
+msgid "Logos carousel"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2194
+#: ../wproto/controller/admin_vc.php:3010
+msgid "Carousel visible items"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2200
+msgid "Display from categories"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2203
+msgid ""
+"Type here category slugs to include or exclude posts. Explode multiple "
+"categories slugs by comma"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2219
+#: ../wproto/controller/admin_vc.php:3037
+msgid "Display navigation"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2223
+#: ../wproto/controller/admin_vc.php:2260
+#: ../wproto/controller/admin_vc.php:3020
+#: ../wproto/controller/admin_vc.php:3041
+msgid "No"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2228
+#: ../wproto/controller/admin_vc.php:3046
+msgid "Carousel Autoplay"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2248
+msgid "Open custom link at"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2251
+msgid "New tab (target = _blank)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2252
+msgid "Same window (target = _self)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2257
+msgid "Display title"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2271
+msgid "Posts Carousel"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2272
+msgid "Displays Blog posts or Portfolio works"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2282
+msgid "Squares, Infinite"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2283
+msgid "Rectangles, Infinite"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2284
+msgid "Rectangles Alternate, Infinite"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2285
+msgid "Blocks style 1"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2286
+msgid "Blocks style 2"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2287
+msgid "Blocks style 3"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2288
+msgid "Blocks style 4"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2294
+#: ../wproto/view/settings/custom_posts.phtml:209
+msgid "\"Read more\" link text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2297
+#: ../wproto/controller/admin_vc.php:2684
+#: ../wproto/controller/admin_vc.php:2793
+#: ../wproto/controller/front_shortcodes.php:671
+#: ../wproto/controller/front_shortcodes.php:716
+#: ../wproto/controller/front_shortcodes.php:784
+msgid "Read more"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2298
+msgid "Leave it blank to hide \"Read more\" link"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2307
+#: ../wproto/controller/admin_vc.php:2569
+#: ../wproto/controller/admin_vc.php:2863
+#: ../wproto/controller/admin_vc.php:2991
+#: ../wproto/view/settings/custom_posts.phtml:134
+#: ../wproto/view/settings/custom_posts.phtml:310
+msgid "Block title"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2310
+#: ../wproto/controller/front_shortcodes.php:672
+msgid "Breaking news"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2319
+#: ../wproto/controller/admin_vc.php:2824
+msgid "Display Filters"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2332
+msgid "Display Navigation links"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2341
+#: ../wproto/controller/admin_vc.php:2507
+msgid "Post type"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2344
+#: ../wproto/controller/admin_vc.php:2510 ../wproto/widget/posts.phtml:68
+msgid "Blog posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2345
+#: ../wproto/controller/admin_vc.php:2511
+msgid "Portfolio posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2347
+#: ../wproto/controller/admin_vc.php:2354
+#: ../wproto/controller/admin_vc.php:2362
+#: ../wproto/controller/admin_vc.php:2369
+#: ../wproto/controller/admin_vc.php:2376
+#: ../wproto/controller/admin_vc.php:2383
+#: ../wproto/controller/admin_vc.php:2394
+#: ../wproto/controller/admin_vc.php:2402
+#: ../wproto/controller/admin_vc.php:2513
+#: ../wproto/controller/admin_vc.php:2521
+#: ../wproto/controller/admin_vc.php:2528
+#: ../wproto/controller/admin_vc.php:2535
+#: ../wproto/controller/admin_vc.php:2542
+#: ../wproto/controller/admin_vc.php:2553
+#: ../wproto/controller/admin_vc.php:2561
+#: ../wproto/controller/admin_vc.php:2618
+#: ../wproto/controller/admin_vc.php:2626
+#: ../wproto/controller/admin_vc.php:2633
+#: ../wproto/controller/admin_vc.php:2640
+#: ../wproto/controller/admin_vc.php:2647
+#: ../wproto/controller/admin_vc.php:2658
+#: ../wproto/controller/admin_vc.php:2666
+#: ../wproto/controller/admin_vc.php:2727
+#: ../wproto/controller/admin_vc.php:2735
+#: ../wproto/controller/admin_vc.php:2742
+#: ../wproto/controller/admin_vc.php:2749
+#: ../wproto/controller/admin_vc.php:2756
+#: ../wproto/controller/admin_vc.php:2767
+#: ../wproto/controller/admin_vc.php:2775
+#: ../wproto/controller/admin_vc.php:2892
+#: ../wproto/controller/admin_vc.php:2899
+#: ../wproto/controller/admin_vc.php:2906
+#: ../wproto/controller/admin_vc.php:2917
+#: ../wproto/controller/admin_vc.php:2925
+msgid "Query"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2358
+#: ../wproto/controller/admin_vc.php:2517
+#: ../wproto/controller/admin_vc.php:2622
+#: ../wproto/controller/admin_vc.php:2731
+msgid "Author ID"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2361
+#: ../wproto/controller/admin_vc.php:2520
+#: ../wproto/controller/admin_vc.php:2625
+#: ../wproto/controller/admin_vc.php:2734
+msgid "Explode multiple authors by comma"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2380
+#: ../wproto/controller/admin_vc.php:2539
+#: ../wproto/controller/admin_vc.php:2644
+#: ../wproto/controller/admin_vc.php:2753
+msgid "Features only?"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2387
+#: ../wproto/controller/admin_vc.php:2546
+#: ../wproto/controller/admin_vc.php:2651
+#: ../wproto/controller/admin_vc.php:2760
+#: ../wproto/controller/admin_vc.php:2910
+msgid "Query from category"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2390
+#: ../wproto/controller/admin_vc.php:2549
+#: ../wproto/controller/admin_vc.php:2654
+#: ../wproto/controller/admin_vc.php:2763
+#: ../wproto/controller/admin_vc.php:2913
+#: ../wproto/view/shortcodes/portfolio/full_width.phtml:21
+#: ../wproto/view/shortcodes/portfolio/masonry.phtml:16
+#: ../wproto/view/shortcodes/posts_carousel.phtml:24
+msgid "All"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2391
+#: ../wproto/controller/admin_vc.php:2550
+#: ../wproto/controller/admin_vc.php:2655
+#: ../wproto/controller/admin_vc.php:2764
+#: ../wproto/controller/admin_vc.php:2914
+msgid "Only"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2392
+#: ../wproto/controller/admin_vc.php:2551
+#: ../wproto/controller/admin_vc.php:2656
+#: ../wproto/controller/admin_vc.php:2765
+#: ../wproto/controller/admin_vc.php:2915
+msgid "Except"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2401
+#: ../wproto/controller/admin_vc.php:2560
+#: ../wproto/controller/admin_vc.php:2665
+#: ../wproto/controller/admin_vc.php:2774
+#: ../wproto/controller/admin_vc.php:2924
+msgid ""
+"Type here category slugs to include or exclude, based on previous parameter. "
+"Explode multiple categories slugs by comma"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2415
+msgid "Products Carousel"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2416
+msgid "WooCommerce products carousel"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2423
+#: ../wproto/view/settings/custom_posts.phtml:164
+#: ../wproto/view/settings/custom_posts.phtml:354
+msgid "Query type"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2426
+msgid "Featured Products"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2427
+msgid "On Sale"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2428
+msgid "New Arrivals"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2429
+msgid "Best Sellers"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2430
+msgid "Top Rated"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2431
+msgid "Random Products"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2443
+msgid "Style 5 (recommend for 3 items)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2448
+msgid "Display Navigation arrows"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2456
+msgid "Display Navigation bullets"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2464
+msgid "Products count"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2470
+msgid "Visible items (desktop)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2476
+msgid "Visible items (tablets)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2482
+msgid "Visible items (phone landscape)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2488
+msgid "Visible items (phone)"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2499
+msgid "Intro Section"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2500
+msgid "Latest or featured posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2571
+#: ../wproto/controller/front_shortcodes.php:851
+msgid "Latest Blog Posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2576
+msgid "\"Read more\" link title"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2578
+#: ../wproto/controller/front_shortcodes.php:852
+msgid "Read more &raquo;"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2583
+msgid "Display \"Read all posts\" link?"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2590
+msgid "\"Read all posts\" link title"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2607
+msgid "Blog Posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2608
+msgid "Grid of blog posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2615
+#: ../wproto/controller/admin_vc.php:2724
+#: ../wproto/controller/admin_vc.php:2889
+msgid "Posts per page"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2681
+#: ../wproto/controller/admin_vc.php:2790
+msgid "\"Read more\" text"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2685
+#: ../wproto/controller/admin_vc.php:2794
+msgid "Leave it blank to hide \"Read more\" button"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2690
+#: ../wproto/controller/admin_vc.php:2803
+#: ../wproto/controller/admin_vc.php:2940
+msgid "Display Pagination"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2699
+#: ../wproto/controller/admin_vc.php:2812
+#: ../wproto/controller/admin_vc.php:2949
+msgid "Pagination style"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2716
+msgid "Portfolio Posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2717
+msgid "Grid of portfolio posts"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2837
+msgid "Display Sort Filters"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2850
+msgid "Allow to switch between columns"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2867
+msgid "See our creative projects"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2881
+msgid "Shop Products"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2882
+msgid "Grid of WooCommerce products"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2966
+msgid "Products List"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2967
+msgid "List of products"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2974
+msgid "Query Type"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2977
+msgid "New products"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2978
+msgid "On sale"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2979
+msgid "Top rated"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2980
+msgid "Random products"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:2993
+#: ../wproto/controller/front_shortcodes.php:1050
+msgid "New Incomes"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3002
+msgid "Brands Carousel"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3003
+msgid "WooCommerce Brands"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3016
+msgid "Hide empty elements"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3027 ../wproto/widget/taxonomy.phtml:81
+msgid "Count"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3027 ../wproto/widget/taxonomy.phtml:80
+msgid "Slug"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3071
+msgid "Ninja Forms"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3072
+msgid "Place Ninja Form"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3079
+msgid "Select ninja form"
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3081
+msgid "Choose previously created ninja form from the drop down list."
+msgstr ""
+
+#: ../wproto/controller/admin_vc.php:3085
+msgid "Form Style"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:182
+msgid "Wrong login or password"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:192
+#, php-format
+msgid ""
+"Hello, %s! You have successfully logged in. A page will be refreshed "
+"automatically in 5 seconds."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:205
+msgid "Registration was disabled by administrator"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:211
+msgid ""
+"We have found wrong characters in your username. Letters, digits and \"@._ -"
+"\" chars are allowed."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:213
+msgid "User name already taken by another user"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:215
+msgid "Wrong email address"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:217
+msgid "Email address already taken by another user"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:219
+msgid "The passwords do not match"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:241
+#, php-format
+msgid "Hello, %s! You have successfully registered and logged in."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:255
+msgid "This email is not registered on the website"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:263
+msgid "This user name is not registered on the website"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:287
+msgid "Password reset is not allowed for this user"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:301
+msgid "Someone requested that the password be reset for the following account:"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:303
+#, php-format
+msgid "Username: %s"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:304
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:305
+msgid "To reset your password, visit the following address:"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:313
+#, php-format
+msgid "[%s] Password Reset"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:321
+msgid ""
+"Link for password reset has been emailed to you. Please check your email."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:358
+#, php-format
+msgid "[%s] Your new password"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:360
+msgid "Your new password is:"
+msgstr ""
+
+#: ../wproto/controller/ajax.php:365
+msgid "Your password was successfully changed and sent to your email."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:368 ../wproto/controller/ajax.php:372
+msgid "Wrong user login or activation key."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:446
+msgid "We did not find any tweets, sorry."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:453
+msgid "Cannot load tweets. Access is not configured in theme options."
+msgstr ""
+
+#: ../wproto/controller/ajax.php:470 ../wproto/controller/ajax.php:476
+msgid "Wrong AJAX Request"
+msgstr ""
+
+#: ../wproto/controller/base.php:37
+msgid "Header Menu"
+msgstr ""
+
+#: ../wproto/controller/base.php:41
+msgid "Bottom Bar Menu"
+msgstr ""
+
+#: ../wproto/controller/base.php:118
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: ../wproto/controller/base.php:131
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: ../wproto/controller/base.php:194 ../wproto/controller/base.php:218
+#: ../wproto/controller/base.php:220 ../wproto/view/settings/general.phtml:201
+msgid "Pricing Tables"
+msgstr ""
+
+#: ../wproto/controller/base.php:219
+msgid "Pricing Table"
+msgstr ""
+
+#: ../wproto/controller/base.php:221
+msgid "Add Pricing Table"
+msgstr ""
+
+#: ../wproto/controller/base.php:222
+msgid "Add New Pricing Table"
+msgstr ""
+
+#: ../wproto/controller/base.php:223
+msgid "All Pricing Tables"
+msgstr ""
+
+#: ../wproto/controller/base.php:224
+msgid "Edit Pricing Table"
+msgstr ""
+
+#: ../wproto/controller/base.php:225
+msgid "New Pricing Table"
+msgstr ""
+
+#: ../wproto/controller/base.php:226
+msgid "View Pricing Table"
+msgstr ""
+
+#: ../wproto/controller/base.php:227
+msgid "Search Pricing Tables"
+msgstr ""
+
+#: ../wproto/controller/base.php:228
+msgid "No Pricing Tables Found"
+msgstr ""
+
+#: ../wproto/controller/base.php:229
+msgid "No Pricing Tables Found in Trash"
+msgstr ""
+
+#: ../wproto/controller/base.php:230
+msgid "Parent Pricing Table:"
+msgstr ""
+
+#: ../wproto/controller/base.php:248 ../wproto/controller/base.php:272
+#: ../wproto/controller/base.php:274 ../wproto/view/settings/general.phtml:187
+#: ../wproto/view/settings/general.phtml:677 ../wproto/widget/posts.phtml:69
+msgid "Portfolio"
+msgstr ""
+
+#: ../wproto/controller/base.php:273
+msgid "Portfolio item"
+msgstr ""
+
+#: ../wproto/controller/base.php:275
+msgid "Add Portfolio item"
+msgstr ""
+
+#: ../wproto/controller/base.php:276
+msgid "Add New Portfolio item"
+msgstr ""
+
+#: ../wproto/controller/base.php:277
+msgid "All Portfolio items"
+msgstr ""
+
+#: ../wproto/controller/base.php:278
+msgid "Edit Portfolio item"
+msgstr ""
+
+#: ../wproto/controller/base.php:279
+msgid "New Portfolio item"
+msgstr ""
+
+#: ../wproto/controller/base.php:280
+msgid "View Portfolio item"
+msgstr ""
+
+#: ../wproto/controller/base.php:281
+msgid "Search Portfolio items"
+msgstr ""
+
+#: ../wproto/controller/base.php:282
+msgid "No Portfolio items Found"
+msgstr ""
+
+#: ../wproto/controller/base.php:283
+msgid "No Portfolio items Found in Trash"
+msgstr ""
+
+#: ../wproto/controller/base.php:284
+msgid "Parent Portfolio item:"
+msgstr ""
+
+#: ../wproto/controller/base.php:294 ../wproto/controller/base.php:319
+msgid "Team"
+msgstr ""
+
+#: ../wproto/controller/base.php:320
+msgid "Member"
+msgstr ""
+
+#: ../wproto/controller/base.php:321
+msgid "Team members"
+msgstr ""
+
+#: ../wproto/controller/base.php:322
+msgid "Add team member"
+msgstr ""
+
+#: ../wproto/controller/base.php:323
+msgid "Add New team member"
+msgstr ""
+
+#: ../wproto/controller/base.php:324
+msgid "All team members"
+msgstr ""
+
+#: ../wproto/controller/base.php:325
+msgid "Edit team member"
+msgstr ""
+
+#: ../wproto/controller/base.php:326
+msgid "New team member"
+msgstr ""
+
+#: ../wproto/controller/base.php:327
+msgid "View team member"
+msgstr ""
+
+#: ../wproto/controller/base.php:328
+msgid "Search team members"
+msgstr ""
+
+#: ../wproto/controller/base.php:329
+msgid "No team members Found"
+msgstr ""
+
+#: ../wproto/controller/base.php:330
+msgid "No team members Found in Trash"
+msgstr ""
+
+#: ../wproto/controller/base.php:331
+msgid "Parent team member:"
+msgstr ""
+
+#: ../wproto/controller/base.php:367
+msgid "Benefit"
+msgstr ""
+
+#: ../wproto/controller/base.php:369
+msgid "Add Benefit"
+msgstr ""
+
+#: ../wproto/controller/base.php:370
+msgid "Add New Benefit"
+msgstr ""
+
+#: ../wproto/controller/base.php:371
+msgid "All Benefits"
+msgstr ""
+
+#: ../wproto/controller/base.php:372
+msgid "Edit Benefit"
+msgstr ""
+
+#: ../wproto/controller/base.php:373
+msgid "New Benefit"
+msgstr ""
+
+#: ../wproto/controller/base.php:374
+msgid "View Benefit"
+msgstr ""
+
+#: ../wproto/controller/base.php:375
+msgid "Search Benefits"
+msgstr ""
+
+#: ../wproto/controller/base.php:376
+msgid "No Benefits Found"
+msgstr ""
+
+#: ../wproto/controller/base.php:377
+msgid "No Benefits Found in Trash"
+msgstr ""
+
+#: ../wproto/controller/base.php:378
+msgid "Parent Benefit:"
+msgstr ""
+
+#: ../wproto/controller/base.php:414
+msgid "Partner / Client"
+msgstr ""
+
+#: ../wproto/controller/base.php:416
+msgid "Add Partner / Client"
+msgstr ""
+
+#: ../wproto/controller/base.php:417
+msgid "Add New Partner / Client"
+msgstr ""
+
+#: ../wproto/controller/base.php:418
+msgid "All Partners / Clients"
+msgstr ""
+
+#: ../wproto/controller/base.php:419
+msgid "Edit Partner / Client"
+msgstr ""
+
+#: ../wproto/controller/base.php:420
+msgid "New Partner / Client"
+msgstr ""
+
+#: ../wproto/controller/base.php:421
+msgid "View Partner / Client"
+msgstr ""
+
+#: ../wproto/controller/base.php:422
+msgid "Search Partners / Clients"
+msgstr ""
+
+#: ../wproto/controller/base.php:423
+msgid "No Partners / Clients Found"
+msgstr ""
+
+#: ../wproto/controller/base.php:424
+msgid "No Partners / Clients Found in Trash"
+msgstr ""
+
+#: ../wproto/controller/base.php:425
+msgid "Parent Partner / Client:"
+msgstr ""
+
+#: ../wproto/controller/base.php:461
+msgid "Testimonial"
+msgstr ""
+
+#: ../wproto/controller/base.php:463
+msgid "Add Testimonial"
+msgstr ""
+
+#: ../wproto/controller/base.php:464
+msgid "Add New Testimonial"
+msgstr ""
+
+#: ../wproto/controller/base.php:465
+msgid "All Testimonials"
+msgstr ""
+
+#: ../wproto/controller/base.php:466
+msgid "Edit Testimonial"
+msgstr ""
+
+#: ../wproto/controller/base.php:467
+msgid "New Testimonial"
+msgstr ""
+
+#: ../wproto/controller/base.php:468
+msgid "View Testimonial"
+msgstr ""
+
+#: ../wproto/controller/base.php:469
+msgid "Search Testimonials"
+msgstr ""
+
+#: ../wproto/controller/base.php:470
+msgid "No Testimonials Found"
+msgstr ""
+
+#: ../wproto/controller/base.php:471
+msgid "No Testimonials Found in Trash"
+msgstr ""
+
+#: ../wproto/controller/base.php:472
+msgid "Parent Testimonial:"
+msgstr ""
+
+#: ../wproto/controller/base.php:505
+msgid "Custom font"
+msgstr ""
+
+#: ../wproto/controller/base.php:507
+msgid "Add Custom font"
+msgstr ""
+
+#: ../wproto/controller/base.php:508
+msgid "Add New Custom font"
+msgstr ""
+
+#: ../wproto/controller/base.php:509
+msgid "All Custom fonts"
+msgstr ""
+
+#: ../wproto/controller/base.php:510
+msgid "Edit Custom font"
+msgstr ""
+
+#: ../wproto/controller/base.php:511
+msgid "New Custom font"
+msgstr ""
+
+#: ../wproto/controller/base.php:512
+msgid "View Custom font"
+msgstr ""
+
+#: ../wproto/controller/base.php:513
+msgid "Search Custom fonts"
+msgstr ""
+
+#: ../wproto/controller/base.php:514
+msgid "No Custom fonts Found"
+msgstr ""
+
+#: ../wproto/controller/base.php:515
+msgid "No Custom fonts Found in Trash"
+msgstr ""
+
+#: ../wproto/controller/base.php:516
+msgid "Parent Custom font:"
+msgstr ""
+
+#: ../wproto/controller/base.php:539
+msgid "Search Areas"
+msgstr ""
+
+#: ../wproto/controller/base.php:540
+msgid "All Widget Areas"
+msgstr ""
+
+#: ../wproto/controller/base.php:541
+msgid "Edit Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:542
+msgid "Update Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:543
+msgid "Add New Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:544
+msgid "New Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:545
+msgid "Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:562 ../wproto/controller/base.php:585
+#: ../wproto/controller/base.php:608 ../wproto/controller/base.php:631
+#: ../wproto/controller/base.php:654
+msgid "Search in categories"
+msgstr ""
+
+#: ../wproto/controller/base.php:563 ../wproto/controller/base.php:586
+#: ../wproto/controller/base.php:609 ../wproto/controller/base.php:632
+#: ../wproto/controller/base.php:655
+msgid "All Categories"
+msgstr ""
+
+#: ../wproto/controller/base.php:564 ../wproto/controller/base.php:587
+#: ../wproto/controller/base.php:610 ../wproto/controller/base.php:633
+#: ../wproto/controller/base.php:656
+msgid "Edit Category"
+msgstr ""
+
+#: ../wproto/controller/base.php:565 ../wproto/controller/base.php:588
+#: ../wproto/controller/base.php:611 ../wproto/controller/base.php:634
+#: ../wproto/controller/base.php:657
+msgid "Update Category"
+msgstr ""
+
+#: ../wproto/controller/base.php:566 ../wproto/controller/base.php:589
+#: ../wproto/controller/base.php:612 ../wproto/controller/base.php:635
+#: ../wproto/controller/base.php:658
+msgid "Add New Category"
+msgstr ""
+
+#: ../wproto/controller/base.php:567 ../wproto/controller/base.php:590
+#: ../wproto/controller/base.php:613 ../wproto/controller/base.php:636
+#: ../wproto/controller/base.php:659
+msgid "New Category"
+msgstr ""
+
+#: ../wproto/controller/base.php:568
+msgid "Benefits Categories"
+msgstr ""
+
+#: ../wproto/controller/base.php:637
+msgid "Team Categories"
+msgstr ""
+
+#: ../wproto/controller/base.php:660
+msgid "Testimonials Categories"
+msgstr ""
+
+#: ../wproto/controller/base.php:679
+msgid "Left sidebar"
+msgstr ""
+
+#: ../wproto/controller/base.php:690
+msgid "Right sidebar"
+msgstr ""
+
+#: ../wproto/controller/base.php:701
+msgid "Footer 4 Columns Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:712
+msgid "Footer 3 Columns Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:723
+msgid "Footer 2 Columns Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:734
+msgid "Footer 1 Column Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:745
+msgid "Shop Widget Area"
+msgstr ""
+
+#: ../wproto/controller/base.php:756
+msgid "Mega Menu Widget Area"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:294
+msgid "one"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:295
+msgid "two"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:296
+msgid "three"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:297
+msgid "four"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:298
+msgid "five"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:299
+msgid "six"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:300
+msgid "seven"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:301
+msgid "eight"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:302
+msgid "nine"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:303
+msgid "ten"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:304
+msgid "eleven"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:305
+msgid "twelve"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:306
+msgid "thirteen"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:307
+msgid "fourteen"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:308
+msgid "fifteen"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:309
+msgid "sixteen"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:310
+msgid "seventeen"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:311
+msgid "eighteen"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:312
+msgid "nineteen"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:313
+msgid "twenty"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:314
+msgid "thirty"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:315
+msgid "forty"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:316
+msgid "fifty"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:317
+msgid "sixty"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:318
+msgid "seventy"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:319
+msgid "eighty"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:320
+msgid "ninety"
+msgstr ""
+
+#: ../wproto/controller/captcha.php:377
+msgid "Invalid captcha value."
+msgstr ""
+
+#: ../wproto/controller/captcha.php:380
+msgid "Captcha time expired."
+msgstr ""
+
+#: ../wproto/controller/captcha.php:383
+msgid "Please enter captcha value."
+msgstr ""
+
+#: ../wproto/controller/front.php:122
+msgid "You should accept terms & conditions"
+msgstr ""
+
+#: ../wproto/controller/front.php:123
+msgid "Please, enter captcha value"
+msgstr ""
+
+#: ../wproto/controller/front.php:124
+msgid "Your message has been sent. Thank you!"
+msgstr ""
+
+#: ../wproto/controller/front.php:125
+msgid ""
+"An AJAX error occurred when performing a query. Please contact support if "
+"the problem persists."
+msgstr ""
+
+#: ../wproto/controller/front.php:126
+msgid ""
+"The script have received an invalid response from the server. Please contact "
+"support if the problem persists."
+msgstr ""
+
+#: ../wproto/controller/front.php:127
+msgid "Please enter your name"
+msgstr ""
+
+#: ../wproto/controller/front.php:128
+msgid "Please enter valid email address"
+msgstr ""
+
+#: ../wproto/controller/front.php:129
+msgid "Please enter a message"
+msgstr ""
+
+#: ../wproto/controller/front.php:130
+msgid "Added to wishlist"
+msgstr ""
+
+#: ../wproto/controller/front.php:131
+msgid "Your wish list is empty"
+msgstr ""
+
+#: ../wproto/controller/front.php:132
+msgid "Wrong Captcha answer"
+msgstr ""
+
+#: ../wproto/controller/front.php:670
+msgid "Feed was disabled by administrator"
+msgstr ""
+
+#: ../wproto/controller/front.php:705
+msgid "To view this protected post, enter the password below:"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:123
+msgid "Add to wishlist"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:159
+msgid "Search Brands"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:160
+msgid "All Brands"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:161
+msgid "Edit Brand"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:162
+msgid "Update Brand"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:163
+msgid "Add New Brand"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:164
+msgid "New Brand"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:165
+msgid "Brands"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:178
+#: ../wproto/controller/woocommerce.php:256
+#: ../wproto/controller/woocommerce.php:364
+msgid "Thumbnail"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:182
+#: ../wproto/controller/woocommerce.php:261
+msgid "Upload/Add image"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:183
+#: ../wproto/controller/woocommerce.php:262
+msgid "Remove image"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:207
+#: ../wproto/controller/woocommerce.php:281
+msgid "Choose an image"
+msgstr ""
+
+#: ../wproto/controller/woocommerce.php:209
+#: ../wproto/controller/woocommerce.php:283
+msgid "Use image"
+msgstr ""
+
+#: ../wproto/helper/admin.php:169
+#: ../wproto/view/metaboxes/benefits_style.phtml:34
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:15
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:23
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:31
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:39
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:47
+#: ../wproto/view/settings/branding.phtml:94
+#: ../wproto/view/settings/branding.phtml:105
+#: ../wproto/view/settings/branding.phtml:194
+#: ../wproto/view/settings/branding.phtml:214
+#: ../wproto/view/settings/branding.phtml:219
+#: ../wproto/view/settings/branding.phtml:224
+#: ../wproto/view/settings/branding.phtml:229
+#: ../wproto/view/settings/custom_modes.phtml:185
+#: ../wproto/view/settings/custom_modes.phtml:416
+#: ../wproto/view/settings/general.phtml:94
+#: ../wproto/view/settings/general.phtml:112
+#: ../wproto/widget/logo_and_description.phtml:61
+#: ../wproto/widget/logo_and_description.phtml:68
+msgid "Upload"
+msgstr ""
+
+#: ../wproto/helper/admin.php:172
+msgid "Background image position"
+msgstr ""
+
+#: ../wproto/helper/admin.php:174
+msgid "Choose background repeat..."
+msgstr ""
+
+#: ../wproto/helper/admin.php:175
+msgid "no repeat"
+msgstr ""
+
+#: ../wproto/helper/admin.php:176
+msgid "repeat horizontal"
+msgstr ""
+
+#: ../wproto/helper/admin.php:177
+msgid "repeat vertical"
+msgstr ""
+
+#: ../wproto/helper/admin.php:178
+msgid "repeat all"
+msgstr ""
+
+#: ../wproto/helper/admin.php:182
+msgid "Choose background position..."
+msgstr ""
+
+#: ../wproto/helper/admin.php:183
+msgid "left top"
+msgstr ""
+
+#: ../wproto/helper/admin.php:184
+msgid "left center"
+msgstr ""
+
+#: ../wproto/helper/admin.php:185
+msgid "left bottom"
+msgstr ""
+
+#: ../wproto/helper/admin.php:186
+msgid "right top"
+msgstr ""
+
+#: ../wproto/helper/admin.php:187
+msgid "right center"
+msgstr ""
+
+#: ../wproto/helper/admin.php:188
+msgid "right bottom"
+msgstr ""
+
+#: ../wproto/helper/admin.php:189
+msgid "center top"
+msgstr ""
+
+#: ../wproto/helper/admin.php:190
+msgid "center center"
+msgstr ""
+
+#: ../wproto/helper/admin.php:191
+msgid "center bottom"
+msgstr ""
+
+#: ../wproto/helper/admin.php:208 ../wproto/helper/admin.php:287
+#: ../wproto/view/metaboxes/page_redirect.phtml:12
+msgid "Enabled"
+msgstr ""
+
+#: ../wproto/helper/admin.php:209 ../wproto/helper/admin.php:288
+#: ../wproto/view/metaboxes/page_redirect.phtml:13
+msgid "Disabled"
+msgstr ""
+
+#: ../wproto/helper/admin.php:271
+msgid "Font size"
+msgstr ""
+
+#: ../wproto/helper/admin.php:274
+msgid "Font size (for mobile devices)"
+msgstr ""
+
+#: ../wproto/helper/admin.php:277
+msgid "Line height"
+msgstr ""
+
+#: ../wproto/helper/admin.php:280
+msgid "Line height (for mobile devices)"
+msgstr ""
+
+#: ../wproto/helper/admin.php:283
+msgid "All caps"
+msgstr ""
+
+#: ../wproto/helper/admin.php:300
+msgid "Font source"
+msgstr ""
+
+#: ../wproto/helper/admin.php:303
+msgid "Google Fonts"
+msgstr ""
+
+#: ../wproto/helper/admin.php:304
+msgid "Your Custom Fonts"
+msgstr ""
+
+#: ../wproto/helper/admin.php:308 ../wproto/helper/admin.php:322
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:4
+msgid "Font family"
+msgstr ""
+
+#: ../wproto/helper/admin.php:312
+msgid "-- Please select --"
+msgstr ""
+
+#: ../wproto/helper/admin.php:367
+msgid "Font family preview"
+msgstr ""
+
+#: ../wproto/helper/admin.php:396
+#, php-format
+msgid "Paste %s URL here"
+msgstr ""
+
+#. translators: %s: title of menu item which is invalid
+#: ../wproto/helper/admin_menu_walker.php:54
+#, php-format
+msgid "%s (Invalid)"
+msgstr ""
+
+#. translators: %s: title of menu item in draft status
+#: ../wproto/helper/admin_menu_walker.php:58
+#, php-format
+msgid "%s (Pending)"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:95
+msgid "Edit Menu Item"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:104
+msgid "URL"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:111
+msgid "Navigation Label"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:117
+msgid "Title Attribute"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:124
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:129
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:135
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:141
+#: ../wproto/view/metaboxes/attached_images_item.phtml:29
+msgid "Description"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:143
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:153
+msgid "Menu icon"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:161
+msgid "Mega Menu"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:161
+msgid ""
+"Please, note than mega menu will be displayed only for top-level menu "
+"elements"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:165
+msgid "Enable Mega Menu"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:173
+msgid "Choose a widget area"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:181
+#: ../wproto/helper/admin_menu_walker.php:182
+#: ../wproto/helper/admin_menu_walker.php:183
+#: ../wproto/helper/admin_menu_walker.php:184
+#: ../wproto/helper/admin_menu_walker.php:185
+msgid "columns"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:194
+msgid "Properties"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:198
+msgid "Do not display as link"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:202
+msgid "&laquo;One-page&raquo; external menu element"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:206
+msgid "Hide this menu item at"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:210
+msgid "Desktops"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:213
+msgid "Tablets"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:226
+#, php-format
+msgid "Original: %s"
+msgstr ""
+
+#: ../wproto/helper/admin_menu_walker.php:236
+msgid "Cancel"
+msgstr ""
+
+#: ../wproto/helper/front.php:87
+msgid "Wishlist"
+msgstr ""
+
+#: ../wproto/helper/front.php:101
+msgid "Sign In <span>/</span> <span class=\"reg\">Register</span>"
+msgstr ""
+
+#: ../wproto/helper/front.php:112
+msgid "Log Out"
+msgstr ""
+
+#: ../wproto/helper/front.php:550
+msgid "Home"
+msgstr ""
+
+#: ../wproto/helper/front.php:551
+msgid "Blog"
+msgstr ""
+
+#: ../wproto/helper/front.php:596
+msgid "Search results for"
+msgstr ""
+
+#: ../wproto/helper/front.php:695
+msgid "Attachment"
+msgstr ""
+
+#: ../wproto/helper/front.php:718
+msgid "Posts tagged"
+msgstr ""
+
+#: ../wproto/helper/front.php:723
+msgid "Articles posted by"
+msgstr ""
+
+#: ../wproto/helper/front.php:726 ../wproto/helper/front.php:1445
+msgid "Error 404"
+msgstr ""
+
+#: ../wproto/helper/front.php:1003
+msgid "Share on Facebook"
+msgstr ""
+
+#: ../wproto/helper/front.php:1004
+msgid "Share on Pinterest"
+msgstr ""
+
+#: ../wproto/helper/front.php:1005
+msgid "Share on Google Plus"
+msgstr ""
+
+#: ../wproto/helper/front.php:1006
+msgid "Share on Twitter"
+msgstr ""
+
+#: ../wproto/helper/front.php:1216
+msgid "Load more posts..."
+msgstr ""
+
+#: ../wproto/helper/front.php:1258
+msgid "Prev"
+msgstr ""
+
+#: ../wproto/helper/front.php:1259
+msgid "Next"
+msgstr ""
+
+#: ../wproto/helper/front.php:1292
+msgid "Loading..."
+msgstr ""
+
+#: ../wproto/helper/front.php:1351
+msgid "item"
+msgstr ""
+
+#: ../wproto/helper/front.php:1351
+msgid "items"
+msgstr ""
+
+#: ../wproto/helper/front.php:1388
+msgid "In stock"
+msgstr ""
+
+#: ../wproto/helper/front.php:1388
+msgid "Not available"
+msgstr ""
+
+#: ../wproto/helper/front.php:1397
+msgid "No products were added to the wishlist!"
+msgstr ""
+
+#: ../wproto/helper/front.php:1405
+msgid "Go shopping"
+msgstr ""
+
+#: ../wproto/helper/front.php:1408
+msgid "Clear all"
+msgstr ""
+
+#: ../wproto/helper/front.php:1448
+msgid "Search results"
+msgstr ""
+
+#: ../wproto/helper/front.php:1469
+msgid "Cart"
+msgstr ""
+
+#: ../wproto/helper/front.php:1472
+msgid "Checkout"
+msgstr ""
+
+#: ../wproto/helper/front.php:1475
+msgid "Account"
+msgstr ""
+
+#: ../wproto/view/admin_filters/category_filter.phtml:4
+msgid "Show all categories"
+msgstr ""
+
+#: ../wproto/view/admin_filters/pages_filter.phtml:2
+msgid "Filter by page template"
+msgstr ""
+
+#: ../wproto/view/admin_filters/pages_filter.phtml:13
+msgid "Redirect filter"
+msgstr ""
+
+#: ../wproto/view/admin_filters/pages_filter.phtml:14
+msgid "Pages with redirect"
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:2
+msgid "Is Featured?..."
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:3
+#: ../wproto/widget/posts.phtml:51 ../wproto/widget/posts.phtml:76
+msgid "Featured posts"
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:8
+msgid "Post format..."
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:9
+msgid "Aside"
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:10
+msgid "Gallery"
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:15
+msgid "Video"
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:16
+msgid "Audio"
+msgstr ""
+
+#: ../wproto/view/admin_filters/posts_filter.phtml:17
+msgid "Chat"
+msgstr ""
+
+#: ../wproto/view/custom_fields/user_custom_fields.phtml:1
+msgid "Theme custom fields"
+msgstr ""
+
+#: ../wproto/view/custom_fields/user_custom_fields.phtml:5
+msgid "Profession"
+msgstr ""
+
+#: ../wproto/view/custom_fields/user_custom_fields.phtml:12
+msgid "Links to social profiles"
+msgstr ""
+
+#: ../wproto/view/dialog/demo_data_notice.phtml:5
+msgid "Dear customer!"
+msgstr ""
+
+#: ../wproto/view/dialog/demo_data_notice.phtml:8
+#, php-format
+msgid ""
+"If you liked our theme, please <a target=\"_blank\" href=\"%s\">rate it with "
+"5 stars</a>, it will help us to make regular updates and support this theme "
+"as long as it will be in demand."
+msgstr ""
+
+#: ../wproto/view/dialog/demo_data_notice.phtml:10
+msgid ""
+"If you are not satisfied with our product, please do not rush to put a bad "
+"rating, contact us about your wishes. We can not guarantee that all of them "
+"will be implemented, but the most interesting and popular ideas will be "
+"added necessarily!"
+msgstr ""
+
+#: ../wproto/view/dialog/demo_data_notice.phtml:12
+msgid ""
+"Theme rating is related to further theme development and support directly, "
+"please encourage our work!"
+msgstr ""
+
+#: ../wproto/view/dialog/demo_data_notice.phtml:14
+msgid "Thank you, and Good luck. Best regards, <strong>WPlab</strong> team."
+msgstr ""
+
+#: ../wproto/view/dialog/demo_data_notice.phtml:16
+msgid ""
+"<a href=\"javascript:;\" id=\"wproto-hide-demo-data-message\">Hide this "
+"message</a>"
+msgstr ""
+
+#: ../wproto/view/dialog/icon_picker.phtml:12
+msgid "Display all libraries"
+msgstr ""
+
+#: ../wproto/view/dialog/icon_picker.phtml:13
+msgid "Font Awesome Library"
+msgstr ""
+
+#: ../wproto/view/dialog/icon_picker.phtml:15
+msgid "Ico Moon Library"
+msgstr ""
+
+#: ../wproto/view/dialog/icon_picker.phtml:30
+msgid "Font Awesome Icons"
+msgstr ""
+
+#: ../wproto/view/dialog/icon_picker.phtml:49
+msgid "IcoMoon Icons"
+msgstr ""
+
+#: ../wproto/view/dialog/icon_picker.phtml:68
+msgid "No icons founded"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_appearance.phtml:16
+#: ../wproto/view/layout_editor/metabox_appearance.phtml:19
+#: ../wproto/view/layout_editor/metabox_appearance.phtml:37
+#: ../wproto/view/layout_editor/metabox_appearance.phtml:40
+#: ../wproto/view/settings/custom_posts.phtml:32
+#: ../wproto/view/settings/custom_posts.phtml:35
+#: ../wproto/view/settings/custom_posts.phtml:236
+#: ../wproto/view/settings/custom_posts.phtml:239
+msgid "Single post style"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_footer.phtml:8
+msgid "Page footer style"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_footer.phtml:11
+msgid "Default skin footer"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_footer.phtml:19
+msgid "Customize footer widget area"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_footer.phtml:22
+msgid "Use default footer widget area"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_header.phtml:13
+msgid "Enable One-Page menu"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_header.phtml:21
+msgid "Page header menu"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_header.phtml:29
+msgid "Default theme menu"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_header.phtml:43
+msgid "Page header style"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_header.phtml:46
+msgid "Default skin header"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_header.phtml:54
+#: ../wproto/view/settings/appearance.phtml:347
+msgid "Breadcrumbs bar style"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_sidebar.phtml:10
+msgid "Customize sidebar settings"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_sidebar.phtml:35
+msgid "With Left Sidebar"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_sidebar.phtml:36
+msgid "With Right Sidebar"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_sidebar.phtml:37
+msgid "No Sidebar"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_sidebar.phtml:47
+msgid "Page sidebar"
+msgstr ""
+
+#: ../wproto/view/layout_editor/metabox_sidebar.phtml:52
+msgid "Choose a widget area which will be displayed at sidebar"
+msgstr ""
+
+#: ../wproto/view/metaboxes/attached_images.phtml:23
+msgid "Add images"
+msgstr ""
+
+#: ../wproto/view/metaboxes/attached_images.phtml:29
+msgid "1 image selected"
+msgstr ""
+
+#: ../wproto/view/metaboxes/attached_images_item.phtml:21
+msgid "Alternative text"
+msgstr ""
+
+#: ../wproto/view/metaboxes/attached_images_item.phtml:25
+msgid "Caption"
+msgstr ""
+
+#: ../wproto/view/metaboxes/benefits_style.phtml:7
+msgid "Animation settings"
+msgstr ""
+
+#: ../wproto/view/metaboxes/benefits_style.phtml:15
+msgid "Animation delay in seconds"
+msgstr ""
+
+#: ../wproto/view/metaboxes/benefits_style.phtml:17
+msgid "(for example: 0.3s, or 1800ms)"
+msgstr ""
+
+#: ../wproto/view/metaboxes/benefits_style.phtml:20
+msgid "Use Featured Image as benefit icon"
+msgstr ""
+
+#: ../wproto/view/metaboxes/benefits_style.phtml:23
+msgid "Select an icon from the library"
+msgstr ""
+
+#: ../wproto/view/metaboxes/benefits_style.phtml:26
+msgid "Upload SVG image"
+msgstr ""
+
+#: ../wproto/view/metaboxes/benefits_style.phtml:37
+msgid "SVG image width and height in pixels"
+msgstr ""
+
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:12
+msgid "Font file in EOT format"
+msgstr ""
+
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:20
+msgid "Font file in WOFF2 format"
+msgstr ""
+
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:28
+msgid "Font file in WOFF format"
+msgstr ""
+
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:36
+msgid "Font file in TrueType format"
+msgstr ""
+
+#: ../wproto/view/metaboxes/custom_font_settings.phtml:44
+msgid "Font file in SVG format"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:20
+msgid "Redirect code"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:22
+msgid "301 Moved Permanently"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:23
+msgid "302 Moved Temporarily"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:24
+msgid "307 Temporary Redirect"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:30
+msgid "To another page"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:33
+msgid "To another URL"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:36
+msgid "Choose a page"
+msgstr ""
+
+#: ../wproto/view/metaboxes/page_redirect.phtml:40
+msgid "Type URL"
+msgstr ""
+
+#: ../wproto/view/metaboxes/partners_clients.phtml:3
+msgid "Custom link (optional)"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:4
+msgid "\"Buy it\" button"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:7
+msgid "Display \"Buy\" button"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:18
+msgid "\"Buy\" button custom text"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:27
+msgid "\"Buy\" button URL"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:36
+msgid "\"Download it\" button"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:39
+msgid "Display \"Download\" button"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:50
+msgid "\"Download\" button custom text"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:59
+msgid "\"Download\" button URL"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:65
+msgid ""
+"If \"download url\" is not specified, a link to the full-size thumbnail "
+"image will be used"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:70
+msgid "Project information"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:73
+msgid "Display categories"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:84
+msgid "Display information about Client"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:95
+msgid "Client name"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:104
+msgid "Display project link"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:115
+msgid "Project URL"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:124
+msgid "Display date"
+msgstr ""
+
+#: ../wproto/view/metaboxes/portfolio_information.phtml:135
+msgid "Display share icons"
+msgstr ""
+
+#: ../wproto/view/metaboxes/post_featured.phtml:3
+msgid "Enable"
+msgstr ""
+
+#: ../wproto/view/metaboxes/post_featured.phtml:4
+msgid "Disable"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:5
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:111
+msgid "Packages &amp; Features"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:6
+msgid "Basic"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:7
+msgid "Pro"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:8
+msgid "Unlimited"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:9
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:119
+msgid "Add package"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:14
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:124
+msgid "Add feature"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:15
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:16
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:17
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:133
+msgid "Remove this plan"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:15
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:16
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:17
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:133
+msgid "Mark this plan as featured"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:24
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:143
+msgid "Price"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:33
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:152
+msgid "Price currency (e.g. $)"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:42
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:161
+msgid "Time period (e.g. month / year etc.)"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:51
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:170
+msgid "Details"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:60
+msgid "Star Rating (from 1 to 5)"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:69
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:188
+msgid "Package icon"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:79
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:201
+msgid "Button URL"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:98
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:218
+msgid "Remove this feature"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:100
+msgid "Your feature"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:102
+msgid "Basic value"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:103
+msgid "Pro value"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:104
+msgid "Unlimited value"
+msgstr ""
+
+#: ../wproto/view/metaboxes/pricing_table_editor.phtml:179
+msgid "Rating (from 1 to 5)"
+msgstr ""
+
+#: ../wproto/view/metaboxes/team_member.phtml:2
+msgid "Position"
+msgstr ""
+
+#: ../wproto/view/metaboxes/team_member.phtml:6
+msgid ""
+"Open following URL on click (if not connected with existing WordPress user)"
+msgstr ""
+
+#: ../wproto/view/metaboxes/team_member_connections.phtml:2
+msgid "Do not connect this team member with existing user"
+msgstr ""
+
+#: ../wproto/view/metaboxes/team_member_connections.phtml:7
+msgid "Connect with existing blog author"
+msgstr ""
+
+#: ../wproto/view/metaboxes/testimonials.phtml:2
+msgid "Position / Company info"
+msgstr ""
+
+#: ../wproto/view/metaboxes/testimonials.phtml:5
+msgid "Website URL"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:6
+msgid "API and Social"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:16
+#: ../wproto/view/settings/appearance.phtml:16
+#: ../wproto/view/settings/branding.phtml:16
+#: ../wproto/view/settings/custom_modes.phtml:16
+#: ../wproto/view/settings/custom_posts.phtml:16
+#: ../wproto/view/settings/customizer.phtml:16
+#: ../wproto/view/settings/general.phtml:16
+#: ../wproto/view/settings/plugins.phtml:16
+#: ../wproto/view/settings/skins.phtml:16
+#: ../wproto/view/settings/system_layouts.phtml:16
+#: ../wproto/view/settings/tools.phtml:11 ../wproto/view/settings/woo.phtml:16
+msgid "Settings were saved"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:27
+msgid "Google API"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:32
+msgid "Google API key"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:33
+msgid "Will be used to grab Google Fonts"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:59
+msgid "Twitter API Keys"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:66
+msgid "Your Twitter Login"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:81
+msgid "OAuth Access Token"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:96
+msgid "OAuth Access Token Secret"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:111
+msgid "Twitter Consumer Key"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:126
+msgid "Twitter Consumer Secret"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:141
+msgid "Cache time (in seconds)"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:164
+#: ../wproto/view/settings/appearance.phtml:528
+msgid "Social icons"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:179
+msgid "Social links target"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:184
+msgid "Open all social links at new tab"
+msgstr ""
+
+#: ../wproto/view/settings/api_social.phtml:206
+#: ../wproto/view/settings/appearance.phtml:561
+#: ../wproto/view/settings/branding.phtml:245
+#: ../wproto/view/settings/custom_modes.phtml:503
+#: ../wproto/view/settings/custom_posts.phtml:380
+#: ../wproto/view/settings/customizer.phtml:412
+#: ../wproto/view/settings/general.phtml:846
+#: ../wproto/view/settings/plugins.phtml:99
+#: ../wproto/view/settings/skins.phtml:70
+#: ../wproto/view/settings/system_layouts.phtml:658
+#: ../wproto/view/settings/woo.phtml:169
+msgid "Save settings"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:31
+msgid "Top bar"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:35
+msgid "Show top bar"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:49
+msgid "Top bar style"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:78
+#: ../wproto/view/settings/appearance.phtml:100
+#: ../wproto/view/settings/appearance.phtml:122
+#: ../wproto/view/settings/appearance.phtml:144
+#: ../wproto/view/settings/appearance.phtml:166
+#: ../wproto/view/settings/appearance.phtml:188
+#: ../wproto/view/settings/appearance.phtml:207
+#: ../wproto/view/settings/appearance.phtml:225
+#: ../wproto/view/settings/appearance.phtml:260
+msgid "Display on desktop"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:79
+#: ../wproto/view/settings/appearance.phtml:101
+#: ../wproto/view/settings/appearance.phtml:123
+#: ../wproto/view/settings/appearance.phtml:145
+#: ../wproto/view/settings/appearance.phtml:167
+#: ../wproto/view/settings/appearance.phtml:189
+#: ../wproto/view/settings/appearance.phtml:208
+#: ../wproto/view/settings/appearance.phtml:226
+#: ../wproto/view/settings/appearance.phtml:261
+msgid "Display on tablets"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:80
+#: ../wproto/view/settings/appearance.phtml:102
+#: ../wproto/view/settings/appearance.phtml:124
+#: ../wproto/view/settings/appearance.phtml:146
+#: ../wproto/view/settings/appearance.phtml:168
+#: ../wproto/view/settings/appearance.phtml:190
+#: ../wproto/view/settings/appearance.phtml:209
+msgid "Display on phones"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:86
+#: ../wproto/view/shortcodes/contact_information.phtml:19
+#: ../wproto/view/shortcodes/contact_information_modern.phtml:45
+msgid "Phone"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:108
+#: ../wproto/view/shortcodes/contact_information.phtml:26
+#: ../wproto/view/shortcodes/contact_information_modern.phtml:63
+msgid "Email"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:130
+msgid "Skype"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:152
+msgid "Working hours"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:215
+msgid "Display Login / Register widget"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:232
+msgid "Login / register widget style"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:250
+msgid "Display WooCommerce Wishlist"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:266
+#: ../wproto/view/settings/system_layouts.phtml:478
+#: ../wproto/view/settings/system_layouts.phtml:579
+msgid "Appearance settings"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:270
+msgid "Display search icon / form at header (only for classic headers)"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:284
+msgid "Display WooCommerce cart widget at header (only for classic headers)"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:298
+msgid "Header menu scrolling"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:312
+msgid "Scroll menu at mobile devices"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:325
+#: ../wproto/view/settings/appearance.phtml:329
+msgid "Header style"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:374
+msgid "Sidebar"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:379
+msgid "Display sidebar at all pages"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:393
+#: ../wproto/view/settings/woo.phtml:97
+msgid "Sidebar position"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:410
+#: ../wproto/view/settings/woo.phtml:114
+msgid "Choose widget area"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:439
+msgid "Footer"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:447
+msgid "Footer style"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:465
+msgid "Default widgetized footer area"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:487
+msgid "Bottom bar"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:491
+msgid "Show bottom bar"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:505
+msgid "Copyright information"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:519
+msgid "Content to display after copyright"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:526
+msgid "Do not display anything"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:527
+msgid "Bottom bar menu"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:535
+msgid "Give credits to WPlab"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:545
+msgid "Thank you so much!"
+msgstr ""
+
+#: ../wproto/view/settings/appearance.phtml:560
+#: ../wproto/view/settings/branding.phtml:244
+#: ../wproto/view/settings/custom_modes.phtml:502
+#: ../wproto/view/settings/custom_posts.phtml:379
+#: ../wproto/view/settings/customizer.phtml:411
+#: ../wproto/view/settings/general.phtml:845
+#: ../wproto/view/settings/plugins.phtml:98
+#: ../wproto/view/settings/skins.phtml:69
+#: ../wproto/view/settings/system_layouts.phtml:657
+#: ../wproto/view/settings/woo.phtml:168
+msgid "Reset to defaults"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:26
+#: ../wproto/view/settings/branding.phtml:31
+msgid "Site title and tagline"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:41
+msgid "Enter site title here"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:44
+msgid "Enter site tagline here"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:45
+msgid "In a few words, explain what this site is about."
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:60
+msgid "Header logo"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:65
+msgid "Logo type"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:73
+msgid "Default (site title and tagline)"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:74
+msgid "Image logo"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:75
+msgid "Site title only"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:80
+msgid "Custom website logo"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:91
+#: ../wproto/view/settings/branding.phtml:102
+msgid "Your website logo"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:95
+#: ../wproto/view/settings/branding.phtml:106
+#: ../wproto/widget/logo_and_description.phtml:62
+#: ../wproto/widget/logo_and_description.phtml:69
+msgid "Remove logo"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:97
+msgid "Upload a logo for your theme."
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:108
+msgid ""
+"Hi-resolution logo website logo for Retina Displays (should have a twice "
+"size)."
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:116
+msgid "Logo width and height in pixels"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:131
+msgid "Custom logo margins (top / right / bottom / left) in pixels"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:150
+msgid "Custom logo paddings (top / right / bottom / left) in pixels"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:179
+msgid "Favicon &amp; Apple touch icons"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:184
+msgid "Favicon"
+msgstr ""
+
+#: ../wproto/view/settings/branding.phtml:202
+msgid "Apple Touch Icons"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:6
+msgid "Custom modes"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:27
+msgid "Coming Soon Mode"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:32
+msgid "Enable \"Coming Soon\" mode"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:42
+msgid ""
+"All pages of your website will be not available to visitors (except logged "
+"administrators) and search engines while coming soon mode is enabled."
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:52
+#: ../wproto/view/settings/custom_modes.phtml:298
+msgid "Basic settings"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:56
+#: ../wproto/view/settings/custom_modes.phtml:302
+#: ../wproto/view/settings/system_layouts.phtml:566
+msgid "Page content"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:89
+#: ../wproto/view/settings/custom_modes.phtml:335
+msgid "Page footer text"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:122
+msgid "The planned opening date"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:131
+msgid "Day / Month / Year"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:143
+msgid "Coming soon page style"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:152
+#: ../wproto/view/settings/custom_modes.phtml:383
+msgid "Default (for dark backgrounds)"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:153
+#: ../wproto/view/settings/custom_modes.phtml:384
+msgid "Style 2 (for dark backgrounds)"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:154
+#: ../wproto/view/settings/custom_modes.phtml:385
+msgid "Style 3 (for dark backgrounds)"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:155
+#: ../wproto/view/settings/custom_modes.phtml:386
+msgid "Style 4 (for dark backgrounds)"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:156
+#: ../wproto/view/settings/custom_modes.phtml:387
+msgid "Style 4 (for white backgrounds)"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:177
+#: ../wproto/view/settings/custom_modes.phtml:408
+msgid "Background image"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:192
+#: ../wproto/view/settings/custom_modes.phtml:423
+msgid "Background repeat"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:201
+#: ../wproto/view/settings/custom_modes.phtml:432
+msgid "Repeat horizontal and vertical"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:202
+#: ../wproto/view/settings/custom_modes.phtml:433
+msgid "Horizontal repeat"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:203
+#: ../wproto/view/settings/custom_modes.phtml:434
+msgid "Vertical repeat"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:204
+#: ../wproto/view/settings/custom_modes.phtml:435
+msgid "No repeat"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:211
+#: ../wproto/view/settings/custom_modes.phtml:442
+msgid "Horizontal background position"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:229
+#: ../wproto/view/settings/custom_modes.phtml:460
+msgid "Vertical background position"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:239
+#: ../wproto/view/settings/custom_modes.phtml:470
+msgid "Top"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:240
+#: ../wproto/view/settings/custom_modes.phtml:471
+msgid "Bottom"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:247
+#: ../wproto/view/settings/custom_modes.phtml:478
+msgid "Fixed background"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:273
+msgid "Maintenance mode"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:278
+msgid "Enable \"Maintenance\" mode"
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:288
+msgid ""
+"All pages of your website will be not available to visitors and search "
+"engines while maintenance mode is enabled."
+msgstr ""
+
+#: ../wproto/view/settings/custom_modes.phtml:374
+msgid "Maintenance page style"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:6
+msgid "Settings for single post templates"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:23
+msgid "Blog single post layout"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:46
+#: ../wproto/view/settings/custom_posts.phtml:267
+msgid "Comments style"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:61
+msgid "Show tags after post content"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:75
+msgid "Display share links after post content"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:89
+#: ../wproto/view/settings/custom_posts.phtml:279
+msgid "Show previous / Next post links"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:103
+msgid "Show author information after post content"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:116
+#: ../wproto/view/settings/custom_posts.phtml:292
+msgid "Related posts"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:120
+#: ../wproto/view/settings/custom_posts.phtml:296
+msgid "Show related posts"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:148
+#: ../wproto/view/settings/custom_posts.phtml:338
+msgid "Maximum posts count"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:173
+#: ../wproto/view/settings/custom_posts.phtml:363
+msgid "Display related posts from same category"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:174
+#: ../wproto/view/settings/custom_posts.phtml:364
+msgid "Display random posts from any category"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:181
+msgid "Show thumbnails"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:195
+msgid "Show excerpts"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:210
+msgid "Leave it blank to hide that link"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:227
+msgid "Portfolio single post layout"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:254
+msgid "Enable comments for portfolio"
+msgstr ""
+
+#: ../wproto/view/settings/custom_posts.phtml:324
+msgid "Block description"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:6
+msgid "Colors and fonts customizer"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:27
+msgid "Change theme style"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:32
+msgid "Enable customizer"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:42
+msgid ""
+"Enable this option if you want to change system settings for colors and fonts"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:48
+msgid "Important Notice"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:48
+msgid ""
+"If you're using theme demo data as a start template, and some color's were "
+"not changed, check appropriate row options / content widget / element "
+"settings, since some elements have additional color settings by reason of a "
+"better flexibility."
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:62
+msgid "Layout Settings"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:67
+msgid "Custom header height (leave it blank to use default height)"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:82
+msgid "Minimum body height in pixels (leave it blank to use default height)"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:97
+msgid "Rounded corners radius"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:111
+#: ../wproto/view/settings/system_layouts.phtml:111
+#: ../wproto/view/settings/system_layouts.phtml:230
+#: ../wproto/view/settings/system_layouts.phtml:363
+#: ../wproto/view/settings/system_layouts.phtml:482
+msgid "Layout style"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:120
+msgid "Full width"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:122
+msgid "Framed"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:132
+msgid "Box outer background image"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:142
+msgid "Top bar background image"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:152
+msgid "Header background image"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:162
+msgid "Body background image"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:175
+msgid "Footer background image"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:185
+msgid "Bottom bar background image"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:201
+msgid "Theme colors"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:235
+msgid "Theme fonts"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:240
+msgid "Primary font settings"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:250
+msgid "Secondary font family"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:261
+#, php-format
+msgid "Header %d font settings"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:282
+msgid "Customize google map"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:291
+msgid "Customize google map colors (only for \"custom colors\" mode)"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:305
+msgid "Water color"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:319
+msgid "Administrative labels"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:333
+msgid "Landscape (natural)"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:347
+msgid "Landscape (man made)"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:361
+msgid "Road color"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:375
+msgid "Road (arterial) color"
+msgstr ""
+
+#: ../wproto/view/settings/customizer.phtml:389
+msgid "Transit and POI"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:6
+msgid "Demo Data"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:18
+msgid "Install demo data"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:20
+msgid "Demo data helps you understand how the theme works"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:22
+msgid "Important notes:"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:25
+msgid "Demo data must be installed on a clear WordPress installation."
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:26
+msgid ""
+"Do not forget to activate following plugins before: <strong>Visual Composer, "
+"Slider Revolution, Ninja Forms, Ninja Form Layout</strong> otherwise the "
+"demo data for these plugins will be not installed or may be corrupted"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:27
+msgid ""
+"WooCommerce products will be not installed since that plugin has it's own "
+"demo data"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:28
+msgid ""
+"The Demo data installer will not import the images we have used in our live "
+"demos, due to copyright / license reasons (placeholders will be used "
+"instead)."
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:29
+msgid ""
+"Do not run importer multiple times one after another, it will result in "
+"double content."
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:32
+msgid "What should I do if I get \"200\" or \"500\" error message?"
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:35
+msgid ""
+"Check that <code>/wp-content/uploads/</code> directory and it's subfolders "
+"have correct permissions."
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:36
+msgid ""
+"Increase time limit for PHP scripts and memory limit for WordPress, e.g.: "
+"add following code<br/><code>set_time_limit(30000); <br/"
+">define( 'WP_MEMORY_LIMIT', '128M' ); <br/>define( 'WP_MAX_MEMORY_LIMIT', "
+"'256M' );</code> <br/>into your <i>wp-config.php</i>. and try to install "
+"demo data again."
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:37
+msgid ""
+"If that does not help or you do not know how to do that, contact your "
+"hosting provider."
+msgstr ""
+
+#: ../wproto/view/settings/demo_data.phtml:41
+msgid "Click here to install demo data"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:6
+msgid "General Settings"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:27
+msgid "Page preloader and animations"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:31
+msgid "Animation for Mobiles"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:35
+msgid "Disable animation for mobile devices?"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:48
+msgid "Page preloader"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:52
+msgid "Use page preloader"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:66
+msgid "Preloader style"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:84
+msgid "Custom preloader image"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:85
+msgid "Leave it blank to use default preloader"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:102
+msgid "Custom preloader image for Retina displays"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:103
+msgid "Use same picture in double size"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:120
+msgid "Custom preloader image size"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:121
+msgid "Set image width and height in pixels"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:137
+msgid "Page unloader"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:141
+msgid "Use unloader effect"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:155
+msgid "Unloader style"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:182
+msgid "Enable / Disable build-in custom post types"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:215
+msgid "Team Members"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:278
+msgid "Spam Bot protection"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:283
+msgid "Display captcha in a comment form (for guests)"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:297
+msgid "Display captcha in a signup form"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:311
+msgid "Arithmetic actions for captcha"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:319
+msgid "Minus (-)"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:320
+msgid "Plus (+)"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:321
+msgid "Division (/)"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:322
+msgid "Multiply (*)"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:336
+msgid "Login / Signup form settings"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:341
+msgid "Email notifications"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:349
+msgid "Notifications disabled"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:350
+msgid "Notify admin about new user registration"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:351
+msgid "Notify admin and send welcome email to the user"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:358
+msgid "A visitior should accept user agreement to register"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:372
+msgid "Choose a page with agreement text"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:395
+msgid "Fonts settings"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:400
+msgid "Iconic Fonts Libraries"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:411
+msgid ""
+"Enabling additional font libraries will add ~2000+ free and premium icons, "
+"but may affect site loading speed."
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:417
+msgid "Additional Google font subsets"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:426
+msgid "Latin Extended"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:427
+msgid "Greek"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:428
+msgid "Greek Extended"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:429
+msgid "Vietnamese"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:431
+msgid "Cyrillic"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:432
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:434
+msgid ""
+"Enabling additional font subsets may affect site loading speed, but resolve "
+"a problem with displaying of non-english chars."
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:449
+msgid "One-page menu settings"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:454
+msgid "Display anchors at address bar for one-page navigation?"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:477
+msgid "Smooth scrolling"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:482
+msgid "Enable smooth scrolling"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:492
+msgid "Enable smooth mouse wheel behavior"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:506
+msgid "\"Go Top\" link"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:511
+msgid "Display \"Go Top\" link when scrolling down"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:534
+msgid "High-DPI (retina) images"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:539
+msgid "Retina Support"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:549
+msgid ""
+"Disabling this option will reduce the space occupied by the site, but some "
+"images will be blurred at high pixel density displays."
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:563
+msgid "Breadcrumbs"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:568
+msgid "Display Breadcrumbs"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:582
+msgid "\"Blog\" root page in Breadcrumbs"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:594
+msgid "-- Use default \"Page for posts\" --"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:603
+msgid "\"Portfolio\" root page in Breadcrumbs"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:615
+msgid "-- Use default template --"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:632
+msgid "Admin area access"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:637
+msgid "Do not display admin bar for logged non-admins at front-end part"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:651
+msgid "Disable access to WP admin for logged non-admin users"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:673
+msgid "Modify custom post types"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:681
+msgid "Portfolio post type title"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:695
+msgid "Portfolio slug"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:705
+msgid ""
+"If 404 error occurs, flush rewrite rules through \"Tools\" screen. Use only "
+"the alphabet and -_ chars here. Do not use a space, it can cause problems!"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:719
+#: ../wproto/view/settings/general.phtml:724
+msgid "RSS Feed"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:737
+msgid "Display thumbnails at RSS feed"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:759
+msgid "Custom CSS"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:764
+msgid "Your Custom CSS code"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:773
+msgid "[TAB] button is enabled at this field"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:788
+msgid ""
+"Custom JS code (e.g. Tracking code like Google Analytics or TypeKit code)"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:793
+msgid "Custom JavaScript (footer)"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:816
+msgid "Information for Developers"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:821
+msgid "Display page generation time and SQL queries count"
+msgstr ""
+
+#: ../wproto/view/settings/general.phtml:831
+msgid ""
+"This information will be displayed in HTML comment after each primary &lt;"
+"footer> tag."
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:6
+msgid "Additional settings for third-party plugins"
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:26
+msgid "Forms styling"
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:31
+msgid "Disable JS appearance customization for form inputs"
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:41
+msgid ""
+"Disable jQuery style plugins for Dropdowns, Checkboxes and Radios form inputs"
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:54
+msgid "Visual Composer"
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:59
+msgid "Disable bundled mode for Visual Composer"
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:69
+msgid ""
+"Enable this option if you're going to use a separate license for Visual "
+"Composer to receive auto-updates for it."
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:75
+msgid "Use stand-alone version of Visual Composer"
+msgstr ""
+
+#: ../wproto/view/settings/plugins.phtml:85
+msgid ""
+"<strong>Important!</strong> We can guarantee the correct work and support "
+"only VC widgets that were presented in our demo. By enabling this mode, you "
+"understand that some unsupported widgets may not work correctly. Enable this "
+"option only if you are sure that you need it, at your own risk."
+msgstr ""
+
+#: ../wproto/view/settings/skins.phtml:6
+msgid "Skins"
+msgstr ""
+
+#: ../wproto/view/settings/skins.phtml:27
+msgid "Theme skins"
+msgstr ""
+
+#: ../wproto/view/settings/skins.phtml:32
+msgid "Choose alternative theme skin"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:26
+msgid "Blog archive"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:30
+#: ../wproto/view/settings/system_layouts.phtml:193
+#: ../wproto/view/settings/system_layouts.phtml:312
+#: ../wproto/view/settings/system_layouts.phtml:445
+msgid "Custom titles"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:34
+msgid "Blog title"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:48
+msgid "Archive page title"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:62
+msgid "Categories archive page title"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:72
+#: ../wproto/view/settings/system_layouts.phtml:221
+#, php-format
+msgid "Use \"%s\" to display a category name from query"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:78
+msgid "Tags archive page title"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:88
+#, php-format
+msgid "Use \"%s\" to display a name of tag from query"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:94
+#: ../wproto/view/settings/system_layouts.phtml:197
+#: ../wproto/view/settings/system_layouts.phtml:332
+#: ../wproto/view/settings/system_layouts.phtml:465
+msgid "\"Read more\" link custom text"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:107
+#: ../wproto/view/settings/system_layouts.phtml:226
+#: ../wproto/view/settings/system_layouts.phtml:345
+msgid "Layout"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:133
+msgid "Display sidebar at blog archives page"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:147
+msgid "Blog archive sidebar position"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:164
+msgid "Blog archive widget area"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:189
+msgid "Portfolio archive"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:211
+msgid "Portfolio category page title"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:248
+#: ../wproto/view/settings/system_layouts.phtml:381
+#: ../wproto/view/settings/system_layouts.phtml:500
+#: ../wproto/view/settings/system_layouts.phtml:596
+#: ../wproto/view/settings/woo.phtml:79
+msgid "Sidebar settings"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:252
+msgid "Display sidebar at portfolio archives page"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:266
+msgid "Portfolio archive sidebar position"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:283
+msgid "Portfolio archive widget area"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:308
+msgid "Author's page"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:316
+msgid "Author page title"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:326
+#, php-format
+msgid "Use \"%s\" to display author's name"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:349
+msgid "Display information about author"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:385
+msgid "Display sidebar at author's page"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:399
+msgid "Author's page archive sidebar position"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:416
+msgid "Author's page widget area"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:441
+msgid "Search page"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:449
+msgid "Search results page title"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:459
+#, php-format
+msgid "Use \"%s\" to display a search query"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:504
+msgid "Display sidebar at search results page"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:518
+#: ../wproto/view/settings/system_layouts.phtml:614
+msgid "Search page sidebar position"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:535
+#: ../wproto/view/settings/system_layouts.phtml:631
+msgid "Search page widget area"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:561
+msgid "Page 404"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:583
+msgid "Display search form"
+msgstr ""
+
+#: ../wproto/view/settings/system_layouts.phtml:600
+msgid "Display sidebar at 404 page"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:27
+msgid "Theme settings"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:32
+msgid "Reset all settings"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:37
+msgid "Reset all theme's settings to defaults"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:40
+#: ../wproto/view/settings/tools.phtml:57
+#: ../wproto/view/settings/tools.phtml:76
+msgid "Working..."
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:43
+msgid ""
+"If you mess up in the settings, this feature will help you to reset all "
+"settings"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:49
+msgid "Export settings"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:54
+msgid "Click here to get a string of serialized theme options"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:64
+msgid "Import settings"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:73
+msgid "Click here to import settings"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:92
+#: ../wproto/view/settings/tools.phtml:97
+msgid "Clear tweets cache"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:94
+msgid "This operation will clear a cache of your tweets"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:100
+msgid "Resetting..."
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:112
+#: ../wproto/view/settings/tools.phtml:117
+msgid "Flush rewrite rules"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:114
+msgid "Update rewrite rules, if you have troubles with custom post types."
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:120
+msgid "Flushing..."
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:132
+msgid "Grab Google Fonts"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:134
+msgid ""
+"To improve performance, we cache a list of Google fonts locally. As new "
+"fonts will be availabled at Google, you can download the new fonts list by "
+"clicking on the button at right. You need to enter Google API key at theme's "
+"settings to get fonts from Google."
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:137
+msgid "Grab google fonts list"
+msgstr ""
+
+#: ../wproto/view/settings/tools.phtml:140
+msgid "Grabbing..."
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:20
+msgid "License information"
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:22
+msgid ""
+"Stay updated! Check and get new updates for your theme automatically. New "
+"features and bug fixes are available regularly. To receive an update, enter "
+"your license information below."
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:27
+msgid "Envato username"
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:34
+msgid ""
+"<strong>Important!</strong> Please make sure that you have used the same "
+"user name as on ThemeForest (e.g. \"UncleSam\" is not the same as \"UNCLEsam"
+"\")."
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:39
+msgid "Envato API key"
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:39
+msgid "Where can i get it?"
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:50
+msgid "Check for new version"
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:62
+msgid "News and updates from WPlab"
+msgstr ""
+
+#: ../wproto/view/settings/updater.phtml:63
+#, php-format
+msgid ""
+"Wanna keep abreast of the latest news and updates? Follow us via <a href=\"%s"
+"\" target=\"_blank\">ThemeForest</a> and <a href=\"%s\" target=\"_blank"
+"\">Twitter</a>!"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:6
+msgid "Additional settings for WooCommerce"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:26
+msgid "Customization"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:31
+msgid "Shop layout style"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:50
+msgid "Products per page"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:64
+msgid "Disable ordering boxes"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:74
+msgid "Your shop will work as a simple \"Catalog\""
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:83
+msgid "Display sidebar at shop pages"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:142
+msgid "Custom Templates"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:147
+msgid ""
+"Replace default WooCommerce templates with custom theme-styled templates"
+msgstr ""
+
+#: ../wproto/view/settings/woo.phtml:156
+msgid "Disable this option to use default WooCommerce style"
+msgstr ""
+
+#: ../wproto/view/shortcodes/contact_information.phtml:33
+#: ../wproto/view/shortcodes/contact_information_modern.phtml:81
+msgid "Follow us"
+msgstr ""
+
+#: ../wproto/view/shortcodes/google_map.phtml:188
+msgid "Cannot load Google Maps. Please enter Google Map address before."
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:9
+msgid "Sign In"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:10
+msgid "Sign Up"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:22
+msgid "Login or Email address"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:26
+msgid "Password"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:30
+msgid "Login"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:32
+msgid "Forgot password?"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:45
+msgid "Email address"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:49
+msgid "Your password"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:53
+msgid "Type password again"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:57
+msgid "First name (optional)"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:61
+msgid "Last name (optional)"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:69
+#, php-format
+msgid ""
+"I agree with the <a target=\"_blank\" href=\"%s\">terms and conditions</a>"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:75
+msgid "Create an account"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:87
+msgid "Your Login or Email address"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:91
+msgid "Restore password"
+msgstr ""
+
+#: ../wproto/view/shortcodes/login_signup.phtml:94
+msgid "Ready to login?"
+msgstr ""
+
+#: ../wproto/view/shortcodes/portfolio/masonry.phtml:38
+msgid "Columns: 2"
+msgstr ""
+
+#: ../wproto/view/shortcodes/portfolio/masonry.phtml:39
+msgid "Columns: 3"
+msgstr ""
+
+#: ../wproto/view/shortcodes/portfolio/masonry.phtml:40
+msgid "Columns: 4"
+msgstr ""
+
+#: ../wproto/view/shortcodes/portfolio/masonry.phtml:48
+msgid "Sort by: Date"
+msgstr ""
+
+#: ../wproto/view/shortcodes/portfolio/masonry.phtml:49
+msgid "Sort by: Title"
+msgstr ""
+
+#: ../wproto/view/shortcodes/product_carousel.phtml:54
+#: ../wproto/view/shortcodes/product_carousel.phtml:81
+msgid "Add to Cart"
+msgstr ""
+
+#: ../wproto/view/shortcodes/shop/1_col.phtml:26
+#: ../wproto/view/shortcodes/shop/2_cols.phtml:30
+#: ../wproto/view/shortcodes/shop/3_cols.phtml:33
+#: ../wproto/view/shortcodes/shop/4_cols.phtml:33
+msgid "Load more products"
+msgstr ""
+
+#: ../wproto/view/shortcodes/tweets.phtml:3
+msgid "Loading latest tweets, please wait..."
+msgstr ""
+
+#: ../wproto/view/widgets/posts.phtml:47
+msgid "Recent"
+msgstr ""
+
+#: ../wproto/view/widgets/posts.phtml:48
+msgid "Popular"
+msgstr ""
+
+#: ../wproto/view/widgets/posts.phtml:89
+#: ../wproto/view/widgets/posts.phtml:142
+msgid "<span class=\"comments-num\">%</span> comments"
+msgstr ""
+
+#: ../wproto/view/widgets/widget_toggles_settings.phtml:1
+msgid "Add Items"
+msgstr ""
+
+#: ../wproto/view/widgets/widget_toggles_settings.phtml:5
+msgid "Toggles Style"
+msgstr ""
+
+#: ../wproto/view/widgets/widget_toggles_settings.phtml:7
+msgid "Light style"
+msgstr ""
+
+#: ../wproto/view/widgets/widget_toggles_settings.phtml:8
+msgid "Dark style"
+msgstr ""
+
+#: ../wproto/view/widgets/widget_toggles_settings.phtml:23
+msgid "Content"
+msgstr ""
+
+#: ../wproto/widget/contact_information.phtml:12
+msgid "A widget that displays contact information. "
+msgstr ""
+
+#: ../wproto/widget/contact_information.phtml:16
+msgid "[EXE] Contact Information"
+msgstr ""
+
+#: ../wproto/widget/contact_information.phtml:51
+msgid "Contact"
+msgstr ""
+
+#: ../wproto/widget/contact_information.phtml:62
+#: ../wproto/widget/posts.phtml:62 ../wproto/widget/taxonomy.phtml:66
+#: ../wproto/widget/testimonials.phtml:63
+#: ../wproto/widget/thumbnails_carousel.phtml:66
+#: ../wproto/widget/toggles.phtml:55 ../wproto/widget/tweets.phtml:57
+msgid "Widget title:"
+msgstr ""
+
+#: ../wproto/widget/contact_information.phtml:66
+msgid "Address:"
+msgstr ""
+
+#: ../wproto/widget/contact_information.phtml:70
+msgid "Phone:"
+msgstr ""
+
+#: ../wproto/widget/contact_information.phtml:74
+msgid "Email:"
+msgstr ""
+
+#: ../wproto/widget/logo_and_description.phtml:12
+msgid "A widget that displays website logo and description."
+msgstr ""
+
+#: ../wproto/widget/logo_and_description.phtml:16
+msgid "[EXE] Logo &amp; Description"
+msgstr ""
+
+#: ../wproto/widget/logo_and_description.phtml:59
+msgid "Logo URL"
+msgstr ""
+
+#: ../wproto/widget/logo_and_description.phtml:66
+msgid "Logo URL for Retina Displays"
+msgstr ""
+
+#: ../wproto/widget/logo_and_description.phtml:73
+msgid "Logo width"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:12
+msgid "A widget that displays blog / portfolio posts. "
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:16
+msgid "[EXE] Posts"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:66
+msgid "Post type:"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:73
+msgid "Display type:"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:75
+msgid "Recent posts"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:77
+msgid "Most commented posts"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:78
+msgid "Random posts"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:79
+msgid "Recent & Most commented (in tabs)"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:84
+msgid "Display post thumbnails"
+msgstr ""
+
+#: ../wproto/widget/posts.phtml:87
+msgid "Posts count:"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:12
+msgid "A widget that displays list of custom taxonomies"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:16
+msgid "[EXE] Taxonomy list"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:70
+msgid "Choose a taxonomy:"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:72
+msgid "Portfolio category"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:76 ../wproto/widget/testimonials.phtml:89
+msgid "Order by:"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:85
+msgid "Sort by:"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:93
+msgid "Display hierarchical"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:97
+msgid "Display only top level"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:101
+msgid "Hide empty"
+msgstr ""
+
+#: ../wproto/widget/taxonomy.phtml:105
+msgid "Show count"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:12
+msgid ""
+"A widget that displays testimonials. Important! This widget is not "
+"compatible with Mega Menu (it will be hidden if it displayed as a part of "
+"Mega Menu)."
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:16
+msgid "[EXE] Testimonials Carousel"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:67
+msgid "Number of records to display:"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:71
+#: ../wproto/widget/thumbnails_carousel.phtml:86
+msgid "Display from categories:"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:73
+#: ../wproto/widget/thumbnails_carousel.phtml:88
+msgid "All categories"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:91
+#: ../wproto/widget/thumbnails_carousel.phtml:106
+msgid "ID"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:93
+#: ../wproto/widget/thumbnails_carousel.phtml:108
+msgid "Modified"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:95
+#: ../wproto/widget/thumbnails_carousel.phtml:110
+msgid "Random"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:96
+#: ../wproto/widget/thumbnails_carousel.phtml:111
+msgid "Menu order"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:100
+#: ../wproto/widget/thumbnails_carousel.phtml:115
+msgid "Sort:"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:107
+#: ../wproto/widget/thumbnails_carousel.phtml:122
+msgid "Carousel autoplay speed (in milliseconds):"
+msgstr ""
+
+#: ../wproto/widget/testimonials.phtml:111
+msgid "Widget style:"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:12
+msgid ""
+"A widget that displays a posts carousel. Important! This widget is not "
+"compatible with Mega Menu (it will be hidden if it displayed as a part of "
+"Mega Menu)."
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:16
+msgid "[EXE] Portfolio Slideshow"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:52
+msgid "Slideshow image widget"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:70
+msgid "Number of items to display:"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:74
+msgid "Link image to:"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:76
+msgid "Link to post"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:77
+msgid "Link to project URL"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:78
+msgid "Open full image in lightbox"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:83
+msgid "Featured only"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:104
+msgid "Order logos by:"
+msgstr ""
+
+#: ../wproto/widget/thumbnails_carousel.phtml:127
+msgid "Open posts at new window?"
+msgstr ""
+
+#: ../wproto/widget/toggles.phtml:12
+msgid ""
+"A widget that displays the toggles. Important! This widget is not compatible "
+"with Mega Menu (it will be hidden if it displayed as a part of Mega Menu)."
+msgstr ""
+
+#: ../wproto/widget/toggles.phtml:16
+msgid "[EXE] Toggles"
+msgstr ""
+
+#: ../wproto/widget/toggles.phtml:47
+msgid "Toggles Widget"
+msgstr ""
+
+#: ../wproto/widget/toggles.phtml:60
+msgid "Click here to add toggles"
+msgstr ""
+
+#: ../wproto/widget/tweets.phtml:12
+msgid "A widget that displays your latest tweets. "
+msgstr ""
+
+#: ../wproto/widget/tweets.phtml:16
+msgid "[EXE] Latest Tweets"
+msgstr ""
+
+#: ../wproto/widget/tweets.phtml:61
+msgid "Number of tweets:"
+msgstr ""

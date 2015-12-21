@@ -1,0 +1,3 @@
+C:\htdocs\test.avi
+C:\htdocs\test.flv
+ -acodec aac -ab 96k -vcodec libx264 -fpre "C:\htdocs\bin\libx264-slower.ffpreset" -qmax 25 -strict experimental -threads 0

@@ -1,0 +1,56 @@
+<?php if( $data['posts']->have_posts() ): ?>
+
+	<?php if( ! $data['ajax_load'] ): ?>
+	<div id="wproto-products-grid-id-<?php echo $data['uniqid']; ?>" class="wproto-products-grid style-<?php echo esc_attr( $data['style'] ); ?>">
+	<?php endif; ?>
+
+		<?php while( $data['posts']->have_posts() ): $data['posts']->the_post(); ?>
+	
+			<?php get_template_part('part', 'product_content'); ?>
+	
+		<?php endwhile; ?>
+	
+	<?php if( ! $data['ajax_load'] ): ?>
+	</div>
+	<?php endif; ?>
+	
+	<?php if( (bool)$data['display_pagination'] && ! $data['ajax_load'] ): ?>
+		<div class="wproto-products-pagination-style-<?php echo esc_attr( $data['style'] ); ?>">
+		<?php
+			wpl_exe_wp_front::pagination( array(
+				'pagination_style' => $data['pagination_style'],
+				'custom_query' => $data['posts'],
+				'ajax_target' => '#wproto-products-grid-id-' . $data['uniqid'],
+				'append_type' => 'grid',
+				'shortcode' => 'wproto_shop_product'
+			), $data, __('Load more products', 'wproto') );
+		?>
+		</div>
+	<?php endif; ?>
+
+<?php elseif( ! $data['ajax_load'] ): ?>
+
+	<?php get_template_part('part', 'no_posts'); ?>
+
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initProductsCarousels();
+		}
+	</script>
+<?php endif;
+
+// Run JS if VC front-end builder active
+if( isset( $_GET['vc_editable'] ) && $_GET['vc_editable'] ):
+?>
+	<script>
+		if( typeof( window.wprotoFrontCore ) !== 'undefined' ) {
+			window.wprotoFrontCore.initCarousels();
+			window.wprotoFrontCore.initLightbox();
+		}
+	</script>
+<?php endif;

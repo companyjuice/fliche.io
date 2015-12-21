@@ -1,0 +1,146 @@
+<?php global $wpl_exe_wp; ?>
+<div class="wrap" id="wproto-settings-screen">
+	<div id="icon-themes" class="icon32"><br /></div>
+	
+	<h2 class="nav-tab-wrapper wproto-nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active"><?php _e( 'Tools', 'wproto'); ?></a>
+	</h2>
+		
+	<?php if( isset( $_GET['updated'] ) && $_GET['updated'] ): ?>
+	<div class="updated">
+		<p><?php _e('Settings were saved', 'wproto'); ?></p>
+	</div>
+	<?php endif; ?>
+				
+	<form action="" id="wproto-settings-form" method="post">
+	
+		<input type="hidden" name="wproto_action" value="admin_settings-save" />
+		<input type="hidden" name="wproto_setting_env" value="tools" />
+		
+		<!--
+	
+			Theme settings
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Theme settings', 'wproto' ); ?></h3>
+		
+			<table class="form-table wproto-form-table">
+				<tr>
+					<th>
+						<label><?php _e( 'Reset all settings', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+
+						<p>
+							<a href="javascript:;" id="wproto-reset-all-settings" class="button"><?php _e( 'Reset all theme\'s settings to defaults', 'wproto' ); ?></a>
+						</p>
+						<div id="wproto-reset-all-settings-results" class="infodiv" style="display: none;">
+							<p style="margin-bottom: 3px !important;"><img width="16" height="16" id="wproto-reset-all-settings-loader" src="<?php echo WPROTO_THEME_URL; ?>/images/admin/ajax-loader@2x.gif" alt="" /> <span><?php _e( 'Working...', 'wproto' ); ?></span></p>
+						</div>
+						
+						<p class="description"><?php _e('If you mess up in the settings, this feature will help you to reset all settings', 'wproto'); ?></p>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Export settings', 'wproto' ); ?>:</label>
+					</th>
+					<td id="export-settings-content">
+
+						<p>
+							<a href="javascript:;" id="wproto-export-all-settings" class="button"><?php _e( 'Click here to get a string of serialized theme options', 'wproto' ); ?></a>
+						</p>
+						<div id="wproto-export-all-settings-results" class="infodiv" style="display: none;">
+							<p style="margin-bottom: 3px !important;"><img width="16" height="16" id="wproto-export-all-settings-loader" src="<?php echo WPROTO_THEME_URL; ?>/images/admin/ajax-loader@2x.gif" alt="" /> <span><?php _e( 'Working...', 'wproto' ); ?></span></p>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php _e( 'Import settings', 'wproto' ); ?>:</label>
+					</th>
+					<td>
+
+						<p>
+							<textarea id="wproto-import-all-settings-textarea" style="height: 170px"></textarea>
+						</p>
+						
+						<p>
+							<a href="javascript:;" id="wproto-import-all-settings" class="button"><?php _e( 'Click here to import settings', 'wproto' ); ?></a>
+						</p>
+						<div id="wproto-import-all-settings-results" class="infodiv" style="display: none;">
+							<p style="margin-bottom: 3px !important;"><img width="16" height="16" id="wproto-import-all-settings-loader" src="<?php echo WPROTO_THEME_URL; ?>/images/admin/ajax-loader@2x.gif" alt="" /> <span><?php _e( 'Working...', 'wproto' ); ?></span></p>
+						</div>
+						
+					</td>
+				</tr>
+			</table>
+		
+		</div>
+	
+		<!--
+	
+			Reset Tweets cache
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Clear tweets cache', 'wproto' ); ?></h3>
+		
+			<p class="description"><?php _e('This operation will clear a cache of your tweets', 'wproto'); ?></p>
+
+			<p>
+				<a href="javascript:;" id="wproto-reset-tweets-cache" class="button"><?php _e( 'Clear tweets cache', 'wproto' ); ?></a>
+			</p>
+			<div id="wproto-reset-tweets-cache-result" class="infodiv" style="display: none;">
+				<p style="margin-bottom: 3px !important;"><?php _e( 'Resetting...', 'wproto' ); ?></p>
+			</div>
+		
+		</div>
+	
+		<!--
+	
+			Flush rewrite rules
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Flush rewrite rules', 'wproto' ); ?></h3>
+		
+			<p class="description"><?php _e('Update rewrite rules, if you have troubles with custom post types.', 'wproto'); ?></p>
+
+			<p>
+				<a href="javascript:;" id="wproto-flush-rewrite-rules" class="button"><?php _e( 'Flush rewrite rules', 'wproto' ); ?></a>
+			</p>
+			<div id="wproto-flush-results" class="infodiv" style="display: none;">
+				<p style="margin-bottom: 3px !important;"><?php _e( 'Flushing...', 'wproto' ); ?></p>
+			</div>
+		
+		</div>
+		
+		<!--
+	
+			Grab Google Fonts
+		
+		-->
+	
+		<div class="wproto-settings-box">
+			<h3 class="title"><?php _e( 'Grab Google Fonts', 'wproto' ); ?></h3>
+		
+			<p class="description"><?php _e('To improve performance, we cache a list of Google fonts locally. As new fonts will be availabled at Google, you can download the new fonts list by clicking on the button at right. You need to enter Google API key at theme\'s settings to get fonts from Google.', 'wproto'); ?></p>
+
+			<p>
+				<a href="javascript:;" id="wproto-grab-google-fonts" class="button"><?php _e( 'Grab google fonts list', 'wproto' ); ?></a>
+			</p>
+			<div id="wproto-google-fonts-grab-results" class="infodiv" style="display: none;">
+				<p style="margin-bottom: 3px !important;"><img width="16" height="16" id="wproto-grab-google-fonts-loader" src="<?php echo WPROTO_THEME_URL; ?>/images/admin/ajax-loader@2x.gif" alt="" /> <span><?php _e( 'Grabbing...', 'wproto' ); ?></span></p>
+			</div>
+		
+		</div>
+	
+	</form>
+</div>
