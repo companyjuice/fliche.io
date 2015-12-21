@@ -1,2 +1,0 @@
-# fliche.io
-Fliche Bedrock
