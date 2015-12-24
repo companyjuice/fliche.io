@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     /**
      * This is a container class for determining which ffmpeg parser class to use to be able to correctly parser the data 
@@ -29,7 +29,7 @@
          *
          * @access public
          * @author: Oliver Lillie
-         * @param  Fliche\Config $config The config object.
+         * @param  PHPVideoToolkit\Config $config The config object.
          */
         public function __construct(Config $config=null)
         {
@@ -42,7 +42,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @return mixed Returns either Fliche\FfmpegParserFormatsArgumentOnly or Fliche\FfmpegParserGeneric 
+         * @return mixed Returns either PHPVideoToolkit\FfmpegParserFormatsArgumentOnly or PHPVideoToolkit\FfmpegParserGeneric 
          *  depending on what information is return in the format data.
          */
         protected function _getParser()

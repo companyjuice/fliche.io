@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     /**
      * Extends FfmpegParserAbstract and returns the data required from ffmpeg using specific commands.
@@ -28,7 +28,7 @@
          * @param boolean $read_from_cache If true and the data exists within a cache then that data is used. If false
          *  then the data is re-read from ffmpeg.
          * @return string Returns the raw buffer data from ffmpeg.
-         * @throws Fliche\FfmpegProcessException If the call to ffmpeg encounters an error.
+         * @throws PHPVideoToolkit\FfmpegProcessException If the call to ffmpeg encounters an error.
          */
         public function getRawCodecData($read_from_cache=true)
         {
@@ -61,7 +61,7 @@
          * @param boolean $read_from_cache If true and the data exists within a cache then that data is used. If false
          *  then the data is re-read from ffmpeg.
          * @return string Returns the raw buffer data from ffmpeg.
-         * @throws Fliche\FfmpegProcessException If the call to ffmpeg encounters an error.
+         * @throws PHPVideoToolkit\FfmpegProcessException If the call to ffmpeg encounters an error.
          */
         public function getRawFiltersData($read_from_cache=true)
         {
@@ -94,7 +94,7 @@
          * @param boolean $read_from_cache If true and the data exists within a cache then that data is used. If false
          *  then the data is re-read from ffmpeg.
          * @return string Returns the raw buffer data from ffmpeg.
-         * @throws Fliche\FfmpegProcessException If the call to ffmpeg encounters an error.
+         * @throws PHPVideoToolkit\FfmpegProcessException If the call to ffmpeg encounters an error.
          */
         public function getRawBitstreamFiltersData($read_from_cache=true)
         {
@@ -127,7 +127,7 @@
          * @param boolean $read_from_cache If true and the data exists within a cache then that data is used. If false
          *  then the data is re-read from ffmpeg.
          * @return string Returns the raw buffer data from ffmpeg.
-         * @throws Fliche\FfmpegProcessException If the call to ffmpeg encounters an error.
+         * @throws PHPVideoToolkit\FfmpegProcessException If the call to ffmpeg encounters an error.
          */
         public function getRawProtocolsData($read_from_cache=true)
         {

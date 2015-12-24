@@ -6,15 +6,15 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
-     * This class extends Fliche\Media. If provides some additional required commands if the input
+     * This class extends PHPVideoToolkit\Media. If provides some additional required commands if the input
      * is an audio file.
      *
      * @author Oliver Lillie
@@ -27,8 +27,8 @@
          * @access public
          * @author Oliver Lillie
          * @param  string $audio_file_path The path to the audio file.
-         * @param  Fliche\Config $config The config object.
-         * @param  Fliche\AudioFormant $audio_input_format The input format object to use, if any. Otherwise null
+         * @param  PHPVideoToolkit\Config $config The config object.
+         * @param  PHPVideoToolkit\AudioFormant $audio_input_format The input format object to use, if any. Otherwise null
          * @param  boolean $ensure_audio_file If true an additional check is made to ensure the the given file is actually an audio file.
          * @throws \LogicException If $ensure_audio_file is true but the file is not audio.
          */
@@ -60,14 +60,14 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @param  Fliche\Format $output_format The output format being used to save the output media.
+         * @param  PHPVideoToolkit\Format $output_format The output format being used to save the output media.
          * @param  string $save_path The save path of the output media.
          * @param  constant $overwrite The Media constant used to determine the overwrite status of the save. One of the 
          *  following constants:
-         *  Fliche\Media::OVERWRITE_FAIL
-         *  Fliche\Media::OVERWRITE_EXISTING
-         *  Fliche\Media::OVERWRITE_UNIQUE
-         * @param  Fliche\ProgressHandlerAbstract $progress_handler The progress handler attached to the save, if any. 
+         *  PHPVideoToolkit\Media::OVERWRITE_FAIL
+         *  PHPVideoToolkit\Media::OVERWRITE_EXISTING
+         *  PHPVideoToolkit\Media::OVERWRITE_UNIQUE
+         * @param  PHPVideoToolkit\ProgressHandlerAbstract $progress_handler The progress handler attached to the save, if any. 
          * @return void
          */
         protected function _savePreProcess(Format &$output_format=null, &$save_path, $overwrite, ProgressHandlerAbstract &$progress_handler=null)
@@ -93,13 +93,13 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @param  Fliche\Format $output_format The output format being used to save the output media.
+         * @param  PHPVideoToolkit\Format $output_format The output format being used to save the output media.
          * @param string &$save_path The save path of the output file
          * @param  constant $overwrite The Media constant used to determine the overwrite status of the save. One of the 
          *  following constants:
-         *  Fliche\Media::OVERWRITE_FAIL
-         *  Fliche\Media::OVERWRITE_EXISTING
-         *  Fliche\Media::OVERWRITE_UNIQUE
+         *  PHPVideoToolkit\Media::OVERWRITE_FAIL
+         *  PHPVideoToolkit\Media::OVERWRITE_EXISTING
+         *  PHPVideoToolkit\Media::OVERWRITE_UNIQUE
          * @return void
          * @throws \LogicException If audio is disabled and no layers, prepends or appends are found.
          */

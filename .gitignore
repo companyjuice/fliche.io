@@ -6,6 +6,12 @@ web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
 
+# Custom Code -- Plugins
+!web/app/plugins/fliche-video-gallery
+
+# Custom Code -- Other
+web/app/bkp
+
 # WordPress
 web/wp
 web/.htaccess

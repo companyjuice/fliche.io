@@ -6,17 +6,17 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * This class provides generic data parsing for the output from FFmpeg from specific
      * media files. Parts of the code borrow heavily from Jorrit Schippers version of 
-     * Fliche v 0.1.9.
+     * PHPVideoToolkit v 0.1.9.
      *
      * @access public
      * @author Oliver Lillie
@@ -63,7 +63,7 @@
          * @access public
          * @author Oliver Lillie
          * @param string $media_file_path The file path of a media file.
-         * @param Config $config A Fliche Config object
+         * @param Config $config A PHPVideoToolkit Config object
          * @param Format $input_format An input Format object
          */
         public function __construct($media_file_path, Config $config=null, Format $input_format=null)
@@ -206,11 +206,11 @@
             }
             
 //          check the requested class exists
-            $class_name = '\\Fliche\\'.$default_class_name.(empty($format) === false ? '_'.ucfirst(strtolower($format)) : '');
+            $class_name = '\\PHPVideoToolkit\\'.$default_class_name.(empty($format) === false ? '_'.ucfirst(strtolower($format)) : '');
             if(class_exists($class_name) === false)
             {
                 $requested_class_name = $class_name;
-                $class_name = '\\Fliche\\'.$default_class_name;
+                $class_name = '\\PHPVideoToolkit\\'.$default_class_name;
                 if(class_exists($class_name) === false)
                 {
                     throw new \InvalidArgumentException('Requested default format class does not exist, "'.($requested_class_name === $class_name ? $class_name : $requested_class_name.'" and "'.$class_name.'"').'".');
@@ -218,9 +218,9 @@
             }
             
 //          check that it extends from the base Format class.
-            if($class_name !== '\\Fliche\\Format' && is_subclass_of($class_name, '\\Fliche\\Format') === false)
+            if($class_name !== '\\PHPVideoToolkit\\Format' && is_subclass_of($class_name, '\\PHPVideoToolkit\\Format') === false)
             {
-                throw new \InvalidArgumentException('The class "'.$class_name.'" is not a subclass of \\Fliche\\Format.');
+                throw new \InvalidArgumentException('The class "'.$class_name.'" is not a subclass of \\PHPVideoToolkit\\Format.');
             }
             
             return new $class_name($type, $this->_config);
@@ -251,11 +251,11 @@
                 
             if($real_file_path === false || is_file($real_file_path) === false)
             {
-                throw new \InvalidArgumentException('The file "'.$media_file_path.'" cannot be found in \\Fliche\\Media::__construct.');
+                throw new \InvalidArgumentException('The file "'.$media_file_path.'" cannot be found in \\PHPVideoToolkit\\Media::__construct.');
             }
             else if(is_readable($real_file_path) === false)
             {
-                throw new \InvalidArgumentException('The file "'.$media_file_path.'" is not readable in \\Fliche\\Media::__construct.');
+                throw new \InvalidArgumentException('The file "'.$media_file_path.'" is not readable in \\PHPVideoToolkit\\Media::__construct.');
             }
             
             $this->_media_file_path = $real_file_path;
@@ -443,7 +443,7 @@
 //          check the split by
             if(empty($split_by) === true)
             {
-                throw new \InvalidArgumentException('The split by value is empty, in \\Fliche\\'.get_class($this).'::split');
+                throw new \InvalidArgumentException('The split by value is empty, in \\PHPVideoToolkit\\'.get_class($this).'::split');
             }
 //          if we have an array, it's either timecodes (seconds) or integers (frames)
             else if(is_array($split_by) === true)
@@ -454,9 +454,9 @@
                     $times = array();
                     foreach ($split_by as $key=>$timecode)
                     {
-                        if(get_class($timecode) !== 'Fliche\Timecode')
+                        if(get_class($timecode) !== 'PHPVideoToolkit\Timecode')
                         {
-                            throw new \InvalidArgumentException('The split by timecode specified in index '.$key.' is not a \\Fliche\\Timecode object.');
+                            throw new \InvalidArgumentException('The split by timecode specified in index '.$key.' is not a \\PHPVideoToolkit\\Timecode object.');
                         }
                         
 //                      check the timecode against the total number of seconds in the media duration.
@@ -502,7 +502,7 @@
             {
                 if($split_by < 1)
                 {
-                    throw new \InvalidArgumentException('The split by value must be >= 1, in \\Fliche\\'.get_class($this).'::split');
+                    throw new \InvalidArgumentException('The split by value must be >= 1, in \\PHPVideoToolkit\\'.get_class($this).'::split');
                 }
                         
 //              check the split time against the total number of seconds in the media duration.
@@ -517,7 +517,7 @@
 //          check time delta
             if($time_delta < 0)
             {
-                throw new \InvalidArgumentException('The time delta specified "'.$time_delta.'", in \\Fliche\\'.get_class($this).'::split must be >= 0');
+                throw new \InvalidArgumentException('The time delta specified "'.$time_delta.'", in \\PHPVideoToolkit\\'.get_class($this).'::split must be >= 0');
             }
             else if($time_delta > 0)
             {
@@ -531,17 +531,17 @@
                 $output_list_dir = dirname($output_list);
                 if(is_dir($output_list_dir) === false)
                 {
-                    throw new \InvalidArgumentException('The directory for the output list file "'.$output_list_path.'" does not exist, in \\Fliche\\'.get_class($this).'::split');
+                    throw new \InvalidArgumentException('The directory for the output list file "'.$output_list_path.'" does not exist, in \\PHPVideoToolkit\\'.get_class($this).'::split');
                 }
                 else if(is_writeable($output_list_dir) === false)
                 {
-                    throw new \InvalidArgumentException('The directory for the output list file "'.$output_list_path.'" is not writeable, in \\Fliche\\'.get_class($this).'::split');
+                    throw new \InvalidArgumentException('The directory for the output list file "'.$output_list_path.'" is not writeable, in \\PHPVideoToolkit\\'.get_class($this).'::split');
                 }
                 
                 $this->_split_options['segment_list'] = $output_list_path;
             }
             
-//          mark that we require a %d (or in fliches case %index or %timecode) in the file name output as multiple files will be outputed.
+//          mark that we require a %d (or in phpvideotoolkits case %index or %timecode) in the file name output as multiple files will be outputed.
             $this->_require_d_in_output = true;
             
             return $this;
@@ -684,7 +684,7 @@
          */
         protected function _convertOutputPathToMultiOutput($save_path=null, Format $output_format=null)
         {
-            $class = 'Fliche\MultiOutput'; // prevents unneccesary autoload.
+            $class = 'PHPVideoToolkit\MultiOutput'; // prevents unneccesary autoload.
             if($save_path instanceof $class === true)
             {
                 return $save_path;
@@ -703,7 +703,7 @@
          * @access public
          * @author Oliver Lillie
          * @param MultiOutput $save_path If a string then it is treated as a single output and the argument is the output path
-         *  of the generated file, otherwise if a Fliche\MultiOutput object is given then we treat the output
+         *  of the generated file, otherwise if a PHPVideoToolkit\MultiOutput object is given then we treat the output
          *  as multiple output.
          * @param Format $output_format It is the output format for the saved file.
          * @param string $overwrite One of the following constants determining the overwrite status of the save.
@@ -873,10 +873,10 @@
                 throw new \RuntimeException('The directory that the output is to be saved to, "'.$save_dir.'" is not read-writeable.');
             }
 //          check to see if we have a split output name.
-//          although this is technically still allowed by ffmpeg, fliche has depreciated %d in favour of its own %index
+//          although this is technically still allowed by ffmpeg, phpvideotoolkit has depreciated %d in favour of its own %index
             else if(preg_match('/\%([0-9]*)d/', $save_path) > 0)
             {
-                throw new \InvalidArgumentException('The output file appears to be using FFmpeg\'s %d notation for multiple file output. The %d notation is depreciated in Fliche in favour of the %index or %timecode notations.');
+                throw new \InvalidArgumentException('The output file appears to be using FFmpeg\'s %d notation for multiple file output. The %d notation is depreciated in PHPVideoToolkit in favour of the %index or %timecode notations.');
             }
 //          if a %index or %timecode output is added then we can't check for exact file existence
 //          we can however check for possible interfering matches.

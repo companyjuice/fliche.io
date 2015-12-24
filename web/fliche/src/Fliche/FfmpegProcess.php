@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     /**
      * This class is the base class for creating a specific ffmpeg command call.
@@ -23,7 +23,7 @@
         /**
          * Variable placeholder for containing the ExecBuffer object.
          * @access protected
-         * @var Fliche\ExecBuffer
+         * @var PHPVideoToolkit\ExecBuffer
          */
         protected $_exec;
 
@@ -72,7 +72,7 @@
         /**
          * Variable placeholder for the progress handler, if any, that is attached to the process.
          * @access protected
-         * @var Fliche\ProgressHandlerAbstract
+         * @var PHPVideoToolkit\ProgressHandlerAbstract
          */
         protected $_progress_handler;
 
@@ -91,7 +91,7 @@
          * @author Oliver Lillie
          * @param string $program The programme to call. Note this is not the path. If you wish to call ffmpeg/aconv you should jsut
          *  supply 'ffmpeg' and then set the aconv path as the ffmpeg configuration option in Config.   
-         * @param Fliche\Config $config The config object.
+         * @param PHPVideoToolkit\Config $config The config object.
          */
         public function __construct($program, Config $config=null)
         {
@@ -114,7 +114,7 @@
          * @access public
          * @author Oliver Lillie
          * @param integer $index The index integer to set the output index to.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          * @throws \InvalidArgumentException If the $index is not an integer.
          */
         public function setOutputIndex($index)
@@ -138,7 +138,7 @@
          * @param integer $index The index to which the input is being added. If null then the input is just appended to the
          *  list of input media. If a positive index then it is set at the given index, it will overwrite anything already in that
          *  position. If -1 then the input is shifted onto the beinging of the input array.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          * @throws \InvalidArgumentException If the input path does not exist.
          * @throws \InvalidArgumentException If the $index is not an integer.
          */
@@ -224,7 +224,7 @@
          * @access public
          * @author Oliver Lillie
          * @param string $output The path to where the output media is to be saved to from ffmpeg.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          */
         public function setOutputPath($output)
         {
@@ -292,7 +292,7 @@
          * @param mixed $argument Any optional arguments to add. If none, false should be given.
          * @param boolean $allow_command_repetition If this command can only be added once then set this to true to prevent
          *  it from being added again.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          */
         public function addPreInputCommand($command, $argument=false, $allow_command_repetition=false)
         {
@@ -311,7 +311,7 @@
          * @param mixed $argument Any optional arguments to add. If none, false should be given.
          * @param boolean $allow_command_repetition If this command can only be added once then set this to true to prevent
          *  it from being added again.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          */
         public function addCommand($command, $argument=false, $allow_command_repetition=false)
         {
@@ -334,7 +334,7 @@
          * @param mixed $argument Any optional arguments to add. If none, false should be given.
          * @param boolean $allow_command_repetition If this command can only be added once then set this to true to prevent
          *  it from being added again.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          */
         public function addPostOutputCommand($command, $argument=false, $allow_command_repetition=false)
         {
@@ -349,7 +349,7 @@
          * @author: Oliver Lillie
          * @param string $command The command to add.
          * @param mixed $argument Any optional arguments to add. If none, false should be given.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          */
         public function removePreInputCommand($command, $argument=false)
         {
@@ -364,7 +364,7 @@
          * @author: Oliver Lillie
          * @param string $command The command to add.
          * @param mixed $argument Any optional arguments to add. If none, false should be given.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          */
         public function removeCommand($command, $argument=false)
         {
@@ -379,7 +379,7 @@
          * @author: Oliver Lillie
          * @param string $command The command to add.
          * @param mixed $argument Any optional arguments to add. If none, false should be given.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          */
         public function removePostOutputCommand($command, $argument=false)
         {
@@ -821,7 +821,7 @@
                 throw new \LogicException('It is not possible to get a portable id as the exec process has been made blocking. To get a portable id make the process unblocking or call getPortableId() before the save occurs.');
             }
             $trace = debug_backtrace();
-            if(isset($trace[1]) === false || $trace[1]['function'] !== 'getPortableId' || $trace[1]['class'] !== 'Fliche\Media')
+            if(isset($trace[1]) === false || $trace[1]['function'] !== 'getPortableId' || $trace[1]['class'] !== 'PHPVideoToolkit\Media')
             {
                 throw new \LogicException('Please call getPortableId from the media object rather than the process object, i.e. $video->getPortableId();');
             }
@@ -829,6 +829,6 @@
             $this->_exec->setGarbageCollection(false);
             
             $output = $this->getBufferOutput();
-            return substr($output, strrpos($output, 'fliche_')+16).'.'.$this->_callExecBufferFunction('getBoundary').'.'.time();
+            return substr($output, strrpos($output, 'phpvideotoolkit_')+16).'.'.$this->_callExecBufferFunction('getBoundary').'.'.time();
         }
     }

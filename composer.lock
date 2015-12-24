@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11a55f1157429aab34198edcdc7a00ce",
-    "content-hash": "a8a08a4e679ebffd144877b0446f2c6e",
+    "hash": "f5eb281adeb28029231f1a9026d17640",
+    "content-hash": "cc98ca9ca2f6aaab386a6a7fea7c9ccb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -888,12 +888,35 @@
                 "environment"
             ],
             "time": "2015-10-28 18:53:35"
+        },
+        {
+            "name": "wpackagist-plugin/akismet",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/akismet/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/akismet.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/akismet/",
+            "time": "2015-12-14 19:03:50"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "wpackagist-plugin/akismet": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

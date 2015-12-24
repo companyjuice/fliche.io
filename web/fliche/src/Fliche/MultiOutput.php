@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.1
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-     namespace Fliche;
+     namespace PHPVideoToolkit;
      
     /**
      * This class provides a way of getting multiple output from ffmpeg.
@@ -33,7 +33,7 @@
          * @author Oliver Lillie
          * @param  string $output_path If provided then it is given as the initial output path.
          * @param  Format $output_format If provided then it is given as the initial output paths's output format object.
-         * @param  Config $config The Fliche configuration options.
+         * @param  Config $config The PHPVideoToolkit configuration options.
          */
         public function __construct(Config $config=null)
         {
@@ -78,7 +78,7 @@
         {
             if(isset($this->_output[$output_path]) === true)
             {
-                throw new \LogicException('Output for `'.$output_path.'` has already been given. Unable to set new output. If you wish to remove output please call Fliche\Ouput->removeOutput($output_path);.');
+                throw new \LogicException('Output for `'.$output_path.'` has already been given. Unable to set new output. If you wish to remove output please call PHPVideoToolkit\Ouput->removeOutput($output_path);.');
             }
 
             if($output_format === null)
@@ -138,11 +138,11 @@
             }
             
 //          check the requested class exists
-            $class_name = '\\Fliche\\'.$default_class_name.(empty($format) === false ? '_'.ucfirst(strtolower($format)) : '');
+            $class_name = '\\PHPVideoToolkit\\'.$default_class_name.(empty($format) === false ? '_'.ucfirst(strtolower($format)) : '');
             if(class_exists($class_name) === false)
             {
                 $requested_class_name = $class_name;
-                $class_name = '\\Fliche\\'.$default_class_name;
+                $class_name = '\\PHPVideoToolkit\\'.$default_class_name;
                 if(class_exists($class_name) === false)
                 {
                     throw new \InvalidArgumentException('Requested default format class does not exist, "'.($requested_class_name === $class_name ? $class_name : $requested_class_name.'" and "'.$class_name.'"').'".');
@@ -150,9 +150,9 @@
             }
             
 //          check that it extends from the base Format class.
-            if($class_name !== '\\Fliche\\Format' && is_subclass_of($class_name, '\\Fliche\\Format') === false)
+            if($class_name !== '\\PHPVideoToolkit\\Format' && is_subclass_of($class_name, '\\PHPVideoToolkit\\Format') === false)
             {
-                throw new \LogicException('The class "'.$class_name.'" is not a subclass of \\Fliche\\Format.');
+                throw new \LogicException('The class "'.$class_name.'" is not a subclass of \\PHPVideoToolkit\\Format.');
             }
             
             return new $class_name($type, $this->_config);

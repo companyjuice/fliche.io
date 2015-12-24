@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * This is the base format class that is extended to audio, image and video formats.
@@ -95,7 +95,7 @@
          * @author: Oliver Lillie
          * @param  constant $input_output_type Either Format::INPUT or Format::OUTPUT. Defaults to OUTPUT. It determines the format
          *  mode used to set various commands in the final ffmpeg exec call.
-         * @param  Fliche\Config $config The config object.
+         * @param  PHPVideoToolkit\Config $config The config object.
          * @throws \InvalidArgumentException If the $input_output_type is not valid.
          */
         public function __construct($input_output_type=Format::OUTPUT, Config $config=null)
@@ -157,7 +157,7 @@
             }
             else
             {
-                throw new \InvalidArgumentException('Unrecognised input/output type "'.$input_output_type.'" set in \\Fliche\\Format::__construct');
+                throw new \InvalidArgumentException('Unrecognised input/output type "'.$input_output_type.'" set in \\PHPVideoToolkit\\Format::__construct');
             }
             
         }
@@ -170,7 +170,7 @@
          * @static
          * @author Oliver Lillie
          * @param string $path The file path to get the format for.
-         * @param  Fliche\Config $config The config object.
+         * @param  PHPVideoToolkit\Config $config The config object.
          * @param string $fallback_format_class The fallback class to use of the format for the given path cannot be automatically determined.
          *  If null is given then a RuntimeException is thrown.
          * @param  constant $input_output_type Either Format::INPUT or Format::OUTPUT. Defaults to OUTPUT. It determines the format
@@ -195,7 +195,7 @@
             }
             
 //          check the requested class exists
-            $class_name = '\\Fliche\\'.$fallback_format_class.(empty($format) === false ? '_'.ucfirst(strtolower($format)) : '');
+            $class_name = '\\PHPVideoToolkit\\'.$fallback_format_class.(empty($format) === false ? '_'.ucfirst(strtolower($format)) : '');
             if(class_exists($class_name) === false)
             {
                 if($fallback_format_class === null)
@@ -203,7 +203,7 @@
                     throw new \RuntimeException('It was not possible to generate the format class for `'.$path.'` and a fallback class was not given.');
                 }
                 $requested_class_name = $class_name;
-                $class_name = '\\Fliche\\'.$fallback_format_class;
+                $class_name = '\\PHPVideoToolkit\\'.$fallback_format_class;
                 if(class_exists($class_name) === false)
                 {
                     throw new \InvalidArgumentException('Requested default format class does not exist, "'.($requested_class_name === $class_name ? $class_name : $requested_class_name.'" and "'.$class_name.'"').'".');
@@ -211,9 +211,9 @@
             }
 
 //          check that it extends from the base Format class.
-            if($class_name !== '\\Fliche\\Format' && is_subclass_of($class_name, '\\Fliche\\Format') === false)
+            if($class_name !== '\\PHPVideoToolkit\\Format' && is_subclass_of($class_name, '\\PHPVideoToolkit\\Format') === false)
             {
-                throw new \LogicException('The class "'.$class_name.'" is not a subclass of \\Fliche\\Format.');
+                throw new \LogicException('The class "'.$class_name.'" is not a subclass of \\PHPVideoToolkit\\Format.');
             }
             
             return new $class_name($type, $config);
@@ -257,12 +257,12 @@
         }
         
         /**
-         * Sets the Fliche\Media object into the format so that format object can modify the Media object.     
+         * Sets the PHPVideoToolkit\Media object into the format so that format object can modify the Media object.     
          *
          * @access public
          * @author Oliver Lillie
-         * @param Fliche\Media $media 
-         * @return Fliche\Format Returns the current object.
+         * @param PHPVideoToolkit\Media $media 
+         * @return PHPVideoToolkit\Format Returns the current object.
          */
         public function setMedia(Media $media)
         {
@@ -296,7 +296,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @return Fliche\Format Returns the current object.
+         * @return PHPVideoToolkit\Format Returns the current object.
          * @throws \LogicException If the media object has not yet been set into the current format object.
          */
         public function updateFormatOptions(&$save_path, $overwrite)
@@ -536,7 +536,7 @@
          * @author Oliver Lillie
          * @param  constant $type Either Format::INPUT or Format::OUTPUT. Defaults to OUTPUT. It determines the format
          *  mode used to set various commands in the final ffmpeg exec call.
-         * @return Fliche\Format Returns the current object.
+         * @return PHPVideoToolkit\Format Returns the current object.
          * @throws \InvalidArgumentException If the type is not a valid type.
          */
         public function setType($type)
@@ -548,7 +548,7 @@
                 return $this;
             }
             
-            throw new \InvalidArgumentException('Unrecognised format "'.$format.'" set in \\Fliche\\'.get_class($this).'::setFormat');
+            throw new \InvalidArgumentException('Unrecognised format "'.$format.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setFormat');
         }
         
         /**
@@ -560,7 +560,7 @@
          * @author Oliver Lillie
          * @link http://ffmpeg.org/ffmpeg.html#toc-Preset-files
          * @param string $preset_file_path 
-         * @return Fliche\Format Returns the current object.
+         * @return PHPVideoToolkit\Format Returns the current object.
          * @throws \InvalidArgumentException of the file does not exist.
          * @throws \InvalidArgumentException of the file is not readable.
          */
@@ -576,11 +576,11 @@
             
             if($preset_file_path === false || is_file($preset_file_path) === false)
             {
-                throw new \InvalidArgumentException('Preset options file "'.$preset_file_path.'" set in \\Fliche\\'.get_class($this).'::setPresetOptionsFile does not exist.');
+                throw new \InvalidArgumentException('Preset options file "'.$preset_file_path.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setPresetOptionsFile does not exist.');
             }
             else if(is_readable($preset_file_path) === false)
             {
-                throw new \InvalidArgumentException('Preset preset options file "'.$preset_file_path.'" set in \\Fliche\\'.get_class($this).'::setPresetOptionsFile is not readable.');
+                throw new \InvalidArgumentException('Preset preset options file "'.$preset_file_path.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setPresetOptionsFile is not readable.');
             }
             
             $this->_format['preset_options_file'] = $preset_file_path;
@@ -595,7 +595,7 @@
          * @author Oliver Lillie
          * @param constant $strictness One of the following values. Format::STRICTNESS_VERY, Format::STRICTNESS_STRICT, 
          *  Format::STRICTNESS_NORMAL, Format::STRICTNESS_UNOFFICIAL, Format::STRICTNESS_EXPERIMENTAL
-         * @return Fliche\Format Returns the current object.
+         * @return PHPVideoToolkit\Format Returns the current object.
          * @throws \InvalidArgumentException If an unrecognised strictness value is returned.
          */
         public function setStrictness($strictness)
@@ -612,7 +612,7 @@
                 return $this;
             }
             
-            throw new \InvalidArgumentException('Unrecognised strictness "'.$strictness.'" set in \\Fliche\\'.get_class($this).'::setStrictness');
+            throw new \InvalidArgumentException('Unrecognised strictness "'.$strictness.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setStrictness');
         }
         
         /**
@@ -621,8 +621,8 @@
          * @access public
          * @author Oliver Lillie
          * @param string $format One of the values returned from FfmpegParser::getFormats.
-         * @return Fliche\Format Returns the current object.
-         * @throws \InvalidArgumentException If the format requested is "segment". This is a special ffmpeg format to split a file, however Fliche
+         * @return PHPVideoToolkit\Format Returns the current object.
+         * @throws \InvalidArgumentException If the format requested is "segment". This is a special ffmpeg format to split a file, however PHPVideoToolkit
          *  has a special function to segment files. 
          * @throws \InvalidArgumentException If an unregognised format is given.
          */
@@ -643,14 +643,14 @@
 //              check to see if segmenting has been requested. If it has warn of the Media::split function instead.
                 if($format === 'segment')
                 {
-                    throw new \InvalidArgumentException('You cannot set the format to segment, please use instead the function \\Fliche\\Media::segment.');
+                    throw new \InvalidArgumentException('You cannot set the format to segment, please use instead the function \\PHPVideoToolkit\\Media::segment.');
                 }
                     
                 $this->_format['format'] = $format;
                 return $this;
             }
             
-            throw new \InvalidArgumentException('Unrecognised format "'.$format.'" set in \\Fliche\\'.get_class($this).'::setFormat');
+            throw new \InvalidArgumentException('Unrecognised format "'.$format.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setFormat');
         }
         
         /**
@@ -662,7 +662,7 @@
          * @param integer $stream_index Between 0-48. If specified then the threads option is given a stream specifier to 
          *  specify a particular audiovideo stream, i.e. -threads:1 4. If a previous setThreads has been called without specifiying
          *  a stream_index, then the 
-         * @return Fliche\Format Returns the current object.
+         * @return PHPVideoToolkit\Format Returns the current object.
          * @throws \InvalidArgumentException If the threads value is not an integer.
          * @throws \InvalidArgumentException If the threads value is not between 1-64.
          */
@@ -716,7 +716,7 @@
          * @author Oliver Lillie
          * @see http://www.kilobitspersecond.com/2007/05/24/ffmpeg-quality-comparison/
          * @param integer $qscale Between 1-31
-         * @return Fliche\Format Returns the current object.
+         * @return PHPVideoToolkit\Format Returns the current object.
          * @throws \InvalidArgumentException If the qscale value is not an integer.
          * @throws \InvalidArgumentException If the qscale value is not between 1-64.
          */

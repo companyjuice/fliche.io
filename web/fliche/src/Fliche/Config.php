@@ -6,15 +6,15 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     /**
-     * A configuration object to store all the configuration values required for Fliche.
+     * A configuration object to store all the configuration values required for PHPVideoToolkit.
      * Typically speaking this object is created once and set as a singleton instance for ease of use.
      *
      * @author Oliver Lillie
@@ -23,7 +23,7 @@
     {
         /**
          * A variable container for the singleton instance.
-         * @var Fliche\Config
+         * @var PHPVideoToolkit\Config
          * @access protected
          */
         protected static $_instance = null;
@@ -57,7 +57,7 @@
          * @access public
          * @static
          * @author Oliver Lillie
-         * @return Fliche\Config
+         * @return PHPVideoToolkit\Config
          */
         public static function getInstance()
         {
@@ -109,7 +109,7 @@
 
         /**
          * Sets the config object as the default config instance so the config object does not need to be
-         * supplied in the constructor to all the Fliche objects.
+         * supplied in the constructor to all the PHPVideoToolkit objects.
          *
          * @access public
          * @author Oliver Lillie
@@ -125,7 +125,7 @@
          *
          * @param array $options
          * @access private
-         * @return Fliche\Config Returns the current object
+         * @return PHPVideoToolkit\Config Returns the current object
          */
         private function _setConfig(array $options=array())
         {
@@ -144,7 +144,7 @@
          * the App_Config instance or subInstance, so we throw an Exception
          *
          * @param string $name
-         * @throws Fliche\ConfigSetException Thrown if any of the values for the related config settings is invalid.
+         * @throws PHPVideoToolkit\ConfigSetException Thrown if any of the values for the related config settings is invalid.
          */
         public function __set($key, $value)
         {
@@ -189,14 +189,14 @@
 
                 case 'cache_driver' :
 
-                    $class = '\Fliche\Cache_'.$value;
+                    $class = '\PHPVideoToolkit\Cache_'.$value;
                     if(class_exists($class) === false)
                     {
-                        throw new ConfigSetException('Unrecognised cache driver engine. The cache class must be within the Fliche namespace and be prefixed by `Cache_`.');
+                        throw new ConfigSetException('Unrecognised cache driver engine. The cache class must be within the PHPVideoToolkit namespace and be prefixed by `Cache_`.');
                     }
-                    if(is_subclass_of($class, '\Fliche\CacheAbstract') === false)
+                    if(is_subclass_of($class, '\PHPVideoToolkit\CacheAbstract') === false)
                     {
-                        throw new ConfigSetException('Unrecognised cache driver engine. The cache driver provider must inherit from \Fliche\CacheAbstract.');
+                        throw new ConfigSetException('Unrecognised cache driver engine. The cache driver provider must inherit from \PHPVideoToolkit\CacheAbstract.');
                     }
                 
                     $this->{'_'.$key} = $value;

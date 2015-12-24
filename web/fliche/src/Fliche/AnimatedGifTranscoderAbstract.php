@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     /**
      * This class provides an abstract basis for all the gif transcoder engines.
@@ -28,7 +28,7 @@
         protected $_config;
 
         /**
-         * A variable holder to contain the Fliche\Image frames.
+         * A variable holder to contain the PHPVideoToolkit\Image frames.
          * @var array
          * @access protected
          */
@@ -51,9 +51,9 @@
         /**
          * A variable holder that contains the overwrite mode for saving the animated gif.
          * @var constant One of the following:
-         *  Fliche\Media::OVERWRITE_FAIL
-         *  Fliche\Media::OVERWRITE_EXISTING
-         *  Fliche\Media::OVERWRITE_UNIQUE
+         *  PHPVideoToolkit\Media::OVERWRITE_FAIL
+         *  PHPVideoToolkit\Media::OVERWRITE_EXISTING
+         *  PHPVideoToolkit\Media::OVERWRITE_UNIQUE
          * @access protected
          */
         protected $_overwrite_mode;
@@ -63,7 +63,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @param  Fliche\Config $config The Fliche\Config object
+         * @param  PHPVideoToolkit\Config $config The PHPVideoToolkit\Config object
          */
         public function __construct(Config $config=null)
         {
@@ -78,7 +78,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @param Fliche\Image $image A Fliche\Image object to add to the animated gif frames array.
+         * @param PHPVideoToolkit\Image $image A PHPVideoToolkit\Image object to add to the animated gif frames array.
          * @return PHPVideoTookit\AnimatedGifTranscoderAbstract Returns the current object.
          */
         public function addFrame(Image $image)
@@ -144,9 +144,9 @@
          * @access public
          * @author Oliver Lillie
          * @param constant $mode Determines the file overwrite status. Can be one of the following values.
-         *  Fliche\Media::OVERWRITE_FAIL
-         *  Fliche\Media::OVERWRITE_EXISTING
-         *  Fliche\Media::OVERWRITE_UNIQUE
+         *  PHPVideoToolkit\Media::OVERWRITE_FAIL
+         *  PHPVideoToolkit\Media::OVERWRITE_EXISTING
+         *  PHPVideoToolkit\Media::OVERWRITE_UNIQUE
          * @return PHPVideoTookit\AnimatedGifTranscoderAbstract Returns the current object.
          * @throws \InvalidArgumentException If the $mode is not a valid mode.
          */
@@ -154,7 +154,7 @@
         {
             if(in_array($mode, array(Media::OVERWRITE_FAIL, Media::OVERWRITE_EXISTING, Media::OVERWRITE_UNIQUE)) === false)
             {
-                throw new \InvalidArgumentException('The $mode argument must be one of the following values: Fliche\Media::OVERWRITE_FAIL, Fliche\Media::OVERWRITE_EXISTING, Fliche\Media::OVERWRITE_UNIQUE');
+                throw new \InvalidArgumentException('The $mode argument must be one of the following values: PHPVideoToolkit\Media::OVERWRITE_FAIL, PHPVideoToolkit\Media::OVERWRITE_EXISTING, PHPVideoToolkit\Media::OVERWRITE_UNIQUE');
             }
             $this->_overwrite_mode = $mode;
             
@@ -169,8 +169,8 @@
          * @param  string $save_path The path to save the animated gif to.
          * @return string Returns the save path of the animated gif.
          * @throws \InvalidArgumentException If no frames have been given to create an animated gif.
-         * @throws \RuntimeException If $overwrite is set to Fliche::Media::OVERWRITE_FAIL and the $save_path already exists.
-         * @throws \RuntimeException If $overwrite is set to Fliche::Media::OVERWRITE_EXISTING and the $save_path is not writable.
+         * @throws \RuntimeException If $overwrite is set to PHPVideoToolkit::Media::OVERWRITE_FAIL and the $save_path already exists.
+         * @throws \RuntimeException If $overwrite is set to PHPVideoToolkit::Media::OVERWRITE_EXISTING and the $save_path is not writable.
          */
         public function save($save_path)
         {

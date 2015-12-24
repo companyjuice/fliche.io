@@ -6,15 +6,15 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
-     * Fliche's caching driver for storing the cache inside the specified temp directory.
+     * PHPVideoToolkit's caching driver for storing the cache inside the specified temp directory.
      *
      * @author Oliver Lillie
      */

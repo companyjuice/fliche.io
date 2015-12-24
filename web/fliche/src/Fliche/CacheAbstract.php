@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * @access public
@@ -22,7 +22,7 @@
     {
         protected $_config;
 
-        protected $_key_prefix = 'fliche_v2';
+        protected $_key_prefix = 'phpvideotoolkit_v2';
         
         public function __construct(Config $config=null)
         {

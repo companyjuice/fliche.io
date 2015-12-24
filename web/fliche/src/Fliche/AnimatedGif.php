@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
     
     /**
      * This class provides a wrapper class to create animated gif from differing transcoders engines.
@@ -52,7 +52,7 @@
          * @access public
          * @author Oliver Lillie
          * @param  mixed $gif_path If a gif is given then the string path, otherwise if a gif is to be generated, null.
-         * @param  Fliche\Config $config The Fliche\Config object
+         * @param  PHPVideoToolkit\Config $config The PHPVideoToolkit\Config object
          * @throws \RuntimeException If the gif path is set but doesn't exist.
          * @throws \RuntimeException If the gif is not readable.
          * @throws \InvalidArgumentException If the image supplied is not an image.
@@ -102,7 +102,7 @@
                 $transcoder_preference = array('gifsicle', 'convert', 'php');
                 foreach ($transcoder_preference as $transcoder)
                 {
-                    $transcoder_class = '\\Fliche\\AnimatedGifTranscoder'.ucfirst($transcoder);
+                    $transcoder_class = '\\PHPVideoToolkit\\AnimatedGifTranscoder'.ucfirst($transcoder);
                     if(call_user_func(array($transcoder_class, 'available'), $this->_config) === true)
                     {
                         $transcoder_engine = $transcoder_class;
@@ -113,7 +113,7 @@
             else
             {
 //              create the transcoder and check it's available
-                $transcoder_class = '\\Fliche\\AnimatedGifTranscoder'.ucfirst($this->_config->gif_transcoder);
+                $transcoder_class = '\\PHPVideoToolkit\\AnimatedGifTranscoder'.ucfirst($this->_config->gif_transcoder);
                 if(call_user_func(array($transcoder_class, 'available'), $this->_config) === false)
                 {
                     throw new \LogicException('The transcoder engine "'.$this->_config->gif_transcoder.'" is not available on your system.');
@@ -168,14 +168,14 @@
          * @access public
          * @static
          * @author Oliver Lillie
-         * @param  array $image_object_array An array of Fliche\Image objects to use to create the animated gif.
+         * @param  array $image_object_array An array of PHPVideoToolkit\Image objects to use to create the animated gif.
          * @param  mixed $frame_delay An integer or float value to determine the delay between gif frames.  
          * @param  integer $loop_count The number of times the animated gif should loop. Specify -1 for an endless loop.
-         * @param  Fliche\Config $config The Fliche\Config object.
-         * @return Fliche\AnimatedGif Returns a Fliche\AnimatedGif object.
+         * @param  PHPVideoToolkit\Config $config The PHPVideoToolkit\Config object.
+         * @return PHPVideoToolkit\AnimatedGif Returns a PHPVideoToolkit\AnimatedGif object.
          * @throws \InvalidArgumentException If the $image_object_array is empty.
          * @throws \InvalidArgumentException If the $frame_delay is less than 0 or not an integer or float.
-         * @throws \InvalidArgumentException If any of the values within $image_object_array is not an instance of Fliche\Image.
+         * @throws \InvalidArgumentException If any of the values within $image_object_array is not an instance of PHPVideoToolkit\Image.
          */
         public static function createFrom(array $image_object_array, $frame_delay, $loop_count=self::UNLIMITED_LOOPS, Config $config=null)
         {
@@ -196,9 +196,9 @@
             $gif = new self(null, $config);
             foreach ($image_object_array as $key=>$image)
             {
-                if(is_object($image) === false || get_class($image) !== 'Fliche\\Image')
+                if(is_object($image) === false || get_class($image) !== 'PHPVideoToolkit\\Image')
                 {
-                    throw new \InvalidArgumentException('The image at key '.$key.' is not an \\Fliche\\Image object. Each frame must be an Image object.');
+                    throw new \InvalidArgumentException('The image at key '.$key.' is not an \\PHPVideoToolkit\\Image object. Each frame must be an Image object.');
                 }
                 
                 $gif->addFrame($image, $frame_delay);
@@ -220,6 +220,6 @@
          */
         public static function expand()
         {
-            trigger_error('Fliche\Animatedgif::expand() has not yet been implemented.', E_USER_NOTICE);
+            trigger_error('PHPVideoToolkit\Animatedgif::expand() has not yet been implemented.', E_USER_NOTICE);
         }
     }

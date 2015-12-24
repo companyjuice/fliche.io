@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * @access public
@@ -287,7 +287,7 @@
 //          validate the video codecs that are available from ffmpeg.
             if(isset($codecs[$video_codec]) === false)
             {
-                throw new \InvalidArgumentException('Unrecognised video codec "'.$video_codec.'" set in \\Fliche\\'.get_class($this).'::setVideoCodec');
+                throw new \InvalidArgumentException('Unrecognised video codec "'.$video_codec.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoCodec');
             }
             
 //          now check the class settings to see if restricted codecs have been set and have to be obeys
@@ -295,7 +295,7 @@
             {
                 if(in_array($video_codec, $this->_restricted_video_codecs) === false)
                 {
-                    throw new \LogicException('The video codec "'.$video_codec.'" cannot be set in \\Fliche\\'.get_class($this).'::setVideoCodec. Please select one of the following codecs: '.implode(', ', $this->_restricted_video_codecs));
+                    throw new \LogicException('The video codec "'.$video_codec.'" cannot be set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoCodec. Please select one of the following codecs: '.implode(', ', $this->_restricted_video_codecs));
                 }
             }
             
@@ -350,11 +350,11 @@
             
             if(empty($width) === true || $width <= 0)
             {
-                throw new Exception('Unrecognised width dimension "'.$width.'" set in \\Fliche\\'.get_class($this).'::setVideoDimensions');
+                throw new Exception('Unrecognised width dimension "'.$width.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoDimensions');
             }
             if(empty($height) === true || $height <= 0)
             {
-                throw new Exception('Unrecognised height dimension "'.$height.'" set in \\Fliche\\'.get_class($this).'::setVideoDimensions');
+                throw new Exception('Unrecognised height dimension "'.$height.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoDimensions');
             }
             
             $this->_format['video_dimensions'] = array(
@@ -387,11 +387,11 @@
             
             if($width <= 0)
             {
-                throw new Exception('Unrecognised width dimension "'.$width.'" set in \\Fliche\\'.get_class($this).'::setVideoScale');
+                throw new Exception('Unrecognised width dimension "'.$width.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoScale');
             }
             if($height <= 0)
             {
-                throw new Exception('Unrecognised height dimension "'.$height.'" set in \\Fliche\\'.get_class($this).'::setVideoScale');
+                throw new Exception('Unrecognised height dimension "'.$height.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoScale');
             }
             
             $this->_format['video_scale'] = array(
@@ -494,7 +494,7 @@
             
             if(preg_match('/^[0-9]+.[0-9]+$/', $aspect_ratio) === 0 && preg_match('/^[0-9]+:[0-9]+$/', $aspect_ratio) === 0)
             {
-                throw new Exception('Unrecognised aspect ratio "'.$aspect_ratio.'" set in \\Fliche\\'.get_class($this).'::setVideoAspectRatio');
+                throw new Exception('Unrecognised aspect ratio "'.$aspect_ratio.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoAspectRatio');
             }
             
             $this->_format['video_aspect_ratio'] = array(
@@ -523,7 +523,7 @@
             
             if($frame_rate < 1)
             {
-                throw new Exception('Unrecognised frame rate "'.$frame_rate.'" set in \\Fliche\\'.get_class($this).'::setVideoFrameRate');
+                throw new Exception('Unrecognised frame rate "'.$frame_rate.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoFrameRate');
             }
             else if(is_int($frame_rate) === false && is_float($frame_rate) === false && (is_string($frame_rate) === true && preg_match('/[0-9]+\/[0-9]+/', $frame_rate) === 0))
             {
@@ -535,7 +535,7 @@
             {
                 if(in_array($frame_rate, $this->_restricted_video_frame_rates) === false)
                 {
-                    throw new Exception('The frame rate "'.$frame_rate.'" cannot be set in \\Fliche\\'.get_class($this).'::setVideoFrameRate. Please select one of the following frame rates: '.implode(', ', $this->_restricted_video_frame_rates));
+                    throw new Exception('The frame rate "'.$frame_rate.'" cannot be set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoFrameRate. Please select one of the following frame rates: '.implode(', ', $this->_restricted_video_frame_rates));
                 }
             }
             
@@ -564,7 +564,7 @@
             
             if($max_frame_count < 1)
             {
-                throw new Exception('Unrecognised max frame count "'.$max_frame_count.'" set in \\Fliche\\'.get_class($this).'::setVideoFrameRate');
+                throw new Exception('Unrecognised max frame count "'.$max_frame_count.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoFrameRate');
             }
             
             $this->_format['video_max_frames'] = $max_frame_count;
@@ -600,14 +600,14 @@
             {
                 if(in_array($bitrate, $this->_restricted_video_bitrates) === false)
                 {
-                    throw new Exception('The bitrate "'.$bitrate.'" cannot be set in \\Fliche\\'.get_class($this).'::setVideoBitrate. Please select one of the following bitrates: '.implode(', ', $this->_restricted_video_bitrates));
+                    throw new Exception('The bitrate "'.$bitrate.'" cannot be set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoBitrate. Please select one of the following bitrates: '.implode(', ', $this->_restricted_video_bitrates));
                 }
             }
             
             $this->_format['video_bitrate'] = $bitrate;
             return $this;
             
-            //throw new Exception('Unrecognised video bitrate "'.$bitrate.'" set in \\Fliche\\'.get_class($this).'::setVideoBitrate');
+            //throw new Exception('Unrecognised video bitrate "'.$bitrate.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoBitrate');
         }
         
         /**
@@ -631,7 +631,7 @@
             {
                 if(in_array($video_codec, $this->_restricted_video_pixel_formats) === false)
                 {
-                    throw new Exception('The video pixel format "'.$pixel_format.'" cannot be set in \\Fliche\\'.get_class($this).'::setVideoPixelFormat. Please select one of the following pixel formats: '.implode(', ', $this->_restricted_video_pixel_formats));
+                    throw new Exception('The video pixel format "'.$pixel_format.'" cannot be set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoPixelFormat. Please select one of the following pixel formats: '.implode(', ', $this->_restricted_video_pixel_formats));
                 }
             }
             
@@ -642,7 +642,7 @@
                 return $this;
             }
             
-            throw new Exception('Unrecognised pixel format "'.$pixel_format.'" set in \\Fliche\\'.get_class($this).'::setVideoPixelFormat');
+            throw new Exception('Unrecognised pixel format "'.$pixel_format.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoPixelFormat');
         }
         
         /**
@@ -667,7 +667,7 @@
             $quality = 31 - round(($quality / 100) * 31);
             if($quality > 31 || $quality < 1)
             {
-                throw new Exception('Unrecognised quality "'.$quality.'" set in \\Fliche\\'.get_class($this).'::setQuality');
+                throw new Exception('Unrecognised quality "'.$quality.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setQuality');
             }
             
             $this->_format['video_quality'] = $quality;
@@ -709,7 +709,7 @@
 //          90 is the same as -270, etc.
             if(in_array($rotation, array(0, 90, 180, 270, -90, -270, -180)) === false)
             {
-                throw new Exception('Unrecognised rotation "'.$rotation.'" set in \\Fliche\\'.get_class($this).'::setVideoRotation');
+                throw new Exception('Unrecognised rotation "'.$rotation.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVideoRotation');
             }
             
 //          get the transpose code. Note that we can't transpose 180 degrees, for that we must perform flips

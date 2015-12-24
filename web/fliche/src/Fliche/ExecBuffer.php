@@ -6,15 +6,15 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     /**
-     * The very lowest base class in Fliche. It is the exec() wrapper than can determine if a call to exec fails or completes successfully.
+     * The very lowest base class in PHPVideoToolkit. It is the exec() wrapper than can determine if a call to exec fails or completes successfully.
      * It also returns any error messages encountered if the exec() fails.
      *
      * @author Oliver Lillie
@@ -237,7 +237,7 @@
          * @access public
          * @author Oliver Lillie
          * @param  string $temp_directory The file path to the temp directory to use.
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          * @throws \InvalidArgumentException If the temp directory path is not a directory.
          * @throws \InvalidArgumentException If the temp directory path is not readable.
          * @throws \InvalidArgumentException If the temp directory path is not writable.
@@ -272,7 +272,7 @@
          * @access public
          * @author Oliver Lillie
          * @param  boolean $gc True determines that the temp files are garbage collected. False means they are not.
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          * @throws \InvalidArgumentException If the $gc value is not a boolean.
          */
         public function setGarbageCollection($gc)
@@ -314,7 +314,7 @@
          * @author Oliver Lillie
          * @param mixed $callback A function if provided is called when the exec() call is completed. Otherwise null.
          *  It should be noted that if a callback is supplied the resulting call to exec() is made blocking.
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          * @throws \InvalidArgumentException If a callback is supplied but not callable.
          */
         public function execute($callback=null)
@@ -412,7 +412,7 @@
          * @access public
          * @author Oliver Lillie
          * @param  mixed $callback A callable callback function.
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          * @throws \InvalidArgumentException If a callback is supplied but not callable.
          */
         public function registerCompletionCallback($callback)
@@ -501,7 +501,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          */
         public function wait($seconds=1)
         {
@@ -514,7 +514,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          */
         public function stop()
         {
@@ -826,7 +826,7 @@
          * @access public
          * @author Oliver Lillie
          * @param boolean $enable_failure_tracking True means that failure tracking is enabled, false turns it off.
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          */
         public function setFailureTracking($enable_failure_tracking)
         {
@@ -857,7 +857,7 @@
          * @access public
          * @author Oliver Lillie
          * @param integer $callback_period_interval
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          * @throws \InvalidArgumentException If the callback period interval is not an integer.
          */
         public function setCallbackWaitInterval($callback_period_interval)
@@ -889,7 +889,7 @@
          * @access public
          * @author Oliver Lillie
          * @param boolean $enable_blocking If true the exec() call is made blocking, false means it is non-blocking.
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          * @throws \InvalidArgumentException If the blocking value is not a boolean.
          */
         public function setBlocking($enable_blocking)
@@ -934,7 +934,7 @@
          * @author Oliver Lillie
          * @param mixed $buffer_output Can be one of the following constants. ExecBuffer::DEV_NULL, ExecBuffer::TEMP, 
          *  a string will be interpretted as a file or null will output everything to sdout.
-         * @return Fliche\ExecBuffer Returns the current object.
+         * @return PHPVideoToolkit\ExecBuffer Returns the current object.
          * @throws \InvalidArgumentException If the buffer output value is not null, ExecBuffer::DEV_NULL or ExecBuffer::TEMP
          *  and the directory path supplied is not a directory.
          * @throws \InvalidArgumentException If the buffer output value is not null, ExecBuffer::DEV_NULL or ExecBuffer::TEMP
@@ -993,7 +993,7 @@
          */
         public function generateTmpFile($prefix='')
         {
-            $tmp = tempnam($this->_temp_directory, 'fliche_'.$prefix);
+            $tmp = tempnam($this->_temp_directory, 'phpvideotoolkit_'.$prefix);
             array_push($this->_tmp_files, $tmp);
             return $tmp;            
         }

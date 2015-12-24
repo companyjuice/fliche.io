@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * @access public
@@ -181,7 +181,7 @@
         {
             parent::attachFfmpegProcess($process, $config);
 
-            $this->_progress_file = tempnam($this->_config->temp_directory, 'fliche_progress_'.time().'_');
+            $this->_progress_file = tempnam($this->_config->temp_directory, 'phpvideotoolkit_progress_'.time().'_');
             $this->_input = $this->_ffmpeg_process->getAllInput();
             $this->_output = $this->_ffmpeg_process->getAllOutput();
             $this->_ffmpeg_process->addCommand('-progress', $this->_progress_file);

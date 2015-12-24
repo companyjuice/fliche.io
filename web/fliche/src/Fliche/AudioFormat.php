@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * Provides a base for audio related input/output format manipulation.
@@ -43,9 +43,9 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @param  constant $input_output_type Determines the input/output type of the Format. Either Fliche\Format::INPUT 
-         *  or Fliche\Format::OUTPUT
-         * @param  Fliche\Config $config The config object.
+         * @param  constant $input_output_type Determines the input/output type of the Format. Either PHPVideoToolkit\Format::INPUT 
+         *  or PHPVideoToolkit\Format::OUTPUT
+         * @param  PHPVideoToolkit\Config $config The config object.
          */
         public function __construct($input_output_type=Format::OUTPUT, Config $config=null)
         {
@@ -80,7 +80,7 @@
         }
         
         /**
-         * This is a hook function that is called when the Fliche\Media::_processOutputFormat function is run.
+         * This is a hook function that is called when the PHPVideoToolkit\Media::_processOutputFormat function is run.
          * This allows the format to update any commands in itself depending on other functions called within the Media object. 
          *
          * @access public
@@ -88,10 +88,10 @@
          * @param string &$save_path The save path of the output media.
          * @param  constant $overwrite The Media constant used to determine the overwrite status of the save. One of the 
          *  following constants:
-         *  Fliche\Media::OVERWRITE_FAIL
-         *  Fliche\Media::OVERWRITE_EXISTING
-         *  Fliche\Media::OVERWRITE_UNIQUE
-         * @return Fliche\AudioFormat Returns the current object.
+         *  PHPVideoToolkit\Media::OVERWRITE_FAIL
+         *  PHPVideoToolkit\Media::OVERWRITE_EXISTING
+         *  PHPVideoToolkit\Media::OVERWRITE_UNIQUE
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @todo Implement audio filters.
          */
         public function updateFormatOptions(&$save_path, $overwrite)
@@ -113,7 +113,7 @@
          * @access public
          * @author Oliver Lillie
          * @param AudioFilter $filter 
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @todo Implement
          */
         public function addAudioFilter(AudioFilter $filter)
@@ -130,7 +130,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @throws \LogicException If the format input/output type is input.
          */
         public function disableAudio()
@@ -150,7 +150,7 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          */
         public function enableAudio()
         {
@@ -161,7 +161,7 @@
         
         /**
          * Sets the audio codec for the audio stream. The audio codec must be one of the codecs given from
-         * Fliche\FfmpegParser::getCodecs or 'copy'. There are a few audio codecs that are automagically 
+         * PHPVideoToolkit\FfmpegParser::getCodecs or 'copy'. There are a few audio codecs that are automagically 
          * corrected depending on their availability on the current system. These codecs are:
          * - mp3 and libmp3lame
          * - vorbis and libvorbis
@@ -170,7 +170,7 @@
          * @access public
          * @author Oliver Lillie
          * @param string $audio_codec 
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @throws \InvalidArgumentException If a codec is not found.
          * @throws \InvalidArgumentException If a codec is not available in the restricted codecs array.
          */
@@ -218,7 +218,7 @@
 
             if(in_array($audio_codec, $codecs) === false)
             {
-                throw new \InvalidArgumentException('Unrecognised audio codec "'.$audio_codec.'" set in \\Fliche\\'.get_class($this).'::setAudioCodec');
+                throw new \InvalidArgumentException('Unrecognised audio codec "'.$audio_codec.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setAudioCodec');
             }
             
 //          now check the class settings to see if restricted pixel formats have been set and have to be obeyed
@@ -226,7 +226,7 @@
             {
                 if(in_array($audio_codec, $this->_restricted_audio_codecs) === false)
                 {
-                    throw new \InvalidArgumentException('The audio codec "'.$audio_codec.'" cannot be set in \\Fliche\\'.get_class($this).'::setAudioCodec. Please select one of the following codecs: '.implode(', ', $this->_restricted_audio_codecs));
+                    throw new \InvalidArgumentException('The audio codec "'.$audio_codec.'" cannot be set in \\PHPVideoToolkit\\'.get_class($this).'::setAudioCodec. Please select one of the following codecs: '.implode(', ', $this->_restricted_audio_codecs));
                 }
             }
             
@@ -240,7 +240,7 @@
          * @access public
          * @author Oliver Lillie
          * @param string $bitrate 
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @throws \InvalidArgumentException If the bitrate is not in one of the restricted bit rates, if any.
          * @todo expand out the shorthand notations of bitrates
          */
@@ -265,7 +265,7 @@
             {
                 if(in_array($bitrate, $this->_restricted_audio_bitrates) === false)
                 {
-                    throw new \InvalidArgumentException('The bitrate "'.$bitrate.'" cannot be set in \\Fliche\\'.get_class($this).'::setAudioBitrate. Please select one of the following bitrates: '.implode(', ', $this->_restricted_audio_bitrates));
+                    throw new \InvalidArgumentException('The bitrate "'.$bitrate.'" cannot be set in \\PHPVideoToolkit\\'.get_class($this).'::setAudioBitrate. Please select one of the following bitrates: '.implode(', ', $this->_restricted_audio_bitrates));
                 }
             }
             
@@ -279,7 +279,7 @@
          * @access public
          * @author Oliver Lillie
          * @param string $audio_sample_frequency 
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @throws \InvalidArgumentException If the sample frequency is not an integer value.
          * @throws \InvalidArgumentException If the sample frequency is less than 0
          * @throws \InvalidArgumentException If the sample frequency is not in one of the restricted sample frequencies, if any.
@@ -297,7 +297,7 @@
             }
             else if($audio_sample_frequency <= 0)
             {
-                throw new \InvalidArgumentException('Unrecognised audio sample frequency "'.$format.'" set in \\Fliche\\'.get_class($this).'::setAudioSampleFrequency');
+                throw new \InvalidArgumentException('Unrecognised audio sample frequency "'.$format.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setAudioSampleFrequency');
             }
             
 //          now check the class settings to see if restricted audio audio sample frequencies have been set and have to be obeyed
@@ -305,7 +305,7 @@
             {
                 if(in_array($audio_sample_frequency, $this->_restricted_audio_sample_frequencies) === false)
                 {
-                    throw new \InvalidArgumentException('The audio sample frequency "'.$audio_sample_frequency.'" cannot be set in \\Fliche\\'.get_class($this).'::setAudioSampleFrequency. Please select one of the following sample frequencies: '.implode(', ', $this->_restricted_audio_sample_frequencies));
+                    throw new \InvalidArgumentException('The audio sample frequency "'.$audio_sample_frequency.'" cannot be set in \\PHPVideoToolkit\\'.get_class($this).'::setAudioSampleFrequency. Please select one of the following sample frequencies: '.implode(', ', $this->_restricted_audio_sample_frequencies));
                 }
             }
                 
@@ -319,7 +319,7 @@
          * @access public
          * @author Oliver Lillie
          * @param integer $channels One of the following integers; 0, 1, 2, 6.
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @throws \InvalidArgumentException If $channels value is not an integer.
          * @throws \InvalidArgumentException If $channels value is not one of the allowed values.
          */
@@ -337,7 +337,7 @@
             }
             else if(in_array($channels, array(0, 1, 2, 6)) !== false)
             {
-                throw new \InvalidArgumentException('Unrecognised audio channels "'.$channels.'" set in \\Fliche\\'.get_class($this).'::setAudioChannels. The channels value must be one of the following values: 0, 1, 2, or 6.');
+                throw new \InvalidArgumentException('Unrecognised audio channels "'.$channels.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setAudioChannels. The channels value must be one of the following values: 0, 1, 2, or 6.');
             }
 
             $this->_format['audio_channels'] = $channels;
@@ -350,7 +350,7 @@
          * @access public
          * @author Oliver Lillie
          * @param integer $volume The level of the volumn. Must be higher than or euqal to 0.
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @throws \InvalidArgumentException If $volume value is not an integer.
          * @throws \InvalidArgumentException If $volume is less than 0.
          */
@@ -368,7 +368,7 @@
             }
             else if($volume < 0)
             {
-                throw new \InvalidArgumentException('Unrecognised volume value "'.$volume.'" set in \\Fliche\\'.get_class($this).'::setVolume. The value must be higher than or equal to 0.');
+                throw new \InvalidArgumentException('Unrecognised volume value "'.$volume.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setVolume. The value must be higher than or equal to 0.');
             }
             
             $this->_format['audio_volume'] = $volume;
@@ -381,7 +381,7 @@
          * @access public
          * @author Oliver Lillie
          * @param mixed $quality Integer or Float. The quality level of the audio on a 0-100 scale.
-         * @return Fliche\AudioFormat Returns the current object.
+         * @return PHPVideoToolkit\AudioFormat Returns the current object.
          * @throws \InvalidArgumentException If $qaulity value is not an integer or float.
          * @throws \InvalidArgumentException If $qaulity value does not eventually work out to be between 0-31.
          */
@@ -403,7 +403,7 @@
             $quality = 31 - round(($quality / 100) * 31);
             if($quality > 31 || $quality < 1)
             {
-                throw new \InvalidArgumentException('Unrecognised quality "'.$quality.'" set in \\Fliche\\'.get_class($this).'::setAudioQuality. The quality value must be between 0 and 100.');
+                throw new \InvalidArgumentException('Unrecognised quality "'.$quality.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setAudioQuality. The quality value must be between 0 and 100.');
             }
             
             $this->_format['audio_quality'] = $quality;

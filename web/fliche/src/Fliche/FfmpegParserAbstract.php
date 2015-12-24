@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     /**
      * Abstract class based upon Parser to server as a base class for creating FFmpeg parser classes from differing sources.
@@ -72,7 +72,7 @@
          * @param boolean $read_from_cache If true and the data exists within a cache then that data is used. If false
          *  then the data is re-read from ffmpeg.
          * @return string Returns the raw buffer data from ffmpeg.
-         * @throws Fliche\FfmpegProcessException If the call to ffmpeg encounters an error.
+         * @throws PHPVideoToolkit\FfmpegProcessException If the call to ffmpeg encounters an error.
          */
         public function getRawPixelFormatsData($read_from_cache=true)
         {
@@ -106,7 +106,7 @@
          * @param boolean $read_from_cache If true and the data exists within a cache then that data is used. If false
          *  then the data is re-read from ffmpeg.
          * @return string Returns the raw buffer data from ffmpeg.
-         * @throws Fliche\FfmpegProcessException If the call to ffmpeg encounters an error.
+         * @throws PHPVideoToolkit\FfmpegProcessException If the call to ffmpeg encounters an error.
          */
         public function getRawCommandsData($read_from_cache=true)
         {
@@ -192,7 +192,7 @@
          *  then the data is re-read from ffmpeg.
          * @return array Returns an array with the following keys; build, version. Note, depending on your version of ffmpeg
          *  either one or both of these keys will container values.
-         * @throws Fliche\FfmpegProcessException If a version is not found in the basic information then we call ffmpeg -version
+         * @throws PHPVideoToolkit\FfmpegProcessException If a version is not found in the basic information then we call ffmpeg -version
          *  to get the version information. If that call encounters an error this exception is thrown.
          */
         public function getVersion($read_from_cache=true)
@@ -288,7 +288,7 @@
 //          if both version and build are not available throw a new exception to get the user to provide their ffmpeg data to github so we can start building up different formats of ffmpeg output.
             if($version === null && $build === null)
             {
-                throw new FfmpegProcessException('Unable to determine your FFmpeg version or build. Please create an issue at the github repository for Fliche 2; https://github.com/buggedcom/fliche-v2/issues. Please add the following data to the ticket:<br />
+                throw new FfmpegProcessException('Unable to determine your FFmpeg version or build. Please create an issue at the github repository for PHPVideoToolkit 2; https://github.com/buggedcom/phpvideotoolkit-v2/issues. Please add the following data to the ticket:<br />
 <br />              
 <code>'.$this->getRawFfmpegData($read_from_cache).'</code>');
             }

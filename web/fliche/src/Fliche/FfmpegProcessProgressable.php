@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
     
     /**
      * If tbe ffmpeg process can be used in conjunction with a process handler, then this class is used to extend
@@ -49,7 +49,7 @@
          * @author: Oliver Lillie
          * @param string $program The programme to call. Note this is not the path. If you wish to call ffmpeg/aconv you should jsut
          *  supply 'ffmpeg' and then set the aconv path as the ffmpeg configuration option in Config.   
-         * @param Fliche\Config $config The config object.
+         * @param PHPVideoToolkit\Config $config The config object.
          */
         public function __construct($programme, Config $config=null)
         {
@@ -66,8 +66,8 @@
          * @access public
          * @author Oliver Lillie
          * @param integer $timelimit_in_seconds The timelimit to impose in seconds.
-         * @return Fliche\FfmpegProcess Returns the current object.
-         * @throws Fliche\FfmpegProcessCommandUnavailableException If the timelimit command is not available on the configured ffmpeg.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
+         * @throws PHPVideoToolkit\FfmpegProcessCommandUnavailableException If the timelimit command is not available on the configured ffmpeg.
          * @throws \InvalidArgumentException If the timelimit is not an integer.
          * @throws \InvalidArgumentException If the timelimit is less than or equal to 0.
          */
@@ -101,16 +101,16 @@
          *
          * @access public
          * @author Oliver Lillie
-         * @param mixed $callback Can be a callable callback, or an object that extends Fliche\ProgressHandlerAbstract
-         * @return Fliche\FfmpegProcess Returns the current object.
-         * @throws \InvalidArgumentException If the callback is an object and is not a subclass of Fliche\ProgressHandlerAbstract
+         * @param mixed $callback Can be a callable callback, or an object that extends PHPVideoToolkit\ProgressHandlerAbstract
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
+         * @throws \InvalidArgumentException If the callback is an object and is not a subclass of PHPVideoToolkit\ProgressHandlerAbstract
          * @throws \InvalidArgumentException If the callback is not callable if not an object.
          */
         public function attachProgressHandler($callback)
         {
             if(is_object($callback) === true)
             {
-                if(is_subclass_of($callback, 'Fliche\ProgressHandlerAbstract') === false)
+                if(is_subclass_of($callback, 'PHPVideoToolkit\ProgressHandlerAbstract') === false)
                 {
                     throw new \InvalidArgumentException('If supplying an object to attach as a progress handler, that object must inherit from ProgressHandlerAbstract.');
                 }
@@ -158,7 +158,7 @@
          * @access public
          * @author Oliver Lillie
          * @param mixed $callback If given it must be a valid function that is callable.
-         * @return Fliche\FfmpegProcess Returns the current object.
+         * @return PHPVideoToolkit\FfmpegProcess Returns the current object.
          * @throws \InvalidArgumentException If the callback is not callable.
          */
         public function execute($callback=null)
@@ -202,7 +202,7 @@
         /**
          * Once the process has been completed this function can be called to return the output
          * of the process. Depending on what the process is outputting depends on what is returned.
-         * If a single video or audio is being outputted then the related Fliche media object
+         * If a single video or audio is being outputted then the related PHPVideoToolkit media object
          * will be returned. However if multiple files are being outputed then an array of the associated
          * objects are returned. Typically speaking an array will be returned when %index or %timecode
          * are within the output path.
@@ -212,14 +212,14 @@
          * @param  mixed $post_process_callback
          * @return mixed
          * @throws \InvalidArgumentException If a callback is supplied but is not callable.
-         * @throws Fliche\FfmpegProcessOutputException If the function is called but the process has not completed
+         * @throws PHPVideoToolkit\FfmpegProcessOutputException If the function is called but the process has not completed
          *  yet.
-         * @throws Fliche\FfmpegProcessOutputException If the process was aborted.
-         * @throws Fliche\FfmpegProcessOutputException If the process completed with a termination signal.
-         * @throws Fliche\FfmpegProcessOutputException If the process completed with an error.
-         * @throws Fliche\FfmpegProcessOutputException If returned output is empty.
-         * @throws Fliche\FfmpegProcessOutputException If returned output files does not exist.
-         * @throws Fliche\FfmpegProcessOutputException If returned output files does exist but is a 0 byte file.
+         * @throws PHPVideoToolkit\FfmpegProcessOutputException If the process was aborted.
+         * @throws PHPVideoToolkit\FfmpegProcessOutputException If the process completed with a termination signal.
+         * @throws PHPVideoToolkit\FfmpegProcessOutputException If the process completed with an error.
+         * @throws PHPVideoToolkit\FfmpegProcessOutputException If returned output is empty.
+         * @throws PHPVideoToolkit\FfmpegProcessOutputException If returned output files does not exist.
+         * @throws PHPVideoToolkit\FfmpegProcessOutputException If returned output files does exist but is a 0 byte file.
          */
         public function completeProcess($post_process_callback=null)
         {
@@ -372,7 +372,7 @@
          * @access protected
          * @author Oliver Lillie
          * @param  string $output_path The file path to convert.
-         * @return object Either "Media", "Video", "Audio" or "Image" Fliche objects.
+         * @return object Either "Media", "Video", "Audio" or "Image" PHPVideoToolkit objects.
          */
         protected function _convertPathToMediaObject($output_path)
         {
@@ -451,7 +451,7 @@
          * @access protected
          * @author Oliver Lillie
          * @param string $path The file pathe of the file to find the media class for.
-         * @return string Returns the class name of the Fliche class related to the given $path argument.
+         * @return string Returns the class name of the PHPVideoToolkit class related to the given $path argument.
          */
         protected function _findMediaClass($path)
         {
@@ -478,7 +478,7 @@
                 case 'audio' :
                 case 'video' :
                 case 'image' :
-                    $class = '\\Fliche\\'.ucfirst(strtolower($type));
+                    $class = '\\PHPVideoToolkit\\'.ucfirst(strtolower($type));
                     break;
             }
             

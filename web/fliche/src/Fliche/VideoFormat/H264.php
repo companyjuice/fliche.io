@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * @access public
@@ -61,7 +61,7 @@
             
             if(in_array($preset, array('ultrafast', 'superfast', 'veryfast', 'faster', 'fast', 'medium', 'slow', 'slower', 'veryslow', 'placebo')) === false)
             {
-                throw new \InvalidArgumentException('Unrecognised h264 preset "'.$preset.'" set in \\Fliche\\'.get_class($this).'::setH264Preset');
+                throw new \InvalidArgumentException('Unrecognised h264 preset "'.$preset.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setH264Preset');
             }
             
             $this->_format['h264_preset'] = $preset;
@@ -80,7 +80,7 @@
             
             if(in_array($tune, array('film', 'animation', 'grain', 'stillimage', 'psnr', 'ssim', 'fastdecode', 'zerolatency')) === false)
             {
-                throw new \InvalidArgumentException('Unrecognised h264 tune "'.$preset.'" set in \\Fliche\\'.get_class($this).'::setH264Tune');
+                throw new \InvalidArgumentException('Unrecognised h264 tune "'.$preset.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setH264Tune');
             }
             
             $this->_format['h264_tune'] = $tune;
@@ -99,7 +99,7 @@
             
             if(in_array($profile, array('baseline', 'main', 'high', 'high10', 'high422', 'high444')) === false)
             {
-                throw new Exception('Unrecognised h264 profile "'.$profile.'" set in \\Fliche\\'.get_class($this).'::setH264Profile');
+                throw new Exception('Unrecognised h264 profile "'.$profile.'" set in \\PHPVideoToolkit\\'.get_class($this).'::setH264Profile');
             }
             
             $this->_format['h264_profile'] = $profile;

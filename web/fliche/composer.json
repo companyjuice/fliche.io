@@ -1,12 +1,13 @@
 {
-    "name": "companyjuice/fliche",
-    "description": "Fliche is a set of classes providing a modular, object-oriented and accessible interface for interacting with videos and audio thru FFmpeg.",
+    "name": "companyjuice/fliche-video-toolkit",
+    "description": "Fliche Video Toolkit is a set of PHP classes providing a modular, object-oriented and accessible interface for interacting with videos and audio thru FFmpeg.",
     "keywords": ["ffmpeg","video","audio","mp4","flv","mp3"],
     "license": ["GPL-3.0+","MIT"],
     "authors": [
         {
             "name": "Marty McGee",
             "email": "support@companyjuice.com",
+            "homepage": "http://companyjuice.com/",
 			"role": "Lead Developer"
         }
 	],

@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
     
     /**
      * Aids in locating server programmes if the paths are not hard set.
@@ -33,7 +33,7 @@
          * @author Stig Bakken <ssb@php.net>
          * @author Oliver Lillie
          * @throws \RuntimeException If it's not possible to guess the enviroment paths.
-         * @throws Fliche\BinaryLocateException If it is not possible to locate the specific programme.
+         * @throws PHPVideoToolkit\BinaryLocateException If it is not possible to locate the specific programme.
          */
         public static function locate($program, $fallback=null)
         {

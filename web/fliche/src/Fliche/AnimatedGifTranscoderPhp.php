@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
      
     use GifCreator; 
      
@@ -29,9 +29,9 @@
          * @access public
          * @author Oliver Lillie
          * @param  string $save_path The path to save the animated gif to.
-         * @return Fliche\Image Returns a new instance of Fliche\Image with the new animated gif as the src.
-         * @throws Fliche\AnimatedGifException If an empty gif is generated.
-         * @throws Fliche\AnimatedGifException If the gif couldn't be saved to the filesystem.
+         * @return PHPVideoToolkit\Image Returns a new instance of PHPVideoToolkit\Image with the new animated gif as the src.
+         * @throws PHPVideoToolkit\AnimatedGifException If an empty gif is generated.
+         * @throws PHPVideoToolkit\AnimatedGifException If the gif couldn't be saved to the filesystem.
          */
         public function save($save_path)
         {
@@ -70,7 +70,7 @@
          * @access public
          * @static
          * @author Oliver Lillie
-         * @param  Fliche\Config $config The configuration object.
+         * @param  PHPVideoToolkit\Config $config The configuration object.
          * @return boolean Returns true if this engine can be used, otherwise false.
          */
         public static function available(Config $config)

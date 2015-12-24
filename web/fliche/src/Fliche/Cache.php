@@ -6,12 +6,12 @@
      * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>
      * @license Dual licensed under MIT and GPLv2
      * @copyright Copyright (c) 2008-2014 Oliver Lillie <http://www.buggedcom.co.uk>
-     * @package Fliche V2
+     * @package PHPVideoToolkit V2
      * @version 2.1.7-beta
      * @uses ffmpeg http://ffmpeg.sourceforge.net/
      */
      
-    namespace Fliche;
+    namespace PHPVideoToolkit;
 
     /**
      * Small wrapper for creating a cacher driver based on the given config settings.
@@ -21,13 +21,13 @@
     class Cache
     {
         /**
-         * Creates a singleton instance of a caching driver from the given Fliche\Config settings.
+         * Creates a singleton instance of a caching driver from the given PHPVideoToolkit\Config settings.
          *
          * @access public
          * @static
          * @author: Oliver Lillie
-         * @param  Fliche\Config $config The config object.
-         * @return Fliche\CacheAbstract Returns the cacher object.
+         * @param  PHPVideoToolkit\Config $config The config object.
+         * @return PHPVideoToolkit\CacheAbstract Returns the cacher object.
          */
         public static function getCacher(Config $config)
         {
@@ -36,7 +36,7 @@
             {
                 return $cachers[$config->cache_driver];
             }
-            $class = '\Fliche\Cache_'.$config->cache_driver;
+            $class = '\PHPVideoToolkit\Cache_'.$config->cache_driver;
             return $cachers[$config->cache_driver] = new $class($config);
         }
     }
