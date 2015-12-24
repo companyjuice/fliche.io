@@ -20,7 +20,7 @@
     $ffmpeg_version = false;
     if(PROGRAM_PATH !== null)
     {
-        $ffmpeg_parser = new \Fliche\FfmpegParser($config);
+        $ffmpeg_parser = new \FlicheToolkit\FfmpegParser($config);
         $is_available = $ffmpeg_parser->isAvailable();
         $ffmpeg_version = $ffmpeg_parser->getVersion();    
     }   
@@ -30,13 +30,13 @@
           <p><?php if($is_available === true): ?>Yes, you have FFmpeg installed and available. Version: <?php echo $ffmpeg_version['version'] === null ? 'unknown' : HTML($ffmpeg_version['version']); ?> (build <?php echo $ffmpeg_version['build'] === null ? 'unknown' : HTML($ffmpeg_version['build']); ?>)<?php else: ?>No, it does not appear as if you have FFmpeg installed.<?php endif ?></p>
           <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $parser = new \Fliche\FfmpegParser($config);
+  $parser = new \FlicheToolkit\FfmpegParser($config);
   $is_available = $ffmpeg->isAvailable(); // returns boolean
   $ffmpeg_version = $ffmpeg->getVersion(); // outputs something like - array('version'=>1.0, 'build'=>null)
           
@@ -72,7 +72,7 @@
           
               <div class="alert">
                   <strong>FFmpeg-PHP is no longer maintained</strong> 
-                  <p>FFmpeg-PHP is no longer being maintained by the authors. There are several forks of the project, which you can find with a quick search on Google, however we recommend that you use Fliche's emulation of FFmpeg-PHP instead.</p>
+                  <p>FFmpeg-PHP is no longer being maintained by the authors. There are several forks of the project, which you can find with a quick search on Google, however we recommend that you use FlicheToolkit's emulation of FFmpeg-PHP instead.</p>
               </div>
           
           <p>To learn more about what FFmpeg-PHP is please read the <a href="http://ffmpeg-php.sourceforge.net/">FFmpeg-PHP documentation</a>.</p>
@@ -83,16 +83,16 @@
     
 ?>
           
-          <p><?php if($has_ffmpeg_support !== false): ?>Yes, you have FFmpeg-PHP support. FFmpeg-PHP is provided through <?php if($has_ffmpeg_support === 'module'): ?>the PHP module<?php else: ?>Fliche emulation<?php endif ?><?php else: ?>No, it does not appear that you have any support for Fliche<?php endif ?>.</p>
+          <p><?php if($has_ffmpeg_support !== false): ?>Yes, you have FFmpeg-PHP support. FFmpeg-PHP is provided through <?php if($has_ffmpeg_support === 'module'): ?>the PHP module<?php else: ?>FlicheToolkit emulation<?php endif ?><?php else: ?>No, it does not appear that you have any support for FlicheToolkit<?php endif ?>.</p>
           <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   $has_ffmpeg_support = $ffmpeg->hasFfmpegPhpSupport(); // returns either "module", "emulated" or false.
           
 </code></pre>
@@ -110,13 +110,13 @@
           
           <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   $basic_ffmpeg_information = $ffmpeg->getFfmpegData(); // returns an array of data.
           
 </code></pre>
@@ -151,13 +151,13 @@
           
             <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   $basic_ffmpeg_information = $ffmpeg->getCommands(); // returns an array of data.
           
 </code></pre>
@@ -199,19 +199,19 @@
 <?php
     
         $ffmpeg_formats = $ffmpeg_parser->getFormats();
-    // \Fliche\Trace::vars($ffmpeg_formats);exit;
+    // \FlicheToolkit\Trace::vars($ffmpeg_formats);exit;
     
 ?>
           
             <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
    ));
 
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   $ffmpeg_formats = $ffmpeg->getFormats(); // returns an array of data.
           
 </code></pre>
@@ -259,13 +259,13 @@
           
         <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
     
   // a component can be specified to return specific codec information.
   // if left as null, all component information will be returned.
@@ -320,19 +320,19 @@
         $ffmpeg_bitstream_filters = $ffmpeg_parser->getBitstreamFilters();
         sort($ffmpeg_bitstream_filters);
     
-    //\Fliche\Trace::vars($ffmpeg_bitstream_filters);
+    //\FlicheToolkit\Trace::vars($ffmpeg_bitstream_filters);
     
 ?>
           
           <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   $ffmpeg_bitstream_filters = $ffmpeg->getBitstreamFilters(); // returns an array of data.
           
 </code></pre>
@@ -365,19 +365,19 @@
         $ffmpeg_filters = $ffmpeg_parser->getFilters(false);
         ksort($ffmpeg_filters);
     
-    //\Fliche\Trace::vars($ffmpeg_filters);exit;
+    //\FlicheToolkit\Trace::vars($ffmpeg_filters);exit;
     
 ?>
           
           <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   
   // instead of returning all the data about each filter, you can limit it to 
   // just the filter names instead.
@@ -422,19 +422,19 @@
         $ffmpeg_protocols = $ffmpeg_parser->getProtocols();
         ksort($ffmpeg_protocols);
     
-    //\Fliche\Trace::vars($ffmpeg_protocols);exit;
+    //\FlicheToolkit\Trace::vars($ffmpeg_protocols);exit;
     
 ?>
           
           <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   $ffmpeg_protocols = $ffmpeg->getProtocols(); // returns an array of data.
           
 </code></pre>
@@ -474,19 +474,19 @@
         $ffmpeg_pixel_formats = $ffmpeg_parser->getPixelFormats();
         ksort($ffmpeg_pixel_formats);
     
-    //\Fliche\Trace::vars($ffmpeg_pixel_formats);exit;
+    //\FlicheToolkit\Trace::vars($ffmpeg_pixel_formats);exit;
     
 ?>
           
           <pre class="prettyprint"><code>&lt;?php
               
-  $config = new \Fliche\Config(array(
+  $config = new \FlicheToolkit\Config(array(
     'temp_directory' => '<?php echo addslashes(HTML(TEMP_PATH)); ?>', 
     'ffmpeg' => '<?php echo addslashes(HTML(FFMPEG_PROGRAM)); ?>', 
     'ffprobe' => '<?php echo addslashes(HTML(FFPROBE_PROGRAM)); ?>',
   ));
               
-  $ffmpeg = new \Fliche\FfmpegParser($config);
+  $ffmpeg = new \FlicheToolkit\FfmpegParser($config);
   $ffmpeg_pixel_formats = $ffmpeg->getPixelFormats(); // returns an array of data.
           
 </code></pre>

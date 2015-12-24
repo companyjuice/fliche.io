@@ -17,14 +17,14 @@
     {      
         $args = func_get_args();      
         $count = func_num_args();  
-        \Fliche\Trace::vars('ERROR---------', $count === 1 ? 'exception' : 'error', $args);
+        \FlicheToolkit\Trace::vars('ERROR---------', $count === 1 ? 'exception' : 'error', $args);
     }
     set_error_handler('__errorHandler');
     set_exception_handler('__errorHandler');
     
     require dirname(__FILE__).'/functions.php';
     
-    $config = new \Fliche\Config(array(
+    $config = new \FlicheToolkit\Config(array(
         'temp_directory' => TEMP_PATH,
         'ffmpeg' => FFMPEG_PROGRAM,
         'ffprobe' => FFPROBE_PROGRAM,

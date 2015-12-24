@@ -1,6 +1,6 @@
 {
   "name": "companyjuice/fliche.io",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "type": "project",
   "license": ["GPL-3.0+","MIT"],
   "description": "Fliche.io runs on a modern WordPress stack. Fliche.io uses Fliche Video Toolkit, a set of PHP classes providing a modular, object-oriented and accessible interface for interacting with videos and audio thru FFmpeg.",
@@ -39,6 +39,7 @@
     "sybio/gif-creator": "~1.0.0",
     "tedivm/stash": "0.13.*",
     "monolog/monolog": "~1.17.2",
+
     "videojs/video.js": "~5.4.4",
 
     "aws/aws-sdk-php": "~3.11.7",
@@ -53,7 +54,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Fliche\\": "web/fliche/src/",
+      "FlicheToolkit\\": "web/fliche/src/",
       "FFmpeg-PHP\\": "web/fliche/emulators/ffmpeg-php/"
     }
   },

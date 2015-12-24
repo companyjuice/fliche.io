@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bc6327fa23b373f87e59633bafbc7ec1",
-    "content-hash": "9e02d7f909468f5440a4c8a203e72930",
+    "hash": "64972a0fa783013d642a48a3a6cc9c05",
+    "content-hash": "ad1745008e6090fb725648e3b70ed3b1",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -223,16 +223,16 @@
         },
         {
             "name": "videojs/video.js",
-            "version": "v5.4.4",
+            "version": "v5.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/videojs/video.js.git",
-                "reference": "51cabe2045f497347f935335a924f4ce4c282e78"
+                "reference": "0edee76e06136ca355f6bc2e7518ffbb81a05885"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/videojs/video.js/zipball/51cabe2045f497347f935335a924f4ce4c282e78",
-                "reference": "51cabe2045f497347f935335a924f4ce4c282e78",
+                "url": "https://api.github.com/repos/videojs/video.js/zipball/0edee76e06136ca355f6bc2e7518ffbb81a05885",
+                "reference": "0edee76e06136ca355f6bc2e7518ffbb81a05885",
                 "shasum": ""
             },
             "type": "library",
@@ -249,7 +249,7 @@
                 "video",
                 "videojs"
             ],
-            "time": "2015-12-09 23:15:27"
+            "time": "2015-12-22 22:01:16"
         }
     ],
     "packages-dev": [],

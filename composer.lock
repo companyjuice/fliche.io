@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f5eb281adeb28029231f1a9026d17640",
-    "content-hash": "cc98ca9ca2f6aaab386a6a7fea7c9ccb",
+    "hash": "6ce62a034e57547300ff64c88632286f",
+    "content-hash": "276b52f8e5bcd0f16c54599d03defd50",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -810,16 +810,16 @@
         },
         {
             "name": "videojs/video.js",
-            "version": "v5.4.4",
+            "version": "v5.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/videojs/video.js.git",
-                "reference": "51cabe2045f497347f935335a924f4ce4c282e78"
+                "reference": "0edee76e06136ca355f6bc2e7518ffbb81a05885"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/videojs/video.js/zipball/51cabe2045f497347f935335a924f4ce4c282e78",
-                "reference": "51cabe2045f497347f935335a924f4ce4c282e78",
+                "url": "https://api.github.com/repos/videojs/video.js/zipball/0edee76e06136ca355f6bc2e7518ffbb81a05885",
+                "reference": "0edee76e06136ca355f6bc2e7518ffbb81a05885",
                 "shasum": ""
             },
             "type": "library",
@@ -836,7 +836,7 @@
                 "video",
                 "videojs"
             ],
-            "time": "2015-12-09 23:15:27"
+            "time": "2015-12-22 22:01:16"
         },
         {
             "name": "vlucas/phpdotenv",

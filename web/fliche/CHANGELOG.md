@@ -27,7 +27,7 @@ Bug fix point release. The AudioFormat class was incorrectly checking a comparis
 
 #[2.1.3] [17.03.2014]
 A bug fix point release for systems when realpath returns false on some systems and thus the configsetexceptions thrown have no path set in the message.
-If you already successfully have Fliche installed or are on a system where realpath returns the directory regardless of whether it exists or not then you can skip this version.
+If you already successfully have FlicheToolkit installed or are on a system where realpath returns the directory regardless of whether it exists or not then you can skip this version.
 
 #[2.1.2] [20.02.2014]
 	- Fixes for missing protected config variable
@@ -52,10 +52,10 @@ If you already successfully have Fliche installed or are on a system where realp
 	- FIXED check for liblamemp3 audio format problem.
 	- UPDATED example/index.php to correctly get the current release version, and
 	  remove the php notices.
-	- UPDATED Fliche::getFileInfo() and Fliche::getFFmpegInfo() so
+	- UPDATED FlicheToolkit::getFileInfo() and FlicheToolkit::getFFmpegInfo() so
 	  they can now be called statically.
 	- UPDATED example06.php to have the media embedded in the example.
-	- BUNDLED the Javascript PluginObject package with Fliche. It is an 
+	- BUNDLED the Javascript PluginObject package with FlicheToolkit. It is an 
 	  end-all solution to embedding browser based plugins via javascript. It is 
 	  distributed under a BSD License. The full package can be downloaded from:
 	  http://sourceforge.net/project/showfiles.php?group_id=223120
@@ -68,7 +68,7 @@ If you already successfully have Fliche installed or are on a system where realp
 	  in the distribution.
 	- FIXED PHP Notice errors, googlecode issue #1, Thanks Rob Coenen.
 	- DEPRECIATED setVideoOutputDimensions for setVideoDimensions
-	- ADDED Fliche::flvStreamSeek() which acts as a php stream proxy for
+	- ADDED FlicheToolkit::flvStreamSeek() which acts as a php stream proxy for
 	  flash flv files, can also limit bandwidth speed. See example13.php for more info.
 	- ADDED example13.php to demo how to use the new flv seeking function flvStreamSeek()
 	- DEPRECIATED setAudioFormat for setAudioCodec. setAudioFormat will be removed in 
@@ -80,7 +80,7 @@ If you already successfully have Fliche installed or are on a system where realp
 	  http://code.google.com/p/php-reader/ which is licensed under a New BSD license.
 
 #[0.1.3] [04.04.2008] 
-	- RENAMED primary class to Fliche to avoid any confusion with 
+	- RENAMED primary class to FlicheToolkit to avoid any confusion with 
 	  ffmpeg-php
 	- THANKS to Istvan Szakacs, and Rob Coenen for providing some valuable feedback, 
 	  bug fixes and code contributions.
@@ -90,22 +90,22 @@ If you already successfully have Fliche installed or are on a system where realp
 	- CHANGED the behaviour of extractFrames and extractFrame to allow you
 	  to specify specific frames and enter different types of timecodes as
 	  params using the new $timecode_format argument.
-	- ADDED value Fliche::getFFmpegInfo()['ffmpeg-php-support']; Values are
+	- ADDED value FlicheToolkit::getFFmpegInfo()['ffmpeg-php-support']; Values are
 		- 'module' = ffmpeg-php is installed as a php module
 		- 'emulated' = ffmpeg-php is supported through the VideoToolkit adapter
 		  classes (supplied with this package)
 		- false = ffmpeg-php is not supported in any way.
-	- ADDED Fliche::hasFFmpegPHPSupport() returns one of the values above,
+	- ADDED FlicheToolkit::hasFFmpegPHPSupport() returns one of the values above,
 	  dictating if ffmpeg-php is supported.
-	- ADDED Fliche::getFFmpegInfo()['compiler']['vhook-support'] that determines
+	- ADDED FlicheToolkit::getFFmpegInfo()['compiler']['vhook-support'] that determines
 	  if vhook support has been compiled into the ffmpeg binary.
-	- ADDED Fliche::hasVHookSupport() returns a boolean value to determine
+	- ADDED FlicheToolkit::hasVHookSupport() returns a boolean value to determine
 	  if vhook support is enabled in the ffmpeg binary.
 	- FIXED path include bug in example08.php
 	- ADDED frame existence check to extractFrame and extractFrames, thanks to
 	  Istvan Szakacs for suggesting the idea.
-	- ADDED an extra param to Fliche::setInputFile() and 
-	  Fliche::prepareImagesForConversion(), $input_frame_rate. by default it is
+	- ADDED an extra param to FlicheToolkit::setInputFile() and 
+	  FlicheToolkit::prepareImagesForConversion(), $input_frame_rate. by default it is
 	  0 which means no input frame rate is set, if you set it to false for 
 	  setInputFile then the frame rate will retrieved, otherwise the input
 	  frame rate will be set to whatever integer is set.
@@ -115,14 +115,14 @@ If you already successfully have Fliche installed or are on a system where realp
 	- ADDED width and height check in setVideoOutputDimensions, as apparently
 	  the output dimensions have to be even numbers.
 	- REMOVED call-by-pass-time-reference dependance from _postProcess()
-	- ADDED vhook check to Fliche::addWatermark(), returns false if vhook is not
+	- ADDED vhook check to FlicheToolkit::addWatermark(), returns false if vhook is not
 	  enabled.
-	- ADDED Fliche::addGDWatermark() to allow GD watermarking of outputted images.
+	- ADDED FlicheToolkit::addGDWatermark() to allow GD watermarking of outputted images.
 	- CHANGED the functionality of example04.php to show usage of addGDWatermark
 	  if vhooking is not enabled.
 	
 #[0.1.2] [03.04.2008] 
-	- FIXED bug in Fliche::getFileInfo() that in some instances didn't return 
+	- FIXED bug in FlicheToolkit::getFileInfo() that in some instances didn't return 
 	  the correct information, such as dimensions and frame rate. Thanks to
 	  Istvan Szakacs for pointing out the error.
 	- CHANGED the way an image sequence is outputted. %d within the naming
@@ -144,70 +144,70 @@ If you already successfully have Fliche installed or are on a system where realp
 		@license Freeware.
 	- ADDED example11.php, example12.php to demonstrate the ffmpeg-php
 	  adapters.
-	- CHANGED Fliche::getFileInfo()['audio']['frequency'] to
-		Fliche::getFileInfo()['audio']['sample_rate']
-	- CHANGED Fliche::getFileInfo()['audio']['format'] to 
-		Fliche::getFileInfo()['audio']['codec']
-	- CHANGED Fliche::getFileInfo()['video']['format'] to 
-		Fliche::getFileInfo()['video']['codec']
-	- ADDED Fliche::getFileInfo()['video']['pixel_format']
-	- ADDED Fliche::getFileInfo()['_raw_info'] which is the raw buffer output
-	- ADDED Fliche::getFileInfo()['duration']['start'] (re-added)
-	- UPDATED Fliche::extractFrame so in some instances it will be less cpu
+	- CHANGED FlicheToolkit::getFileInfo()['audio']['frequency'] to
+		FlicheToolkit::getFileInfo()['audio']['sample_rate']
+	- CHANGED FlicheToolkit::getFileInfo()['audio']['format'] to 
+		FlicheToolkit::getFileInfo()['audio']['codec']
+	- CHANGED FlicheToolkit::getFileInfo()['video']['format'] to 
+		FlicheToolkit::getFileInfo()['video']['codec']
+	- ADDED FlicheToolkit::getFileInfo()['video']['pixel_format']
+	- ADDED FlicheToolkit::getFileInfo()['_raw_info'] which is the raw buffer output
+	- ADDED FlicheToolkit::getFileInfo()['duration']['start'] (re-added)
+	- UPDATED FlicheToolkit::extractFrame so in some instances it will be less cpu
 	  intensive.
-	- UPDATED Fliche::_combineCommands so commands can be ordered in the exec
+	- UPDATED FlicheToolkit::_combineCommands so commands can be ordered in the exec
 	  string.
 
 #[0.1.1] [29.03.2008] 
 	- FIXED bug in the post processing of exporting a series of image frames.
 	  With thanks to Rob Coenen.
-	- FIXED bug in Fliche::getFileInfo() that returned the incorrect frame
+	- FIXED bug in FlicheToolkit::getFileInfo() that returned the incorrect frame
 	  rate of videos.
-	- CHANGED functionality of Fliche::extractFrame(), to export a specific
+	- CHANGED functionality of FlicheToolkit::extractFrame(), to export a specific
 	  frame based on the frame number, not just the hours, mins, secs timecode
 	- FIXED bug in ffmpeg.example9.php where the gif was incorrectly named.
-	- CHANGED functionality of Fliche::getFileInfo(), reorganised the way the 
+	- CHANGED functionality of FlicheToolkit::getFileInfo(), reorganised the way the 
 	  duration data is returned.
-	- CHANGED functionality of Fliche::getFileInfo(), so the timecode with
+	- CHANGED functionality of FlicheToolkit::getFileInfo(), so the timecode with
 	  frame numbers instead of milliseconds is also returned in the value 
 	  duration.timecode.frames.exact, however this value is only available to 
 	  video files.
 	- REMOVED duration.start from the information returned by 
-	  Fliche::getFileInfo()
-	- CHANGED Fliche::$image_output_timecode's default value to true/
-	- ADDED Fliche::registerPostProcess() to provide a way to automate 
+	  FlicheToolkit::getFileInfo()
+	- CHANGED FlicheToolkit::$image_output_timecode's default value to true/
+	- ADDED FlicheToolkit::registerPostProcess() to provide a way to automate 
 	  callbacks docs so you can hook into post processing of the ffmpeg 
 	  output. See function for more info.
-	- CHANGED the way Fliche::setFormatToFLV() adds the meta data to the flv.
-	  It now uses Fliche::registerPostProcess() to create a callback.
+	- CHANGED the way FlicheToolkit::setFormatToFLV() adds the meta data to the flv.
+	  It now uses FlicheToolkit::registerPostProcess() to create a callback.
 	- FIXED average time mistakes in examples.
 	- FIXED overwrite mistakes in examples (it was set to true so the 
-	  overwrite mode defaulted to Fliche::OVERWRITE_EXISTING)
-	- ADDED internal caching of Fliche::getFileInfo(); so if the data is asked 
+	  overwrite mode defaulted to FlicheToolkit::OVERWRITE_EXISTING)
+	- ADDED internal caching of FlicheToolkit::getFileInfo(); so if the data is asked 
 	  to be generated more than one in the same script it only gets generated 
 	  once.
 
 #[0.1.0] [02.03.2008] 
-	- ADDED new constant Fliche::SIZE_SAS. Which stands for Same As Source,  
+	- ADDED new constant FlicheToolkit::SIZE_SAS. Which stands for Same As Source,  
 	  meaning ffmpeg will automatically convert the movie to a whatever format   
 	  but preserve the size of the original movie.
 	- CORRECTED error/comment spelling mistakes.
-	- CHANGED Fliche::getFileInfo(); to use preg_match so it's more reliable, 
+	- CHANGED FlicheToolkit::getFileInfo(); to use preg_match so it's more reliable, 
 	  it also contains more information on the file.
 	- ADDED public function setVideoAspectRatio. Sets the video aspect ratio. 
-	  Takes one of three constants as an argument. Fliche::RATIO_STANDARD, 
-	  Fliche::RATIO_WIDE, Fliche::RATIO_CINEMATIC
+	  Takes one of three constants as an argument. FlicheToolkit::RATIO_STANDARD, 
+	  FlicheToolkit::RATIO_WIDE, FlicheToolkit::RATIO_CINEMATIC
 	- ADDED public function setVideoBitRate. Sets the video bitrate.
 	- ADDED public function setVideoFormat. Sets a video codec. It should not 
-	  be confused with Fliche::setFormat. It provides slightly different  
-	  advanced functionality, most simple usage can just use Fliche::setFormat
+	  be confused with FlicheToolkit::setFormat. It provides slightly different  
+	  advanced functionality, most simple usage can just use FlicheToolkit::setFormat
 	- ADDED public function setAudioFormat. Sets an audio codec.
 	- ADDED public function setConstantQuality. Sets a constant encoding 
 	  quality.
 	- ADDED public function getFFmpegInfo. Gets the available data from ffmpeg 
-	  and stores the output in Fliche::$ffmpeg_info (below).
-	- ADDED Fliche::$ffmpeg_info static var to hold the output of 
-	  Fliche::getFFmpegInfo();
+	  and stores the output in FlicheToolkit::$ffmpeg_info (below).
+	- ADDED FlicheToolkit::$ffmpeg_info static var to hold the output of 
+	  FlicheToolkit::getFFmpegInfo();
 	- ADDED public function getLastProcessTime and getProcessTime to retrieve 
 	  the processing times of the ffmpeg calls.
 	- ADDED adapter classes to provide simple functionality for ffmpeg newbies 
@@ -221,9 +221,9 @@ If you already successfully have Fliche installed or are on a system where realp
 	- CHANGED the way the processing works. The file is processed to the 
 	  temp directory and is then checked for consistency before moving to 
 	  the output directory.
-	- CHANGED the return values of Fliche::execute(); It no longer returns 
+	- CHANGED the return values of FlicheToolkit::execute(); It no longer returns 
 	  just true or false. See class docs for more info.
-	- CHANGED the third argument in Fliche::setOutput() from $overwrite to 
+	- CHANGED the third argument in FlicheToolkit::setOutput() from $overwrite to 
 	  $overwrite_mode. Instead of a boolean value, it now takes one of three
 	  constants
 			ffmegp::OVERWRITE_FAIL		- means that if a conflict exists the 
@@ -231,7 +231,7 @@ If you already successfully have Fliche installed or are on a system where realp
 			ffmegp::OVERWRITE_PRESERVE	- means that if a conflict exists the 
 										  process will preserve the existing
 										  file and report with 
-										  Fliche::RESULT_OK_BUT_UNWRITABLE.
+										  FlicheToolkit::RESULT_OK_BUT_UNWRITABLE.
 			ffmegp::OVERWRITE_EXISTING	- means that if a conflict exists the 
 										  process will overwrite any existing 
 										  file with the new file.
@@ -259,8 +259,8 @@ If you already successfully have Fliche installed or are on a system where realp
 					 default false
 		argument 2 - $log (boolean). Determines if the output of the query to 
 					 the ffmpeg binary is logged. Note, any log file created 
-					 is destroyed unless moved with Fliche::moveLog upon
-					 destruct of the ffmpeg instance or on Fliche::reset.
+					 is destroyed unless moved with FlicheToolkit::moveLog upon
+					 destruct of the ffmpeg instance or on FlicheToolkit::reset.
 					 default false
 	- Added public function moveLog. Moves a log file.
 	- Added public function readLog. Reads a log file and returns the data.
