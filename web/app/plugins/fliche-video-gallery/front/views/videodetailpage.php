@@ -445,26 +445,18 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                     $video_is_yt = true;
                 }
             }
-
+            
+            /*
             echo '<pre style="overflow: auto; height: 100px;">';
             echo '$video_data <br>';
             var_dump($video_data);
             echo '</pre>';
-            #echo '<pre style="overflow: auto; height: 100px;">';
-            #echo '$fetched[0] <br>';
-            #var_dump($fetched[0]);
-            #echo '</pre>';
-            
-            /** Get video details for HTML5 player */
-            #foreach ( $fetched as $media ) {
-                #echo '<pre>';
-                #var_dump($media);
-                #echo '</pre>';
-                #$fliche_video_url = $fetched[0]->file;
-                #$fliche_file_type = $fetched[0]->file_type;
-                #$fliche_image_url = getImagesValue ( $fetched[0]->image, $fliche_file_type, $fetched[0]->amazon_buckets, '');
-            #}
-
+            *//*
+            echo '<pre style="overflow: auto; height: 100px;">';
+            echo '$fetched[0] <br>';
+            var_dump($fetched[0]);
+            echo '</pre>';
+            */
 
 
             /** Get playlist id from shortcode */
@@ -481,10 +473,12 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
             	$flashvars      .= '&amp;adminview=true';
             }
 
+            /*
             echo '<pre style="overflow: auto; height: 60px;">';
             echo '$playlistid <br>';
             var_dump($playlistid);
             echo '</pre>';
+            */
 
 
             /** Generate flashvars detail for player starts here */
@@ -546,18 +540,19 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
               $pluginflashvars .= $flashvars .= '&amp;videodata=current_video_' . $video_div_id;
             }
 
+            /*
             echo '<pre style="overflow: auto; height: 100px;">';
             echo '$flashvars <br>';
             var_dump($flashvars);
             echo '$pluginflashvars <br>';
             var_dump($pluginflashvars);
             echo '</pre>';
-
+            */
 
 
         /** Player starts here */
             
-            $output   .= '<div id="mediaspace' . $video_div_id . '" class="videoplayer" style="width: 1080px; border: 0px solid yellow;">';
+            $output   .= '<div id="mediaspace' . $video_div_id . '" class="videoplayer" style="width: 1280px; border: 0px solid yellow;">';
                         
 
             # moved to top ^
@@ -729,10 +724,11 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   </script>
                 ";*/
                 
-                // Store the short code in a variable.
-                $do_video = do_shortcode( '
-                  [video width="600" height="480" mp4="source.mp4" ogv="source.ogv" webm="source.webm"]
-                ' );
+                // Store the shortcode in a variable
+                $do_video = do_shortcode('
+                  [video width="1280" height="720" mp4="'.$video_url.'" ogv="'.$video_url.'.ogv" webm="'.$video_url.'.webm"]
+                ');
+                // Output that variable
                 echo $do_video;
 
               }
