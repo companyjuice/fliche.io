@@ -343,7 +343,10 @@ function vgallery_detect_mobile() {
   /** If agent is detected then return true */
   if ($mobile_browser > 0) {
     return true;
-  } 
+  }
+  else {
+    return false;
+  }
 }
 /**
  * Fucntion to remove script, embed, styles, object and html tags code in given text

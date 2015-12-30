@@ -9386,6 +9386,7 @@ input[type=reset] i,
 #header {
   position: relative;
   z-index: 200;
+  margin-bottom: 10px;
 }
 #header .col {
   margin-bottom: 0;
@@ -9394,7 +9395,7 @@ input[type=reset] i,
 }
 #header .img-logo {
   float: left;
-  padding: 36px 0;
+  padding: 16px 0;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -9402,10 +9403,10 @@ input[type=reset] i,
 }
 #header .text-logo {
   float: left;
-  padding: 30px 0;
+  padding: 10px 0;
 }
 #header .text-logo.without-desc {
-  padding: 39px 0;
+  padding: 19px 0;
 }
 #header .logo-text {
   display: block;

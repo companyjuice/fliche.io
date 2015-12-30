@@ -10,7 +10,7 @@
  */
 
 /** Used to import plugin configuration */
-require_once (dirname ( __FILE__ ) . '/hdflv-config.php');
+require_once (dirname ( __FILE__ ) . '/fliche-config.php');
 /** Select published midroll ads from db */
 $themediafiles  = getVideoAdDetails ( 'midroll', '' );
 /** Set XML header for midroll ads */

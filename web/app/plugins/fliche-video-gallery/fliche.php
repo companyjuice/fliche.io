@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: FishFlicks Video Gallery
- * Plugin URI:  http://fishflicks.tv
- * Description: FishFlicks Alpha Development
- * Version:     0.2.9
+ * Plugin Name: Fliche Video Gallery
+ * Plugin URI:  http://fliche.io/
+ * Description: Fliche Alpha Development
+ * Version:     0.2.9.20151224
  * Author:      IFEM
  * Author URI:  http://www.carlvanderpal.com/
  */
@@ -632,7 +632,7 @@ require_once (FLICHE_VGALLERY_BASEDIR . '/install.php');
 /* Activate hook for installatio file */
 register_activation_hook ( __FILE__, 'videogallery_install' );
 /* Get plugin main file path */
-$plugin_main_file   = getPluginFolderName() . '/hdflvvideoshare.php';
+$plugin_main_file   = getPluginFolderName() . '/fliche.php';
 /* If plugin is activated, then check the newly added columns are exist in database */
 if (isset ( $_GET ['action'] ) && $_GET ['action'] == 'activate-plugin' && $_GET ['plugin'] == $plugin_main_file)
 {

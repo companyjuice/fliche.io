@@ -11,7 +11,7 @@
  */
 
 /** Include config file for playlist xml */ 
-require_once (dirname ( __FILE__ ) . '/hdflv-config.php');
+require_once (dirname ( __FILE__ ) . '/fliche-config.php');
 /** Variable Decalration and set defualt values */
 $banner   = 0;
 $islive   = $streamer = $videoPreview = $videotag = $postroll_id = $featured =  '';

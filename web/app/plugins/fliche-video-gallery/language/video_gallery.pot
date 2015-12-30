@@ -335,7 +335,7 @@ msgstr "Supported video formats:"
 msgid "Upload Video"
 msgstr "Upload Video"
 
-#: hdflvvideoshare.php:32
+#: fliche.php:32
 msgid "User Cancelled the upload"
 msgstr "User Cancelled the upload"
 

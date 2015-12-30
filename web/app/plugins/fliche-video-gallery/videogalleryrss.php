@@ -11,7 +11,7 @@
  */
 
 /** Include plugin configuration file */
-require_once (dirname ( __FILE__ ) . '/hdflv-config.php');
+require_once (dirname ( __FILE__ ) . '/fliche-config.php');
 /** Variable Initialization for rss feed */
 $where      = $tag_name = $vid = '';
 $dataLimit  = 1000;

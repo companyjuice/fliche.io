@@ -11,7 +11,7 @@
  */
 
 /** Include configuration file */
-require_once (dirname ( __FILE__ ) . '/hdflv-config.php');
+require_once (dirname ( __FILE__ ) . '/fliche-config.php');
 /** Variable initialization for config xml */
 $downloadPath = $subTitleFontFamily = '';
 
@@ -19,8 +19,10 @@ $downloadPath = $subTitleFontFamily = '';
 
 /** Get WordPress Site(admin) URL */
 global $site_url;
+# -||- #
 $site_url = get_site_url();
-
+##$site_url = site_url();
+# -||- #
 
 
 /** Clear previous data */

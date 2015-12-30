@@ -40,7 +40,10 @@ if (! class_exists ( 'FlicheVideoShortcodeView' )) {
              * plugin images directory URL, 
              * upload directory URL 
              * and swf file URL   */
-            $this->_site_url        = get_site_url ();
+            # -||- #
+            #$this->_site_url        = get_site_url ();
+            $this->_site_url        = home_url();
+            # -||- #
             $this->_imagePath       = getImagesDirURL ();
             $this->_uploadPath      = getUploadDirURL ();
             $this->_swfPath         = FLICHE_VGALLERY_BASEURL . 'hdflvplayer' . DS . 'hdplayer.swf';

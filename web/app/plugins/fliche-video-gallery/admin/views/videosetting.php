@@ -11,11 +11,13 @@
  */
 /** Get player color settings data */
 $player_colors = unserialize( $settingsGrid->player_colors );
+#var_dump($player_colors);
 /** Assign common div name, table name */
 $portletDiv = '<div class="portlet"><div class="portlet-header">';
 $portletContentDiv = '<div class="portlet-content"><table class="form-table">';
 $gallerySeparatorDiv = '<tr class="gallery_separator">';
 $checked = 'checked="checked"';
+
 /** Display video settings page starts */
 ?>
 <div class="fliche_gallery fliche_settings_label"> 

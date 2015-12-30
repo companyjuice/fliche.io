@@ -9,7 +9,7 @@
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 /** Used to include plugin configuration */
-require_once (dirname ( __FILE__ ) . '/hdflv-config.php');
+require_once (dirname ( __FILE__ ) . '/fliche-config.php');
 /** Get pre / post roll ad details from db */
 $themediafiles  = getVideoAdDetails ( 'prepost', '' );
 /** Set video ads clicks URL */

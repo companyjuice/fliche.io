@@ -11,7 +11,7 @@
  */
 
 /** Include plugin configuration */ 
-require_once (dirname ( __FILE__ ) . '/hdflv-config.php');
+require_once (dirname ( __FILE__ ) . '/fliche-config.php');
 /** Get published imaads from db */
 $themediafiles  = getVideoAdDetails ( 'imaad', '1' );
 /** Get player height, width from settings */

@@ -3,7 +3,7 @@
  * Bootstrap file for getting the ABSPATH constant to wp-load.php
  * This is requried when a plugin requires access not via the admin screen.
  * If the wp-load.php file is not found, then an error will be displayed
- * wp-content\plugins\fliche-video-gallery\hdflv-config.php
+ * wp-content\plugins\fliche-video-gallery\fliche-config.php
  * Define the server path to the file wp-config here, if you placed WP-CONTENT outside the classic file structure
  */
 $path = '';
@@ -16,7 +16,7 @@ if (! defined ( 'WP_LOAD_PATH' )) {
      * Classic root path if wp-content and plugins is below wp-config.php
      * It should be end with a trailing slash
      */ 
-    $classic_root = dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . '/';
+    $classic_root = dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . '/wp/';
     /**
      * Define wp-load.php file path
      * If it is not found then die with the message 

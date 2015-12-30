@@ -511,11 +511,11 @@ Generated with <?php echo get_num_queries(); ?> SQL queries in <?php timer_stop(
 		
 		if( $logo_type == 'default' ):
 			?>
-			<a <?php if( !is_front_page() ): ?>href="<?php echo site_url(); ?>"<?php endif; ?> class="text-logo with-desc" style="<?php echo esc_attr( $custom_style_string ); ?>"><span class="logo-text"><?php echo $blog_name; ?></span> <?php if( $description <> '' ): ?><span class="tagline"><?php echo $description; endif; ?></span></a>
+			<a <?php if( !is_front_page() ): ?>href="<?php echo home_url(); ?>"<?php endif; ?> class="text-logo with-desc" style="<?php echo esc_attr( $custom_style_string ); ?>"><span class="logo-text"><?php echo $blog_name; ?></span> <?php if( $description <> '' ): ?><span class="tagline"><?php echo $description; endif; ?></span></a>
 			<?php
 		elseif( $logo_type == 'text' ):
 			?>
-			<a <?php if( !is_front_page() ): ?>href="<?php echo site_url(); ?>"<?php endif; ?> class="text-logo without-desc" style="<?php echo esc_attr( $custom_style_string ); ?>"><span class="logo-text"><?php echo $blog_name; ?></span></a>
+			<a <?php if( !is_front_page() ): ?>href="<?php echo home_url(); ?>"<?php endif; ?> class="text-logo without-desc" style="<?php echo esc_attr( $custom_style_string ); ?>"><span class="logo-text"><?php echo $blog_name; ?></span></a>
 			<?php
 		elseif( $logo_type == 'image' ):
 			$custom_logo_url = $wpl_exe_wp->get_option( 'custom_logo_url', 'branding' );
@@ -529,7 +529,7 @@ Generated with <?php echo get_num_queries(); ?> SQL queries in <?php timer_stop(
 			$custom_logo_height = $wpl_exe_wp->get_option( 'custom_logo_height', 'branding' );
 
 			?>
-			<a <?php if( !is_front_page() ): ?>href="<?php echo site_url(); ?>"<?php endif; ?> class="img-logo" style="<?php echo esc_attr( $custom_style_string ); ?>"><img width="<?php echo $custom_logo_width <> '' ? esc_attr( $custom_logo_width ) : ''; ?>" height="<?php echo esc_attr( @$custom_logo_height ); ?>" src="<?php echo esc_attr( @$custom_logo_image ); ?>" alt="" data-no-retina /></a>
+			<a <?php if( !is_front_page() ): ?>href="<?php echo home_url(); ?>"<?php endif; ?> class="img-logo" style="<?php echo esc_attr( $custom_style_string ); ?>"><img width="<?php echo $custom_logo_width <> '' ? esc_attr( $custom_logo_width ) : ''; ?>" height="<?php echo esc_attr( @$custom_logo_height ); ?>" src="<?php echo esc_attr( @$custom_logo_image ); ?>" alt="" data-no-retina /></a>
 			<?php
 		endif;
 
@@ -552,7 +552,7 @@ Generated with <?php echo get_num_queries(); ?> SQL queries in <?php timer_stop(
   	$shop = __( 'Shop', 'wproto' ); 
   	
   	$page_for_posts = get_option( 'page_for_posts' );
-		$page_for_posts = $page_for_posts > 0 ? get_permalink( $page_for_posts ) : site_url(); 
+		$page_for_posts = $page_for_posts > 0 ? get_permalink( $page_for_posts ) : home_url(); 
   
   	$breadcrumbs_blog_page = $wpl_exe_wp->get_option( 'breadcrumbs_blog_page', 'general' );
   	

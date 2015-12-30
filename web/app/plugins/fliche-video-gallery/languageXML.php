@@ -11,7 +11,7 @@
  */
 
 /** Include plugin configuration file for language xml */
-require_once (dirname ( __FILE__ ) . '/hdflv-config.php');
+require_once (dirname ( __FILE__ ) . '/fliche-config.php');
 /** Set XML header for language XML */
 xmlHeader ();
 /** Set xml version 
