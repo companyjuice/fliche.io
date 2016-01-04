@@ -10,3 +10,14 @@
 */
 
 /** place here your styles **/
+.container {
+  /*
+  margin-right: auto;
+  margin-left:  auto;
+  padding-left:  15px;
+  padding-right: 15px;
+  */
+  padding-left:  10px;
+  padding-right: 20px;
+  width: auto;
+}

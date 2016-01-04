@@ -56,7 +56,7 @@
 						POST HEADER
 							
 					-->
-					<?php if( !in_array( $post_format, array('link', 'quote') ) ): ?>
+					<?php if( !in_array( $post_format, array('link', 'quote', '') ) ): ?>
 					<header>
 						<h1><?php the_title(); ?></h1>
 						<div class="post-meta-data">

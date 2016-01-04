@@ -359,6 +359,13 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
             # -||- moved up here (and not using:)
             $mobile = vgallery_detect_mobile();
             #var_dump($mobile);
+            
+
+            $fliche_plugin_dir_url = plugin_dir_url( dirname ( dirname ( __FILE__ ) ) );
+            #echo '<pre>';
+            #echo 'plugin_dir_url: ';
+            #echo $fliche_plugin_dir_url;
+            #echo '</pre>';
 
 
             /** Generate flashvars detail 
@@ -445,7 +452,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                     $video_is_yt = true;
                 }
             }
-            
+
             /*
             echo '<pre style="overflow: auto; height: 100px;">';
             echo '$video_data <br>';
@@ -657,7 +664,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 
               /* CUSTOM CODE -- MM -- Flash Video Player */
 
-              if ( 1 == 1 && $video_file_type == 1 ) {
+              if ( 1 == 0 && $video_file_type == 1 ) {
 
                 /* old flashplayer */
                 $output .= '<div id="flashplayer"><embed src="' . $this->_swfPath . '" flashvars="' . $flashvars . '" width="' . $width . '" height="' . $height . '" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" wmode="transparent"></div>';
@@ -686,7 +693,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 
               /* CUSTOM CODE -- MM -- HTML5 Video Player */
 
-              if ( 1 == 1 && $video_file_type == 2 ) {
+              if ( 1 == 1 && $video_file_type == 1 || $video_file_type == 2 ) {
 
                 /* new html5 video player //
                 $output .= '
@@ -725,9 +732,157 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                 ";*/
                 
                 // Store the shortcode in a variable
-                $do_video = do_shortcode('
-                  [video width="1280" height="720" mp4="'.$video_url.'" ogv="'.$video_url.'.ogv" webm="'.$video_url.'.webm"]
-                ');
+                $do_video = '-||- no video set -||-';
+                
+                // local video
+                if ( $video_file_type == 2 ) {
+                  $do_video = do_shortcode('
+                    [video width="1000" height="560" mp4="'.$video_url.'" ogv="'.$video_url.'.ogv" webm="'.$video_url.'.webm"]
+                  ');
+                }
+                // youtube video
+                else if ( $video_file_type == 1 ) {
+                  #$video_url = 'https://youtu.be/RVWtSsMUBD0';
+                  #$video_url = 'https://www.youtube.com/watch?v=RVWtSsMUBD0';
+
+                  
+                  $ytid = getYoutubeVideoID( $video_url );
+                  /*
+                  $do_video = do_shortcode('
+                    [youtube id="'.$ytid.'" ]
+                  ');
+                  */
+                  /*
+                  [youtube id="Q6goNzXrmFs" parameters="start=30&fs=0" aspect_ratio="16:9" align="center" 
+                    thumbnail="https://nextgenthemes.com/wp-content/uploads/2015/11/wp-logo.png" ]
+                  */
+                  
+
+                  /**/
+                  $do_video  = '
+                    <script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
+                    <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
+                    <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mejs-skins.css" />
+                  ';
+                  #<script src="' . $fliche_plugin_dir_url . 'mejs/build/jquery.js"></script>
+                  #<script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
+                  #<link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
+                  #<script src="http://mediaelementjs.com/js/mejs-2.9.2/mediaelement-and-player.min.js"></script>
+                  #<link rel="stylesheet" href="http://mediaelementjs.com/js/mejs-2.9.2/mediaelementplayer.min.css" />
+                  #<link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mejs-skins.css" />
+                  
+                  /**/
+                  $do_video .= '
+                    <video id="fliche-player" 
+                      width="940" height="524" 
+                      preload="none"
+                      class="mejs-player" ';
+                      #class="mejs-ted"
+                      #poster="'.$video_image_url.'" 
+                  $do_video .= '
+                      controls="controls">
+                        <source type="video/youtube" src="'.$video_url.'" />
+                    </video>
+                  ';
+                  $do_video .= '
+                    <script type="text/javascript">
+
+                      jQuery(document).ready(function($) {
+                        $("#fliche-player").mediaelementplayer({
+                          
+                          success: function(mediaElement, domObject) {
+                          
+                                  
+                                      mediaElement.play();
+                                  
+                          
+                          },
+                          error: function() {
+                              alert("Error setting media!");
+                          }
+                        });
+                      });
+                    
+                    </script>
+                  ';
+                  /**/
+                  # OR
+                  /*
+                  $do_video .= '
+                    <div class="video-overlay" id="video-overlay">
+ 
+                        <div class="fliche-player">
+                            <video width="940" height="524" id="fliche-player" class="mejs-player">
+                                <source type="video/youtube" src="'.$video_url.'" />
+                            </video>
+                        </div>
+                        <div class="overlay-text">
+                            <p class="initial-text">Start Video</p>
+                            <p class="paused-text">Resume</p>
+                            <p class="ended-text">Replay</p>
+                        </div>
+                        
+                    </div>
+                  ';
+                  $do_video .= '
+                    <script type="text/javascript">
+
+                        jQuery(document).ready(function() {
+    
+                            $videoOverlay = jQuery(".video-overlay");
+                            var isPlaying = false;
+                            
+                            var player = new MediaElementPlayer( "#fliche-player", {
+                                success: function( mediaElement ) { 
+                                        
+                                        if ( false === isPlaying ) {
+                                            player.play();
+                                        }
+
+                                        alert("HEY HEY HEY");
+                                    
+                                    // Show the initial overlay once the media player is set up
+                                    $videoOverlay.addClass("video-overlay-visible initial);
+                                    
+                                    // The overlay is on top of the player, so we have to make it respond to clicks
+                                    $videoOverlay.click( function() {
+                                        
+                                        if ( false === isPlaying ) {
+                                            player.play();
+                                        }
+
+                                        alert("HEY HEY HEY");
+                                        
+                                    });
+                                    
+                                    // Event listener for when the video starts playing
+                                    mediaElement.addEventListener( "playing", function( e ) {
+                                        $videoOverlay.removeClass( "video-overlay-visible initial paused ended’ );
+                                        isPlaying = true; //keep track of if it’s playing or not
+                                    }, false);
+                                    
+                                    // Event listener for when the video is paused
+                                    mediaElement.addEventListener( "pause", function( e ) {
+                                        $videoOverlay.addClass( ‘video-overlay-visible paused" );
+                                        isPlaying = false;
+                                    }, false);
+                                    
+                                    // Event listener for when the video ends
+                                    mediaElement.addEventListener( "ended", function( e ) {
+                                        $videoOverlay.addClass( "video-overlay-visible ended" );
+                                        isPlaying = false;
+                                    }, false);
+                                    
+                                }
+                            } );
+                            
+                        } );
+
+                    </script>
+                  ';
+                  */
+
+                }
                 // Output that variable
                 echo $do_video;
 
