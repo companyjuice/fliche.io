@@ -735,6 +735,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                 $do_video = '-||- no video set -||-';
                 
                 // local video
+                /*
                 if ( $video_file_type == 2 ) {
                   $do_video = do_shortcode('
                     [video width="1000" height="560" mp4="'.$video_url.'" ogv="'.$video_url.'.ogv" webm="'.$video_url.'.webm"]
@@ -742,6 +743,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                 }
                 // youtube video
                 else if ( $video_file_type == 1 ) {
+                */
                   #$video_url = 'https://youtu.be/RVWtSsMUBD0';
                   #$video_url = 'https://www.youtube.com/watch?v=RVWtSsMUBD0';
 
@@ -776,13 +778,32 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                     <video id="fliche-player" 
                       width="940" height="524" 
                       preload="none"
-                      class="mejs-player" ';
+                      class="mejs-player"
+                      controls="controls" 
+                    >';
                       #class="mejs-ted"
                       #poster="'.$video_image_url.'" 
-                  $do_video .= '
-                      controls="controls">
+                      #<video id="fliche-video" class="video-js vjs-default-skin" controls
+                      #preload="auto" width="1080" height="auto" poster="' . $video_image_url . '"
+                      #data-setup="{}">
+                  if ( $video_file_type == 1 ){
+                    $do_video .= '
                         <source type="video/youtube" src="'.$video_url.'" />
-                    </video>
+                    ';
+                  }
+                  else if ( $video_file_type == 2 ){
+                    $do_video .= '
+                        <source type="video/mp4" src="'.$video_url.'" />
+                        <source type="video/mp4" src="'.$video_url.'" />
+                        <source type="video/mp4" src="'.$video_url.'" />
+                    ';
+                  }  
+                  $do_video .= '
+                    <p class="vjs-no-js">
+                      To view this video please enable JavaScript, and consider upgrading to a web browser
+                      that supports HTML5 video.
+                    </p>
+                  </video>
                   ';
                   $do_video .= '
                     <script type="text/javascript">

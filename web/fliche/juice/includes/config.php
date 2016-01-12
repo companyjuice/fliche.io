@@ -2,10 +2,10 @@
 
   try
   {
-    $config = new \Fliche\Config(array(
+    $config = new \FlicheToolkit\Config(array(
       'temp_directory'              => './tmp',
-      'ffmpeg'                      => '/home/juice/bin/ffmpeg', //'/opt/local/bin/ffmpeg',
-      'ffprobe'                     => '/home/juice/bin/ffprobe', //'/opt/local/bin/ffprobe',
+      'ffmpeg'                      => 'C:\\webserver\\ffmpeg\\bin\\ffmpeg.exe', //'/home/juice/bin/ffmpeg', //'/opt/local/bin/ffmpeg',
+      'ffprobe'                     => 'C:\\webserver\\ffmpeg\\bin\\ffprobe.exe', //'/home/juice/bin/ffprobe', //'/opt/local/bin/ffprobe',
       //'yamdi'                       => '/home/juice/bin/yamdi', //'/opt/local/bin/yamdi',
       //'qtfaststart'                 => '/home/juice/bin/qt-faststart', //'/opt/local/bin/qt-faststart',
       'gif_transcoder'              => 'php',
@@ -19,10 +19,10 @@
       'set_default_output_format'   => true,
     ), true);
   }
-  catch(\Fliche\Exception $e)
+  catch(\FlicheToolkit\Exception $e)
   {
     echo '<h1>Config set errors</h1>';
-    \Fliche\Trace::vars($e);
+    \FlicheToolkit\Trace::vars($e);
     exit;
   }
 

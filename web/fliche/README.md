@@ -1,4 +1,4 @@
-#Fliche V2...
+#FlicheToolkit V2...
 
 ...is a set of PHP classes aimed to provide a modular, object oriented and accessible interface for interacting with videos and audio through FFmpeg.
 
@@ -70,7 +70,7 @@ Whilst the extensive documentation covers just about everything (to be honest th
 Fliche requires some basic configuration and is one through the Config class. The Config class is then used in the constructor of most Fliche classes. Any child object initialised within an already configured class will inherit the configuration options of the parent.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $config = new Config(array(
 	'temp_directory' => './tmp',
@@ -90,7 +90,7 @@ Every example below assumes that the Config object has been set as the default c
 Simple demonstration about how to access information about FfmpegParser object.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $ffmpeg = new FfmpegParser();
 $is_available = $ffmpeg->isAvailable(); // returns boolean
@@ -102,7 +102,7 @@ $ffmpeg_version = $ffmpeg->getVersion(); // outputs something like - array('vers
 Simple demonstration about how to access information about media files using the MediaParser object.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $parser = new MediaParser();
 $data = $parser->getFileInformation('BigBuckBunny_320x180.mp4');
@@ -113,7 +113,7 @@ echo '<pre>'.print_r($data, true).'</pre>';
 Fliche utilises Timecode objects when extracting data such as duration or start points, or when extracting portions of a media file. They are fairly simple to understand. All of the example timecodes created below are the same time. 
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $timecode = new Timecode(102.34);
 $timecode = new Timecode(102.34, Timecode::INPUT_FORMAT_SECONDS);
@@ -126,7 +126,7 @@ $timecode = new Timecode('00:01:42.34', Timecode::INPUT_FORMAT_TIMECODE);
 You can manipulate timecodes fairly simply.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $timecode = new Timecode('00:01:42.34', Timecode::INPUT_FORMAT_TIMECODE);
 $timecode->hours += 15; // 15:01:42.34
@@ -228,7 +228,7 @@ ImageFormat and the related child classes do not have any further functions.
 Below is an example of a very simple manipulation of a video.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 
@@ -249,7 +249,7 @@ $video->save('output.mp4', $output_format);
 Because of the advanced nature of the input and output formatters, if supplied you can encode a specific output, but use a silly (or custom) file extension. Not really sure why you would want to but it is possible.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $video->save('output.my_silly_custom_file_extension', new ImageFormat_Jpeg());
@@ -261,7 +261,7 @@ $video->save('output.my_silly_custom_file_extension', new ImageFormat_Jpeg());
 The code below extracts a frame from the video at the 40 second mark.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->extractFrame(new Timecode(40))
@@ -273,7 +273,7 @@ $output = $process->getOutput();
 The code below extracts frames at the parent videos' frame rate from between 40 and 50 seconds. If the parent video has a frame rate of 24 fps then 240 images would be extracted from this code.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->extractFrames(new Timecode(40), new Timecode(50))
@@ -286,7 +286,7 @@ $output = $process->getOutput();
 There are two ways you can export at a differing frame rate from that of the parent video. The first is to use an output format to set the video frame rate.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $output_format = new ImageFormat_Jpeg();
 
@@ -312,7 +312,7 @@ $output = $process->getOutput();
 The second is to use the $force_frame_rate option of the extractFrames function.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->extractFrames(new Timecode(50), null, 1) // if null then the extracted segment goes from the start timecode to the end of the video
@@ -325,7 +325,7 @@ $output = $process->getOutput();
 The code below uses the ```$force_frame_rate``` argument for ```$video->extractFrames()```, however the same 1/n notation can be used on ```$video_format->setFrameRate()```. This example will output 1 frame every 60 seconds of video.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->extractFrames(new Timecode(40), new Timecode(50), '1/60')
@@ -338,13 +338,13 @@ $output = $process->getOutput();
 ***IMPORTANT:*** It is important to note that if you exporting multiple frames a video you will not always get the expected amount of frames you would expect. This is down to the way FFmpeg treats timecodes. Take the example below into consideration.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
-$video = new \Fliche\Video($example_video_path);
+$video = new \FlicheToolkit\Video($example_video_path);
 
-$process = $video->extractSegment(new \Fliche\Timecode(10), new \Fliche\Timecode(20))
+$process = $video->extractSegment(new \FlicheToolkit\Timecode(10), new \FlicheToolkit\Timecode(20))
 				->extractFrames(null, null, 1)
-				->save('./output/%timecode.jpg', null, \Fliche\Media::OVERWRITE_EXISTING);
+				->save('./output/%timecode.jpg', null, \FlicheToolkit\Media::OVERWRITE_EXISTING);
 
 $output = $process->getOutput();
 ```
@@ -361,7 +361,7 @@ while(current < end)
 }
 ```
 
-So if we require 10 frames you must actually set your end timecode to a little over 20 seconds like so ```$video->extractSegment(new \Fliche\Timecode(10), new \Fliche\Timecode(20.1))```
+So if we require 10 frames you must actually set your end timecode to a little over 20 seconds like so ```$video->extractSegment(new \FlicheToolkit\Timecode(10), new \FlicheToolkit\Timecode(20.1))```
 
 ###Combining Multiple Images and Audio to form a Video
 
@@ -398,7 +398,7 @@ Regards to performance. High frame rates greatly impact how fast a high quality 
 
 *Gifsicle with Imagemagick Convert*
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $config->convert = '/opt/local/bin/convert';
 $config->gif_transcoder = 'gifsicle';
@@ -421,7 +421,7 @@ The examples below are listed in order of performance.
 
 *Imagemagick Convert*
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $config->gif_transcoder = 'convert';
 
@@ -439,7 +439,7 @@ $output = $process->getOutput();
 
 *Native PHP GD with symbio/gif-creator library*
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $config->gif_transcoder = 'php';
 
@@ -457,7 +457,7 @@ $output = $process->getOutput();
 
 *Gifsicle with native PHP GD*
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $config->convert = null; // This disables the imagemagick convert path so gifsicle transcoder falls back to GD
 $config->gif_transcoder = 'gifsicle';
@@ -480,7 +480,7 @@ In order to resize output video and imagery output you need to supply an [output
 
 ```php
 
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 
@@ -494,7 +494,7 @@ $video->save('BigBuckBunny_160x120.3gp', $output_format);
 ###Extracting Audio or Video Channels from a Video
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->extractAudio()->save('./output/big_buck_bunny.mp3');
@@ -508,7 +508,7 @@ $output = $process->getOutput();
 The code below extracts a portion of the video at the from 2 minutes 22 seconds to 3 minutes (ie 180 seconds). *Note the different settings for constructing a timecode.* The timecode object can accept different formats to create a timecode from.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->extractSegment(new Timecode('00:02:22.0', Timecode::INPUT_FORMAT_TIMECODE), new Timecode(180))
@@ -522,7 +522,7 @@ There are multiple ways you can configure the split parameters. If an array is s
 The code below splits a video into multiple of equal length of 45 seconds each. 
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->split(45)
@@ -534,7 +534,7 @@ $output = $process->getOutput();
 Unfortunately there is no way using FFmpeg to add meta data without re-encoding the file. There are other tools that can do that though, however if you wish to write meta data to the media during encoding you can do so using code like the example below.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->purgeMetaData()
@@ -550,7 +550,7 @@ Note; the examples below are for demonstration purposes only and _may not work_.
 
 *Changing the audio and video codecs of an outputted video*
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $output_path = './output/big_buck_bunny.mpeg';
 
@@ -565,7 +565,7 @@ $output = $process->getOutput();
 
 *Changing the audio codec of an audio export*
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $output_path = './output/big_buck_bunny.mp3';
 
@@ -586,7 +586,7 @@ However there are some caveats you need to be aware of before doing so. Once the
 The code below is an example of how to manage a non-blocking save.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->saveNonBlocking('./output/big_buck_bunny.mov');
@@ -635,7 +635,7 @@ Progress Handlers can be made to block PHP or can be used in a non blocking fash
 This example supplies the progress callback handler as a parameter to the constructor. This function is then called (every second, by default). Creating the callback in this way will block PHP and cannot be assigned as a progress handler when calling saveNonBlocking().
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 
@@ -655,7 +655,7 @@ $output = $process->getOutput();
 This example initialises a handler but does not supply a callback function. Instead you create your own method for creating a "progress loop" (or similar) and instead just call probe() on the handler.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 
@@ -686,7 +686,7 @@ This example (a better example is found in /examples/progress-handler-portabilit
 Encoding script:
 ```php
 
-namespace Fliche;
+namespace FlicheToolkit;
 
 session_start();
 
@@ -700,7 +700,7 @@ $_SESSION['fliche_portable_process_id'] = $video->getPortableId();
 Probing script:
 ```php
 
-namespace Fliche;
+namespace FlicheToolkit;
 
 session_start();
 
@@ -719,7 +719,7 @@ exit;
 
 **Progress Handler Caveats**
 
-**1**: When encoding MP4s and having enabled qt-faststart usage either through setting ```\Fliche\Config->force_enable_qtfaststart = true;``` or ```\Fliche\VideoFormat_Mp4::enableQtFastStart()``` saves are put into blocking mode as processing with qt-faststart requires further exec calls. Similarly any encoding post processes such as when encoding FLVs will also convert a non blocking save into a blocking one.
+**1**: When encoding MP4s and having enabled qt-faststart usage either through setting ```\FlicheToolkit\Config->force_enable_qtfaststart = true;``` or ```\FlicheToolkit\VideoFormat_Mp4::enableQtFastStart()``` saves are put into blocking mode as processing with qt-faststart requires further exec calls. Similarly any encoding post processes such as when encoding FLVs will also convert a non blocking save into a blocking one.
 
 **2**: When outputting files using %timecode or %index and using the ProgressHandlerPortable system it is not possible to currently automatically renaming the resulting temporary file output to their correct output filenames.
 
@@ -741,7 +741,7 @@ Array
 	[fps_avg] => 209.539693388
 	[size] => 242kB
 	[frame] => 153
-	[duration] => Fliche\Timecode Object
+	[duration] => FlicheToolkit\Timecode Object
 		(
 			[_total_frames:protected] => 
 			[_total_milliseconds:protected] => 6640
@@ -756,7 +756,7 @@ Array
 			[_frame_rate:protected] => 
 		)
 
-	[expected_duration] => Fliche\Timecode Object
+	[expected_duration] => FlicheToolkit\Timecode Object
 		(
 			[_total_frames:protected] => 
 			[_total_milliseconds:protected] => 60000
@@ -856,11 +856,11 @@ This is the current frame that is being processed.
 
 This is the current size of the output media.
 
-**duration** ***(Fliche\Timecode object)***
+**duration** ***(FlicheToolkit\Timecode object)***
 
 This is the current duration of the output media (if appropriate - as if you are outputting images only this will be `null`)
 
-**expected_duration** ***(Fliche\Timecode object)***
+**expected_duration** ***(FlicheToolkit\Timecode object)***
 
 This is the expected approimate value that the output media's duration will be. The final value held by 'duration' (above) will usually be a few microseconds different that this value.
 
@@ -899,7 +899,7 @@ FFmpeg allows you to [encode multiple output formats from a single command](http
 When splitting files into multiple segments or extracting portions of a video the transformations that take place are performed on all the outputed media. An example of this functionality can be found in ```convert-to-multiple-output.php```. However a quick example is also shown below.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 
@@ -928,7 +928,7 @@ All progress handlers also work with multiple output, however the caveats outlin
 There may be instances where things go wrong and Fliche hasn't correctly prevented or reported any encoding/decoding errors, or, you may just want to log what is going on. You can access any executed commands and the command lines output fairly simply as the example below shows.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->save('./output/big_buck_bunny.mov');
@@ -959,7 +959,7 @@ Because FFmpeg has a specific order in which certain commands need to be added t
 The process object is passed by reference so any changes to the object are also made within the Video object.
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 $process = $video->getProcess();
@@ -1004,7 +1004,7 @@ HOWEVER, there is an important caveat you need to be aware of, the above command
 You may wish to impose a processing timelimit on encoding. There are various reasons for doing this and should be self explanatory. FFmpeg supplies a command to be able to do this and can be invoked like so...
 
 ```php
-namespace Fliche;
+namespace FlicheToolkit;
 
 $video  = new Video('BigBuckBunny_320x180.mp4');
 

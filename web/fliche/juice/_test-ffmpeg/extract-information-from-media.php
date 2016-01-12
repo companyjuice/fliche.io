@@ -1,12 +1,12 @@
 <?php
 
-    namespace Fliche;
+    namespace FlicheToolkit;
 
     include_once './includes/bootstrap.php';
     
     foreach (array(
-        $example_video_path => 'Fliche\Video',
-        $example_audio_path => 'Fliche\Audio',
+        $example_video_path => 'FlicheToolkit\Video',
+        $example_audio_path => 'FlicheToolkit\Audio',
     ) as $path => $class)
     {
         try

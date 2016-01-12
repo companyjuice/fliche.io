@@ -1,6 +1,6 @@
 <?php
 
-    namespace Fliche;
+    namespace FlicheToolkit;
 
     include_once './includes/bootstrap.php';
 

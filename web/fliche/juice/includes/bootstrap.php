@@ -14,7 +14,7 @@
         }
         $args = func_get_args();      
         $count = func_num_args(); 
-        \Fliche\Trace::vars('ERROR---------', $count === 1 ? 'exception' : 'error', $args, debug_backtrace());
+        \FlicheToolkit\Trace::vars('ERROR---------', $count === 1 ? 'exception' : 'error', $args, debug_backtrace());
     }
     set_error_handler('__errorHandler');
     set_exception_handler('__errorHandler');

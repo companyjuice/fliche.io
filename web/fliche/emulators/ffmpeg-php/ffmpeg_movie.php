@@ -1,10 +1,10 @@
 <?php
 
-    use Fliche\Video;
-    use Fliche\Config;
-    use Fliche\Timecode;
-    use Fliche\Tempfile;
-    use Fliche\Media;
+    use FlicheToolkit\Video;
+    use FlicheToolkit\Config;
+    use FlicheToolkit\Timecode;
+    use FlicheToolkit\Tempfile;
+    use FlicheToolkit\Media;
 
     /**
      * This is a pure php emulation of the PHP module FFmpeg-PHP.
@@ -118,7 +118,7 @@
         }
         
         /**
-         * On clone the Fliche\Video is duplicated.
+         * On clone the FlicheToolkit\Video is duplicated.
          *
          * @return void
          * @author Oliver Lillie
