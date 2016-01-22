@@ -1,8 +1,8 @@
 <?php
 /*
 echo '<pre>';
-echo '# get list of videos in $v_batch_dir'; echo "\n";
-echo '# foreach( $v_batch_files as $v_file ){ '; echo "\n";
+echo '# get list of videos in $v_src_dir'; echo "\n";
+echo '# foreach( $v_src_files as $v_file ){ '; echo "\n";
 echo '#   : 0) $v_file: "";'; echo "\n";
 echo '#   : 1) get file metadata'; echo "\n";
 echo '#   : 2) run ffmpeg functions'; echo "\n";
@@ -11,6 +11,13 @@ echo '#   : 4) save records to database'; echo "\n";
 echo '# } ';
 echo '</pre>';
 */
+
+
+    namespace FlicheToolkit;
+
+    include_once './includes/bootstrap.php';
+
+
 
 // run this file
 _construct();
@@ -21,34 +28,40 @@ function _construct() {
   }
 }
 
-function run_batch() {
 
-  $v_batch_dir = 'G:\bkp\media\fishflicks\batch';
-  #$v_batch_dir = '/var/www/html/assets/videogallery/batch';
-  $v_batch_files = array();
+function run_batch() {
+    
+    echo '<a href="?method=blocking">Blocking</a> | <a href="?method=non-blocking">Non blocking</a><br />';
+
+  $v_src_dir = 'G:\bkp\media\fishflicks';
+  #$v_src_dir = '/var/www/html/assets/videogallery';
+  $v_out_dir = 'G:\bkp\media\fishflicks\batch';
+  #$v_out_dir = '/var/www/html/assets/videogallery/batch';
+  $v_src_files = array();
+  $v_out_files = array();
   $v_file = '';
 
   echo '<pre>';
 
-  $v_batch_files = scandir($v_batch_dir);
-  var_dump($v_batch_files);
+  $v_src_files = scandir($v_src_dir);
+  #var_dump($v_src_files);
+
+  #get_videos(); // should return an array as $v_src_files
 
 
-
-  get_videos(); // should return an array as $v_batch_files
-
-
-  foreach( $v_batch_files as $v_file ) {
+  foreach( $v_src_files as $v_file ) {
     #echo '$v_file: ' . $v_file . '';
     #echo "\n";
-    if ($v_file != "." && $v_file != "..") {
+    
+    #if ($v_file != "." && $v_file != "..") {
+    if ($v_file == "90_video848201797.mp4") {
       
       if ( stripos($v_file, '.mp4') !== FALSE
         || stripos($v_file, '.m4v') !== FALSE
         || stripos($v_file, '.mov') !== FALSE ){
         echo '-||- found: video file'; echo "\n";
         #insert_video( $v_file );
-        process_video( $v_file );
+        process_video( $v_file, $v_src_dir, $v_out_dir );
         echo "\n";
       }/* 
       else if ( stripos($v_file, '.jpg') !== FALSE
@@ -78,10 +91,194 @@ function run_batch() {
 /**
  * Function to process videos using FFMPEG
  */
-function process_video($v_file) {
-  echo '$v_file: ' . $v_file . '';
+function process_video( $v_file, $v_src_dir, $v_out_dir ) {
+
+  $v_src_file_path = $v_src_dir . '\\' . $v_file;
+  $v_out_file_path = $v_out_dir . '\\' . $v_file;
+
+  #echo '$v_file: ' . $v_file . '';
+  #echo "\n";
+  #echo '$v_src_dir: ' . $v_src_dir . '';
+  #echo "\n";
+  #echo '$v_out_dir: ' . $v_out_dir . '';
+  #echo "\n";
+  echo '$v_src_file_path: ' . $v_src_file_path . '';
   echo "\n";
-  return true;
+  echo '$v_out_file_path: ' . $v_out_file_path . '';
+  echo "\n";
+  #return true;
+
+    try
+    {
+        $video = new Video($v_src_file_path);
+        #$video->extractSegment(new Timecode(10), new Timecode(30));
+        $process = $video->getProcess();
+        #$process->setProcessTimelimit(5); // in seconds (did not work)
+
+
+        // 240p, 360p, 480p, 720p, 1080p
+        $multi_output = new MultiOutput();
+
+
+        // 240p
+        $mp4_240p_output = $v_out_file_path . '.nat.240p.mp4';
+        $format = Format::getFormatFor($mp4_240p_output, null, 'VideoFormat');
+            #$output_format = new VideoFormat();
+        #$format->setVideoDimensions(VideoFormat::DIMENSION_XGA);
+        $format->setVideoDimensions(426, 240);
+            #$output_format->setVideoDimensions(160, 120);
+        $multi_output->addOutput($mp4_240p_output, $format);
+            #$video->save('BigBuckBunny_160x120.3gp', $output_format);
+        //
+        // 360p
+        $mp4_360p_output = $v_out_file_path . '.nat.360p.mp4';
+        $format = Format::getFormatFor($mp4_360p_output, null, 'VideoFormat');
+            #$output_format = new VideoFormat();
+        #$format->setVideoDimensions(VideoFormat::DIMENSION_XGA);
+        $format->setVideoDimensions(640, 360);
+            #$output_format->setVideoDimensions(160, 120);
+        $multi_output->addOutput($mp4_360p_output, $format);
+            #$video->save('BigBuckBunny_160x120.3gp', $output_format);
+        //
+        // 480p
+        $mp4_480p_output = $v_out_file_path . '.nat.480p.mp4';
+        $format = Format::getFormatFor($mp4_480p_output, null, 'VideoFormat');
+            #$output_format = new VideoFormat();
+        #$format->setVideoDimensions(VideoFormat::DIMENSION_XGA);
+        $format->setVideoDimensions(854, 480);
+            #$output_format->setVideoDimensions(160, 120);
+        $multi_output->addOutput($mp4_480p_output, $format);
+            #$video->save('BigBuckBunny_160x120.3gp', $output_format);
+        //
+        // 720p
+        $mp4_720p_output = $v_out_file_path . '.nat.720p.mp4';
+        $format = Format::getFormatFor($mp4_720p_output, null, 'VideoFormat');
+            #$output_format = new VideoFormat();
+        #$format->setVideoDimensions(VideoFormat::DIMENSION_XGA);
+        $format->setVideoDimensions(1280, 720);
+            #$output_format->setVideoDimensions(160, 120);
+        $multi_output->addOutput($mp4_720p_output, $format);
+            #$video->save('BigBuckBunny_160x120.3gp', $output_format);
+        //
+        /* 1080p
+        $mp4_1080p_output = $v_out_file_path . '.nat.1080p.mp4';
+        $format = Format::getFormatFor($mp4_1080p_output, null, 'VideoFormat');
+            #$output_format = new VideoFormat();
+        #$format->setVideoDimensions(VideoFormat::DIMENSION_XGA);
+        $format->setVideoDimensions(1920, 1080);
+            #$output_format->setVideoDimensions(160, 120);
+        $multi_output->addOutput($mp4_1080p_output, $format);
+            #$video->save('BigBuckBunny_160x120.3gp', $output_format);
+        */
+
+        /*
+        $ogg_output = $v_out_file_path . '.nat.1.ogg';
+        $format = Format::getFormatFor($ogg_output, null, 'VideoFormat');
+        $format->setVideoDimensions(VideoFormat::DIMENSION_SQCIF);
+        $multi_output->addOutput($ogg_output, $format);
+
+        $threegp_output = $v_out_file_path . '.nat.2.3gp';
+        $format = Format::getFormatFor($threegp_output, null, 'VideoFormat');
+        $format->setVideoDimensions(VideoFormat::DIMENSION_XGA);
+        $multi_output->addOutput($threegp_output, $format);
+
+        $threegp_output = $v_out_file_path . '.nat.3.3gp';
+        $format = Format::getFormatFor($threegp_output, null, 'VideoFormat');
+        $format->setVideoDimensions(VideoFormat::DIMENSION_XGA);
+        $multi_output->addOutput($threegp_output, $format);
+        */
+
+        if(isset($_GET['method']) === true && $_GET['method'] === 'blocking')
+        {
+            echo '<h2>Blocking Method</h2>';
+
+            // If you use a blocking save but want to handle the progress during the block, then assign a callback within
+            // the constructor of the progress handler.
+            // IMPORTANT NOTE: most modern browser don't support output buffering any more.
+            $progress_data = array();
+
+            $progress_handler = new ProgressHandlerNative(function($data) use (&$progress_data)
+            {
+                // do something here like log to file or db.
+                array_push($progress_data, round($data['percentage'], 2).': '.round($data['run_time'], 2));
+            });
+
+            $process = $video->purgeMetaData()
+                             ->setMetaData('title', 'Fliche Video Toolkit')
+                             ->setMetaData('author', 'fliche.io')
+                             ->save($multi_output, null, Video::OVERWRITE_EXISTING, $progress_handler);
+            
+            array_unshift($progress_data, 'Percentage Completed: Time taken');
+            Trace::vars(implode(PHP_EOL, $progress_data));
+        }
+        else
+        {
+            echo '<h2>Non Blocking Method</h2>';
+
+            // use a non block save to probe the progress handler after the save has been made.
+            // IMPORTANT: this method only works with ->saveNonBlocking as otherwise the progress handler
+            // probe will quit after one cycle.
+            $progress_handler = new ProgressHandlerNative();
+
+            $process = $video->purgeMetaData()
+                             ->setMetaData('title', 'Fliche Video Toolkit')
+                             ->setMetaData('author', 'fliche.io')
+                             ->saveNonBlocking($multi_output, null, Video::OVERWRITE_EXISTING, $progress_handler);
+
+            while($progress_handler->completed !== true)
+            {
+                Trace::vars($progress_handler->probe(true, 1));
+            }
+        }
+         
+        echo '<h1>Executed Command</h1>';
+        Trace::vars($process->getExecutedCommand());
+        echo '<h1>RAW Executed Command</h1>';
+        Trace::vars($process->getExecutedCommand(true));
+        echo '<hr /><h1>FFmpeg Process Messages</h1>';
+        Trace::vars($process->getMessages());
+        echo '<hr /><h1>Buffer Output</h1>';
+        Trace::vars($process->getBuffer(true));
+        echo '<hr /><h1>Resulting Output</h1>';
+        $output = $process->getOutput();
+        $paths = array();
+        if(empty($output) === false)
+        {
+            foreach ($output as $obj)
+            {
+                array_push($paths, $obj->getMediaPath());
+            }
+        }
+        Trace::vars($paths);
+        exit;
+    }
+    catch(FfmpegProcessOutputException $e)
+    {
+        echo '<h1>Error</h1>';
+        Trace::vars($e);
+
+        $process = $video->getProcess();
+        if($process->isCompleted())
+        {
+            echo '<hr /><h2>Executed Command</h2>';
+            Trace::vars($process->getExecutedCommand());
+            echo '<hr /><h2>FFmpeg Process Messages</h2>';
+            Trace::vars($process->getMessages());
+            echo '<hr /><h2>Buffer Output</h2>';
+            Trace::vars($process->getBuffer(true));
+        }
+        
+        echo '<a href="?reset=1">Reset Process</a>';
+    }
+    catch(Exception $e)
+    {
+        echo '<h1>Error</h1>';
+        Trace::vars($e->getMessage());
+        echo '<h2>Exception</h2>';
+        Trace::vars($e);
+
+        echo '<a href="?reset=1">Reset Process</a>';
+    }
 }
 
 
