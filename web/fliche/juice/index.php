@@ -13,7 +13,7 @@ echo "-||-<br>";
 foreach($phpfiles as $phpfile)
 {
 	if ( basename($phpfile) != 'index.php' ) {
-  	echo '-||- <a href="'.basename($phpfile).'" target="_blank" style="color: #000099;">'.basename($phpfile).'</a><br>';
+  	echo '-||- <a href="'.basename($phpfile).'" target="_blank" style="color: #0000CC;">'.basename($phpfile).'</a><br>';
   }
 }
 

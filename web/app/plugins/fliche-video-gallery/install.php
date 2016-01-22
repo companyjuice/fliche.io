@@ -105,7 +105,7 @@ function upgrade_videos() {
           /** Insert post details into post table for existing videos */ 
           $wpdb->query ( 'INSERT INTO ' . WVG_POSTS . ' ( `post_author`,`post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count` ) 
               VALUES  
-              ( "1","2011-11-15 07:22:39", "2011-11-15 07:22:39", "' . $post_content . '", "' . $name . '", "", "publish", "open", "closed", "", "' . $slug . '", "", "", "2011-11-15 07:22:39", "2011-11-15 07:22:39", "", "0", "", "0","videogallery", "", "0" )' );
+              ( "1","2015-11-15 07:22:39", "2015-11-15 07:22:39", "' . $post_content . '", "' . $name . '", "", "publish", "open", "closed", "", "' . $slug . '", "", "", "2015-11-15 07:22:39", "2015-11-15 07:22:39", "", "0", "", "0","videogallery", "", "0" )' );
           $post_id  = $wpdb->insert_id;
           /** Generate post URL for videos */
           $guid     = home_url () . '/?post_type=video&#038;p=' . $post_id;
@@ -319,7 +319,7 @@ function createVGPluginPages() {
     $fliche_more  = 'INSERT INTO ' . WVG_POSTS . '( `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count` )
         VALUES
         ( 1, NOW(), NOW(), "[videomore]", "Video Categories", "", "publish", "open", "open", "", "video-more", "", "",
-        "2011-01-10 10:42:23", "2011-01-10 10:42:23", "",0, "' . $site_url . '/?page_id=",0, "page", "", 0 )';  
+        "2016-01-10 10:42:23", "2016-01-10 10:42:23", "",0, "' . $site_url . '/?page_id=",0, "page", "", 0 )';  
     $wpdb->query ( $fliche_more );
     /** Get last ID from post table */ 
     $moreId       = $wpdb->get_var ( 'SELECT ID FROM ' . WVG_POSTS . ' ORDER BY ID DESC LIMIT 0,1' );
@@ -339,7 +339,7 @@ function createVGPluginPages() {
     $fliche_home  = 'INSERT INTO ' . WVG_POSTS . '( `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count` )
         VALUES
         ( 1, NOW(), NOW(), "[videohome]", "Videos", "", "publish", "open", "open", "", "video-home", "", "",
-        "2011-01-10 10:42:06", "2011-01-10 10:42:06", "",0, "' . $site_url . '/?page_id=",0, "page", "", 0 )';
+        "2016-01-10 10:42:06", "2016-01-10 10:42:06", "",0, "' . $site_url . '/?page_id=",0, "page", "", 0 )';
     $wpdb->query ( $fliche_home );
     /** Get last post Id from post table and update guid for videohome page */
     $homeId       = $wpdb->get_var ( 'SELECT ID FROM ' . WVG_POSTS . ' ORDER BY ID DESC LIMIT 0,1' );
@@ -414,8 +414,8 @@ function insertSampleVideos() {
       $guid         = home_url () . '/?post_type=videogallery&#038;p=' . $postID;
       /** Insert new posts into post table for smaple vidoes */
       $wpdb->query ( 'INSERT INTO ' . WVG_POSTS . ' ( `post_author`,`post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count` )
-          VALUES ( "1","2011-11-15 07:22:39", "2011-11-15 07:22:39", "' . $post_content . '", "' . $videoName [$j] . '", "", "publish", "open",
-          "closed", "", "' . $slug . '", "", "", "2011-11-15 07:22:39", "2011-11-15 07:22:39", "", 0, "' . $guid . '", "0","videogallery", "", "0" )' );
+          VALUES ( "1","2015-11-15 07:22:39", "2015-11-15 07:22:39", "' . $post_content . '", "' . $videoName [$j] . '", "", "publish", "open",
+          "closed", "", "' . $slug . '", "", "", "2015-11-15 07:22:39", "2015-11-15 07:22:39", "", 0, "' . $guid . '", "0","videogallery", "", "0" )' );
     }
   }
 } 

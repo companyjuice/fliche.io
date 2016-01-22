@@ -576,7 +576,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 
               && $fetched[0]->file_type == 5 
               
-              && !empty ( $fetched[0]->embedcode )) {
+              && !empty ( $fetched[0]->embedcode ) ) {
 
 
                 $playerembedcode    = stripslashes ( $fetched[0]->embedcode );
@@ -912,7 +912,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 
 
 
-            }
+            //}
             /** End Embed player code */
 
 

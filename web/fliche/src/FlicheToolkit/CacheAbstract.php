@@ -22,7 +22,7 @@
     {
         protected $_config;
 
-        protected $_key_prefix = 'phpvideotoolkit_v2';
+        protected $_key_prefix = 'flichetoolkit';
         
         public function __construct(Config $config=null)
         {

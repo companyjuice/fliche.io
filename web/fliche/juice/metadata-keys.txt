@@ -1,0 +1,23 @@
+QuickTime, MOV, MP4, M4A
+
+Metadata keys that FFmpeg honors when muxing a QuickTime file:
+
+Key							iTunes field
+"title"					Name
+"author"				Artist
+"album_artist"	Album Artist
+"album"					Album
+"grouping"			Grouping
+"composer"			Composer
+"year"					Year
+"track"					Track Number
+"comment"				Comments
+"genre"					Genre
+"copyright"			??
+"description"		Description
+"synopsis"			Info dialog for "Show Description" in context menu
+"show"					Show
+"episode_id"		Episode ID
+"network"				??
+"lyrics"				Lyrics
+

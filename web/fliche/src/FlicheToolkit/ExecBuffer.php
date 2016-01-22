@@ -993,7 +993,7 @@
          */
         public function generateTmpFile($prefix='')
         {
-            $tmp = tempnam($this->_temp_directory, 'phpvideotoolkit_'.$prefix);
+            $tmp = tempnam($this->_temp_directory, 'flichetoolkit_'.$prefix);
             array_push($this->_tmp_files, $tmp);
             return $tmp;            
         }

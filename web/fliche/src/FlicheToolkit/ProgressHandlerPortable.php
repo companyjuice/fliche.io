@@ -56,7 +56,7 @@
             $this->_time_started = $time_started;
             $this->_expected_duration = new Timecode($expected_duration);
             
-            $this->_output = $this->_config->temp_directory.'/phpvideotoolkit_'.$temp_id;
+            $this->_output = $this->_config->temp_directory.'/flichetoolkit_'.$temp_id;
             if(is_file($this->_output) === false)
             {
                 throw new Exception('The process output file cannot be found. Please make sure that another process has not garbage collected the file `'.$this->_output.'`.');

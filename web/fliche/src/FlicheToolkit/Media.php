@@ -541,7 +541,7 @@
                 $this->_split_options['segment_list'] = $output_list_path;
             }
             
-//          mark that we require a %d (or in phpvideotoolkits case %index or %timecode) in the file name output as multiple files will be outputed.
+//          mark that we require a %d (or in flichetoolkits case %index or %timecode) in the file name output as multiple files will be outputed.
             $this->_require_d_in_output = true;
             
             return $this;
@@ -873,7 +873,7 @@
                 throw new \RuntimeException('The directory that the output is to be saved to, "'.$save_dir.'" is not read-writeable.');
             }
 //          check to see if we have a split output name.
-//          although this is technically still allowed by ffmpeg, phpvideotoolkit has depreciated %d in favour of its own %index
+//          although this is technically still allowed by ffmpeg, flichetoolkit has depreciated %d in favour of its own %index
             else if(preg_match('/\%([0-9]*)d/', $save_path) > 0)
             {
                 throw new \InvalidArgumentException('The output file appears to be using FFmpeg\'s %d notation for multiple file output. The %d notation is depreciated in FlicheToolkit in favour of the %index or %timecode notations.');

@@ -14,7 +14,7 @@
             $media = new $class($path);
             $output = $media->read();
         
-            echo '<hr /><h1>Resulting Output for '.pathinfo($path, PATHINFO_BASENAME).'</h1>';
+            echo '<hr><h1>Resulting Output for '.pathinfo($path, PATHINFO_BASENAME).'</h1>';
             Trace::vars($output);
 
         }
@@ -26,11 +26,11 @@
             $process = $media->getProcess();
             if($process->isCompleted())
             {
-                echo '<hr /><h2>Executed Command</h2>';
+                echo '<hr><h2>Executed Command</h2>';
                 Trace::vars($process->getExecutedCommand());
-                echo '<hr /><h2>FFmpeg Process Messages</h2>';
+                echo '<hr><h2>FFmpeg Process Messages</h2>';
                 Trace::vars($process->getMessages());
-                echo '<hr /><h2>Buffer Output</h2>';
+                echo '<hr><h2>Buffer Output</h2>';
                 Trace::vars($process->getBuffer(true));
             }
         }

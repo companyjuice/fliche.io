@@ -26,8 +26,13 @@
     exit;
   }
 
-  $example_video_path = BASE.'juice/media/47_video2092056811.mp4';
-  $example_audio_path = BASE.'juice/media/Ballad_of_the_Sneak.mp3';
+
+  
+  #$example_video_path = BASE.'juice/media/47_video2092056811.mp4';
+  #$example_video_path = 'G:\bkp\media\fishflicks\FA_S01_E11.mp4';
+  $example_video_path = 'G:\bkp\media\fishflicks\ktp_test.mp4';
+  #$example_audio_path = BASE.'juice/media/Ballad_of_the_Sneak.mp3';
+  $example_audio_path = 'G:\bkp\media\fishflicks\FA_S01_E11.mp3';
 
   $example_images_dir = BASE.'juice/media/images/';
   $example_image_paths = array(

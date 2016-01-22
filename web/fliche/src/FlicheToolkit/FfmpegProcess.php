@@ -829,6 +829,6 @@
             $this->_exec->setGarbageCollection(false);
             
             $output = $this->getBufferOutput();
-            return substr($output, strrpos($output, 'phpvideotoolkit_')+16).'.'.$this->_callExecBufferFunction('getBoundary').'.'.time();
+            return substr($output, strrpos($output, 'flichetoolkit_')+16).'.'.$this->_callExecBufferFunction('getBoundary').'.'.time();
         }
     }
