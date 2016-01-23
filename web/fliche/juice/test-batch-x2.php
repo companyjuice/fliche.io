@@ -54,7 +54,11 @@ function run_batch() {
     #echo "\n";
     
     #if ($v_file != "." && $v_file != "..") {
-    if ($v_file == "90_video848201797.mp4") {
+    if ( $v_file == "X.mp4"
+      || $v_file == "X.mp4"
+      || $v_file == "65_video709356796.mp4"
+      || $v_file == "65_video785232072.mp4"
+    ) {
       
       if ( stripos($v_file, '.mp4') !== FALSE
         || stripos($v_file, '.m4v') !== FALSE
@@ -250,6 +254,7 @@ function process_video( $v_file, $v_src_dir, $v_out_dir ) {
             }
         }
         Trace::vars($paths);
+return;
         exit;
     }
     catch(FfmpegProcessOutputException $e)
