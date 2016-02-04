@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 /** Get wp token for file upload */
@@ -112,7 +112,7 @@ if ( ! wp_verify_nonce( $nonce, 'upload-video' ) ) {
       return $errorcode;
     }
     /** 
-     * Fucntion to set error message based on error code
+     * Function to set error message based on error code
      * 
      * @param unknown $file          
      * @return boolean
@@ -133,7 +133,7 @@ if ( ! wp_verify_nonce( $nonce, 'upload-video' ) ) {
     }
     
     /**
-     * Fucntion to check the upload file extension is allowed format or Not
+     * Function to check the upload file extension is allowed format or Not
      * 
      * @param unknown $file          
      * @return boolean
@@ -159,7 +159,7 @@ if ( ! wp_verify_nonce( $nonce, 'upload-video' ) ) {
       }
     }
     /**
-     * Fucntion to check file upload size
+     * Function to check file upload size
      * 
      * @param unknown $file          
      * @return boolean
@@ -181,7 +181,7 @@ if ( ! wp_verify_nonce( $nonce, 'upload-video' ) ) {
     }
     
     /**
-     * Fucntion to move the uploaded file 
+     * Function to move the uploaded file 
      * to video gallery folder ( OR ) Amazon s3 bucket.
      * 
      * @param unknown $file          

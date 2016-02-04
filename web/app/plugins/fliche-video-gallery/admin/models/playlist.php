@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 /**
@@ -43,7 +43,7 @@ if ( !class_exists ( 'PlaylistModel' ) ) {
         }
       }
       /**
-       * Fucntion to update the playlist details
+       * Function to update the playlist details
        * 
        * @param unknown $playlistData
        * @param unknown $playlistId
@@ -53,7 +53,7 @@ if ( !class_exists ( 'PlaylistModel' ) ) {
         return $this->_wpdb->update ( $this->_playlisttable, $playlistData, array ( 'pid' => $playlistId ) );
       }
       /**
-       * Fucntion to change status via ajax request
+       * Function to change status via ajax request
        * 
        * @param unknown $playlistId
        * @param unknown $status
@@ -105,7 +105,7 @@ if ( !class_exists ( 'PlaylistModel' ) ) {
         return $this->_wpdb->get_results ( $query );
       }
       /**
-       * Fucntion to get single playlistsdetails
+       * Function to get single playlistsdetails
        * 
        * @param unknown $playlistId
        */
@@ -114,7 +114,7 @@ if ( !class_exists ( 'PlaylistModel' ) ) {
         return $this->_wpdb->get_row ( 'SELECT * FROM ' . $this->_playlisttable . ' WHERE pid =' . $playlistId );
       }
       /**
-       * Fucntion to get total playlists for paginations
+       * Function to get total playlists for paginations
        * 
        * @param unknown $searchValue
        * @param unknown $searchBtn

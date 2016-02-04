@@ -12,11 +12,9 @@ echo '# } ';
 echo '</pre>';
 */
 
+namespace FlicheToolkit;
 
-    namespace FlicheToolkit;
-
-    include_once './includes/bootstrap.php';
-
+include_once './includes/bootstrap.php';
 
 
 // run this file
@@ -54,10 +52,10 @@ function run_batch() {
     #echo "\n";
     
     #if ($v_file != "." && $v_file != "..") {
-    if ( $v_file == "X.mp4"
-      || $v_file == "X.mp4"
-      || $v_file == "65_video709356796.mp4"
-      || $v_file == "65_video785232072.mp4"
+    if ( $v_file == "75_video104132678.mp4"
+      || $v_file == "72_video1745878797.mp4"
+      || $v_file == "72_video1641408712.mp4"
+      || $v_file == "72_video876471870.mp4"
     ) {
       
       if ( stripos($v_file, '.mp4') !== FALSE

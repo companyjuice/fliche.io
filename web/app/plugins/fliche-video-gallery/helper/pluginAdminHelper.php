@@ -48,7 +48,7 @@ function displayAdminTabs ( $section ) {
 }
 
 /**
- * Fucntion to display status when action is done
+ * Function to display status when action is done
  * 
  * @param string $displayMsg
  */
@@ -93,7 +93,7 @@ function adminFilterDisplay ( $name,  $position ) {
                   <input type="submit" name="' . $applyName . '"  class="button-secondary action" value="' . __( 'Apply', FLICHE_VGALLERY ) . '"> ';
 } 
 /**
- * Fucntion to get TouTube data from remote URL
+ * Function to get TouTube data from remote URL
  *
  * @param unknown $url
  * @return unknown

@@ -1,29 +1,31 @@
 <?php
 /**
- * Wordpress video gallery helper file.
+ * Wordpress video gallery db query helper file.
+ *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
 /**
  * Get video id based on the post id
  * 
- * @return Ambigous <int, NULL>
+ * @return Ambiguous <int, NULL>
  */
 function pluginVideoID () {
   global $wpdb;  
   /** Query to return video id */
   return $wpdb->get_var ( 'SELECT vid FROM ' . $wpdb->prefix . 'hdflvvideoshare WHERE slug="' . intval ( get_the_ID () ) . '"' );
 }
+
 /**
  * Get video details from database for the given video id
  * 
  * @param unknown $videoID
- * @return Ambigous <object, NULL>
+ * @return Ambiguous <object, NULL>
  */
 function videoDetails ( $videoID, $type ) {
     global $wpdb; 
@@ -41,23 +43,25 @@ function videoDetails ( $videoID, $type ) {
     /** Return video details */
     return $wpdb->get_row ( $query );
 }
+
 /**
  * Get playlist details from database for the given playlist id
  *
  * @param unknown $videoID
- * @return Ambigous <object, NULL>
+ * @return Ambiguous <object, NULL>
  */
 function playlistDetails ( $playID ) {
   global $wpdb;
   /** Query to get particular playlist details */
   return $wpdb->get_row ( 'SELECT playlist_name,playlist_slugname FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE pid="' . intval ( $playID ) . '"' );
 }
+
 /**
  * Function to get video ad details
  * 
  * @param unknown $type
  * @param unknown $limit
- * @return Ambigous <object, NULL>
+ * @return Ambiguous <object, NULL>
  */
 function getVideoAdDetails ( $type, $limit ) {
   /** Get $wpdb varaible */
@@ -68,36 +72,61 @@ function getVideoAdDetails ( $type, $limit ) {
     $limitQuery   = ' LIMIT ' . $limit ;
   }
   /** Get published ads from db */
-  $selectPlaylist   = "SELECT * FROM " . $wpdb->prefix . "hdflvvideoshare_vgads WHERE admethod = '" . $type . "' AND publish=1 " . $limitQuery;
+  $selectPlaylist   = 'SELECT * FROM ' . $wpdb->prefix . 'hdflvvideoshare_vgads WHERE admethod = "' . $type . '" AND publish=1 ' . $limitQuery;
   /** Return video ads */
   return $wpdb->get_results ( $selectPlaylist );
 }
+
 /**
  * Get playlist ID from slug name
  * 
  * @param unknown $play_name
- * @return Ambigous <string, NULL>
+ * @return Ambiguous <string, NULL>
  */
 function get_playlist_id ( $play_name ) {
   global $wpdb;
   return $wpdb->get_var ( 'SELECT pid FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE playlist_slugname="' . $play_name . '" AND is_publish=1 LIMIT 1' );
 }
+
 /**
  * Get playlist Name from Playlist id
  * 
  * @param unknown $play_id
- * @return Ambigous <string, NULL>
+ * @return Ambiguous <string, NULL>
  */
 function get_playlist_name ( $play_id ) {
   global $wpdb;
   return $wpdb->get_var ( 'SELECT playlist_name FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE pid="' . $play_id . '" AND is_publish=1 LIMIT 1' );
 }
+
 /**
- * Function to get all playlist
+ * Get playlist Image from Playlist id
+ * 
+ * @param unknown $play_id
+ * @return Ambiguous <string, NULL>
+ */
+function get_playlist_image ( $play_id ) {
+  global $wpdb;
+  return $wpdb->get_var ( 'SELECT playlist_image FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE pid="' . $play_id . '" AND is_publish=1 LIMIT 1' );
+}
+
+/**
+ * Get playlist Thumb from Playlist id
+ * 
+ * @param unknown $play_id
+ * @return Ambiguous <string, NULL>
+ */
+function get_playlist_thumb ( $play_id ) {
+  global $wpdb;
+  return $wpdb->get_var ( 'SELECT playlist_thumb FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE pid="' . $play_id . '" AND is_publish=1 LIMIT 1' );
+}
+
+/**
+ * Function to get all playlists
  * 
  * @param unknown $orderby
  * @param unknown $limit
- * @return Ambigous <object, NULL>
+ * @return Ambiguous <object, NULL>
  */
 function getPlaylist ($orderby , $limit) {
   global $wpdb;
@@ -113,7 +142,7 @@ function getPlaylist ($orderby , $limit) {
   return $wpdb->get_results ( 'SELECT * FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE is_publish=1 ' . $orderQuery . $limitQuery );
 }
 /**
- * Fucntion to get category thumb videos fro video home ,more pages
+ * Function to get category thumb videos fro video home ,more pages
  * 
  * @param unknown $pid
  * @param unknown $limit
@@ -135,88 +164,106 @@ function getCatVideos ($pid, $limit, $thumImageorder) {
   /** Return category videos */
   return $wpdb->get_results( $sql );
 }
+
 /**
  * Function to get count of all active playlist
  * 
- * @return Ambigous <int, NULL>
+ * @return Ambiguous <int, NULL>
  */
 function getPlaylistCount () {
   global $wpdb;
   /** Get active playlist count from playlsit table */
   return $wpdb->get_var ( 'SELECT count( pid ) FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE is_publish=1' );
 }
+
 /**
  * Get playlist count to increase ordering while adding new playlist
  * 
- * @return Ambigous <int, NULL>
+ * @return Ambiguous <int, NULL>
  */
 function getAllPlaylistCount () {
   global $wpdb;
   /** REturn active, inactive playlist counts */
   return $wpdb->get_var ( 'SELECT COUNT( pid ) FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist' );
 }
+
 /**
  * Get videos count to increase ordering while adding new videos
  * 
- * @return Ambigous <int, NULL>
+ * @return Ambiguous <int, NULL>
  */
 function getAllVideosCount () {
   global $wpdb;
   /** Return count for all videos */
   return $wpdb->get_var ( 'SELECT COUNT( vid ) FROM ' . $wpdb->prefix . 'hdflvvideoshare' );
 }
+
 /**
  * Get user id from username
  * 
  * @param unknown $user_name          
- * @return Ambigous <string, NULL>
+ * @return Ambiguous <string, NULL>
  */
 function get_user_id ( $user_name ) {
     global $wpdb;    
     /** Return user id */
     return $wpdb->get_var ( 'SELECT ID FROM ' . $wpdb->users . ' WHERE display_name="' . $user_name . '" LIMIT 1' );
 }
+
 /**
  * Get User Name from ID
  * 
  * @param unknown $user_name          
- * @return Ambigous <string, NULL>
+ * @return Ambiguous <string, NULL>
  */
 function get_user_name ( $user_id ) {
     global $wpdb; 
     /** Return user name */   
     return $wpdb->get_var ( 'SELECT display_name FROM ' . $wpdb->users . ' WHERE ID="' . $user_id . '" LIMIT 1' );     
 }
+
 /**
  * Get video home page id from database
  * 
- * @return Ambigous <int, NULL>
+ * @return Ambiguous <int, NULL>
  */
 function videoHomePageID () {
   global $wpdb;
   /** Return video home page id */
   return $wpdb->get_var ( "SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_content LIKE '%[videohome]%' AND post_status='publish' AND post_type='page' LIMIT 1" );
 }
+
 /**
  * Get more page id from database
  * 
- * @return Ambigous <int, NULL>
+ * @return Ambiguous <int, NULL>
  */
 function morePageID () {
   global $wpdb;
+
+  /* -||- */
+  $ninja_page_id = $wpdb->get_var ( "SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_content LIKE '%[videomore]%' AND post_status='publish' AND post_type='page' LIMIT 1" );
+
+  #echo "<pre>";
+  #var_dump($ninja_page_id);
+  #echo "</pre>";
+
   /** Return video more page id */
-  return $wpdb->get_var ( "SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_content LIKE '%[videomore]%' AND post_status='publish' AND post_type='page' LIMIT 1" );
+  #return $wpdb->get_var ( "SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_content LIKE '%[videomore]%' AND post_status='publish' AND post_type='page' LIMIT 1" );
+  return $ninja_page_id;
 }
+
 /**
  * Check whether permalink enabled or not
  * 
- * @return Ambigous <string, NULL>
+ * @return Ambiguous <string, NULL>
  */
 function getPermalink () {
     global $wp_rewrite;   
     /** Return permalink  */
     return $wp_rewrite->get_page_permastruct ();
 }
+
 /**
  * Get video link
  * 
@@ -249,13 +296,19 @@ function get_playlist_permalink($morepageid, $playlist_id, $slug_name) {
 
     $link = getPermalink ();    
     /** Return SEO playlist URL if permalink enabled */
-    if (! empty ( $link )) {  
-      return home_url() . '/categoryvideos/' . $slug_name . '/';
+    if (! empty ( $link )) {
+      
+      #echo "TEST TEST TEST";
+      #var_dump($link);
+      #var_dump($slug_name);
+
+      return home_url() . '/watch/' . $slug_name . '/';
     } else {  
       /** Return Non SEO playlist URL if permalink disabled */
       return home_url() . '/?page_id=' . $morepageid . '&amp;playid=' . $playlist_id;
     }
 }
+
 /**
  * Get User permalink
  * 
@@ -275,6 +328,7 @@ function get_user_permalink($morepageid, $userid, $username) {
       return home_url() . '/?page_id=' . $morepageid . '&amp;userid=' . $userid;
     }
 }
+
 /**
  * Get more page permalink
  * 
@@ -321,6 +375,7 @@ function get_morepage_permalink($morepageid, $morePage) {
     return home_url () . '/?page_id=' . $morepageid . '&amp;more=' . $morePage;
   }
 }
+
 /**
  * Funtion to get plugin settings
  * 
@@ -331,6 +386,7 @@ function getPluginSettings() {
     /** Return plugin settings data */
     return $wpdb->get_row ( 'SELECT * FROM ' . $wpdb->prefix . 'hdflvvideoshare_settings WHERE settings_id="1"' );
 }
+
 /**
  * Function to get related videos count from settings
  * 
@@ -342,6 +398,7 @@ function get_related_video_count () {
     /** Return relate video count */ 
     return $playerColors ['related_video_count'];
 }
+
 /**
  * Function to get player_colors count from settings
  * 

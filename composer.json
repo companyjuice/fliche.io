@@ -1,6 +1,6 @@
 {
   "name": "companyjuice/fliche.io",
-  "version": "0.5.1",
+  "version": "0.7.0",
   "type": "project",
   "license": ["GPL-3.0+","MIT"],
   "description": "Fliche.io runs on a modern WordPress stack. Fliche.io uses Fliche Video Toolkit, a set of PHP classes providing a modular, object-oriented and accessible interface for interacting with videos and audio thru FFmpeg.",

@@ -4,9 +4,9 @@
  * All Video manage admin page  
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
@@ -634,7 +634,8 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                     </div>
                 </div> 
                 <?php /** Display how to use information ends */ 
-                /** Display rss feed URL and its information starts */ ?>
+                
+                /** Display rss feed URL and its information starts  ?>
                 <div class="portlet"> 
                     <div class="portlet-header"><?php esc_attr_e('How to use RSS Feeds?',FLICHE_VGALLERY); ?></div>
                     <div class="portlet-content admin_short_video_info"> <?php esc_attr_e('Mentioned below are the appropriate URLs to get RSS Feeds for:',FLICHE_VGALLERY);?><br> <br> 
@@ -653,7 +654,8 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                     </div>
                 </div> 
             </div>
-            <?php /** Display rss feed URL and its information ends */ 
+            <?php */ 
+            /** Display rss feed URL and its information ends */ 
             }
             ?>
 

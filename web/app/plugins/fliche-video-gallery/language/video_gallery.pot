@@ -1,4 +1,4 @@
-# Copyright (C) 2015 Fliche Post Theme
+# Copyright (C) 2016 Fliche Post Theme
 # This file is distributed under the same license as the Fliche Post Theme package.
 msgid ""
 msgstr ""

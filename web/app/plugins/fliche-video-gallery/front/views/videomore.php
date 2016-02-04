@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
@@ -83,10 +83,12 @@ if ( !class_exists ( 'FlicheMoreView' )) {
      * recent, feature, random, popular,
      * user and category page     
      *
-     * @parem   $type     
+     * @param   $type     
      */
     function getTypeOfVideos ( $type, $arguments ) {
-        $type_name  = $TypeOFvideos = $CountOFVideos = $typename = $morePage = $where = '';
+
+        $TypeOFvideos = $CountOFVideos = $typename = $type_name = $morePage = $where = '';
+        
         /** Check if short code is uesed */
         if (isset ( $arguments ['rows'] ) && isset ( $arguments ['cols'] )) {
           /** Get row, column value from shortcode */
@@ -99,8 +101,11 @@ if ( !class_exists ( 'FlicheMoreView' )) {
           /** Get data limit for more pages from settings */
             $dataLimit      = $this->_perMore;
         }
+        
         /** Get recent video order */
         $default_order  = getVideoOrder ( $this->_recent_video_order );
+        
+
         switch ($type) {
             case 'popular' :
                 $thumImageorder = ' w.hitcount DESC ';
@@ -135,14 +140,22 @@ if ( !class_exists ( 'FlicheMoreView' )) {
                 $TypeOFvideos   = $this->home_thumbdata ( $thumImageorder, $where, $this->_pagenum, $dataLimit );
                 $CountOFVideos  = $this->countof_videos ( '', '', $thumImageorder, $where );
                 break;
+        
+
             case 'cat' : 
                 $thumImageorder = absint ( $this->_playid );
                 $typename       = __ ('Category', FLICHE_VGALLERY );
                 $type_name      = 'Category';
                 $morePage       = '&playid=' . $thumImageorder;
+        
+                /* -||- VIDEOS QUERY -||- */
                 $TypeOFvideos   = $this->home_catthumbdata ( $thumImageorder, $this->_pagenum, $dataLimit, $default_order );
+        
+
                 $CountOFVideos  = $this->countof_videos ( absint ( $this->_playid ), '', $thumImageorder, $where );
                 break;
+        
+
             case 'user' : 
                 $thumImageorder = $this->_userid;            
                 $typename       = __ ('User', FLICHE_VGALLERY );
@@ -152,7 +165,8 @@ if ( !class_exists ( 'FlicheMoreView' )) {
                 $CountOFVideos  = $this->countof_videos ( '', $this->_userid, $thumImageorder, $where );
                 break;
             default: break;
-        } 
+        }
+
         /** Return video details for more pages */
         return array ( $TypeOFvideos, $CountOFVideos, $typename, $type_name, $morePage, $dataLimit );
     }
@@ -171,7 +185,7 @@ class MoreCategoryView extends FlicheMoreView {
      * Function to get videos for search 
      * and more videos page
      *
-     * @parem   $type
+     * @param   $type
      */
     function getSearchCategoryVideos ( $type ) {
        /** Get current page number for search, video more pages */
@@ -179,7 +193,7 @@ class MoreCategoryView extends FlicheMoreView {
         if (empty ( $pagenum )) {
           $pagenum      = 1;
         }
-        /** Check hether the page is videomore page or search page */
+        /** Check whether the page is videomore page or search page */
         switch ($type) {   
           case 'search' :
             $dataLimit      = $this->_perMore;

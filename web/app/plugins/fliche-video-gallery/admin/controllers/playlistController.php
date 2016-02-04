@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
@@ -184,7 +184,7 @@ if ( !class_exists ( 'PlaylistController' )) {
       }
       
       /**
-       * Fucntion to order playlist data based on the selected fields
+       * Function to order playlist data based on the selected fields
        */
       public function playlist_data() {
           /** Store order by fileds into single array */

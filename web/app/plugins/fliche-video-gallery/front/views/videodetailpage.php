@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 /**
@@ -31,23 +31,39 @@ if ( !class_exists ( 'FlicheRelatedVideoView' )) {
      */
     public function relatedVideoSlider ( $vid, $video_playlist_id, $pluginflashvars, $width, $height, $video_div_id) {
       global $wpdb;
+     
       $reavideourl = $player_div = $result = $output = '';
       $related1 = array  ();
       /** Get related videos count */
       $Limit    = get_related_video_count ();
       /** Check related videos count. If it is empty then assign default value as 100 */
-      if (empty ( $Limit )) {
+      if ( empty ( $Limit ) ) {
       	/** set limit as 100 */
         $Limit  = 100;
       } 
+      
       /** Get video details for the current video id from helper */
       $vidDetails = videoDetails ( $vid, 'related' );
-      if ( !empty ( $vidDetails )) {
+      
+      if ( !empty ( $vidDetails ) ) {
+        
         $related1 = array ( $vidDetails );
+
         /** Get related videos for the given video id */
         $related = $this->relatedVideosDetails ( $related1[0]->vid, $video_playlist_id, $Limit );
+
+        #echo '<pre>';
+        #var_dump($related);
+        #echo '</pre>';
+
         /** Merge the current video, related video details */
+        /* WHY ?????????
         $related = array_merge ( $related1, $related );
+        */
+        #echo '<pre>';
+        #var_dump($related);
+        #echo '</pre>';
+
       }
       if ( !empty ( $related )) {
         $result = count ( $related );
@@ -56,14 +72,24 @@ if ( !class_exists ( 'FlicheRelatedVideoView' )) {
         $output .= '<style>.jcarousel-next , .jcarousel-prev {display:none!important;}</style>';
       }
 
-
       /** Display related videos in slider */
-      $output   .= '<div class="player_related_video"><h2 class="related-videos">' . __ ( 'Related Videos', FLICHE_VGALLERY ) . '</h2><div style="clear: both;"></div>';
+      $output   .= '
+        <div class="player_related_video">
+          <h2 class="related-videos">' . __ ( 'Featured Shows', FLICHE_VGALLERY ) . '</h2>
+          <div style="clear: both;"/>
+      ';
+
       if ($result != '') {
+        
+        
+        /** Check for mobile platform */
+        $mobile = vgallery_detect_mobile ();
+        #$mobile = false;
+
+
         /** Slide display starts here */
         $output .= '<ul id="mycarousel" class="jcarousel-skin-tango">';
-        /** Check for mobile platform */
-        $mobile     = vgallery_detect_mobile ();
+        
         /** Looping related video details */
         foreach ( $related as $relFet ) {
           $file_type  = $relFet->file_type;
@@ -71,133 +97,64 @@ if ( !class_exists ( 'FlicheRelatedVideoView' )) {
           $imageFea   = getImagesValue ($relFet->image, $file_type, $relFet->amazon_buckets, '');
           $reafile    = $relFet->file;
           $guid       = get_video_permalink ( $relFet->slug );
-          /** Embed player code in detail page
-           * Get width and height for player */
-          if ($file_type == 5 && !empty ( $relFet->embedcode )) {
-          	/** Embed code for fearured 
-          	 * Width for related videos */
-            $relFetembedcode    = stripslashes ( $relFet->embedcode );
-            $relFetiframewidth  = preg_replace ( array ( '/width="\d+"/i' ), array ( sprintf ( 'width="%d"', $width ) ), $relFetembedcode );
-            if ($mobile === true) {
-              /** Embed code type for mobile view */
-              $player_values  = htmlentities ( $relFetiframewidth );
-            } else {
-              $player_values  = htmlentities ( preg_replace ( array ( '/height="\d+"/i' ), array ( sprintf ( 'height="%d"', $height ) ), $relFetiframewidth ) );
-            }
-          } else {
+          
 
-
-
-            /** Code for mobile device */
-            if ($mobile) {
-              /** Check for youtube video  */
-              if ((strpos ( $reafile, 'youtube' ) > 0 )) {
-                $reavideourl  = 'http://www.youtube.com/embed/' . getYoutubeVideoID ( $reafile );
-                /** Generate youtube embed code for html5 player */
-                $player_values = htmlentities ( '<iframe  width="100%" type="text/html" src="' . $reavideourl . '" frameborder="0"></iframe>' );
-              } else if ($file_type != 5) {
-                /** Check for upload, URL and RTMP videos */
-                switch ( $file_type ) {
-                  case 2:
-                    $reavideourl = $this->_uploadPath . $reafile;
-                    break;
-                  case 4:
-                    $streamer = str_replace ( 'rtmp://', 'http://', $media->streamer_path );
-                    $reavideourl = $streamer . '_definst_/mp4:' . $reafile . '/playlist.m3u8';
-                    break;
-                  default: break;
-                }
-                /** Generate video code for html5 player */
-                $player_values = htmlentities ( '<video width="100%" id="video" poster="' . $imageFea . '"   src="' . $reavideourl . '" autobuffer controls onerror="failed( event )">' . $htmlplayer_not_support . '</video>' );
-              } else {
-                $player_values = '';
-              }
-
-
-
-            } else {
-
-
-
-              /* CUSTOM CODE -- MM -- HTML5 Video Player */
-
-              /** Flash player code 
-              $player_values   = htmlentities ( '<embed src="' . $this->_swfPath . '" flashvars="' . $pluginflashvars . '&amp;mtype=playerModule&amp;vid=' . $relFet->vid . '" width="' . $width . '" height="' . $height . '" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" wmode="transparent">' );
-              */
-
-
-                /** If browser is detect then play videos via flash player using embed code 
-                $div            .= '<embed id="player" src="' . $swf . '"  flashvars="baserefW=' . $this->_siteURL . $baseref . $showplaylist . '&amp;mtype=playerModule" width="' . $settingsData->width . '" height="' . $settingsData->height . '"   allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash" wmode="transparent" />';*/
-                $player_values .='-------------';
-                $player_values .='<pre>';
-                $player_values .= var_dump($swf);
-                $player_values .='</pre>';
-                $player_values .='-------------';
-                $player_values .='<pre>';
-                $player_values .= var_dump($this->_siteURL);
-                $player_values .= var_dump($baseref);
-                $player_values .= var_dump($showplaylist);
-                $player_values .='</pre>';
-                $player_values .='-------------';
-                $player_values .='<pre>';
-                $player_values .= var_dump($settingsData->height);
-                $player_values .= var_dump($settingsData->width);
-                $player_values .='</pre>';
-                $player_values .='-------------';
-
-                $player_values .= '
-                  <link href="http://vjs.zencdn.net/5.0/video-js.min.css" rel="stylesheet">
-                  <script src="http://vjs.zencdn.net/5.0/video.min.js"></script>
-                ';
-                $player_values .= '
-                  <video id="really-cool-video" class="video-js vjs-default-skin" controls
-                  preload="auto" width="640" height="264" poster="really-cool-video-poster.jpg"
-                  data-setup="{}">
-                    <source src="really-cool-video.mp4" type="video/mp4">
-                    <source src="really-cool-video.webm" type="video/webm">
-                    <p class="vjs-no-js">
-                      To view this video please enable JavaScript, and consider upgrading to a web browser
-                      that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                    </p>
-                  </video>
-                ';
-                $player_values .="
-                  <script>
-                    var player = videojs('really-cool-video', { /* Options */ }, function() {
-                      console.log('Good to go!');
-
-                      this.play(); // if you don't trust autoplay for some reason
-
-                      // How about an event listener?
-                      this.on('ended', function() {
-                        console.log('awww...over so soon?');
-                      });
-                    });
-                  </script>
-                ";
-
-              /* END CUSTOM CODE -- MM -- HTML5 Video Player */
-
-
-            }
-          }
           /** Check the post type is videogallery page */
-          if ($this->_post_type === FLICHEVIDEOGALLERY || $this->_page_post_type === FLICHEVIDEOGALLERY) {
-            $thumb_href   = 'href="' . $guid . '"';
-          } else {
-            $player_div   = 'mediaspace';
-            $embedplayer  = "videogallery_change_player( '$player_values',$video_div_id,'$player_div',$file_type,$relFet->vid,'$relFet->name' )";
-            $thumb_href   = 'href="javascript:void( 0 );" onclick="' . $embedplayer . '"';
+          if ( $this->_post_type === FLICHEVIDEOGALLERY 
+            || $this->_page_post_type === FLICHEVIDEOGALLERY ) {
+
+/* -||- */
+$thumb_href   = 'href="' . $guid . '"';
+/* -||- */
+
+          } 
+          else {
+
+/* -||- */
+$player_div   = 'mediaspace';
+$embedplayer  = "videogallery_change_player( '$player_values',$video_div_id,'$player_div',$file_type,$relFet->vid,'$relFet->name' )";
+$thumb_href   = 'href="javascript:void( 0 );" onclick="' . $embedplayer . '"';
+/* -||- */
+
           }
-          $output .= '<li><div  class="imgSidethumb"><a  title="' . $relFet->name . '" ' . $thumb_href . '><img src="' . $imageFea . '" alt="' . $relFet->name . '" class="related" /></a></div>';
+
+
+          $output .= '
+            <li>
+          ';
+
+          $output .= '
+              <div class="imgSidethumb">
+                <a title="' . $relFet->name . '" ' . $thumb_href . '>
+                  <img src="' . $imageFea . '" alt="' . $relFet->name . '" class="related" />
+                </a>
+              </div>
+          ';
+          
           /** Display title under thumbnails */
-          $output .= '<div class="vid_info"><span><a ' . $thumb_href . ' class="videoHname" title="' . $relFet->name . '">' . limitTitle ($relFet->name) . '</a></span></div>';
-          $output .= '</li>';
+          $output .= '
+              <div class="vid_info">
+                <span>
+                  <a ' . $thumb_href . ' class="videoHname" title="' . $relFet->name . '">' . limitTitle ($relFet->name) . '</a>
+                </span>
+              </div>
+          ';
+          
+          $output .= '
+            </li>
+          ';
         }
-        $output .= '</ul>';
+        $output .= '
+          </ul>
+        ';
         /** Slide display ends here and if ends */
+
       }
-      return $output . '</div>';
+      $output .= '
+        </div>
+      ';
+
+      return $output;
     }
     /** Check FlicheRelatedVideoView class ends */
   }
@@ -278,50 +235,56 @@ if ( !class_exists ( 'FlicheVideoDetailRatingView' )) {
 /** Check FlicheVideoDetailRatingView class exists if ends */
 }
 
-/**
- * FlicheReportVideoView class starts
- * 
- * @author user 
- */
-class FlicheReportVideoView extends FlicheVideoDetailRatingView {
+
+/** Check FlicheVideoDetailRatingView class exists */
+if ( !class_exists ( 'FlicheReportVideoView' )) {
   /**
-   * Fucntion is used to display report video option under player
-   *
-   * @param unknown $embed_code
-   * @param unknown $video_slug
-   * @param unknown $currentUserEmail
-   * @return string
+   * FlicheReportVideoView class starts
+   * 
+   * @author user 
    */
-  function displayReportVideo ($embed_code, $video_slug, $currentUserEmail ){
-    $output = NULL;
-    /** Code to display report video section  */
-    /** Display embed code */
-    $output .= '<textarea onclick="this.select()" id="embedcode" name="embedcode" style="display:none;" rows="7" >' . $embed_code . '</textarea>
-                                <input type="hidden" name="flagembed" id="flagembed" />';
-    /** Display report video form */
-    $output .= '<div id="report_video_response"></div><form name="reportform" id="reportform" style="display:none;" method="post" >';
-    /** Display report video title */
-    $output .= '<div class="report-video-title">Report this video</div>';
-    $output .= '<img id="reportform_ajax_loader"  src="' . getImagesDirURL() .'ajax-loader.gif" />';
-    /** Display the options in report video form */
-    $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Violent or repulsive content">Violent or repulsive content<label class="reportvideotype" title="Violent or grapical content or content posted to shock viewers"></label><br>';
-    $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Hateful or abusive content" >Hateful or abusive content<label class="reportvideotype" title="Content that promotes harted against protected groups, abuses vulnerable individuals , or enganges in cyberling"></label><br>';
-    $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Harmful dangerous acts" >Harmful dangerous acts<label class="reportvideotype" title="Content  that includes acts that many results in  physical harm"></label><br>';
-    $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Spam or misleading">Spam or misleading<label class="reportvideotype" title="Content that is massively posted or otherwise misleading in nature"></label><br>';
-    $output .= '<input type="radio" name="reportvideotype" class="reportvideotype" id="reportvideotype" value="Child abuse">Child abuse<label class="reportvideotype" title="Content that includes sexual,predatory or abusive communication  towards minors"></label><br>';
-    $output .= '<input type="radio" name="reportvideotype" class="reportvideotype" id="reportvideotype" value="Sexual content">Sexual content<label class="reportvideotype" title="Includes graphic sexual activity, nutity and other sexual content"></label><br>';
-    /** Set slug id as hidden value for report video  option */
-    $output .= '<input type="hidden" id="redirect_url" value="' . $video_slug . '" name="redirect_url" />';
-    /** Set current user email as hidden value for report video  option */
-    $output .= '<input type="hidden" id="reporter_email" value="' . $currentUserEmail . '" name="reporter_email" />';
-    /** Display send button in report video form */
-    $output .= '<input type="button" class="reportbutton" value="Send" onclick="return reportVideoSend();" name="reportsend" />';
-    /** Display cancel button */
-    $output .= '&nbsp;&nbsp;<input type="reset" onclick="return hideReportForm();" class="reportbutton" value="Cancel" id="ReportFormreset" style="margin: 2% 0;" name="reportclear" />';
-    /** Return report video form content */
-    return $output . '</form> <input type="hidden" name="reportvideo" id="reportvideo" />';
-  }
-} 
+  class FlicheReportVideoView extends FlicheVideoDetailRatingView {
+    /**
+     * Function is used to display report video option under player
+     *
+     * @param unknown $embed_code
+     * @param unknown $video_slug
+     * @param unknown $currentUserEmail
+     * @return string
+     */
+    function displayReportVideo ($embed_code, $video_slug, $currentUserEmail ){
+      $output = NULL;
+      /** Code to display report video section  */
+      /** Display embed code */
+      $output .= '<textarea onclick="this.select()" id="embedcode" name="embedcode" style="display:none;" rows="7" >' . $embed_code . '</textarea>
+                                  <input type="hidden" name="flagembed" id="flagembed" />';
+      /** Display report video form */
+      $output .= '<div id="report_video_response"></div><form name="reportform" id="reportform" style="display:none;" method="post" >';
+      /** Display report video title */
+      $output .= '<div class="report-video-title">Report this video</div>';
+      $output .= '<img id="reportform_ajax_loader"  src="' . getImagesDirURL() .'ajax-loader.gif" />';
+      /** Display the options in report video form */
+      $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Violent or repulsive content">Violent or repulsive content<label class="reportvideotype" title="Violent or grapical content or content posted to shock viewers"></label><br>';
+      $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Hateful or abusive content" >Hateful or abusive content<label class="reportvideotype" title="Content that promotes harted against protected groups, abuses vulnerable individuals , or enganges in cyberling"></label><br>';
+      $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Harmful dangerous acts" >Harmful dangerous acts<label class="reportvideotype" title="Content  that includes acts that many results in  physical harm"></label><br>';
+      $output .= '<input type="radio" name="reportvideotype" id="reportvideotype" value="Spam or misleading">Spam or misleading<label class="reportvideotype" title="Content that is massively posted or otherwise misleading in nature"></label><br>';
+      $output .= '<input type="radio" name="reportvideotype" class="reportvideotype" id="reportvideotype" value="Child abuse">Child abuse<label class="reportvideotype" title="Content that includes sexual,predatory or abusive communication  towards minors"></label><br>';
+      $output .= '<input type="radio" name="reportvideotype" class="reportvideotype" id="reportvideotype" value="Sexual content">Sexual content<label class="reportvideotype" title="Includes graphic sexual activity, nutity and other sexual content"></label><br>';
+      /** Set slug id as hidden value for report video  option */
+      $output .= '<input type="hidden" id="redirect_url" value="' . $video_slug . '" name="redirect_url" />';
+      /** Set current user email as hidden value for report video  option */
+      $output .= '<input type="hidden" id="reporter_email" value="' . $currentUserEmail . '" name="reporter_email" />';
+      /** Display send button in report video form */
+      $output .= '<input type="button" class="reportbutton" value="Send" onclick="return reportVideoSend();" name="reportsend" />';
+      /** Display cancel button */
+      $output .= '&nbsp;&nbsp;<input type="reset" onclick="return hideReportForm();" class="reportbutton" value="Cancel" id="ReportFormreset" style="margin: 2% 0;" name="reportclear" />';
+      /** Return report video form content */
+      return $output . '</form> <input type="hidden" name="reportvideo" id="reportvideo" />';
+    }
+  } 
+/** Check FlicheReportVideoView class exists if ends */
+}
+
 
 /** Check FlicheVideoDetailView class exists  */
 if ( !class_exists ( 'FlicheVideoDetailView' )) {
@@ -332,7 +295,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
      */
     class FlicheVideoDetailView extends FlicheReportVideoView {
         /**
-         * Function is used to display palyer and video information
+         * Function is used to display player and video information
          *
          * @param array $arguments          
          * @return unknown number string
@@ -343,9 +306,12 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
             /** Variable initialization for FlicheVideoDetailView */
             $output = $videourl = $imgurl = $vid = $playlistid = $video_data = $rate = $no_views = $windo = $post_date = '';
             $video_playlist_id = $video_id = $hitcount = $show_posted_by = $show_added_on = $show_social_icon = $ratecount = $video_div_id = 0;
+            
             $fetched = array();
+            
             /** Get random number to attach */
             $video_div_id = rand();
+            
             /** Check admin logged in */
             $isAdmin = absint( filter_input( INPUT_GET, 'admin' ) );
             
@@ -356,7 +322,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
             #var_dump($configXML);
             #echo '</pre>';
 
-            # -||- moved up here (and not using:)
+            # -||- moved up here ( and not using :)
             $mobile = vgallery_detect_mobile();
             #var_dump($mobile);
             
@@ -391,10 +357,10 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
             
             /** Get playor colors, posted by, social icon, rss icon 
              * and related videos count from settings object */
-            $player_color         = unserialize ( $configXML->player_colors );
-            $show_posted_by       = $player_color['show_posted_by'];
-            $show_social_icon     = $player_color['show_social_icon'];
-            $show_rss_icon        = $player_color['show_rss_icon'];
+            $player_controls         = unserialize ( $configXML->player_colors );
+            $show_posted_by       = $player_controls['show_posted_by'];
+            $show_social_icon     = $player_controls['show_social_icon'];
+            $show_rss_icon        = $player_controls['show_rss_icon'];
             
             $number_related_video = get_related_video_count ();
             /** If related video is not given in settings page,
@@ -404,8 +370,8 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
             }      
             
             /** Get show added on option from settings*/      
-            if (isset ( $player_color['show_added_on'] )) {
-                $show_added_on        = $player_color['show_added_on'];
+            if (isset ( $player_controls['show_added_on'] )) {
+                $show_added_on        = $player_controls['show_added_on'];
             }
             
 
@@ -433,7 +399,9 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                 $video_title        = $video_data->name;
                 $video_slug         = $video_data->slug;
                 $video_file_type    = $video_data->file_type;
+                $video_duration     = $video_data->duration;
                 $video_playlist_id  = $video_data->playlist_id;
+                $video_playlist     = $video_data->playlist_name;
                 $description        = $video_data->description;
                 $tag_name           = $video_data->tags_name;
                 $hitcount           = $video_data->hitcount;
@@ -559,7 +527,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 
         /** Player starts here */
             
-            $output   .= '<div id="mediaspace' . $video_div_id . '" class="videoplayer" style="width: 1280px; border: 0px solid yellow;">';
+            $output   .= '<div id="mediaspace' . $video_div_id . '" class="videoplayer" style="border: 0px solid green;">';
                         
 
             # moved to top ^
@@ -678,7 +646,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                 echo '</pre>';
 
                 // Google adsense code Start
-                if ($player_color['googleadsense_visible'] == 1 && !( $mobile) && ($this->_post_type === FLICHEVIDEOGALLERY || $this->_page_post_type === FLICHEVIDEOGALLERY)) {
+                if ($player_controls['googleadsense_visible'] == 1 && !( $mobile) && ($this->_post_type === FLICHEVIDEOGALLERY || $this->_page_post_type === FLICHEVIDEOGALLERY)) {
                   if ( $video_data->google_adsense && $video_data->google_adsense_value ) {
                     // Call function to display google adsense on player
                     $output .= '<div>';
@@ -695,55 +663,28 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 
               if ( 1 == 1 && $video_file_type == 1 || $video_file_type == 2 ) {
 
-                /* new html5 video player //
-                $output .= '
-                  <link href="http://vjs.zencdn.net/5.0/video-js.min.css" rel="stylesheet">
-                  <script src="http://vjs.zencdn.net/5.0/video.min.js"></script>
-                ';
-                $output .= '
-                  <video id="fliche-video" class="video-js vjs-default-skin" controls
-                  preload="auto" width="1080" height="auto" poster="' . $video_image_url . '"
-                  data-setup="{}">
-                    <source src="' . $video_url . '" type="video/mp4">
-                    <p class="vjs-no-js">
-                      To view this video please enable JavaScript, and consider upgrading to a web browser
-                      that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                    </p>
-                  </video>
-                ';
-                $output .="
-                  <script>
-                    var player = videojs('fliche-video', 
-                      { 
-                        // Options // 
-                      }, 
-                      function() {
-                        console.log('-||- fliche.io video ready to play');
-
-                        this.play(); // if you don't trust autoplay for some reason
-
-                        // How about an event listener?
-                        this.on('ended', function() {
-                          console.log('-||- fliche.io video triggered \"ended\" event');
-                        });
-                      }
-                    );
-                  </script>
-                ";*/
-                
                 // Store the shortcode in a variable
-                $do_video = '-||- no video set -||-';
+                $do_video = '-||- video not set yet -||-';
                 
                 // local video
-                /*
+                //
                 if ( $video_file_type == 2 ) {
                   $do_video = do_shortcode('
-                    [video width="1000" height="560" mp4="'.$video_url.'" ogv="'.$video_url.'.ogv" webm="'.$video_url.'.webm"]
+                    [video 
+                      width="1280" 
+                      height="720" 
+                      mp4="'.$video_url.'" 
+                      ogv="'.$video_url.'.ogv" 
+                      webm="'.$video_url.'.webm"
+                      poster="'.$video_image_url.'"
+                      autoplay="on" 
+                      preload="auto"
+                    ]
                   ');
                 }
                 // youtube video
                 else if ( $video_file_type == 1 ) {
-                */
+                //
                   #$video_url = 'https://youtu.be/RVWtSsMUBD0';
                   #$video_url = 'https://www.youtube.com/watch?v=RVWtSsMUBD0';
 
@@ -753,19 +694,18 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   $do_video = do_shortcode('
                     [youtube id="'.$ytid.'" ]
                   ');
-                  */
-                  /*
+                  *//*
                   [youtube id="Q6goNzXrmFs" parameters="start=30&fs=0" aspect_ratio="16:9" align="center" 
                     thumbnail="https://nextgenthemes.com/wp-content/uploads/2015/11/wp-logo.png" ]
                   */
                   
 
-                  /**/
+                  /*
                   $do_video  = '
                     <script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
                     <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
                     <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mejs-skins.css" />
-                  ';
+                  ';*/
                   #<script src="' . $fliche_plugin_dir_url . 'mejs/build/jquery.js"></script>
                   #<script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
                   #<link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
@@ -775,9 +715,11 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   
                   /**/
                   $do_video .= '
-                    <video id="fliche-player" 
-                      width="940" height="524" 
-                      preload="none"
+                    <video 
+                      id="fliche-player" 
+                      width="100%" 
+                      height="auto" 
+                      preload="auto"
                       class="mejs-player"
                       controls="controls" 
                     >';
@@ -809,14 +751,13 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                     <script type="text/javascript">
 
                       jQuery(document).ready(function($) {
+
                         $("#fliche-player").mediaelementplayer({
                           
                           success: function(mediaElement, domObject) {
-                          
-                                  
-                                      mediaElement.play();
-                                  
-                          
+                              
+                              mediaElement.play();
+
                           },
                           error: function() {
                               alert("Error setting media!");
@@ -904,15 +845,108 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   */
 
                 }
+
+$do_video_shortcode = do_shortcode('
+[vc_row]
+  [vc_column width="3/4"] 
+  '. $do_video .
+  /* $do_video 
+  '
+    [TS_VCSC_HTML5_Video 
+      video_mp4_source="false" 
+      video_mp4_remote="'.$video_url.'" 
+      video_webm_source="false" 
+      video_webm_remote="'.$video_url.'.webm" 
+      video_ogg_source="false" 
+      video_ogg_remote="'.$video_url.'.ogv" 
+      content_iframe="true" 
+      video_theme="minimum"  
+      video_title="'.$video_title.'" 
+      video_poster="'.$video_thumb.'"
+      video_posterfit="fill"
+      video_auto="true" 
+      video_loop="false" 
+      video_share="false"
+      video_logo_show="logotop" 
+      video_logo_image="10" 
+      video_logo_position="bottomleft" 
+      video_logo_opacity="15" 
+      el_file=""]
+  '.*/
+  /*  content_tooltip_css="true" 
+      content_tooltip_encoded="VElQJTIwVElQJTIwVElQ" 
+      content_tooltip_position="ts-simptip-position-bottom" 
+      [vc_single_image image="538" img_size="222x314"]
+  */ 
+  '
+    [vc_empty_space height="10px"]
+
+    [vc_column_text]
+      <strong>TITLE:</strong> '.$video_title.'
+      <strong>SERIES:</strong> '.$video_playlist.'
+      <strong>LENGTH:</strong> '.$video_duration.'
+    [/vc_column_text]
+
+  [/vc_column]
+
+  [vc_column width="1/4"]
+    [vc_single_image image="538" img_size="full"]
+    [vc_empty_space height="10px"]
+  [/vc_column]
+[/vc_row]
+');
+/*
+    [vc_single_image source="external_link" external_img_size="full" onclick="custom_link" custom_src="'.$video_thumb.'" link="#GoTo"]
+    [vc_empty_space height="10px"]
+[vc_row equal_height="yes"]
+  [vc_column width="1/4"]
+    [vc_single_image image="15" img_size="460x268" alignment="center"]
+  [/vc_column]
+  [vc_column width="1/4"]
+    [vc_single_image image="16" img_size="220x124" alignment="center"]
+    [vc_single_image image="16" img_size="220x124" alignment="center"]
+  [/vc_column]
+  [vc_column width="1/4"]
+    [vc_single_image image="16" img_size="220x124" alignment="center"]
+    [vc_single_image image="16" img_size="220x124" alignment="center"]
+  [/vc_column]
+  [vc_column width="1/4"]
+    [vc_single_image image="16" img_size="220x124" alignment="center"]
+    [vc_single_image image="16" img_size="220x124" alignment="center"]
+  [/vc_column]
+[/vc_row]
+*/
+
                 // Output that variable
-                echo $do_video;
+                #echo $do_video;
+                #$output .= $do_video;
+                $output .= $do_video_shortcode;
 
               }
               /* END CUSTOM CODE -- MM -- HTML5 Video Player */
 
 
+              /* CUSTOM CODE -- MM -- Related Videos ( in category/channel/playlist ) */
+              /** Enable/disable Related videos slider */
+              $flag = 1;
+              if( $vid  && isset ( $arguments['playlistid'] ) && isset ( $arguments['relatedvideos'])  && $arguments['relatedvideos'] == 'on') {
+                $flag = 1;
+              }
+              if ( $flag == 1 
+                || ( $this->_post_type === FLICHEVIDEOGALLERY 
+                  || $this->_page_post_type === FLICHEVIDEOGALLERY ) 
+                && $player_controls['show_related_video'] == 1 ) 
+              {
+                /** Call function to display related videos slider */
+                $output .= $this->relatedVideoSlider( $vid, $video_playlist_id, $pluginflashvars, $width, $height, $video_div_id );
+              }
+              /* END CUSTOM CODE -- MM -- Related Videos */
 
-            //}
+
+
+
+
+            }
             /** End Embed player code */
 
 
@@ -1069,10 +1103,10 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                 if ($configXML->embed_visible == 1) {
                   $output .= '<a href="javascript:void( 0 )" onclick="enableEmbed();" class="embed" id="allowEmbed"><span class="embed_text">' . __ ( 'Embed&nbsp;Code', FLICHE_VGALLERY ) . '</span><span class="embed_arrow"></span></a>';
                 }
-                if (isset ( $player_color['iframe_visible'] ) && ($player_color['iframe_visible'])) {
+                if (isset ( $player_controls['iframe_visible'] ) && ($player_controls['iframe_visible'])) {
                   $output .= '<a href="javascript::void(0);" onclick="view_iframe_code();" id="iframe_code" class="embed"><span class="embed_text">' . __ ( 'Iframe', FLICHE_VGALLERY ) . '</span><span class="embed_arrow"></span></a>';
                 }
-                if (isset ( $player_color['report_visible'] ) && ($player_color['report_visible'])) {
+                if (isset ( $player_controls['report_visible'] ) && ($player_controls['report_visible'])) {
                   $output .= '<a href="javascript:void(0)" onclick="reportVideo();" class="embed" id="allowReport"><span class="embed_text">' . __ ( 'Report&nbsp;Video', FLICHE_VGALLERY ) . '</span><span class="embed_arrow"></span></a>';
                 }
 
@@ -1125,7 +1159,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
             if( $vid  && isset ( $arguments['playlistid'] ) && isset ( $arguments['relatedvideos'])  && $arguments['relatedvideos'] == 'on') {
               $flag = 1;
             }
-            if ( $flag == 1 || ($this->_post_type === FLICHEVIDEOGALLERY || $this->_page_post_type === FLICHEVIDEOGALLERY) && $player_color['show_related_video'] == 1 ) {
+            if ( $flag == 1 || ($this->_post_type === FLICHEVIDEOGALLERY || $this->_page_post_type === FLICHEVIDEOGALLERY) && $player_controls['show_related_video'] == 1 ) {
               /** Call function to display related videos slider */
               $output .= $this->relatedVideoSlider ( $vid, $video_playlist_id, $pluginflashvars, $width, $height, $video_div_id );
             }

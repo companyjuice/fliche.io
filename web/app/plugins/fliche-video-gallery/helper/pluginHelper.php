@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
@@ -109,15 +109,15 @@ function limitTitle ( $title ) {
   /** Get title from argument */
   $fullTitle = $title;
   /** check title character length exceeds 30 */
-  if (strlen ( $title ) > 30) {
+  if (strlen ( $title ) > 50) {
     /** If exceeds, the find substring upto 30 characters */
-    $fullTitle = substr ( $title, 0, 30 ) . '..';
+    $fullTitle = substr ( $title, 0, 50 ) . '..';
   }
   /** Return title */
   return $fullTitle;
 }
 /**
- * Fucntion to generate pagination values
+ * Function to generate pagination values
  * 
  * @param unknown $total
  * @param unknown $limit
@@ -161,17 +161,22 @@ function getVideoOrder ( $recent_video_order ) {
     /** Check recent video order type */
     switch ($recent_video_order){
       case 'hitcount': 
-        /** Set thumb image order based on hicount */
+        // Set thumb image order based on hicount
         $thumImageorder = ' w.' . $recent_video_order . ' DESC '; 
         break; 
       case 'default':
-        /** Set thumb image order based on ordering */
-        $thumImageorder = ' w.ordering ASC ';
+        // Set thumb image order based on ordering
+        #$thumImageorder = ' w.ordering ASC ';
+        // Set thumb image order based on name
+        $thumImageorder   = ' w.name ASC ';
         break;
       case 'id': 
-      default:
-        /** Set thumb image order based on id */
+        // Set thumb image order based on id
         $thumImageorder   = ' w.vid DESC ';
+        break;
+      default:
+        // Set thumb image order based on name
+        $thumImageorder   = ' w.name ASC ';
         break;
     }
     /** Return thumb image order */
@@ -225,7 +230,7 @@ function displayViews ( $hitCount ) {
     return '<span class="video_views">' . $hitCount . '&nbsp;' . $viewlangText . '</span>';
 }
 /**
- * Fucntion to set image value based on file types
+ * Function to set image value based on file types
  * 
  * @param unknown $image
  * @param unknown $file_type
@@ -269,7 +274,7 @@ function getImagesValue ( $image, $file_type, $amazonBucket, $type) {
     return $imageFileURL ;
 }
 /**
- * Fucntion to set video, hdvideo value based on file types
+ * Function to set video, hdvideo value based on file types
  * 
  * @param unknown $videoFile
  * @param unknown $file_type
@@ -349,7 +354,7 @@ function vgallery_detect_mobile() {
   }
 }
 /**
- * Fucntion to remove script, embed, styles, object and html tags code in given text
+ * Function to remove script, embed, styles, object and html tags code in given text
  *
  * @param  string $text
  * @return string

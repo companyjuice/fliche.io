@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
@@ -194,7 +194,7 @@ if ( !class_exists ( 'FlicheVideo' ) ) {
     public function get_featuredvideodata_banner() {
         global $wpdb;
         /** Query to get videos for banner palyer */
-        $query = 'SELECT distinct w.*,s.guid FROM ' . $this->_videoinfotable . ' w 
+        $query = 'SELECT distinct w.*, s.guid FROM ' . $this->_videoinfotable . ' w 
              LEFT JOIN ' . $this->_wpdb->prefix . 'hdflvvideoshare_med2play m ON m.media_id = w.vid 
              LEFT JOIN ' . $this->_wpdb->prefix . 'hdflvvideoshare_playlist p ON p.pid=m.playlist_id 
              LEFT JOIN ' . $wpdb->posts . ' s ON s.ID=w.slug 
@@ -203,6 +203,7 @@ if ( !class_exists ( 'FlicheVideo' ) ) {
         return $this->_wpdb->get_results ( $query );
     }
     
+/***//***//***//***//***//***//***//***//***//***//***//***//***//***//***/
     /**
      * Function for getting thumb details for home page category section
      *
@@ -213,7 +214,7 @@ if ( !class_exists ( 'FlicheVideo' ) ) {
     public function get_home_catthumbdata( $where, $dataLimit ) {
         global $wpdb; 
           /** Query to fetch category thumbs */
-          $query = 'SELECT s.guid, w.*,p.playlist_name, u.display_name FROM ' . $wpdb->prefix . 'hdflvvideoshare as w   
+          $query = 'SELECT s.guid, w.*, p.playlist_name, u.display_name FROM ' . $wpdb->prefix . 'hdflvvideoshare as w   
                LEFT JOIN ' . $wpdb->prefix . 'hdflvvideoshare_med2play as m ON m.media_id = w.vid 
                LEFT JOIN ' . $wpdb->prefix . 'hdflvvideoshare_playlist as p on m.playlist_id = p.pid  
                LEFT JOIN ' . $wpdb->posts . ' s ON s.ID=w.slug 
@@ -223,6 +224,7 @@ if ( !class_exists ( 'FlicheVideo' ) ) {
           /** Return video home cat thumb details */
           return $this->_wpdb->get_results ( $query );
     }
+/***//***//***//***//***//***//***//***//***//***//***//***//***//***//***/
   
     /**
      * Function for getting thumb details for home page

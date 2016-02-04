@@ -3,7 +3,7 @@
  * Plugin Name: Fliche Video Gallery
  * Plugin URI:  http://fliche.io/
  * Description: Fliche Alpha Development
- * Version:     0.2.9.20151224
+ * Version:     0.7.0.20160203
  * Author:      IFEM
  * Author URI:  http://www.carlvanderpal.com/
  */
@@ -94,7 +94,7 @@ if (file_exists ( $widgetPath . '/flicheBannerSlideshow.php' )) {
 /* Add ction to register video gallery Plugin */
 add_action ( 'init', 'videogallery_register' );
 /*
- * Fucntion to create videogallery custom post plugin
+ * Function to create videogallery custom post plugin
  */
 function videogallery_register() 
 {
@@ -123,8 +123,14 @@ add_action ( 'init', 'add_my_rule' );
 function add_my_rule() 
 {  
     global $wp;
-    /* Get more page id  */
+    
+    
+    /* -||- */
+    /* Get more page id: where post_content = '[videomore]' */
     $morepage_id = morePageID ();
+    /* -||- */
+
+
     /* Set more pages URL */
     $morepageURL = 'index.php?page_id=' . $morepage_id;
     /* If more parameter is exist, then rewrite URL */
@@ -132,7 +138,7 @@ function add_my_rule()
     add_rewrite_rule ( '(.*)_videos', $morepageURL . '&more=$matches[1]', 'top' );
     /* If playlist_name parameter is exist, then rewrite URL for category page */
     $wp->add_query_var ( 'playlist_name' );
-    add_rewrite_rule ( 'categoryvideos\/(.*)', $morepageURL . '&playlist_name=$matches[1]', 'top' );
+    add_rewrite_rule ( 'watch\/(.*)', $morepageURL . '&playlist_name=$matches[1]', 'top' );
     /* If user_name parameter is exist, then rewrite URL for user page */
     $wp->add_query_var ( 'user_name' );
     add_rewrite_rule ( 'user\/(.*)', $morepageURL . '&user_name=$matches[1]', 'top' );
@@ -185,7 +191,7 @@ function videogallery_cssjs()
     wp_enqueue_script ( 'videogallery_js' );
 }
 /*
- * Fucntion to include js, css file for video detail page
+ * Function to include js, css file for video detail page
  */
 function videogallery_jcar_js_css()
 {
@@ -228,7 +234,7 @@ function myextractxml_function()
     exitAction ( '' );
 }
 
-/* Fucntion to get google adsense settings for the corresponding video */
+/* Function to get google adsense settings for the corresponding video */
 add_action ( 'wp_ajax_googleadsense', 'googleadsense_function' );
 add_action ( 'wp_ajax_nopriv_googleadsense', 'googleadsense_function' );
 function googleadsense_function()
@@ -341,11 +347,11 @@ function isNumber($array_element)
 {
   return is_numeric($array_element);
 }
-/* Fucntion to perform Video / Playlist Sorting */
+/* Function to perform Video / Playlist Sorting */
 add_action ( 'wp_ajax_vg_sortorder', 'sortorder_function' );
 function sortorder_function()
 {
- /* Varaibale initialization for sortorder action */
+ /* Variable initialization for sortorder action */
 
  if(!current_user_can('manage_options')) {
    return;
@@ -398,13 +404,13 @@ function sortorder_function()
  * 
  * Video Search Starts Here  */
 $video_search = filter_input ( INPUT_GET, 'video_search' );
-/* Get parmalink URL */
+/* Get permalink URL */
 $wp_rewrite   = new WP_Rewrite ();
 $link         = $wp_rewrite->get_page_permastruct ();
 /* Check video search is exist */
 if (! empty ( $video_search ) && ! empty ( $link ))
 {
-  /* Convert non-sef URL to seo friendly URL for video serach */
+  /* Convert non-seo URL to seo friendly URL for video search */
   $location = home_url () . '/search/' . urlencode ( $video_search );
   /* Redirect to the search url */
   header ( "Location: $location", true, 301 );
@@ -413,7 +419,7 @@ if (! empty ( $video_search ) && ! empty ( $link ))
 /* Video Search Ends Here 
  * 
  * Video Detail Page action Starts Here 
- * Fucntion to include rss file */
+ * Function to include rss file */
 add_action ( 'wp_ajax_rss', 'rss_function' );
 add_action ( 'wp_ajax_nopriv_rss', 'rss_function' );
 function rss_function()
@@ -421,7 +427,7 @@ function rss_function()
   require_once (dirname ( __FILE__ ) . '/videogalleryrss.php');
   exitAction ( '' );
 }
-/* Fucntion to increase Video Hit count */
+/* Function to increase Video Hit count */
 add_action ( 'wp_ajax_videohitcount', 'videohitcount_function' );
 add_action ( 'wp_ajax_nopriv_videohitcount', 'videohitcount_function' );
 function videohitcount_function()
@@ -433,7 +439,7 @@ function videohitcount_function()
     $hitList     = $wpdb->get_row ( 'SELECT * FROM ' . HDFLVVIDEOSHARE . ' WHERE vid = "' . intval ( $vid ) . '"' );
     /* Increase hit count and update into database */
     $hitInc      = $hitList->hitcount + 1;
-    $wpdb->update ( HDFLVVIDEOSHARE, array ( 'hitcount' => intval ( $hitInc ) ), array ( 'vid'      => intval ( $vid ) ) );
+    $wpdb->update ( HDFLVVIDEOSHARE, array ( 'hitcount' => intval ( $hitInc ) ), array ( 'vid' => intval ( $vid ) ) );
     exitAction ( '' );
 }
 /* Function to calculate video rating count  */
@@ -451,7 +457,7 @@ function ratecount_function()
       /* Get video detials for the given video id */
       $ratecount  = $wpdb->get_row ( 'SELECT * FROM ' . HDFLVVIDEOSHARE . ' WHERE vid="' . intval ( $vid ) . '"' );
       /* Update rate value and rate count for the given video is */
-      $wpdb->update ( HDFLVVIDEOSHARE , array ( 'rate'      => (intval ( $get_rate ) + $ratecount->rate), 'ratecount' => (1 + $ratecount->ratecount) ), 
+      $wpdb->update ( HDFLVVIDEOSHARE , array ( 'rate' => (intval ( $get_rate ) + $ratecount->rate), 'ratecount' => (1 + $ratecount->ratecount) ), 
                       array ('vid'       => intval ( $vid )) );
       /* Increase rate count and sent in ajax response */
       $rating     = $ratecount->ratecount + 1;
@@ -511,7 +517,7 @@ function send_report()
 }
 /*
  * Youtube function Starts Here
- * Fucntion to get YouTube video title, description
+ * Function to get YouTube video title, description
  */
 function youtubeurl()
 {
@@ -598,15 +604,15 @@ function videogallery_addpages()
         add_menu_page ( FLICHEVGALLERY, FLICHEVGALLERY, 'read', 'video', VG_MENU, $menuIcon );
         add_submenu_page ( 'video', FLICHEVGALLERY, 'All Videos', 'read', 'video', VG_MENU );
         add_submenu_page ( 'video', 'New Video', 'New Video', 'read', 'newvideo', VG_MENU );
-        add_submenu_page ( 'video', 'TEST: New Video', 'TEST: New Video', 'read', 'testnewvideo', VG_MENU );
-        add_submenu_page ( 'video', 'TEST: Batch X1', 'TEST: Batch X1', 'read', 'testbatchx1', VG_MENU );
+        #add_submenu_page ( 'video', 'TEST: New Video', 'TEST: New Video', 'read', 'testnewvideo', VG_MENU );
+        #add_submenu_page ( 'video', 'TEST: Batch X1', 'TEST: Batch X1', 'read', 'testbatchx1', VG_MENU );
     } else {
         /* Add menu, videos page for admin */
         add_menu_page ( FLICHEVGALLERY, FLICHEVGALLERY, 'manage_options', 'video', VG_MENU, $menuIcon );
         add_submenu_page ( 'video', FLICHEVGALLERY, 'All Videos', 'manage_options', 'video', VG_MENU );
         add_submenu_page ( 'video', 'New Video', 'New Video', 'manage_options', 'newvideo', VG_MENU );
-        add_submenu_page ( 'video', 'TEST: New Video', 'TEST: New Video', 'manage_options', 'testnewvideo', VG_MENU );
-        add_submenu_page ( 'video', 'TEST: Batch X1', 'TEST: Batch X1', 'manage_options', 'testbatchx1', VG_MENU );
+        #add_submenu_page ( 'video', 'TEST: New Video', 'TEST: New Video', 'manage_options', 'testnewvideo', VG_MENU );
+        #add_submenu_page ( 'video', 'TEST: Batch X1', 'TEST: Batch X1', 'manage_options', 'testbatchx1', VG_MENU );
     }
     /* Add menu, Categories page */
     add_submenu_page ( 'video', FLICHEVGALLERY, 'Categories', 'manage_options', 'playlist', VG_MENU );
@@ -823,6 +829,20 @@ function video_moreidreplace ( $arguments = array() ) {
   } else {
     $contentvideoPlayer = $videoOBJ->video_more_pages ( $more, $arguments = array () );
   }
+
+  /*
+    echo '<pre>';
+    echo '-||- fliche.php -> video_moreidreplace() [categoryvideothumb] <br>';
+    echo '--------------------<br>';
+    echo '-||- $more <br>';
+    var_dump($more);
+    echo '--------------------<br>';
+    echo '-||- $arguments <br>';
+    var_dump($arguments);
+    echo '--------------------<br>';
+    echo '</pre>';
+  */
+
   /* Return more page content */
   return $contentvideoPlayer;
 }
@@ -872,34 +892,45 @@ function video_featured_video_shortcode ( $arguments = array () )
 function video_morereplace ( $arguments = array () )
 {
     global $videomoreControllerFile, $wp_query, $frontControllerPath, $frontModelPath, $frontViewPath;
+    
+/***/
     /* Get playlist id from param */
     $playid         = filter_input ( INPUT_GET, 'playid' );
+    
     /* Get more name from param */
     $more           = &$wp_query->query_vars ['more'];
+    
     /* Get playlist name from param */
     $playlist_name  = &$wp_query->query_vars ['playlist_name'];
+
+/***/
     /* Check playlist name is exist */
     if (! empty ( $playlist_name )) {
       /*  Get playlist id */
       $playid       = get_playlist_id ( $playlist_name );
-    }    
+    }
+
     /* Set playlist id into query */
     $wp_query->query_vars ['playid'] = $playid;    
+    
+/***/
     /* Get user id from param */    
     $userid     = filter_input ( INPUT_GET, 'userid' );
+    
     /* Get user name from param */
     $user_name  = &$wp_query->query_vars ['user_name'];
     $user_name  = str_replace ( '%20', ' ', $user_name );
+    
     /* Check user name is exist */
     if (! empty ( $user_name )) {
       /* Get user id for the given user name*/
       $userid   = get_user_id ( $user_name );
     }
+    
     /* Set user id into query */
     $wp_query->query_vars ['userid'] = $userid;
-    /* Include videomore controller and create object for view */
-    include_once ( $videomoreControllerFile );
-    $videoOBJ = new FlicheMorePageView ();
+
+/***/
     /* Set more page name as cat if playlist id exists */
     if (! empty ( $playid )) {
       $more   = 'cat';
@@ -912,23 +943,63 @@ function video_morereplace ( $arguments = array () )
     if ($more == 'all-category') {
       $more   = 'categories';
     }    
+    
+/***/
     /* Get video search param */
     $video_search = &$wp_query->query_vars ['video_search'];
+    
     /* Set more page name as search if video search exists */
     if (! empty ( $video_search )) {
       $more       = 'search';
     }    
+    
+/***/
     /* Get video tags param */
     $videotag     = &$wp_query->query_vars ['video_tag'];
+    
     /* Set more page name as tag if video tags exists */
     if (! empty ( $videotag )) {
       $more       = 'tag';
     }
+
+    /*
+    echo '<pre>';
+    echo '-||- fliche.php -> video_morereplace() [videomore] <br>';
+    echo '--------------------<br>';
+    echo '-||- $more <br>';
+    var_dump($more);
+    echo '--------------------<br>';
+    echo '-||- $arguments <br>';
+    var_dump($arguments);
+    echo '--------------------<br>';
+    echo '-||- $playid <br>';
+    var_dump($playid);
+    echo '--------------------<br>';
+    echo '-||- $playlist_name <br>';
+    var_dump($playlist_name);
+    echo '--------------------<br>';
+    echo '</pre>';
+    */
+
+/***//***//***//***//***//***//***//***//***//***//***//***//***//***//***/
+    /* Include videomore controller and create object for view */
+    include_once ( $videomoreControllerFile );
+    $videoOBJ = new FlicheMorePageView ();
+/***//***//***//***//***//***//***//***//***//***//***//***//***//***//***/ 
+
     /* Call function to display more videos page */
-    return $videoOBJ->video_more_pages ( $more, $arguments );
+    $contentvideoPlayer = $videoOBJ->video_more_pages ( $more, $arguments );
+
+    #echo '<pre>';
+    #var_dump($contentvideoPlayer);
+    #echo '</pre>';
+
+    /* Return more page content */
+    return $contentvideoPlayer;
 }
-/* Front end section ends here
- * Include uninstallation file  */
+/* Front end section ends here */
+
+/* Include uninstallation file  */
 require_once (FLICHE_VGALLERY_BASEDIR . '/uninstall.php');
 /* Register the uninstall hook */
 register_uninstall_hook ( __FILE__, 'videogallery_uninstall' ); ?>

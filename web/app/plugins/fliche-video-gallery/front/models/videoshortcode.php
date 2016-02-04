@@ -5,9 +5,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
@@ -51,7 +51,7 @@ if ( !class_exists ( 'FlicheShortcode' ) ) {
             }
             /** Query to return particular video details */
             return  $this->_wpdb->get_row ( 'SELECT t1.vid,t5.ID,t5.display_name,t1.slug,t1.amazon_buckets,t1.post_date,
-                t1.description,t4.tags_name,t1.name,t1.post_date,t1.publish,t1.google_adsense,t1.google_adsense_value,
+                t1.description,t4.tags_name,t1.name,t1.duration,t1.post_date,t1.publish,t1.google_adsense,t1.google_adsense_value,
                 t1.image,t1.file,t1.hitcount,t1.ratecount,t1.file_type,t1.embedcode,t1.rate,t2.playlist_id,
                 t3.playlist_name' . ' FROM ' . $this->_videoinfotable . ' AS t1' . ' 
                 LEFT JOIN ' . $wpdb->prefix . 'hdflvvideoshare_med2play AS t2' . ' ON t2.media_id = t1.vid' . ' 
@@ -90,7 +90,7 @@ if ( !class_exists ( 'FlicheShortcode' ) ) {
         }
         
         /**
-         * Fucntion to get realted videos for the given video id 
+         * Function to get realted videos for the given video id 
          * 
          * @param unknown $vid
          * @param unknown $playlist_id
@@ -106,7 +106,7 @@ if ( !class_exists ( 'FlicheShortcode' ) ) {
                         LEFT JOIN ' . $wpdb->prefix . 'hdflvvideoshare_playlist p ON p.pid=b.playlist_id
                         LEFT JOIN ' . $wpdb->prefix . 'posts s ON s.ID=a.slug
                         WHERE b.playlist_id=' . intval ( $playlist_id ) . ' AND a.publish=1 AND p.is_publish=1 AND a.vid NOT IN (' . $vid . ')
-                        ORDER BY a.vid DESC LIMIT ' . $Limit;
+                        ORDER BY a.name ASC LIMIT ' . $Limit;
           /** Return related videos results */
           return $wpdb->get_results ($select);
         }

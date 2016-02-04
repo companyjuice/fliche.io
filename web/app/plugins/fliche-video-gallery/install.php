@@ -243,7 +243,7 @@ function createTables ($wfound, $pfound, $mfound, $tags ) {
 }
 
 /**
- * Fucntion to create video ads / google adsense table
+ * Function to create video ads / google adsense table
  * 
  * @param unknown $rollfound
  * @param unknown $adsense
@@ -270,7 +270,7 @@ function createADsTable($rollfound, $adsense) {
 }
 
 /**
- * Fucntion to create settings table
+ * Function to create settings table
  * 
  * @param unknown $settingsFound
  */
@@ -352,7 +352,7 @@ function createVGPluginPages() {
 } 
 
 /**
- * Fucntion to insert smaple videos and their posts in posts table
+ * Function to insert smaple videos and their posts in posts table
  */
 function insertSampleVideos() {
   global $wpdb;
@@ -421,7 +421,7 @@ function insertSampleVideos() {
 } 
 
 /**
- * Fucntion to create sample categories and media table values
+ * Function to create sample categories and media table values
  */
 function insertSampleCategories () {
   global $wpdb;

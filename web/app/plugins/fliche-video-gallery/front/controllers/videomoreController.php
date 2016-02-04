@@ -4,9 +4,9 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.2.9
+ * @version    0.7.0
  * @author     Company Juice <support@companyjuice.com>
- * @copyright  Copyright (C) 2015 Company Juice. All rights reserved.
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
@@ -51,7 +51,7 @@ if ( !class_exists ( 'FlicheMoreController' ) ) {
       }
   
       /**
-       * Fucntion to get search page thumb data
+       * Function to get search page thumb data
        *
        * @param unknown $thumImageorder          
        * @param unknown $pagenum          
@@ -75,7 +75,7 @@ if ( !class_exists ( 'FlicheMoreController' ) ) {
       }
       
       /**
-       * Fucntion to get count for search videos
+       * Function to get count for search videos
        *
        * @return type int
        */
