@@ -3,7 +3,7 @@
  * Plugin Name: Fliche Video Gallery
  * Plugin URI:  http://fliche.io/
  * Description: Fliche Alpha Development
- * Version:     0.7.0.20160203
+ * Version:     0.8.0.20160213
  * Author:      IFEM
  * Author URI:  http://www.carlvanderpal.com/
  */

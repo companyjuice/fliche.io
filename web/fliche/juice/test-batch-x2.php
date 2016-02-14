@@ -24,6 +24,8 @@ function _construct() {
   if( 1 == 1 ) {
     run_batch();
   }
+  echo '-|end|-';
+  exit;
 }
 
 
@@ -52,11 +54,12 @@ function run_batch() {
     #echo "\n";
     
     #if ($v_file != "." && $v_file != "..") {
-    if ( $v_file == "75_video104132678.mp4"
-      || $v_file == "72_video1745878797.mp4"
-      || $v_file == "72_video1641408712.mp4"
-      || $v_file == "72_video876471870.mp4"
-    ) {
+    #if ( $v_file == "255_video749362894.mp4"
+    #  || $v_file == "254_video1265125198.mp4"
+    #  || $v_file == "253_video1876048278.mp4"
+    #  || $v_file == "252_video1589336836.mp4"
+    #  || $v_file == "249_video689675993.mp4"
+    #) {
       
       if ( stripos($v_file, '.mp4') !== FALSE
         || stripos($v_file, '.m4v') !== FALSE
@@ -77,7 +80,7 @@ function run_batch() {
         echo '$v_file: ' . $v_file . ''; echo "\n";
       }*/
 
-    }
+    #}
   }
   echo "\n";
 
@@ -122,7 +125,7 @@ function process_video( $v_file, $v_src_dir, $v_out_dir ) {
         $multi_output = new MultiOutput();
 
 
-        // 240p
+        /* 240p
         $mp4_240p_output = $v_out_file_path . '.nat.240p.mp4';
         $format = Format::getFormatFor($mp4_240p_output, null, 'VideoFormat');
             #$output_format = new VideoFormat();
@@ -131,8 +134,8 @@ function process_video( $v_file, $v_src_dir, $v_out_dir ) {
             #$output_format->setVideoDimensions(160, 120);
         $multi_output->addOutput($mp4_240p_output, $format);
             #$video->save('BigBuckBunny_160x120.3gp', $output_format);
-        //
-        // 360p
+        */
+        /* 360p
         $mp4_360p_output = $v_out_file_path . '.nat.360p.mp4';
         $format = Format::getFormatFor($mp4_360p_output, null, 'VideoFormat');
             #$output_format = new VideoFormat();
@@ -141,7 +144,7 @@ function process_video( $v_file, $v_src_dir, $v_out_dir ) {
             #$output_format->setVideoDimensions(160, 120);
         $multi_output->addOutput($mp4_360p_output, $format);
             #$video->save('BigBuckBunny_160x120.3gp', $output_format);
-        //
+        */
         // 480p
         $mp4_480p_output = $v_out_file_path . '.nat.480p.mp4';
         $format = Format::getFormatFor($mp4_480p_output, null, 'VideoFormat');
@@ -152,7 +155,7 @@ function process_video( $v_file, $v_src_dir, $v_out_dir ) {
         $multi_output->addOutput($mp4_480p_output, $format);
             #$video->save('BigBuckBunny_160x120.3gp', $output_format);
         //
-        // 720p
+        /* 720p
         $mp4_720p_output = $v_out_file_path . '.nat.720p.mp4';
         $format = Format::getFormatFor($mp4_720p_output, null, 'VideoFormat');
             #$output_format = new VideoFormat();
@@ -161,7 +164,7 @@ function process_video( $v_file, $v_src_dir, $v_out_dir ) {
             #$output_format->setVideoDimensions(160, 120);
         $multi_output->addOutput($mp4_720p_output, $format);
             #$video->save('BigBuckBunny_160x120.3gp', $output_format);
-        //
+        */
         /* 1080p
         $mp4_1080p_output = $v_out_file_path . '.nat.1080p.mp4';
         $format = Format::getFormatFor($mp4_1080p_output, null, 'VideoFormat');
@@ -243,17 +246,22 @@ function process_video( $v_file, $v_src_dir, $v_out_dir ) {
         Trace::vars($process->getBuffer(true));
         echo '<hr /><h1>Resulting Output</h1>';
         $output = $process->getOutput();
+        #var_dump($output);
         $paths = array();
         if(empty($output) === false)
         {
             foreach ($output as $obj)
             {
-                array_push($paths, $obj->getMediaPath());
+              #if ( is_object( $obj ) 
+              #  && is_callable( $obj->getMediaPath() ) ){
+              #  array_push($paths, $obj->getMediaPath());
+              #}
             }
         }
         Trace::vars($paths);
-return;
-        exit;
+        
+        return true;
+        #exit;
     }
     catch(FfmpegProcessOutputException $e)
     {

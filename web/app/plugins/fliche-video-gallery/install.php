@@ -207,15 +207,47 @@ function createTables ($wfound, $pfound, $mfound, $tags ) {
   /** Create wp_hdflvvideoshare table */
   /** Check main table is not exist */
   if (! $wfound) {
-    $sql = 'CREATE TABLE ' . HDFLVVIDEOSHARE . ' ( vid MEDIUMINT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY, name MEDIUMTEXT NULL,
-        description MEDIUMTEXT NOT NULL, embedcode LONGTEXT NOT NULL, file MEDIUMTEXT NULL, streamer_path MEDIUMTEXT NULL,
-        hdfile MEDIUMTEXT NULL, slug TEXT NULL, file_type TINYINT( 25 ) NOT NULL, duration varchar( 255 ) NOT NULL, srtfile1 varchar( 255 ) NOT NULL,
-        srtfile2 varchar( 255 ) NOT NULL, subtitle_lang1 MEDIUMTEXT NOT NULL, subtitle_lang2 MEDIUMTEXT NOT NULL, image MEDIUMTEXT NULL,
-        opimage MEDIUMTEXT NULL, download varchar( 10 ) NOT NULL, link MEDIUMTEXT NULL, featured varchar( 25 ) NOT NULL, hitcount int( 25 ) NOT NULL DEFAULT "0",
-        ratecount int( 25 ) NOT NULL DEFAULT "0", rate int( 25 ) NOT NULL DEFAULT "0", post_date datetime NOT NULL, postrollads VARCHAR( 25 ) NOT NULL,
-        prerollads VARCHAR( 25 ) NOT NULL, midrollads INT NOT NULL DEFAULT "0", imaad INT NOT NULL DEFAULT "0", publish INT NOT NULL,
-        islive INT NOT NULL, member_id INT( 3 ) NOT NULL, google_adsense INT( 3 ) NOT NULL, google_adsense_value INT( 11 ) NOT NULL,
-        ordering INT NOT NULL DEFAULT "0", amazon_buckets INT NOT NULL DEFAULT "0" ) ' . WVG_CHARSET_COLLATE . ';';
+    $sql = 'CREATE TABLE ' . HDFLVVIDEOSHARE . ' ( 
+        vid MEDIUMINT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+        name MEDIUMTEXT NULL,
+        description MEDIUMTEXT NOT NULL, 
+        embedcode LONGTEXT NOT NULL, 
+        file MEDIUMTEXT NULL, 
+        file_1080p MEDIUMTEXT NULL, 
+        file_720p MEDIUMTEXT NULL, 
+        file_480p MEDIUMTEXT NULL, 
+        file_360p MEDIUMTEXT NULL, 
+        file_240p MEDIUMTEXT NULL, 
+        streamer_path MEDIUMTEXT NULL,
+        hdfile MEDIUMTEXT NULL, 
+        slug TEXT NULL, 
+        file_type TINYINT( 25 ) NOT NULL, 
+        duration varchar( 255 ) NOT NULL, 
+        srtfile1 varchar( 255 ) NOT NULL,
+        srtfile2 varchar( 255 ) NOT NULL, 
+        subtitle_lang1 MEDIUMTEXT NOT NULL, 
+        subtitle_lang2 MEDIUMTEXT NOT NULL, 
+        image MEDIUMTEXT NULL,
+        opimage MEDIUMTEXT NULL, 
+        download varchar( 10 ) NOT NULL, 
+        link MEDIUMTEXT NULL, 
+        featured varchar( 25 ) NOT NULL, 
+        hitcount int( 25 ) NOT NULL DEFAULT "0",
+        ratecount int( 25 ) NOT NULL DEFAULT "0", 
+        rate int( 25 ) NOT NULL DEFAULT "0", 
+        post_date datetime NOT NULL, 
+        postrollads VARCHAR( 25 ) NOT NULL,
+        prerollads VARCHAR( 25 ) NOT NULL, 
+        midrollads INT NOT NULL DEFAULT "0", 
+        imaad INT NOT NULL DEFAULT "0", 
+        publish INT NOT NULL,
+        islive INT NOT NULL, 
+        member_id INT( 3 ) NOT NULL, 
+        google_adsense INT( 3 ) NOT NULL, 
+        google_adsense_value INT( 11 ) NOT NULL,
+        ordering INT NOT NULL DEFAULT "0", 
+        amazon_buckets INT NOT NULL DEFAULT "0" 
+    ) ' . WVG_CHARSET_COLLATE . ';';
     $wpdb->query ( $sql );
   }  
   /** Create wp_hdflvvideoshare_playlist table */

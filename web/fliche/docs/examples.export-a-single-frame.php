@@ -14,12 +14,12 @@
     
     $examples = array(
         array(
-            'path' => BASE.'juice/extract-frame.example1.php',
+            'path' => BASE.'juice/_test-ffmpeg/extract-frame.example1.php',
             'name' => '',
             'description' => '',
         ),
         array(
-            'path' => BASE.'juice/extract-frame.example2.php',
+            'path' => BASE.'juice/_test-ffmpeg/extract-frame.example2.php',
             'name' => '',
             'description' => '',
         ),

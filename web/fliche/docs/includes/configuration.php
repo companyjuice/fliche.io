@@ -2,7 +2,8 @@
     
     //define('PROGRAM_PATH', null);
     //define('PROGRAM_PATH', '/opt/local/bin');
-    define('PROGRAM_PATH', '/home/juice/bin');
+    #define('PROGRAM_PATH', '/home/juice/bin');
+    define('PROGRAM_PATH', 'C:\webserver\ffmpeg\bin');
     define('FFMPEG_PROGRAM', PROGRAM_PATH.DIRECTORY_SEPARATOR.'ffmpeg');
     define('FFPROBE_PROGRAM', PROGRAM_PATH.DIRECTORY_SEPARATOR.'ffprobe');
     define('TEMP_PATH', '../juice/tmp');

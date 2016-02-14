@@ -4,7 +4,7 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.7.0
+ * @version    0.8.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -116,11 +116,11 @@ if ( !class_exists ( 'FlicheMorePageView' )) {
           <div class="video_wrapper" id="' . $type_name . '_video">
         ';
 
-        /* -||- */
-        
-        if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["image"] == '1' ){
-          $div        .= $this->morePageFeaturedImage ( $type_name, $typename );
-        }
+/* -||- */
+
+if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["image"] == '1' ){
+  $div        .= $this->morePageFeaturedImage ( $type_name, $typename );
+}
 
 
         /** Call function to display more video page title */ 
@@ -282,10 +282,11 @@ if ( !class_exists ( 'FlicheMorePageView' )) {
     }
 
     /**
+     * -||-
      * Function to get Category featured image
-     * 
-     * @param unknown $type_name
-     * @param unknown $typename
+     * -||-
+     * @param string $type_name
+     * @param string $typename
      * @return string
      */
     function morePageFeaturedImage ( $type_name, $typename ) {
@@ -309,6 +310,7 @@ if ( !class_exists ( 'FlicheMorePageView' )) {
       /** Return more page title */ 
       return $div;
     }
+
 
   /** FlicheMorePageView class ends */
   }

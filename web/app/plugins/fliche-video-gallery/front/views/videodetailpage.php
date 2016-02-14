@@ -4,7 +4,7 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.7.0
+ * @version    0.8.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -103,18 +103,18 @@ if ( !class_exists ( 'FlicheRelatedVideoView' )) {
           if ( $this->_post_type === FLICHEVIDEOGALLERY 
             || $this->_page_post_type === FLICHEVIDEOGALLERY ) {
 
-/* -||- */
-$thumb_href   = 'href="' . $guid . '"';
-/* -||- */
+            /* -||- */
+            $thumb_href   = 'href="' . $guid . '"';
+            /* -||- */
 
           } 
           else {
 
-/* -||- */
-$player_div   = 'mediaspace';
-$embedplayer  = "videogallery_change_player( '$player_values',$video_div_id,'$player_div',$file_type,$relFet->vid,'$relFet->name' )";
-$thumb_href   = 'href="javascript:void( 0 );" onclick="' . $embedplayer . '"';
-/* -||- */
+            /* -||- */
+            $player_div   = 'mediaspace';
+            $embedplayer  = "videogallery_change_player( '$player_values',$video_div_id,'$player_div',$file_type,$relFet->vid,'$relFet->name' )";
+            $thumb_href   = 'href="javascript:void( 0 );" onclick="' . $embedplayer . '"';
+            /* -||- */
 
           }
 
@@ -673,15 +673,59 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                     [video 
                       width="1280" 
                       height="720" 
-                      mp4="'.$video_url.'" 
-                      ogv="'.$video_url.'.ogv" 
-                      webm="'.$video_url.'.webm"
-                      poster="'.$video_image_url.'"
+                      mp4="'.$video_url.'"
+                      poster=""
                       autoplay="on" 
-                      preload="auto"
+                      preload="metadata"
+                    ]
+                  '); 
+                      #ogv="'.$video_url.'.ogv" 
+                      #webm="'.$video_url.'.webm"
+                      #poster="'.$video_image_url.'"
+
+
+                  /*
+                  $do_video = do_shortcode('
+                    [TS_VCSC_HTML5_Video 
+                      video_mp4_source="false" 
+                      video_mp4_remote="'.$video_url.'" 
+                      video_webm_source="false" 
+                      video_webm_remote="'.$video_url.'.webm" 
+                      video_ogg_source="false" 
+                      video_ogg_remote="'.$video_url.'.ogv" 
+                      content_iframe="true" 
+                      video_theme="minimum"  
+                      video_title="'.$video_title.'" 
+                      video_poster="'.$video_thumb.'"
+                      video_posterfit="fill"
+                      video_auto="true" 
+                      video_loop="false" 
+                      video_share="false"
+                      video_logo_show="logotop" 
+                      video_logo_image="10" 
+                      video_logo_position="bottomleft" 
+                      video_logo_opacity="15" 
+                      el_file=""
                     ]
                   ');
+                      #content_tooltip_css="true" 
+                      #content_tooltip_encoded="VElQJTIwVElQJTIwVElQ" 
+                      #content_tooltip_position="ts-simptip-position-bottom"
+                  */
+
+                  // hide html5 video context menu (right-click)
+                  $output .= '
+                    <script>
+                      jQuery(document).ready(function(){
+                        jQuery("video").bind("contextmenu",function(){
+                          return false;
+                        });
+                      });
+                    </script>
+                  ';
                 }
+
+
                 // youtube video
                 else if ( $video_file_type == 1 ) {
                 //
@@ -705,7 +749,8 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                     <script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
                     <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
                     <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mejs-skins.css" />
-                  ';*/
+                  ';
+                  */
                   #<script src="' . $fliche_plugin_dir_url . 'mejs/build/jquery.js"></script>
                   #<script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
                   #<link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
@@ -849,42 +894,14 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 $do_video_shortcode = do_shortcode('
 [vc_row]
   [vc_column width="3/4"] 
-  '. $do_video .
-  /* $do_video 
-  '
-    [TS_VCSC_HTML5_Video 
-      video_mp4_source="false" 
-      video_mp4_remote="'.$video_url.'" 
-      video_webm_source="false" 
-      video_webm_remote="'.$video_url.'.webm" 
-      video_ogg_source="false" 
-      video_ogg_remote="'.$video_url.'.ogv" 
-      content_iframe="true" 
-      video_theme="minimum"  
-      video_title="'.$video_title.'" 
-      video_poster="'.$video_thumb.'"
-      video_posterfit="fill"
-      video_auto="true" 
-      video_loop="false" 
-      video_share="false"
-      video_logo_show="logotop" 
-      video_logo_image="10" 
-      video_logo_position="bottomleft" 
-      video_logo_opacity="15" 
-      el_file=""]
-  '.*/
-  /*  content_tooltip_css="true" 
-      content_tooltip_encoded="VElQJTIwVElQJTIwVElQ" 
-      content_tooltip_position="ts-simptip-position-bottom" 
-      [vc_single_image image="538" img_size="222x314"]
-  */ 
+  ' . $do_video . 
   '
     [vc_empty_space height="10px"]
 
     [vc_column_text]
-      <strong>TITLE:</strong> '.$video_title.'
-      <strong>SERIES:</strong> '.$video_playlist.'
-      <strong>LENGTH:</strong> '.$video_duration.'
+      <strong>TITLE:</strong> ' . $video_title . '
+      <strong>SERIES:</strong> ' . $video_playlist . '
+      <strong>LENGTH:</strong> ' . $video_duration . '
     [/vc_column_text]
 
   [/vc_column]
@@ -895,9 +912,11 @@ $do_video_shortcode = do_shortcode('
   [/vc_column]
 [/vc_row]
 ');
+
+    #[vc_single_image source="external_link" external_img_size="full" onclick="custom_link" custom_src="'.$video_thumb.'" link="#GoTo"]
+    #[vc_empty_space height="10px"]
+
 /*
-    [vc_single_image source="external_link" external_img_size="full" onclick="custom_link" custom_src="'.$video_thumb.'" link="#GoTo"]
-    [vc_empty_space height="10px"]
 [vc_row equal_height="yes"]
   [vc_column width="1/4"]
     [vc_single_image image="15" img_size="460x268" alignment="center"]

@@ -4,7 +4,7 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.7.0
+ * @version    0.8.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -13,6 +13,7 @@
  * Including videos model file to get database information.
  */
 include_once ($adminModelPath . 'video.php');
+
 /** Checks if the VideoController class has been defined starts */
 if ( !class_exists ( 'VideoController' ) ) {  
   /**
@@ -62,7 +63,9 @@ if ( !class_exists ( 'VideoController' ) ) {
         $this->_srt_path          = getUploadDirPath ();
         $this->_adminorder_direction =  $this->_player_colors ['recentvideo_order'];
       }
-      
+
+
+/***************************************************************/      
       /**
        * Getting video data function starts
        */
@@ -105,6 +108,8 @@ if ( !class_exists ( 'VideoController' ) ) {
         /** Get video details based on the order fields and return */
         return $this->get_videodata ( $this->_videosearchQuery, $this->_searchBtn, $this->_order, $this->_orderDirection );
       }
+/***************************************************************/
+
       
       /**
        * Function to redirect to videos page after done the action
@@ -169,7 +174,7 @@ if ( !class_exists ( 'VideoController' ) ) {
           }
           /** Check video unpublish action is success */
           if( $this->_status == '0') {
-            $result =  set_message( $videoType, __ ( 'Unublished', FLICHE_VGALLERY ));
+            $result =  set_message( $videoType, __ ( 'Unpublished', FLICHE_VGALLERY ));
           }
           return $result;
       }

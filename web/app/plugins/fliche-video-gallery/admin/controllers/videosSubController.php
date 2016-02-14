@@ -13,6 +13,8 @@ if ( !class_exists ( 'VideosPageController' ) ) {
 /* VideosPageController class starts */
 class VideosPageController extends VideoController 
 {
+
+
   /*
    * Function to convert video duration into h:m:s format
    * 
@@ -40,6 +42,8 @@ class VideosPageController extends VideoController
     /* Return seconds */
     return $hms . str_pad ( $seconds, 2, '0', STR_PAD_LEFT );
   }
+
+
   
   /*
    * Function to add/delete and update playlist 
@@ -101,7 +105,8 @@ class VideosPageController extends VideoController
       $i ++;
     }
   }
-  
+
+
   /*
    * Function to insert tags name into db
    * 
@@ -143,6 +148,9 @@ class VideosPageController extends VideoController
 }
 /* Checks if the VideosPageController class has been defined ends */
 }
+/***************************************************************/
+
+
 
 /*  Checks if the VideosPageSubController class has been defined starts */
 if ( !class_exists ( 'VideosPageSubController' ) ) {
@@ -236,9 +244,12 @@ class VideosPageSubController extends VideosPageController {
       $this->redirectVideosPage ( $insertflag, 'add', '' );
     }
   }
-  
+
+
+/***************************************************************/
   /*
-   * Function to get video url based on amazon bucket
+   * Function to get video url based on amazon bucket and
+   * UPLOAD FILE TO S3 !!!
    * 
    * @param string $file
    * @return string $result
@@ -247,28 +258,39 @@ class VideosPageSubController extends VideosPageController {
     $result = ''; 
     if (! empty ( $file )) {
       /*
-       * Check already the video have amazon bucket URL.
-       * If not, then create bucket URL
-       * for the uploaded video
+       * Check if the video already has S3 bucket URL.
+       * If not, then UPLOAD FILE TO S3 !!!
+       * and create bucket URL for the uploaded video.
        */
       if ( strpos ( $file, '/' )) {
         $result = $file;
       } else { 
+
         /* Include s3 config file */
         if( file_exists ( FLICHE_VGALLERY_BASEDIR . '/helper/s3_config.php' ) ) { 
            include FLICHE_VGALLERY_BASEDIR . '/helper/s3_config.php';
         }
+
+
+/* UPLOAD FILE TO S3 !!! */
         /* Check object is exists and video is moved to bucket */
         if ( $s3->putObjectFile ( $this->_srt_path . $file, $s3bucket_name, $file, S3::ACL_PUBLIC_READ ) ) {
+          
           /* Get bucket URL for inserted video */
           $result = 'http://' . $s3bucket_name . '.s3.amazonaws.com/' . $file;
+
         }
+/* UPLOAD FILE TO S3 !!! */
+
+
       }
     }
     /* Return bucket URL to add into db */
     return $result;
   }
-  
+/***************************************************************/
+
+
   /*
    * Function to renmae srt files while editing video
    * 
@@ -295,16 +317,22 @@ class VideosPageSubController extends VideosPageController {
     /* Return subtitle file name */
     return $new_subtitle;
   }
+
+
 /* VideosPageSubController class ends */    
 }
 /* Checks if the VideosPageSubController class has been defined ends */
 }
+/***************************************************************/
+
+
 
 /* Checks if the VideosSubController class has been defined starts */
 if ( !class_exists ( 'VideosSubController' ) ) {  
 /* VideoController class starts */
 class VideosSubController extends VideosPageSubController {
-  
+
+
   /* Function for adding video and update status / featured. */
   public function add_newvideo() 
   {
@@ -652,10 +680,15 @@ class VideosSubController extends VideosPageSubController {
       $this->addUpdateVideoData ( $videoData );
     }
   }
+
+
 /* VideosSubController class ends  */
 }
 /* END Check if the VideosSubController class has been defined */
 }
+/***************************************************************/
+
+
 
 /* Fetch page parameter from the request URL */
 $adminPage = filter_input ( INPUT_GET, 'page' );
@@ -664,12 +697,14 @@ switch ( $adminPage ) {
   case 'newvideo':
     require_once (FLICHE_VGALLERY_BASEDIR . DS . 'admin/views/video/addvideo.php');
     break;
+  /*
   case 'testnewvideo':
     require_once (FLICHE_VGALLERY_BASEDIR . DS . 'admin/views/video/addvideo.test.php');
     break;
   case 'testbatchx1':
     require_once (FLICHE_VGALLERY_BASEDIR . DS . 'admin/views/video/http.fliche.php');
     break;
+  */
   case 'video':
   default:
     require_once (FLICHE_VGALLERY_BASEDIR . DS . 'admin/views/video/video.php');

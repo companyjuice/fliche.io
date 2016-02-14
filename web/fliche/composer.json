@@ -11,13 +11,20 @@
 			"role": "Lead Developer"
         }
 	],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/tpyo/amazon-s3-php-class"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "sybio/gif-creator": "~1.0.0",
         "tedivm/stash": "0.13.*",
         "monolog/monolog": "~1.17.2",
-        
-        "videojs/video.js": "~5.4.4"
+
+        "aws/aws-sdk-php": "~3.14.2",
+        "tpyo/amazon-s3-php-class": "dev-master"
     },
     "suggest": {
         "tedivm/stash": "Stash is required to utilise Fliche's Default Cache class 'Cache_Stash', however you can build your own caching classes so that Stash is not required.",

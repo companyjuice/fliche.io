@@ -14,7 +14,7 @@
     
     $examples = array(
         array(
-            'path' => BASE.'juice/extract-frames.php',
+            'path' => BASE.'juice/_test-ffmpeg/extract-frames.php',
             'name' => '',
             'description' => '',
         ),
