@@ -152,7 +152,7 @@ function paginateLinks ( $total, $limit, $pageNum, $type, $params ) {
     }
 }
 /**
- * Fcuntion to get video order from settings
+ * Function to get video order from settings
  * 
  * @param unknown $recent_video_order
  * @return string

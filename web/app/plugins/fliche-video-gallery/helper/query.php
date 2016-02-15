@@ -100,8 +100,19 @@ function get_playlist_name ( $play_id ) {
 }
 
 /**
+ * Get playlist Description from Playlist id
+ * -||-
+ * @param unknown $play_id
+ * @return Ambiguous <string, NULL>
+ */
+function get_playlist_desc ( $play_id ) {
+  global $wpdb;
+  return $wpdb->get_var ( 'SELECT playlist_desc FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE pid="' . $play_id . '" AND is_publish=1 LIMIT 1' );
+}
+
+/**
  * Get playlist Image from Playlist id
- * 
+ * -||-
  * @param unknown $play_id
  * @return Ambiguous <string, NULL>
  */
@@ -112,7 +123,7 @@ function get_playlist_image ( $play_id ) {
 
 /**
  * Get playlist Thumb from Playlist id
- * 
+ * -||-
  * @param unknown $play_id
  * @return Ambiguous <string, NULL>
  */
@@ -156,7 +167,7 @@ function getCatVideos ($pid, $limit, $thumImageorder) {
     $limitQuery = ' LIMIT ' . $limit;
   }
   /** Query to get video details for particular playlist */
-  $sql = 'SELECT s.guid,w.* FROM ' . $wpdb->prefix . 'hdflvvideoshare as w 
+  $sql = 'SELECT s.guid, w.* FROM ' . $wpdb->prefix . 'hdflvvideoshare as w 
       LEFT JOIN ' . $wpdb->prefix . 'hdflvvideoshare_med2play as m ON m.media_id = w.vid 
       LEFT JOIN ' . $wpdb->prefix . 'hdflvvideoshare_playlist as p on m.playlist_id = p.pid 
       LEFT JOIN ' . $wpdb->prefix . 'posts s ON s.ID=w.slug 
@@ -377,7 +388,7 @@ function get_morepage_permalink($morepageid, $morePage) {
 }
 
 /**
- * Funtion to get plugin settings
+ * Function to get plugin settings
  * 
  * @return object
  */

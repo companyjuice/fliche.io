@@ -21,13 +21,13 @@ use Aws\S3\S3Client;
 /* -|variables: script|- */
 $output = '';
 $result = [];
-$bucket = 'fliche'; // fishflicks
+$bucket = 'fishflicks'; // fishflicks
 $keykey = 'AKIAJNQLLLZRPPFRPKRQ';
 $terces = 'bpEhI1Ly3QP115JPgHcpFPgLmOergE59FiJMskwF';
 
 /* -|variables: file|- */
-#$okeyname = 'HEY HEY HEY.txt';
-$okeyname = 'Rapala Shadow Rap [HD, 720p].mp4';
+$okeyname = 'HEY HEY HEY.txt';
+#$okeyname = 'Rapala Shadow Rap [HD, 720p].mp4';
 // $origpath should be absolute path to a file on disk
 $origpath = 'C:\webroot\fliche\bedrock\web\fliche\juice\media\HEYHEYHEY.txt';
 #$origpath = 'C:\webroot\fliche\bedrock\web\fliche\juice\media\Rapala Shadow Rap [HD, 720p].mp4';
@@ -37,18 +37,64 @@ $savepath = 'C:\webroot\fliche\bedrock\web\fliche\juice\media\HEYHEYHEY.'.time()
 
 /* -|begin process|- */
 $s3 = new S3(	$keykey, $terces );
-$result  = $s3->listBuckets(true);
-$result2 = $s3->putObjectFile( $origpath, $bucket, $okeyname, S3::ACL_PUBLIC_READ );
-$result3 = $s3->getObject( $bucket, $okeyname, $savepath );
+#$result1 = $s3->listBuckets(true);
+#$result2 = $s3->putObjectFile( $origpath, $bucket, $okeyname, S3::ACL_PUBLIC_READ );
+#$result3 = $s3->getObject( $bucket, $okeyname, $savepath );
+$bucket_content = $result4 = $s3->getBucket( $bucket );
 
 $output .= '<pre>';
+
 #var_dump($s3);
 #var_dump($s3Client);
-#var_dump($result);
-foreach ( $result['buckets'] as $bucket ){
+#var_dump($result1);
+/*
+foreach ( $result1['buckets'] as $bucket ){
     // Each Bucket value will contain a Name and Time/CreationDate
     $output .= "{$bucket['name']} - {$bucket['time']}\n";
 }
+$output .= "\n";
+*/
+/*
+foreach ( $result4 as $object ){
+    // Each object value will contain a Name and Time/CreationDate
+    $output .= "{$object['name']} - {$object['time']}\n";
+}
+$output .= "\n";
+*/
+foreach ($bucket_content as $key => $value) {
+  // ignore s3 "folders"
+  if (preg_match("/\/$/", $key)) continue;
+
+  // explode the path into an array
+  $file_path = explode('/', $key);
+  $file_name = end($file_path);
+	$file_folder = substr($key, 0, (strlen($file_name) * -1)+1);
+  $file_folder = prev($file_path);
+
+  $s3_url = "https://s3.amazonaws.com/{$bucket}/{$key}";
+
+  if ( $file_folder == '' ){
+
+  	$data[$key] = array(
+			'file_name' => $file_name,
+			's3_key' => $key,
+			'file_folder' => $file_folder,
+			'file_size' => $value['size'],
+			'created_on' => date('Y-m-d H:i:s', $value['time']),
+			's3_link' => $s3_url,
+			'md5_hash' => $value['hash']
+		);
+
+    // Each object value will contain a Name and Time/CreationDate
+    #$output .= "{$data[$key]['file_name']} | {$data[$key]['file_size']} | {$data[$key]['created_on']}\n";
+    $output .= "{$data[$key]['file_name']}\n";
+
+  }
+}
+#var_dump($data);
+
+#$output .= list_s3_bucket($bucket);
+
 $output .= '</pre>';
 
 
@@ -77,6 +123,39 @@ $result = $s3->putObject(array(
 echo $result['ObjectURL'];
 */
 
+/**
+ * http://stackoverflow.com/questions/19424536/get-files-from-amazon-s3-buckets-sub-folder
+ */
+#public function list_s3_bucket($bucket_name)
+function list_s3_bucket($bucket_name)
+{
+    // initialize the data array
+    $data;
+    $bucket_content = $this->s3->getBucket($bucket_name);
+
+    foreach ($bucket_content as $key => $value) {
+        // ignore s3 "folders"
+        if (preg_match("/\/$/", $key)) continue;
+
+        // explode the path into an array
+        $file_path = explode('/', $key);
+        $file_name = end($file_path);
+            $file_folder = substr($key, 0, (strlen($file_name) * -1)+1);
+        $file_folder = prev($file_path);
+
+        $s3_url = "https://s3.amazonaws.com/{$bucket_name}/{$key}";
+
+        $data[$key] = array(
+            'file_name' => $file_name,
+                    's3_key' => $key,
+            'file_folder' => $file_folder,
+            'file_size' => $value['size'],
+            'created_on' => date('Y-m-d H:i:s', $value['time']),
+            's3_link' => $s3_url,
+            'md5_hash' => $value['hash']);
+    }
+    return $data;
+}
 
 ?>
 <div class="span9">
@@ -84,11 +163,6 @@ echo $result['ObjectURL'];
     <h3>TEST: S3</h3>
     <p>
 			<?php 
-				echo "<pre>";
-				var_dump($result2);
-				echo "---\n";
-				var_dump($result3);
-				echo "</pre>";
 				echo $output;
 			?>
     </p>

@@ -9,6 +9,7 @@
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
+
 /** Get wp token for file upload */
 $nonce         = $_REQUEST['_wpnonce'];
 /** Verify form token */
@@ -55,7 +56,7 @@ if ( ! wp_verify_nonce( $nonce, 'upload-video' ) ) {
         $allowedExtensions = array ('flv', 'FLV', 'mp4', 'MP4', 'm4v', 'M4V', 'M4A', 'm4a', 'MOV', 'mov', 'mp4v', 'Mp4v', 'F4V', 'f4v', 'mp3', 'MP3' );
       } else if ($exttype == 'image') {
         /** If file type is image, then set allowed file types in an array */
-        $allowedExtensions = array ('jpg', 'JPG','jpeg', 'JPEG', 'png', 'PNG' );
+        $allowedExtensions = array ('jpg', 'JPG','jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF' );
       } else if ($exttype == 'srt') {
         /** If file type is srt,  then set allowed file types in an array */
         $allowedExtensions = array ( 'srt', 'SRT' );

@@ -669,6 +669,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                 // local video
                 //
                 if ( $video_file_type == 2 ) {
+                  //
                   $do_video = do_shortcode('
                     [video 
                       width="1280" 
@@ -682,7 +683,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                       #ogv="'.$video_url.'.ogv" 
                       #webm="'.$video_url.'.webm"
                       #poster="'.$video_image_url.'"
-
+                  //
 
                   /*
                   $do_video = do_shortcode('
@@ -732,7 +733,9 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   #$video_url = 'https://youtu.be/RVWtSsMUBD0';
                   #$video_url = 'https://www.youtube.com/watch?v=RVWtSsMUBD0';
 
-                  
+                  #echo "HEY HEY HEY";
+                  #exit;
+
                   $ytid = getYoutubeVideoID( $video_url );
                   /*
                   $do_video = do_shortcode('
@@ -744,13 +747,13 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   */
                   
 
-                  /*
+                  //
                   $do_video  = '
                     <script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
                     <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
                     <link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mejs-skins.css" />
                   ';
-                  */
+                  //
                   #<script src="' . $fliche_plugin_dir_url . 'mejs/build/jquery.js"></script>
                   #<script src="' . $fliche_plugin_dir_url . 'mejs/build/mediaelement-and-player.min.js"></script>
                   #<link rel="stylesheet" href="' . $fliche_plugin_dir_url . 'mejs/build/mediaelementplayer.css" />
@@ -762,8 +765,8 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   $do_video .= '
                     <video 
                       id="fliche-player" 
-                      width="100%" 
-                      height="auto" 
+                      width="854" 
+                      height="480" 
                       preload="auto"
                       class="mejs-player"
                       controls="controls" 
@@ -794,15 +797,10 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
                   ';
                   $do_video .= '
                     <script type="text/javascript">
-
-                      jQuery(document).ready(function($) {
-
-                        $("#fliche-player").mediaelementplayer({
-                          
+                      jQuery(document).ready(function() {
+                        jQuery("#fliche-player").mediaelementplayer({
                           success: function(mediaElement, domObject) {
-                              
                               mediaElement.play();
-
                           },
                           error: function() {
                               alert("Error setting media!");
@@ -894,8 +892,7 @@ if ( !class_exists ( 'FlicheVideoDetailView' )) {
 $do_video_shortcode = do_shortcode('
 [vc_row]
   [vc_column width="3/4"] 
-  ' . $do_video . 
-  '
+  ' . $do_video . '
     [vc_empty_space height="10px"]
 
     [vc_column_text]
@@ -947,7 +944,7 @@ $do_video_shortcode = do_shortcode('
 
               /* CUSTOM CODE -- MM -- Related Videos ( in category/channel/playlist ) */
               /** Enable/disable Related videos slider */
-              $flag = 1;
+              $flag = 0;
               if( $vid  && isset ( $arguments['playlistid'] ) && isset ( $arguments['relatedvideos'])  && $arguments['relatedvideos'] == 'on') {
                 $flag = 1;
               }
