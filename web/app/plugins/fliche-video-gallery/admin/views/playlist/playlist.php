@@ -7,6 +7,19 @@ if (isset ( $_GET ['pagenum'] )) {
 /** Get sort order URL to perform drg and drop for ordering  */
 $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&type=2'. $page;
 /** Assign sortorder url, plugin path in script */
+
+function truncate($string,$length=100,$append="&hellip;") {
+  $string = trim($string);
+
+  if(strlen($string) > $length) {
+    $string = wordwrap($string, $length);
+    $string = explode("\n", $string, 2);
+    $string = $string[0] . $append;
+  }
+
+  return $string;
+}
+
 ?>
 <script type="text/javascript">
     var sortorderURL = '<?php echo $sortOrderURL; ?>';
@@ -299,8 +312,8 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                 
                 <?php /** Display playlist data section Starts */ ?> 
                 <tbody id="test-list" class="list:post"> 
-                    <input type=hidden id=playlistid2 name=playlistid2 value="1" /> 
-                    <div name=txtHint></div> 
+                    <input type="hidden" id="playlistid2" name="playlistid2" value="1" /> 
+                    <div name="txtHint"></div> 
                 <?php /** Looping to diplay playlist data */
                   foreach ( $gridPlaylist as $playlistView ) { 
                     $class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"';
@@ -325,21 +338,21 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                         </td> 
                         
                         <?php /** Display playlist desc column */ ?>
-                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_desc ; ?>" class="row-title" 
+                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?> Description" class="row-title" 
                             href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
                             page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
-                            <?php echo $playlistView->playlist_desc ; ?></a> 
+                            <?php echo truncate( strip_tags( $playlistView->playlist_desc, '<br>' ), 30 ); ?></a>
                         </td> 
                         
                         <?php /** Display playlist image column */ ?>
-                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_image ; ?>" class="row-title" 
+                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?> Image" class="row-title" 
                             href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
                             page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo $playlistView->playlist_image ; ?></a> 
                         </td> 
                         
                         <?php /** Display playlist thumb column */ ?>
-                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_thumb ; ?>" class="row-title" 
+                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?> Thumb" class="row-title" 
                             href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
                             page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo $playlistView->playlist_thumb ; ?></a> 
@@ -375,8 +388,8 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                         <?php /*
                         <td class="check-column"> */ ?>
                         
-                            <span class="hasTip content" title="<?php esc_attr_e( 'Click and Drag', FLICHE_VGALLERY ); ?>" style="padding: 6px;">
-                              <img src="<?php echo getImagesDirURL() .'arrow.png'; ?>" alt="move" width="16" height="16" class="handle" /> 
+                            <span class="hasTip content" title="<?php esc_attr_e( 'Click and Drag', FLICHE_VGALLERY ); ?>" style="padding: 5px;">
+                                <img src="<?php echo getImagesDirURL() .'arrow.png'; ?>" alt="move" width="16" height="16" class="handle" /> 
                             </span>
                           
                           <?php echo $playlistView->playlist_order ; ?>

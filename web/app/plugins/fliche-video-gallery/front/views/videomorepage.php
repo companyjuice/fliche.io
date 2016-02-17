@@ -117,16 +117,48 @@ if ( !class_exists ( 'FlicheMorePageView' )) {
         ';
 
 /* -||- */
-
+/*
 if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["image"] == '1' ){
-  $div        .= $this->morePageFeaturedImage ( $type_name, $typename );
-}
+  #$div .= $this->morePageFeaturedImage ( $type_name, $typename );
+  $div .= do_shortcode ('
+    [vc_row]
+      [vc_column width="3/4"] 
+      ' . $this->morePageFeaturedImage ( $type_name, $typename ) . '
+        [vc_empty_space height="10px"]
 
+        [vc_column_text]
+          <strong>TITLE:</strong> '  . '
+          <strong>SERIES:</strong> ' . '
+          <strong>LENGTH:</strong> ' . '
+        [/vc_column_text]
+
+      [/vc_column]
+
+      [vc_column width="1/4"]
+        ' . $this->morePageDesc ( $type_name, $typename ) . '
+        [vc_empty_space height="10px"]
+      [/vc_column]
+    [/vc_row]
+  ');
+}
+*/
+if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["image"] == '1' ){
+  $div .= $this->morePageFeaturedImage ( $type_name, $typename );
+  $div .= '<div style="clear:both; height:10px;"></div>';
+}
 
         /** Call function to display more video page title */ 
         if ( !isset($arguments["title"]) || $arguments["title"] == 'on' || $arguments["title"] == '1' ){
-          $div        .= $this->morePageTitle ( $type_name, $typename );
+          $div .= $this->morePageTitle ( $type_name, $typename );
+          $div .= '<div style="clear:both; height:0px;"></div>';
         }
+
+/* -||- */
+#if ( isset($arguments["desc"]) && ( $arguments["desc"] == 'on' || $arguments["desc"] == '1' ) ){
+if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["image"] == '1' ){
+  $div .= $this->morePageDesc ( $type_name, $typename );
+  $div .= '<div style="clear:both; height:20px;"></div>';
+}
         
         
         if (! empty ( $TypeOFvideos )) {
@@ -274,6 +306,36 @@ if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["i
           /** Get current more type and display as page title */ 
           $div            .= '<h2 >' . $typename . ' ' . __ ( 'Videos', FLICHE_VGALLERY ) . ' </h2>';
           break;
+        default:
+          break;
+      }
+      /** Return more page title */ 
+      return $div;
+    }
+
+    /**
+     * -||-
+     * Function to get Category description
+     * -||-
+     * @param string $type_name
+     * @param string $typename
+     * @return string
+     */
+    function morePageDesc ( $type_name, $typename ) {
+      $div = '';
+      /** Check type name and get title for the more pages */
+      switch( $type_name ) {
+        case 'Category':
+          
+          $playlist_desc = get_playlist_desc ( intval ( absint ( $this->_playid ) ) );
+
+          #echo '<pre>';
+          #var_dump($playlist_desc);
+          #echo '</pre>';
+
+          $div .= $playlist_desc;
+          break;
+
         default:
           break;
       }

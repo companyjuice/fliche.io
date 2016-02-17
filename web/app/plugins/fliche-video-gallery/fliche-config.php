@@ -17,8 +17,8 @@ if (! defined ( 'WP_LOAD_PATH' )) {
      * It should be end with a trailing slash
      */ 
     # CUSTOM CODE 
-    #$classic_root = dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . '/';
-    $classic_root = dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . '/wp/';
+    $classic_root = dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . '/';
+    #$classic_root = dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . '/wp/';
     /**
      * Define wp-load.php file path
      * If it is not found then die with the message 

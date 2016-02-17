@@ -270,8 +270,7 @@ class MoreCategoryView extends FlicheMoreView {
                         $div  .= '<a class="playlistName" href="' . $playlist_more_link . '"><span>' . $catList->playlist_name . '</span></a>';
                     }
                     if ($this->_settingsData->ratingscontrol == 1) {
-                       /** Rating starts here
-                        * for category videos */
+                        /** Rating starts here for category videos */
                         $div  .= getRatingValue ( $playList->rate, $playList->ratecount, '' ); 
                     }
                     
