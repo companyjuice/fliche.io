@@ -944,7 +944,7 @@ $do_video_shortcode = do_shortcode('
 
               /* CUSTOM CODE -- MM -- Related Videos ( in category/channel/playlist ) */
               /** Enable/disable Related videos slider */
-              $flag = 0;
+              $flag = 1;
               if( $vid  && isset ( $arguments['playlistid'] ) && isset ( $arguments['relatedvideos'])  && $arguments['relatedvideos'] == 'on') {
                 $flag = 1;
               }
