@@ -26,15 +26,16 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
         <?php esc_attr_e( 'Categories', FLICHE_VGALLERY ); ?> 
       </h2> 
       
-      <?php  /** Playlist add page starts */ ?>
-      <div class="floatleft category_addpages">  
+
+<?php  /** Playlist add page starts "floatleft category_addpages" */ ?>
+      <div class="">  
           <div class="fliche_gallery hi"> 
         <?php /** Check action whether it is add / update
                * Then Display page title */
               if ( $playListId  ) { ?> 
               <h3> <?php esc_attr_e( 'Update Category', FLICHE_VGALLERY ); ?> </h3> 
               <?php } else { ?> 
-              <h3> <?php esc_attr_e( 'Add a New Category', FLICHE_VGALLERY ); ?> </h3> 
+              <h3> <?php esc_attr_e( 'Add New Category', FLICHE_VGALLERY ); ?> </h3> 
               <?php } ?>
               
         <?php /** Gets status message from controller 
@@ -50,20 +51,75 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                           <div class="inside" style="margin:15px;"> 
                               <form name="adsform" method="post" enctype="multipart/form-data" >
                               <?php /** Display playlist form to add playlist */?> 
-                                  <table class="form-table"> 
-                                      <tr> <?php /** Display fields to enter title */ ?> 
+                                  <table class="form-table">
+                                      <?php 
+                                        /** -||- Display form field to enter playlist title */ 
+                                      ?>
+                                      <tr> 
                                           <th scope="row"> <?php esc_attr_e( 'Title / Name', FLICHE_VGALLERY ) ?> </th>
                                           <td> <?php if ( isset( $playlistEdit->playlist_name ) ) { 
                                                         $playlist_name = $playlistEdit->playlist_name; 
                                                      } else { 
                                                         $playlist_name = ''; 
                                                      } ?>
-                                                <input type="text" maxlength="200" id="playlistname" name="playlistname" value="<?php echo htmlentities( $playlist_name ); ?>"  />
+                                                <input type="text" maxlength="200" id="playlistname" name="playlistname" value="<?php echo htmlentities( $playlist_name ); ?>" style="width: 400px;"  />
                                                 <span id="playlistnameerrormessage" style="display: block;color:red; "></span> 
                                           </td>
                                       </tr>
+
+                                      <?php 
+                                        /** -||- Display form field to enter playlist description */ 
+                                      ?>
+                                      <tr> 
+                                          <th scope="row"> <?php esc_attr_e( 'Description', FLICHE_VGALLERY ) ?> </th>
+                                          <td>  <?php if ( isset( $playlistEdit->playlist_desc ) ) { 
+                                                        $playlist_desc = $playlistEdit->playlist_desc; 
+                                                     } else { 
+                                                        $playlist_desc = ''; 
+                                                     }
+                                                /*<input type="text" id="playlistdesc" name="playlistdesc" value="<?php echo htmlentities( $playlist_desc ); ?>" style="width: 400px;"  />*/
+                                                ?>
+                                                <textarea id="playlistdesc" name="playlistdesc" style="width: 400px;"><?php echo htmlentities( $playlist_desc ); ?></textarea>
+                                                <span id="playlistdescerrormessage" style="display: block;color:red; "></span> 
+                                          </td>
+                                      </tr>
+
+
+                                      <?php 
+                                        /** -||- Display form field to enter playlist image */ 
+                                      ?>
+                                      <tr> 
+                                          <th scope="row"> <?php esc_attr_e( 'Featured Image URL', FLICHE_VGALLERY ) ?> </th>
+                                          <td> <?php if ( isset( $playlistEdit->playlist_image ) ) { 
+                                                        $playlist_image = $playlistEdit->playlist_image; 
+                                                     } else { 
+                                                        $playlist_image = ''; 
+                                                     } ?>
+                                                <input type="text" id="playlistimage" name="playlistimage" value="<?php echo htmlentities( $playlist_image ); ?>" style="width: 400px;"  />
+                                                <span id="playlistimageerrormessage" style="display: block;color:red; "></span> 
+                                          </td>
+                                      </tr>
+
+                                      <?php 
+                                        /** -||- Display form field to enter playlist thumbnail */ 
+                                      ?>
+                                      <tr> 
+                                          <th scope="row"> <?php esc_attr_e( 'Thumbnail Image URL', FLICHE_VGALLERY ) ?> </th>
+                                          <td> <?php if ( isset( $playlistEdit->playlist_thumb ) ) { 
+                                                        $playlist_thumb = $playlistEdit->playlist_thumb; 
+                                                     } else { 
+                                                        $playlist_thumb = ''; 
+                                                     } ?>
+                                                <input type="text" id="playlistthumb" name="playlistthumb" value="<?php echo htmlentities( $playlist_thumb ); ?>" style="width: 400px;"  />
+                                                <span id="playlistthumberrormessage" style="display: block;color:red; "></span> 
+                                          </td>
+                                      </tr>
+
                                       
-                                      <tr> <?php /** Display publish option */ ?>
+                                      <?php 
+                                        /** -||- Display radio checkboxes for boolean publish option */ 
+                                      ?>
+                                      <tr> 
                                           <th scope="row"> <?php esc_attr_e( 'Publish', FLICHE_VGALLERY ); ?> </th>
                                           <td> <input type="radio" name="ispublish" id="published" value="1" checked="checked" 
                                                     <?php if ( isset( $playlistEdit->is_publish ) && $playlistEdit->is_publish == 1 ) {
@@ -79,8 +135,8 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                                       </tr>
                                   </table>
                                   
-                            <?php /** Check whether the playlist id is exist.
-                                   * If exist then display button to update playlist details 
+                            <?php /** Check whether the playlist id already exists.
+                                   * If exists then display button to update playlist details 
                                    * Else display button to add playlist details */
                                   if ( $playListId ) { ?>
                                         <input type="submit" name="playlistadd" onclick="return validateplyalistInput();" class="button-primary"  value="<?php esc_attr_e( 'Update', FLICHE_VGALLERY ); ?>" class="button" />
@@ -94,22 +150,26 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                   </div>
                   <p>
               </div>
-             <?php /** Playlist add page form Ends */ ?>
+             <?php /** end Playlist add page form */ ?>
           </div>
       </div>
-      <?php /** Playlist add page Ends  */ ?>
+<?php /** end Playlist add page */ ?>
       
-      <div class="floatleft category_addpages">
-<?php /** Code to display playlist status */
-      if ( $displayMsg && $displayMsg[1] == 'category' ) { 
-          echo displayStatusMeassage ( $displayMsg [0] );  
-      }
-      /** Get playlist order direction */
-      $orderField         = filter_input( INPUT_GET, 'order' );
-      $direction          = isset( $orderField ) ? $orderField : '';
-      $reverse_direction  = ( $direction == 'DESC' ? 'ASC' : 'DESC' );
-      /** Playlist search message display starts */
-      if ( isset( $_REQUEST['playlistsearchbtn'] ) ) { ?>
+
+
+<?php /** Playlist records start "floatleft category_addpages" */ ?>
+      <div class="">
+
+      <?php /** Code to display playlist status */
+        if ( $displayMsg && $displayMsg[1] == 'category' ) { 
+            echo displayStatusMeassage ( $displayMsg [0] );  
+        }
+        /** Get playlist order direction */
+        $orderField         = filter_input( INPUT_GET, 'order' );
+        $direction          = isset( $orderField ) ? $orderField : '';
+        $reverse_direction  = ( $direction == 'DESC' ? 'ASC' : 'DESC' );
+        /** Playlist search message display starts */
+        if ( isset( $_REQUEST['playlistsearchbtn'] ) ) { ?>
           <div  class="updated below-h2">
               <?php $url = get_site_url() . '/wp-admin/admin.php?page=playlist';
               $searchmsg = filter_input( INPUT_POST, 'PlaylistssearchQuery' );
@@ -120,33 +180,34 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                   echo esc_attr_e( 'No Search Results for', FLICHE_VGALLERY ) . ' "' . $searchMsg . '"';
               } ?> 
           </div> 
-<?php /** Playlist search message display starts */  
-       } 
+      <?php /** Playlist search message display starts */  
+        } 
        
-       /** Playlist search form starts */
-       ?>
-       <form name="Playlists" class="admin_video_search alignright" id="searchbox-playlist" action="" method="post" onsubmit="return Playlistsearch();">
-           <p class="search-box"> 
-           <?php /** Display text box to get search text */ ?>
-           <input type="text"  name="PlaylistssearchQuery" id="PlaylistssearchQuery" 
-           value="<?php if ( isset( $searchmsg ) ) { 
-             echo $searchmsg ; 
-           }?>"> 
-           <?php /** Duisplay search button */ ?>
-           <input type="hidden"  name="page" value="Playlists"> 
-           <input type="submit" name="playlistsearchbtn" id="playlistsearchButton"  class="button" value="<?php esc_attr_e( 'Search Categories', FLICHE_VGALLERY ); ?>"></p> 
-       </form>
+      /** Playlist search form starts */
+      ?>
+      <form name="Playlists" class="admin_video_search alignright" id="searchbox-playlist" action="" method="post" onsubmit="return Playlistsearch();">
+          <p class="search-box"> 
+              <?php /** Display text box to get search text */ ?>
+              <input type="text"  name="PlaylistssearchQuery" id="PlaylistssearchQuery" 
+                value="<?php if ( isset( $searchmsg ) ) { 
+                  echo $searchmsg ; 
+                }?>"> 
+              <?php /** Display search button */ ?>
+              <input type="hidden" name="page" value="Playlists"> 
+              <input type="submit" name="playlistsearchbtn" id="playlistsearchButton" class="button" value="<?php esc_attr_e( 'Search Categories', FLICHE_VGALLERY ); ?>">
+          </p> 
+      </form>
+      <?php /** Playlist search form ends  */?>
        
-       <?php /** Playlist search form ends  */?>
-       
-       <?php /** Playlist grid form Starts */ ?>
-       <form  name="Playlistsfrm" action="" method="post" onsubmit="return PlaylistdeleteIds()">
+      <?php /** Playlist grid form Starts */ ?>
+      <form  name="Playlistsfrm" action="" method="post" onsubmit="return PlaylistdeleteIds()">
           <div class="alignleft actions bulk-actions"> 
-             <?php /** Call function to display filter option in top  */
-                   echo adminFilterDisplay ( 'playlist', 'up' ); ?>
-           </div>
-    <?php /** Get page number, total count and set default limit per page as 20 */ 
-           $limit   = 20; 
+            <?php /** Call function to display filter option in top  */
+              echo adminFilterDisplay ( 'playlist', 'up' ); 
+            ?>
+          </div>
+        <?php /** Get page number, total count and set default limit per page as 2000 -||- */ 
+           $limit   = 2000; 
            $pagenum = isset( $_GET['pagenum'] ) ? absint( $_GET['pagenum'] ) : 1; 
            $total   = $playlist_count; 
            
@@ -173,23 +234,65 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
            <table class="wp-list-table widefat fixed tags hai" cellspacing="0">
                 <?php /** Top heading Starts  */ ?> 
                 <thead> 
-                    <tr> 
-                        <th scope="col"  class="manage-column column-cb check-column" style=""> <input type="checkbox" name="" id="manage-column-category-1" > </th> 
-                        <th scope="col" style=""> <span> <?php esc_attr_e( '', FLICHE_VGALLERY ); ?> </span> <span class="sorting-indicator"></span> </th> 
-                        <th scope="col" style="" class="manage-column column-id sortable desc" > 
+                    <tr>
+                        <?php /** Display select all/none/this checkbox column */ ?>
+                        <th class="manage-column column-cb check-column" scope="col" style="width: 5%;"> 
+                            <input type="checkbox" name="" id="manage-column-category-1" > 
+                        </th>
+                        <?php /** Display playlist id column  */ ?>
+                        <th lass="manage-column column-id sortable desc" scope="col" style="width: 5%;"> 
                             <a href="<?php echo $playIDURL; ?>"> 
-                            <span><?php esc_attr_e( 'ID', FLICHE_VGALLERY ); ?></span> 
-                            <span class="sorting-indicator"></span> </a></th>
-                        <th class="manage-column column-name sortable desc" style="" scope="col"> <a href="<?php echo $playlistNameURL; ?>">
-                            <span><?php esc_attr_e( 'Title', FLICHE_VGALLERY ); ?></span> <span class="sorting-indicator"></span> </a> 
-                        </th> 
-                        <th scope="col" class="manage-column column-Expiry sortable desc" style=""> 
+                                <span><?php esc_attr_e( 'ID', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a>
+                        </th>
+                        <?php /** Display playlist name column  */ ?>
+                        <th class="manage-column column-name sortable desc" scope="col" style="width: 20%;"> 
+                            <a href="<?php echo $playlistNameURL; ?>">
+                                <span><?php esc_attr_e( 'Title', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <?php /** Display playlist desc column  */ ?>
+                        <th class="manage-column column-desc sortable desc" scope="col" style="width: 20%;"> 
+                            <a href="<?php echo $playlistNameURL; ?>">
+                                <span><?php esc_attr_e( 'Description', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <?php /** Display playlist image column  */ ?>
+                        <th class="manage-column column-image sortable desc" scope="col" style="width: 15%;"> 
+                            <a href="<?php echo $playlistNameURL; ?>">
+                                <span><?php esc_attr_e( 'Image', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <?php /** Display playlist thumb column  */ ?>
+                        <th class="manage-column column-thumb sortable desc" scope="col" style="width: 15%;"> 
+                            <a href="<?php echo $playlistNameURL; ?>">
+                                <span><?php esc_attr_e( 'Thumb', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <?php /** Display playlist published/unpublished status column  */ ?>
+                        <th class="manage-column column-Expiry sortable desc" scope="col" style="width: 5%;"> 
                             <a href="<?php echo $playlistStatusURL; ?>">
-                            <span class="fliche_category_publish"> <?php esc_attr_e( 'Publish', FLICHE_VGALLERY ); ?> </span> 
-                            <span class="sorting-indicator"></span> </a> </th> 
-                        <th class="manage-column column-sortorder sortable desc" scope="col" style=""> 
+                                <span class="fliche_category_publish"> <?php esc_attr_e( 'Publish', FLICHE_VGALLERY ); ?> </span> 
+                                <span class="sorting-indicator"></span>
+                            </a>
+                        </th>
+                        <th class="manage-column column-sortorder sortable desc" scope="col" style="width: 10%;"> 
                             <a href="<?php echo $playlistOrderURL; ?>">
-                            <span> <?php esc_attr_e( 'Order', FLICHE_VGALLERY ); ?> </span>  <span class="sorting-indicator"></span></a></th>
+                                <span> <?php esc_attr_e( 'Order', FLICHE_VGALLERY ); ?> </span>
+                                <span class="sorting-indicator"></span>
+                            </a>
+                        </th>
+                        <?php /** Display playlist sorting column  */ ?>
+                        <?php /*
+                        <th class="manage-column column-si check-column" scope="col" style=""> 
+                            <span> <?php esc_attr_e( '', FLICHE_VGALLERY ); ?></span> 
+                            <span class="sorting-indicator"></span> 
+                        </th> */ ?>
                     </tr> 
                 </thead> 
                <?php /** Top heading Ends */ ?> 
@@ -198,31 +301,48 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                 <tbody id="test-list" class="list:post"> 
                     <input type=hidden id=playlistid2 name=playlistid2 value="1" /> 
                     <div name=txtHint></div> 
-              <?php /** Looping to diplay playlist data */
-                     foreach ( $gridPlaylist as $playlistView ) { 
-                        $class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"'; 
-                     /** Display check box */ ?> 
+                <?php /** Looping to diplay playlist data */
+                  foreach ( $gridPlaylist as $playlistView ) { 
+                    $class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"';
+                ?> 
                     <tr id="listItem_<?php echo $playlistView->pid ; ?>" 
                         <?php echo $class; ?> > 
                         <th scope="row" class="check-column"> <input type="checkbox" name="pid[]" value="<?php echo $playlistView->pid ; ?>"> </th>
                         
-                        <td> <?php /** Display drag and drop option  */ ?> 
-                            <span class="hasTip content" title="<?php esc_attr_e( 'Click and Drag', FLICHE_VGALLERY ); ?>" style="padding: 6px;">
-                              <img src="<?php echo getImagesDirURL() .'arrow.png'; ?>" alt="move" width="16" height="16" class="handle" /> 
-                            </span>
-                        </td>
-                         <?php /** Display playlist idcolumn  */ ?>
+                        <?php /** Display playlist id column */ ?>
                         <td class="id-column column-id"> <a title="Edit <?php echo $playlistView->playlist_name ; ?>" 
-                                    href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
-                                    page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
-                                    <?php echo $playlistView->pid ; ?> </a> 
-                                    <div class="row-actions"> 
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
+                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            <?php echo $playlistView->pid ; ?> </a> 
+                            <div class="row-actions"> 
                         </td> 
-                         <?php /** Display playlist name column  */ ?>
+                        
+                        <?php /** Display playlist name column */ ?>
                         <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?>" class="row-title" 
                             href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
                             page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo $playlistView->playlist_name ; ?></a> 
+                        </td> 
+                        
+                        <?php /** Display playlist desc column */ ?>
+                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_desc ; ?>" class="row-title" 
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
+                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            <?php echo $playlistView->playlist_desc ; ?></a> 
+                        </td> 
+                        
+                        <?php /** Display playlist image column */ ?>
+                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_image ; ?>" class="row-title" 
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
+                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            <?php echo $playlistView->playlist_image ; ?></a> 
+                        </td> 
+                        
+                        <?php /** Display playlist thumb column */ ?>
+                        <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_thumb ; ?>" class="row-title" 
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
+                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            <?php echo $playlistView->playlist_thumb ; ?></a> 
                         </td> 
                             
                         <td class="pub-column Expiry column-Expiry"  align="center"> 
@@ -245,42 +365,94 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                                 title="<?php echo $publish ; ?>"   /> 
                             </a>
                         </td>
-                         <?php /** Display playlist ordering column */ ?>
-                        <td class="order-column Expiry column-ordering column-Expiry"> <?php echo $playlistView->playlist_order ; ?> </td> 
+
+                        <?php /** Display playlist ordering column */ ?>
+                        <td class="order-column Expiry column-ordering column-Expiry">
+                        <?php /*
+                          <?php echo $playlistView->playlist_order ; ?>
+                        </td> */ ?>
+                        <?php /** Display drag and drop option */ ?>
+                        <?php /*
+                        <td class="check-column"> */ ?>
+                        
+                            <span class="hasTip content" title="<?php esc_attr_e( 'Click and Drag', FLICHE_VGALLERY ); ?>" style="padding: 6px;">
+                              <img src="<?php echo getImagesDirURL() .'arrow.png'; ?>" alt="move" width="16" height="16" class="handle" /> 
+                            </span>
+                          
+                          <?php echo $playlistView->playlist_order ; ?>
+                        </td>
+
                     </tr>
-              <?php /** For each to diplay playlist data ends */
-                     }
+                <?php 
+                  } /** Foreach to display playlist data ends */
+
                      
-                    /** If playlist not found, then display not found message */
-                    if ( isset( $_REQUEST['searchplaylistsbtn'] ) ) { ?> 
-                    <tr class="no-items"> <td class="colspanchange" colspan="5"> No Category found. </td> </tr> 
-                    <?php }
+                  /** If playlist not found, then display not found message */
+                  if ( isset( $_REQUEST['searchplaylistsbtn'] ) ) { 
+                ?> 
+                    <tr class="no-items"> <td class="colspanchange" colspan="9"> No Category found. </td> </tr> 
+                <?php }
                     /** Check count of playlist is empty, to display not found message */
-                    if ( count( $gridPlaylist ) == 0 ) { ?> 
-                    <tr class="no-items"><td class="colspanchange" colspan="5"> No Category found. </td> </tr> 
-                    <?php } 
-                    /** Display playlist data section Ends
-                     * Footer heading Starts */ ?> 
+                  if ( count( $gridPlaylist ) == 0 ) { 
+                ?> 
+                    <tr class="no-items"><td class="colspanchange" colspan="9"> No Category found. </td> </tr> 
+                <?php } 
+                    /** Display playlist data section Ends */
+                ?> 
                 </tbody>
+                <?php /* Footer heading Starts */ ?>
                 <tfoot> 
                     <tr> 
-                        <th scope="col"  class="manage-column column-cb check-column" style=""> <input type="checkbox" name="" id="manage-column-category-1" > </th> 
-                        <th width="3%" scope="col"  style=""> <span><?php esc_attr_e( '', FLICHE_VGALLERY ); ?> </span> <span class="sorting-indicator"></span> </th> 
-                        <th scope="col"  style="" class="manage-column column-id sortable desc" > <a href="<?php echo $playIDURL; ?>"> 
-                            <span><?php esc_attr_e( 'ID', FLICHE_VGALLERY ); ?></span> <span class="sorting-indicator"></span> 
-                            </a> </th> 
+                        <th class="manage-column column-cb check-column" scope="col" style="">
+                            <input type="checkbox" name="" id="manage-column-category-1" >
+                        </th>
+                        <th class="manage-column column-id sortable desc" scope="col" style=""> 
+                            <a href="<?php echo $playIDURL; ?>"> 
+                                <span><?php esc_attr_e( 'ID', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
                         <th class="manage-column column-name sortable desc" scope="col" style=""> 
                             <a href="<?php $playlistNameURL ; ?>"> 
-                            <span><?php esc_attr_e( 'Title', FLICHE_VGALLERY ); ?></span> <span class="sorting-indicator"></span> </a> </th> 
-                        <th class="manage-column column-Expiry sortable desc" style=""  scope="col"> <a href="<?php echo $playlistStatusURL; ?>">
-                            <span><?php esc_attr_e( 'Publish', FLICHE_VGALLERY ); ?></span> <span class="sorting-indicator"></span> 
+                                <span><?php esc_attr_e( 'Title', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <th class="manage-column column-desc sortable desc" scope="col" style=""> 
+                            <a href="<?php $playlistNameURL ; ?>"> 
+                                <span><?php esc_attr_e( 'Desc', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <th class="manage-column column-image sortable desc" scope="col" style=""> 
+                            <a href="<?php $playlistNameURL ; ?>"> 
+                                <span><?php esc_attr_e( 'Image', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <th class="manage-column column-thumb sortable desc" scope="col" style=""> 
+                            <a href="<?php $playlistNameURL ; ?>"> 
+                                <span><?php esc_attr_e( 'Thumb', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
+                        <th class="manage-column column-Expiry sortable desc" scope="col" style=""> 
+                            <a href="<?php echo $playlistStatusURL; ?>">
+                                <span><?php esc_attr_e( 'Publish', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
                             </a>
-                        </th> 
-                        <th scope="col" class="manage-column column-sortorder sortable desc" style=""> 
+                        </th>
+                        <th class="manage-column column-sortorder sortable desc" scope="col" style=""> 
                             <a href="<?php echo $playlistOrderURL ; ?>">
-                            <span><?php esc_attr_e( 'Order', FLICHE_VGALLERY ); ?></span> <span class="sorting-indicator"></span> 
+                                <span><?php esc_attr_e( 'Order', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
                             </a>
-                        </th> 
+                        </th>
+                        <?php /*
+                        <th class="" scope="col" style=""> 
+                            <span><?php esc_attr_e( '', FLICHE_VGALLERY ); ?> </span> 
+                            <span class="sorting-indicator"></span> 
+                        </th> */ ?>
                     </tr> 
                 </tfoot> 
                 <?php /** Footer heading Ends */ ?>

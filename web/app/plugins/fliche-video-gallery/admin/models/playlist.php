@@ -4,7 +4,7 @@
  *
  * @category   FishFlicks
  * @package    Fliche Video Gallery
- * @version    0.8.0
+ * @version    0.8.1
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -32,12 +32,12 @@ if ( !class_exists ( 'PlaylistModel' ) ) {
       /**
        * Function to insert new playlist
        * 
-       * @param unknown $playlsitData
+       * @param unknown $playlistData
        * @return int
        */
-      public function insert_playlist($playlsitData) {
+      public function insert_playlist($playlistData) {
         /** Insert new playlist data */
-        if ($this->_wpdb->insert ( $this->_playlisttable, $playlsitData )) {
+        if ($this->_wpdb->insert ( $this->_playlisttable, $playlistData )) {
           /** If data is inserted return last inserted playlist id */
           return $this->_wpdb->insert_id;
         }
@@ -70,13 +70,15 @@ if ( !class_exists ( 'PlaylistModel' ) ) {
        * @param unknown $order
        * @param unknown $orderDirection
        */
-      public function get_playlsitdata($searchValue, $searchBtn, $order, $orderDirection) {
+      public function get_playlistdata($searchValue, $searchBtn, $order, $orderDirection) {
         /** Get pagenum and calculate limit */
         $pagenum = absint ( filter_input ( INPUT_GET, 'pagenum' ) );
         if (empty ( $pagenum )) {
           $pagenum = 1;
         }
-        $limit = 20;
+        
+        $limit = 2000; /* -||- hard coded !! :( !! */
+
         $offset = ($pagenum - 1) * $limit;
         /** Make a query to fetch playlist data  */
         $query = 'SELECT * FROM ' . $this->_playlisttable;
