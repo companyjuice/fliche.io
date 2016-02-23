@@ -1,4 +1,4 @@
-# [Fliche v0.7.0](https://fliche.io/)
+# [Fliche v0.9.0](https://fliche.io/)
 [![Build Status](https://travis-ci.org/roots/bedrock.svg)](https://travis-ci.org/roots/bedrock)
 
 Fliche Bedrock is a modern WordPress stack with the best development tools and project structure.
