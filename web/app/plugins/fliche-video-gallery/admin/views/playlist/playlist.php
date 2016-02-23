@@ -1,4 +1,15 @@
 <?php
+/**
+ * Video gallery admin playlist view+add+edit file
+ * 
+ * @category   VidFlix
+ * @package    Fliche Video Gallery
+ * @version    0.9.0
+ * @author     Company Juice <support@companyjuice.com>
+ * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
+ * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
+ */
+
 /** Get page values for playlist page */
 $page = $class = '';
 if (isset ( $_GET ['pagenum'] )) {
@@ -8,7 +19,9 @@ if (isset ( $_GET ['pagenum'] )) {
 $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&type=2'. $page;
 /** Assign sortorder url, plugin path in script */
 
-function truncate($string,$length=100,$append="&hellip;") {
+/** Function to truncate elegantly to end of word */
+function truncate ( $string, $length = 100, $append = "&hellip;" )
+{
   $string = trim($string);
 
   if(strlen($string) > $length) {
@@ -29,27 +42,22 @@ function truncate($string,$length=100,$append="&hellip;") {
 <div class="fliche_gallery hi"> 
 <?php /** Playlist admin page Starts
        * Call function to display admin tabs in playlist page */
-      echo displayAdminTabs ( 'playlist' ) ;
+      #echo displayAdminTabs ( 'playlist' ) ;
       
       /**  Playlist add/ grid section Starts */ ?>
-    <div class="wrap"> 
-      <h2 class="option_title"> 
-        <?php /** Display page title and icon image */  
-        /*echo "<img src='" . getImagesDirURL() ."manage_list.png' alt='move' width='30'/>";*/ ?> 
-        <?php esc_attr_e( 'Categories', FLICHE_VGALLERY ); ?> 
-      </h2> 
-      
+    <div class="wrap">
+
+      <?php /** Display page title and icon image */ ?>
+      <h1 class="option_title"> 
+        <?php /* echo "<img src='" . getImagesDirURL() ."manage_list.png' alt='move' width='30'/>"; */ ?> 
+        <?php esc_attr_e( 'Video Categories', FLICHE_VGALLERY ); ?> 
+      </h1> 
+      <?php /** Display page title and icon image */ ?>
 
 <?php  /** Playlist add page starts "floatleft category_addpages" */ ?>
       <div class="">  
           <div class="fliche_gallery hi"> 
-        <?php /** Check action whether it is add / update
-               * Then Display page title */
-              if ( $playListId  ) { ?> 
-              <h3> <?php esc_attr_e( 'Update Category', FLICHE_VGALLERY ); ?> </h3> 
-              <?php } else { ?> 
-              <h3> <?php esc_attr_e( 'Add New Category', FLICHE_VGALLERY ); ?> </h3> 
-              <?php } ?>
+              
               
         <?php /** Gets status message from controller 
                * Then display the message for the coresponding action   */
@@ -61,9 +69,22 @@ function truncate($string,$length=100,$append="&hellip;") {
                <div id="post-body" class="has-sidebar"> 
                   <div id="post-body-content" class="has-sidebar-content"> 
                       <div class="stuffbox"> 
-                          <div class="inside" style="margin:15px;"> 
+                          <div class="inside">
+
+                            <?php 
+                            /** 
+                             * Check action: add || update
+                             * Then display: page sub-title 
+                             */
+                            if ( $playListId  ) { ?> 
+                              <h2 class="option_title"> <?php esc_attr_e( 'Update Category', FLICHE_VGALLERY ); ?> </h2> 
+                            <?php } else { ?> 
+                              <h2 class="option_title"> <?php esc_attr_e( 'Add New Category', FLICHE_VGALLERY ); ?> </h2> 
+                            <?php } ?>
+
+                            <?php /** Display playlist form to add playlist */?>
                               <form name="adsform" method="post" enctype="multipart/form-data" >
-                              <?php /** Display playlist form to add playlist */?> 
+                              
                                   <table class="form-table">
                                       <?php 
                                         /** -||- Display form field to enter playlist title */ 
@@ -77,6 +98,21 @@ function truncate($string,$length=100,$append="&hellip;") {
                                                      } ?>
                                                 <input type="text" maxlength="200" id="playlistname" name="playlistname" value="<?php echo htmlentities( $playlist_name ); ?>" style="width: 400px;"  />
                                                 <span id="playlistnameerrormessage" style="display: block;color:red; "></span> 
+                                          </td>
+                                      </tr>
+
+                                      <?php 
+                                        /** -||- Display form field to enter playlist parent id */ 
+                                      ?>
+                                      <tr> 
+                                          <th scope="row"> <?php esc_attr_e( 'Parent', FLICHE_VGALLERY ) ?> </th>
+                                          <td> <?php if ( isset( $playlistEdit->parent_id ) ) { 
+                                                        $parent_id = $playlistEdit->parent_id; 
+                                                     } else { 
+                                                        $parent_id = ''; 
+                                                     } ?>
+                                                <input type="text" id="playlistparent" name="playlistparent" value="<?php echo htmlentities( $parent_id ); ?>" style="width: 400px;"  />
+                                                <span id="playlistparenterrormessage" style="display: block;color:red; "></span> 
                                           </td>
                                       </tr>
 
@@ -179,7 +215,7 @@ function truncate($string,$length=100,$append="&hellip;") {
         }
         /** Get playlist order direction */
         $orderField         = filter_input( INPUT_GET, 'order' );
-        $direction          = isset( $orderField ) ? $orderField : '';
+        $direction          = isset( $orderField ) ? $orderField : 'DESC';
         $reverse_direction  = ( $direction == 'DESC' ? 'ASC' : 'DESC' );
         /** Playlist search message display starts */
         if ( isset( $_REQUEST['playlistsearchbtn'] ) ) { ?>
@@ -233,6 +269,14 @@ function truncate($string,$length=100,$append="&hellip;") {
            $playIDURL         = get_site_url() . '/wp-admin/admin.php?page=playlist&orderby=id&order=' . $reverse_direction;
            /** Set playlistname URL to sort playlist based on the playlistname  */
            $playlistNameURL   = get_site_url() .'/wp-admin/admin.php?page=playlist&orderby=title&order=' . $reverse_direction;
+           /** Set playlistname URL to sort playlist based on the playlistname  */
+           $playlistParentURL = get_site_url() .'/wp-admin/admin.php?page=playlist&orderby=parent&order=' . $reverse_direction;
+           /** Set playlistname URL to sort playlist based on the playlistname  */
+           $playlistDescURL   = get_site_url() .'/wp-admin/admin.php?page=playlist&orderby=desc&order=' . $reverse_direction;
+           /** Set playlistname URL to sort playlist based on the playlistname  */
+           $playlistImageURL  = get_site_url() .'/wp-admin/admin.php?page=playlist&orderby=image&order=' . $reverse_direction;
+           /** Set playlistname URL to sort playlist based on the playlistname  */
+           $playlistThumbURL  = get_site_url() .'/wp-admin/admin.php?page=playlist&orderby=thumb&order=' . $reverse_direction;
            /** Set playliststatus URL to sort playlist based on the status  */
            $playlistStatusURL = get_site_url() .'/wp-admin/admin.php?page=playlist&orderby=publish&order='. $reverse_direction; 
            /** Set playlist order URL to sort playlist based on the ordering */
@@ -259,30 +303,37 @@ function truncate($string,$length=100,$append="&hellip;") {
                                 <span class="sorting-indicator"></span> 
                             </a>
                         </th>
+                        <?php /** Display playlist parent id column  */ ?>
+                        <th class="manage-column column-parent sortable desc" scope="col" style="width: 15%;"> 
+                            <a href="<?php echo $playlistParentURL; ?>">
+                                <span><?php esc_attr_e( 'Parent', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
                         <?php /** Display playlist name column  */ ?>
-                        <th class="manage-column column-name sortable desc" scope="col" style="width: 20%;"> 
+                        <th class="manage-column column-name sortable desc" scope="col" style="width: 15%;"> 
                             <a href="<?php echo $playlistNameURL; ?>">
                                 <span><?php esc_attr_e( 'Title', FLICHE_VGALLERY ); ?></span> 
                                 <span class="sorting-indicator"></span> 
                             </a> 
                         </th>
                         <?php /** Display playlist desc column  */ ?>
-                        <th class="manage-column column-desc sortable desc" scope="col" style="width: 20%;"> 
-                            <a href="<?php echo $playlistNameURL; ?>">
+                        <th class="manage-column column-desc sortable desc" scope="col" style="width: 15%;"> 
+                            <a href="<?php echo $playlistDescURL; ?>">
                                 <span><?php esc_attr_e( 'Description', FLICHE_VGALLERY ); ?></span> 
                                 <span class="sorting-indicator"></span> 
                             </a> 
                         </th>
                         <?php /** Display playlist image column  */ ?>
                         <th class="manage-column column-image sortable desc" scope="col" style="width: 15%;"> 
-                            <a href="<?php echo $playlistNameURL; ?>">
+                            <a href="<?php echo $playlistImageURL; ?>">
                                 <span><?php esc_attr_e( 'Image', FLICHE_VGALLERY ); ?></span> 
                                 <span class="sorting-indicator"></span> 
                             </a> 
                         </th>
                         <?php /** Display playlist thumb column  */ ?>
                         <th class="manage-column column-thumb sortable desc" scope="col" style="width: 15%;"> 
-                            <a href="<?php echo $playlistNameURL; ?>">
+                            <a href="<?php echo $playlistThumbURL; ?>">
                                 <span><?php esc_attr_e( 'Thumb', FLICHE_VGALLERY ); ?></span> 
                                 <span class="sorting-indicator"></span> 
                             </a> 
@@ -324,39 +375,46 @@ function truncate($string,$length=100,$append="&hellip;") {
                         
                         <?php /** Display playlist id column */ ?>
                         <td class="id-column column-id"> <a title="Edit <?php echo $playlistView->playlist_name ; ?>" 
-                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
-                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo $playlistView->pid ; ?> </a> 
                             <div class="row-actions"> 
-                        </td> 
+                        </td>
+                        
+                        <?php /** Display playlist parent id column */ ?>
+                        <td class="title-column"> 
+                          <?php if( $playlistView->parent_id != 0 ){ ?>
+                            <a title="Edit <?php echo $playlistView->playlist_name ; ?> Parent" class="row-title" 
+                                href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=newplaylist&playlistId=<?php echo $playlistView->parent_id ; ?>" >
+                                <?php echo $playlistView->parent_id ; ?>
+                            </a>
+                          <?php } else { ?>
+                            --
+                          <?php } ?>
+                        </td>
                         
                         <?php /** Display playlist name column */ ?>
                         <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?>" class="row-title" 
-                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
-                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo $playlistView->playlist_name ; ?></a> 
-                        </td> 
+                        </td>
                         
                         <?php /** Display playlist desc column */ ?>
                         <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?> Description" class="row-title" 
-                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
-                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo truncate( strip_tags( $playlistView->playlist_desc, '<br>' ), 30 ); ?></a>
-                        </td> 
+                        </td>
                         
                         <?php /** Display playlist image column */ ?>
                         <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?> Image" class="row-title" 
-                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
-                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo $playlistView->playlist_image ; ?></a> 
-                        </td> 
+                        </td>
                         
                         <?php /** Display playlist thumb column */ ?>
                         <td class="title-column"> <a title="Edit <?php echo $playlistView->playlist_name ; ?> Thumb" class="row-title" 
-                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?
-                            page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
+                            href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=newplaylist&playlistId=<?php echo $playlistView->pid ; ?>" >
                             <?php echo $playlistView->playlist_thumb ; ?></a> 
-                        </td> 
+                        </td>
                             
                         <td class="pub-column Expiry column-Expiry"  align="center"> 
                         <?php /** Set image based 
@@ -374,8 +432,7 @@ function truncate($string,$length=100,$append="&hellip;") {
                             $statusURL = get_site_url() .'/wp-admin/admin.php?page=playlist&pagenum=' .$pagenum .'&playlistId='.$playlistView->pid .'&status='. $status; 
                             ?>
                             <a href="<?php echo $statusURL; ?>">   
-                                <img src="<?php echo getImagesDirURL() . $image ?>" 
-                                title="<?php echo $publish ; ?>"   /> 
+                                <img src="<?php echo getImagesDirURL() . $image ?>" title="<?php echo $publish ; ?>"   /> 
                             </a>
                         </td>
 
@@ -425,6 +482,12 @@ function truncate($string,$length=100,$append="&hellip;") {
                                 <span class="sorting-indicator"></span> 
                             </a> 
                         </th>
+                        <th class="manage-column column-parent sortable desc" scope="col" style=""> 
+                            <a href="<?php $playlistParentURL ; ?>"> 
+                                <span><?php esc_attr_e( 'Parent', FLICHE_VGALLERY ); ?></span> 
+                                <span class="sorting-indicator"></span> 
+                            </a> 
+                        </th>
                         <th class="manage-column column-name sortable desc" scope="col" style=""> 
                             <a href="<?php $playlistNameURL ; ?>"> 
                                 <span><?php esc_attr_e( 'Title', FLICHE_VGALLERY ); ?></span> 
@@ -432,19 +495,19 @@ function truncate($string,$length=100,$append="&hellip;") {
                             </a> 
                         </th>
                         <th class="manage-column column-desc sortable desc" scope="col" style=""> 
-                            <a href="<?php $playlistNameURL ; ?>"> 
+                            <a href="<?php $playlistDescURL ; ?>"> 
                                 <span><?php esc_attr_e( 'Desc', FLICHE_VGALLERY ); ?></span> 
                                 <span class="sorting-indicator"></span> 
                             </a> 
                         </th>
                         <th class="manage-column column-image sortable desc" scope="col" style=""> 
-                            <a href="<?php $playlistNameURL ; ?>"> 
+                            <a href="<?php $playlistImageURL ; ?>"> 
                                 <span><?php esc_attr_e( 'Image', FLICHE_VGALLERY ); ?></span> 
                                 <span class="sorting-indicator"></span> 
                             </a> 
                         </th>
                         <th class="manage-column column-thumb sortable desc" scope="col" style=""> 
-                            <a href="<?php $playlistNameURL ; ?>"> 
+                            <a href="<?php $playlistThumbURL ; ?>"> 
                                 <span><?php esc_attr_e( 'Thumb', FLICHE_VGALLERY ); ?></span> 
                                 <span class="sorting-indicator"></span> 
                             </a> 

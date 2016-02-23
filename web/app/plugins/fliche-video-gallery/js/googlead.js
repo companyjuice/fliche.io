@@ -1,14 +1,14 @@
 /**
- * Video gallery google adsense javascript file 
- * enable the Google  adsense in videoplayer
- * All Video manage admin page  
- * @category   FishFlicks
+ * Video gallery Google Adsense javascript file 
+ * Enable the Google Adsense in videoplayer
+ * 
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
-*/
+ */
 var pagearray=new Array();
 var timerout1 ;
 var timerout;
@@ -27,7 +27,6 @@ function getFlashMovie(movieName)
 
 function googleclose()
 {
-  
     if(document.all)
     {
         document.all.IFrameName.src="";

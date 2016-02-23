@@ -2,9 +2,9 @@
 /**  
  * Video more pages view file.
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -56,9 +56,7 @@ if ( !class_exists ( 'FlicheMorePageView' )) {
         }
 
 
-        
-
-        /* -||- */
+        /* -||- 
         $moreFeaturedImages = array(
           '25' => 'http://fishflicks.vidflix.co/vidcat_adventure_angler_841059f3-f86e-498f.jpg',
           '24' => 'http://fishflicks.vidflix.co/vidcat_adventurebound_7bd27c2e-fd3d-4c99.jpg',
@@ -69,10 +67,9 @@ if ( !class_exists ( 'FlicheMorePageView' )) {
           '3'  => 'http://fishflicks.vidflix.co/vidcat_markberg_5d776560-a7e8-463b.jpg',
           '26' => 'http://fishflicks.vidflix.co/vidcat_reel_action_d8e16125-9ce9-4852.jpg',
           '00' => 'http://fishflicks.vidflix.co/vidcat_rexhunt_67be20d1-e07a-490d.jpg'
-        );
-        /* -||- */
-        /* -||- */
-        $moreFeaturedImages = $moreFeaturedImages;
+        );*/
+        /* -||- 
+        $moreFeaturedImages = $moreFeaturedImages;*/
         
 
         /*
@@ -270,7 +267,7 @@ if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["i
         /** Pagination starts
          * Call helper function to get pagination values for more pages */
         if($dataLimit != 0) {
-          $div .= paginateLinks ($CountOFVideos, $dataLimit, $pagenum, '', '' );
+          #$div .= paginateLinks ($CountOFVideos, $dataLimit, $pagenum, '', '' );
         }
 
         /** RETURN html string */
@@ -294,18 +291,49 @@ if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["i
           /** Get playlist name based on play id */
           $playlist_name  = get_playlist_name ( intval ( absint ( $this->_playid ) ) );
           /** Display playlist title in category page*/
-          $div            .= '<h2 class="titleouter" >' . $playlist_name . ' </h2>';
+          $div            .= '<h2 class="titleouter">' . $playlist_name . ' </h2>';
           break;
         case 'User':
           /** Get user name based on user id */
           $user_name      = get_user_name ( intval ( $this->_userid ) );
           /** Display user name in user videos page */ 
-          $div            .= '<h2 >' . $user_name . ' </h2>';
+          $div            .= '<h2>' . $user_name . ' </h2>';
           break;
         case 'popular': case 'recent': case 'random': case 'featured':
           /** Get current more type and display as page title */ 
-          $div            .= '<h2 >' . $typename . ' ' . __ ( 'Videos', FLICHE_VGALLERY ) . ' </h2>';
+          $div            .= '<h2>' . $typename . ' ' . __ ( 'Videos', FLICHE_VGALLERY ) . ' </h2>';
           break;
+        default:
+          break;
+      }
+      /** Return more page title */ 
+      return $div;
+    }
+
+    /**
+     * -||-
+     * Function to get Category parent
+     * -||-
+     * @param string $type_name
+     * @param string $typename
+     * @return string
+     */
+    function morePageParent ( $type_name, $typename ) {
+      $div = '';
+      /** Check type name and get title for the more pages */
+      switch( $type_name ) {
+        case 'Category':
+          
+          $playlist_parent = get_playlist_parent ( intval ( absint ( $this->_playid ) ) );
+
+          #echo '<pre>';
+          #var_dump($playlist_parent);
+          #echo '</pre>';
+          if( !empty($playlist_parent) ){
+            $div .= $playlist_parent;
+          }
+          break;
+
         default:
           break;
       }
@@ -332,8 +360,9 @@ if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["i
           #echo '<pre>';
           #var_dump($playlist_desc);
           #echo '</pre>';
-
-          $div .= $playlist_desc;
+          if( !empty($playlist_desc) ){
+            $div .= $playlist_desc;
+          }
           break;
 
         default:
@@ -363,7 +392,9 @@ if ( !isset($arguments["image"]) || $arguments["image"] == 'on' || $arguments["i
           #var_dump($playlist_image);
           #echo '</pre>';
 
-          $div            .= '<img src="' . $playlist_image . '" title="Featured Image">';
+          if( !empty($playlist_image) ){
+            $div            .= '<img src="' . $playlist_image . '" title="Featured Image">';
+          }
           break;
 
         default:

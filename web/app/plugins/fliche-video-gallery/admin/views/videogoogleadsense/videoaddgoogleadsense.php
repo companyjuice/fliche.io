@@ -1,39 +1,41 @@
 <?php
 /**
- * Add googleadsense  view  file
+ * Add google adsense view file
  * 
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 ?>
 <script type="text/javascript">
-    function validateGoogleAdSense(){
-         var error              = 0;
-         var googleadsenseCode  = document.getElementById("googleadsense_code").value;
-         var googleadsensetitle = document.getElementById("googleadsense_title").value;
-         googleadsensetitle     =  googleadsensetitle.trim();
-         googleadsenseCode      =  googleadsenseCode.trim();
-         document.getElementById("googleadsense_codeerror").innerHTML  = '';
-         document.getElementById("googleadsense_titleerror").innerHTML = '';
-         if( googleadsenseCode =='' ) {
-             document.getElementById("googleadsense_codeerror").innerHTML='<label>Please Enter the Google AdSense</label>';
-             error++;
-         }
-         if(googleadsensetitle == '' ) { 
-            document.getElementById("googleadsense_titleerror").innerHTML='<label>Enter the Google AdSense title</label>';
-            error++;
-         }
-         if(error){
-             return false;
-         }else{
-             return true;
-         }
+  function validateGoogleAdSense()
+  {
+    var error              = 0;
+    var googleadsenseCode  = document.getElementById("googleadsense_code").value;
+    var googleadsensetitle = document.getElementById("googleadsense_title").value;
+    googleadsensetitle     =  googleadsensetitle.trim();
+    googleadsenseCode      =  googleadsenseCode.trim();
+    document.getElementById("googleadsense_codeerror").innerHTML  = '';
+    document.getElementById("googleadsense_titleerror").innerHTML = '';
+    if( googleadsenseCode =='' ) {
+       document.getElementById("googleadsense_codeerror").innerHTML='<label>Please Enter the Google AdSense</label>';
+       error++;
     }
+    if(googleadsensetitle == '' ) { 
+      document.getElementById("googleadsense_titleerror").innerHTML='<label>Enter the Google AdSense title</label>';
+      error++;
+    }
+    if(error){
+       return false;
+    }else{
+       return true;
+    }
+  }
 </script>
+
 <?php /** Display google adsense page starts */ ?>
 <div class="fliche_gallery">
 <?php /** Display title, icons in header */

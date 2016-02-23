@@ -1,8 +1,8 @@
 /**
  * jcarousel css file
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -11,37 +11,39 @@
  * This <div> element is wrapped by jCarousel around the list
  * and has the classname "jcarousel-container".
  */
-.jcarousel-container {position: relative;}
+.jcarousel-container {
+	position: relative;
+}
 .jcarousel-clip {
-z-index: 2;
-padding: 0;
-margin: 0;
-overflow: hidden;
-position: relative;
+	z-index: 2;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	position: relative;
 }
 .jcarousel-list {
-z-index: 1;
-overflow: hidden;
-position: relative;
-top: 0;
-left: 0;
-margin: 0;
-padding: 5px 0 !important;
+	z-index: 1;
+	overflow: hidden;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 5px 0 !important;
 }
 .jcarousel-list li,
 .jcarousel-item {
-float: left;
-list-style: none;
-margin-left:0px;
-width: 80px;
-height: 70px;
+	float: left;
+	list-style: none;
+	margin-left:0px;
+	width: 80px;
+	height: 70px;
 }
 .jcarousel-next {
-z-index: 3;
-display: none;
+	z-index: 3;
+	display: none;
 }
 
 .jcarousel-prev {
-z-index: 3;
-display: none;
+	z-index: 3;
+	display: none;
 }

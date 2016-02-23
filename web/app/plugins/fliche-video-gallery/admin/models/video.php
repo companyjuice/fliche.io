@@ -1,15 +1,16 @@
 <?php
 /**  
  * Video admin model file.
- * Save  video , multi publsh , delete video , feature video update , get gallery setting etc.
+ * Save video, multi publish, delete video, feature video update, get gallery settings, etc.
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
+
 /** Checks the VideoSubModel class has been defined if starts  */
 if (! class_exists ( 'VideoSubModel' )) {
   /**

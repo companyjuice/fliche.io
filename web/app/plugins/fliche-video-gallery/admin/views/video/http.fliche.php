@@ -6,9 +6,8 @@
  * ________________
  */
 
-#$url = 'http://fishflicks.tv/fliche/juice/extract-metadata-media.juice.php';
-$url = 'http://fliche.io/fliche/juice/extract-metadata-media.juice.php';
-#$url = 'http://fliche.io/fliche/juice/index.php';
+#$url = 'http://fliche.io/fliche/juice/extract-metadata-media.juice.php';
+$url = 'http://fliche.io/fliche/juice/index.php';
 
 try
 {

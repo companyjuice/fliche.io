@@ -1,9 +1,10 @@
 <?php
 /**
- * AdsXML file for player.
- * @category   FishFlicks
+ * AdsXML file for player
+ *
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -28,13 +29,13 @@ echo '<midrollad begin="5" adinterval="6" adrotate="false" random="false">';
       /** Looping midroll details */
       foreach ( $themediafiles as $rows ) {  
           /** Display midroll details as XML */
-          echo ' <midroll targeturl="' . $rows->targeturl . '" clickurl="' . $rows->clickurl . '" impressionurl="' . $rows->impressionurl . '">
-              <![CDATA[' . $rows->title . '<br>' . $rows->description . '<br>' . $rows->targeturl . ']]>
-               </midroll> ';        
+          echo '<midroll targeturl="' . $rows->targeturl . '" clickurl="' . $rows->clickurl . '" impressionurl="' . $rows->impressionurl . '">
+                  <![CDATA[' . $rows->title . '<br>' . $rows->description . '<br>' . $rows->targeturl . ']]>
+                </midroll> ';        
       }
     } else {
       /** Dsiplay sample midroll details as XML */
-      echo ' <midroll targeturl="http://grouponclone.flichesupport.com/" clickurl="http://grouponclone.flichesupport.com/" impressionurl="http://grouponclone.flichesupport.com/"> 
+      echo '<midroll targeturl="http://grouponclone.flichesupport.com/" clickurl="http://grouponclone.flichesupport.com/" impressionurl="http://grouponclone.flichesupport.com/"> 
               <![CDATA[<b><u><font class="heading"  size="15" color="#FF3300">Best Groupon Clone Script</font></u></b><br><font class="midroll" color="#FFFF00">Start your own group buying site like <b> Groupon or Living Social.</b></font><br><font class="webaddress" color="#FFFFFF">http://grouponclone.flichesupport.com/</font>]]>
             </midroll> ';
     }

@@ -1,14 +1,15 @@
 <?php
 /**  
- * Video playlist admin model file.
+ * Video playlist admin model file
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
+
 /**
  * Check PlaylistModel has been defined starts
  */
@@ -19,152 +20,161 @@ if ( !class_exists ( 'PlaylistModel' ) ) {
    * @author user
    */
   class PlaylistModel {
-      /**
-       * PlaylistModel constructor
-       */
-      public function __construct() {
-        global $wpdb;
-        /** Get playlist id and set playlist table, prefix */
-        $this->_wpdb = $wpdb;
-        $this->_playlisttable = $this->_wpdb->prefix . 'hdflvvideoshare_playlist';
-        $this->_playListId = absint ( filter_input ( INPUT_GET, 'playlistId' ) );
+    /**
+     * PlaylistModel constructor
+     */
+    public function __construct () 
+    {
+      global $wpdb;
+      /** Get playlist id and set playlist table, prefix */
+      $this->_wpdb = $wpdb;
+      $this->_playlisttable = $this->_wpdb->prefix . 'hdflvvideoshare_playlist';
+      $this->_playListId = absint ( filter_input ( INPUT_GET, 'playlistId' ) );
+    }
+    /**
+     * Function to insert new playlist
+     * 
+     * @param unknown $playlistData
+     * @return int
+     */
+    public function insert_playlist ($playlistData) 
+    {
+      /** Insert new playlist data */
+      if ($this->_wpdb->insert ( $this->_playlisttable, $playlistData )) {
+        /** If data is inserted return last inserted playlist id */
+        return $this->_wpdb->insert_id;
       }
-      /**
-       * Function to insert new playlist
-       * 
-       * @param unknown $playlistData
-       * @return int
-       */
-      public function insert_playlist($playlistData) {
-        /** Insert new playlist data */
-        if ($this->_wpdb->insert ( $this->_playlisttable, $playlistData )) {
-          /** If data is inserted return last inserted playlist id */
-          return $this->_wpdb->insert_id;
-        }
+    }
+    /**
+     * Function to update the playlist details
+     * 
+     * @param unknown $playlistData
+     * @param unknown $playlistId
+     */
+    public function playlist_update ($playlistData, $playlistId) 
+    {
+      /** Update playlist data and Return upate value */
+      return $this->_wpdb->update ( $this->_playlisttable, $playlistData, array ( 'pid' => $playlistId ) );
+    }
+    /**
+     * Function to change status via ajax request
+     * 
+     * @param unknown $playlistId
+     * @param unknown $status
+     */
+    public function status_update ($playlistId, $status) 
+    {
+        /** Update playlist status and return value */
+      return $this->_wpdb->update ( $this->_playlisttable, array ('is_publish' => $status ), array ('pid' => $playlistId) );
+    }
+    /**
+     * Get all playlists for grid layout.
+     * 
+     * @param unknown $searchValue
+     * @param unknown $searchBtn
+     * @param unknown $order
+     * @param unknown $orderDirection
+     */
+    public function get_playlistdata ($searchValue, $searchBtn, $order, $orderDirection) 
+    {
+      /** Get pagenum and calculate limit */
+      $pagenum = absint ( filter_input ( INPUT_GET, 'pagenum' ) );
+      if (empty ( $pagenum )) {
+        $pagenum = 1;
       }
-      /**
-       * Function to update the playlist details
-       * 
-       * @param unknown $playlistData
-       * @param unknown $playlistId
-       */
-      public function playlist_update($playlistData, $playlistId) {
-        /** Update playlist data and Return upate value */
-        return $this->_wpdb->update ( $this->_playlisttable, $playlistData, array ( 'pid' => $playlistId ) );
-      }
-      /**
-       * Function to change status via ajax request
-       * 
-       * @param unknown $playlistId
-       * @param unknown $status
-       */
-      public function status_update($playlistId, $status) {
-          /** Update playlist status and return value */
-        return $this->_wpdb->update ( $this->_playlisttable, array ('is_publish' => $status ), array ('pid' => $playlistId) );
-      }
-      /**
-       * Get all playlists for grid layout.
-       * 
-       * @param unknown $searchValue
-       * @param unknown $searchBtn
-       * @param unknown $order
-       * @param unknown $orderDirection
-       */
-      public function get_playlistdata($searchValue, $searchBtn, $order, $orderDirection) {
-        /** Get pagenum and calculate limit */
-        $pagenum = absint ( filter_input ( INPUT_GET, 'pagenum' ) );
-        if (empty ( $pagenum )) {
-          $pagenum = 1;
-        }
-        
-        $limit = 2000; /* -||- hard coded !! :( !! */
+      
+      $limit = 2000; /* -||- hard coded !! :( !! */
 
-        $offset = ($pagenum - 1) * $limit;
-        /** Make a query to fetch playlist data  */
-        $query = 'SELECT * FROM ' . $this->_playlisttable;
-        /** Check search action is done */
-        if (isset ( $searchBtn )) {
-            /** Set query based on search action */
-          $query .= ' WHERE playlist_name LIKE %s OR playlist_desc LIKE %s';
-        }
-        /** Set order by values to fetch playlist */
-        if (! isset ( $orderDirection )) {
-          /** Order by in descending order */
-          $query .= ' ORDER BY ' . $order . ' DESC';
-        } else {
-          /** Order by based on given order */
-          $query .= ' ORDER BY ' . $order . ' ' . $orderDirection;
-        }
-        /** Set limit values to fetch playlist */
-        $query .= ' LIMIT ' . $offset . ', ' . $limit;
-        /** Check if search action is done and set query */
-        if (isset ( $searchBtn )) {
-          $query = $this->_wpdb->prepare ( $query, '%' . $searchValue . '%', '%' . $searchValue . '%' );
-        } else {
-          $query = $query;
-        }
-        /** Get playlist details and return */
-        return $this->_wpdb->get_results ( $query );
+      $offset = ($pagenum - 1) * $limit;
+      /** Make a query to fetch playlist data  */
+      $query = 'SELECT * FROM ' . $this->_playlisttable;
+      /** Check search action is done */
+      if (isset ( $searchBtn )) {
+          /** Set query based on search action */
+        $query .= ' WHERE playlist_name LIKE %s OR playlist_desc LIKE %s';
       }
-      /**
-       * Function to get single playlistsdetails
-       * 
-       * @param unknown $playlistId
-       */
-      public function playlist_edit($playlistId) {
-        /** Return playlsit details to edit palylist data */
-        return $this->_wpdb->get_row ( 'SELECT * FROM ' . $this->_playlisttable . ' WHERE pid =' . $playlistId );
+      /** Set order by values to fetch playlist */
+      if (! isset ( $orderDirection )) {
+        /** Order by in descending order */
+        $query .= ' ORDER BY ' . $order . ' DESC';
+      } else {
+        /** Order by based on given order */
+        $query .= ' ORDER BY ' . $order . ' ' . $orderDirection;
       }
-      /**
-       * Function to get total playlists for paginations
-       * 
-       * @param unknown $searchValue
-       * @param unknown $searchBtn
-       */
-      public function playlist_count($searchValue, $searchBtn) {
-        /** Set select query to get playlist count */
-        $query = 'SELECT COUNT( `pid` ) FROM ' . $this->_playlisttable;
-        /** Check if search action is done and set  query based on search*/
-        if (isset ( $searchBtn )) {
-          $query .= ' WHERE playlist_name LIKE %s OR playlist_desc LIKE %s';
-        }
-        /** If yes, Query to display search results in playlist page
-         * Else display all playlist details */
-        if (isset ( $searchBtn )) {
-          return $this->_wpdb->get_var ( $this->_wpdb->prepare ( $query, '%' . $searchValue . '%', '%' . $searchValue . '%' ) );
-        } else {
-          return $this->_wpdb->get_var ( $query );
-        }
+      /** Set limit values to fetch playlist */
+      $query .= ' LIMIT ' . $offset . ', ' . $limit;
+      /** Check if search action is done and set query */
+      if (isset ( $searchBtn )) {
+        $query = $this->_wpdb->prepare ( $query, '%' . $searchValue . '%', '%' . $searchValue . '%' );
+      } else {
+        $query = $query;
       }
-      /**
-       * Function to delete playlists
-       * 
-       * @param unknown $playListId
-       */
-      public function playlist_delete($playListId) {
-        /** Return value after delete action is done */
-        return $this->_wpdb->query ( 'DELETE FROM ' . $this->_playlisttable . '  WHERE pid IN ( ' . $playListId . ' )');        
+      /** Get playlist details and return */
+      return $this->_wpdb->get_results ( $query );
+    }
+    /**
+     * Function to get single playlistsdetails
+     * 
+     * @param unknown $playlistId
+     */
+    public function playlist_edit ($playlistId) 
+    {
+      /** Return playlsit details to edit palylist data */
+      return $this->_wpdb->get_row ( 'SELECT * FROM ' . $this->_playlisttable . ' WHERE pid =' . $playlistId );
+    }
+    /**
+     * Function to get total playlists for paginations
+     * 
+     * @param unknown $searchValue
+     * @param unknown $searchBtn
+     */
+    public function playlist_count ($searchValue, $searchBtn) 
+    {
+      /** Set select query to get playlist count */
+      $query = 'SELECT COUNT( `pid` ) FROM ' . $this->_playlisttable;
+      /** Check if search action is done and set  query based on search*/
+      if (isset ( $searchBtn )) {
+        $query .= ' WHERE playlist_name LIKE %s OR playlist_desc LIKE %s';
       }
-      /**
-       * Function to publish multiple category 
-       * 
-       * @param unknown $videoId          
-       */
-      public function playlist_multipublish($playListId) {
-        /** Return update status after perform playlist update action */
-        return $this->_wpdb->query ( 'UPDATE ' . $this->_playlisttable . ' SET `is_publish`=1 WHERE pid IN (' . $playListId . ')');
+      /** If yes, Query to display search results in playlist page
+       * Else display all playlist details */
+      if (isset ( $searchBtn )) {
+        return $this->_wpdb->get_var ( $this->_wpdb->prepare ( $query, '%' . $searchValue . '%', '%' . $searchValue . '%' ) );
+      } else {
+        return $this->_wpdb->get_var ( $query );
       }
-      /**
-       * Function to unpublish multiple category 
-       * 
-       * @param unknown $videoId          
-       */
-      public function playlist_multiunpublish($playListId) {
-        /** Return valye for publish status update */
-        return $this->_wpdb->query ( 'UPDATE ' . $this->_playlisttable . ' SET `is_publish`=0 WHERE pid IN (' . $playListId . ')' );
-      }
+    }
+    /**
+     * Function to delete playlists
+     * 
+     * @param unknown $playListId
+     */
+    public function playlist_delete ($playListId) 
+    {
+      /** Return value after delete action is done */
+      return $this->_wpdb->query ( 'DELETE FROM ' . $this->_playlisttable . '  WHERE pid IN ( ' . $playListId . ' )');        
+    }
+    /**
+     * Function to publish multiple category 
+     * 
+     * @param unknown $videoId          
+     */
+    public function playlist_multipublish ($playListId) 
+    {
+      /** Return update status after perform playlist update action */
+      return $this->_wpdb->query ( 'UPDATE ' . $this->_playlisttable . ' SET `is_publish`=1 WHERE pid IN (' . $playListId . ')');
+    }
+    /**
+     * Function to unpublish multiple category 
+     * 
+     * @param unknown $videoId          
+     */
+    public function playlist_multiunpublish ($playListId) 
+    {
+      /** Return valye for publish status update */
+      return $this->_wpdb->query ( 'UPDATE ' . $this->_playlisttable . ' SET `is_publish`=0 WHERE pid IN (' . $playListId . ')' );
+    }
     /** PlaylistModel class ends */
   }
   /** Checking playlist model class exist if ends */
 }
-?>

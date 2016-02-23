@@ -1,10 +1,10 @@
 <?php
 /**  
- * Video player config xml file.
+ * Video player config xml file
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -12,12 +12,11 @@
 
 /** Include configuration file */
 require_once (dirname ( __FILE__ ) . '/fliche-config.php');
+
 /** Variable initialization for config xml */
 $downloadPath = $subTitleFontFamily = '';
 
-
-
-/** Get WordPress Site(admin) URL */
+/** Get WordPress Site Admin URL */
 global $site_url;
 # -||- #
 $site_url = get_site_url();

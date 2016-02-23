@@ -2,84 +2,91 @@
 /**
  * Video Gallery plugin helper file.
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
 /**
- * Funtion to perform exit action
+ * Function to perform exit action
  * 
  * @param unknown $exitmsg
  */
-function exitAction($exitmsg) {
+function exitAction ( $exitmsg ) 
+{
     exit($exitmsg);  
 }
 /**
- * Funtion to define constant
+ * Function to define constant
  * 
  * @param unknown $vgConstantName
  * @param unknown $vgConstantValue
  */
-function defineAction($vgConstantName, $vgConstantValue ) {
-    /** Define the given constant name with the value */ 
-    DEFINE($vgConstantName, $vgConstantValue);
+function defineAction ( $vgConstantName, $vgConstantValue ) 
+{
+  /** Define the given constant name with the value */ 
+  DEFINE($vgConstantName, $vgConstantValue);
 }
 /**
- * Funtion to get plugin folder name
+ * Function to get plugin folder name
  * 
  * @return Ambigous <>
  */
-function getPluginFolderName () {
-    /** Get plugin directory path */
-    $dir           = dirname ( plugin_basename ( __FILE__ ) );
-    /** Explode plugin name with the slash */ 
-    $dirExp        = explode ( '/', $dir );
-    /** return plugin folder name */
-    return $dirExp [0];
+function getPluginFolderName () 
+{
+  /** Get plugin directory path */
+  $dir = dirname ( plugin_basename ( __FILE__ ) );
+  /** Explode plugin name with the slash */ 
+  $dirExp = explode ( '/', $dir );
+  /** return plugin folder name */
+  return $dirExp [0];
 }
 /**
- * Funtion to get upload directory URL
+ * Function to get upload directory URL
  * 
  * @return string
  */
-function getUploadDirURL() {
+function getUploadDirURL () 
+{
   /** Get WordPress upload directory URL */
-    $upload_dir     = wp_upload_dir ();  
-    /** Get "videogallery" directory URL */
-    return $upload_dir ['baseurl'] . DS . 'videogallery' . DS;    
+  $upload_dir = wp_upload_dir ();  
+  /** Get "videogallery" directory URL */
+  return $upload_dir ['baseurl'] . DS . 'videogallery' . DS;
 }
 /**
- * Funtion to get upload directory path
+ * Function to get upload directory path
  * 
  * @return string
  */
-function getUploadDirPath() {
+function getUploadDirPath () 
+{
   /** Get uploads directory path */
   $upload_dir = wp_upload_dir ();
   /** Get "videogallery" directory path */
   return  $upload_dir ['basedir'] . DS . 'videogallery' . DS;
 }
 /**
- * Funtion to get plugin images directory URL
+ * Function to get plugin images directory URL
  * 
  * @return string
  */
-function getImagesDirURL() {
-    /** Return imgaes directory URL */ 
-    return FLICHE_VGALLERY_BASEURL . 'images' . DS;
+function getImagesDirURL () 
+{
+  /** Return imgaes directory URL */ 
+  return FLICHE_VGALLERY_BASEURL . 'images' . DS;
 }
 /**
  * Function to set xml header for player xml files.
  */
-function xmlHeader () {
-    /** Clear page */
-    ob_clean ();
-    /** Set XML content type */
-    header ( 'content-type:text/xml;charset = utf-8' );
+function xmlHeader () 
+{
+  /** Clear page */
+  ob_clean ();
+  /** Set XML content type */
+  header ( 'content-type:text/xml;charset = utf-8' );
 }
 /**
  * Function to check whether SSL is enabled.
@@ -87,16 +94,17 @@ function xmlHeader () {
  * 
  * @return string
  */ 
-function getPluginProtocol() {
-    /** Set default protocol as http */
-    $protocolURL = 'http://';
-    /** Check SSL is enabled */
-    if (is_ssl ()) {
-      /** If ssl is enabled, then set protocol as https */
-      $protocolURL = 'https://';
-    }  
-    /** Return protocol value */
-    return $protocolURL;
+function getPluginProtocol () 
+{
+  /** Set default protocol as http */
+  $protocolURL = 'http://';
+  /** Check SSL is enabled */
+  if (is_ssl ()) {
+    /** If ssl is enabled, then set protocol as https */
+    $protocolURL = 'https://';
+  }  
+  /** Return protocol value */
+  return $protocolURL;
 }
 /**
  * Function to limit title, if it exceeds 30 character
@@ -105,7 +113,8 @@ function getPluginProtocol() {
  * @param unknown $title
  * @return Ambigous <string, unknown>
  */
-function limitTitle ( $title ) {
+function limitTitle ( $title ) 
+{
   /** Get title from argument */
   $fullTitle = $title;
   /** check title character length exceeds 30 */
@@ -126,30 +135,31 @@ function limitTitle ( $title ) {
  * @param unknown $params
  * @return string
  */
-function paginateLinks ( $total, $limit, $pageNum, $type, $params ) {
-    /** Set aruments for pagination */
-    $argParams = add_query_arg ( 'pagenum', '%#%' );
-    if( !empty($params)) {
-      $argParams = add_query_arg ( $params ) ;
-    } 
-    /** Get number of pages */
-    $numOfPages = ceil ( $total / $limit );
-    /** Get pagination values */
-    $pageLinks   = paginate_links (
-        array ( 'base' => $argParams, 'format' => '', 'prev_text' => __ ( '&laquo;', 'aag' ),
-          'next_text' => __ ( '&raquo;', 'aag' ), 'total' => $numOfPages, 'current' => $pageNum )
-    );
-    /** Check type is admin */
-    $styleAdmin = '';
-    if ($type == 'admin') {
-      /** If type is admin, then apply css */
-      $styleAdmin = 'style="margin: 0em 0"';
-    }
-    /** Check pagination value is exist */
-    if ($pageLinks) {
-        /** Return pagination values */
-       return '<div class="tablenav"><div class="tablenav-pages" ' . $styleAdmin . ' >' . $pageLinks . '</div></div>';
-    }
+function paginateLinks ( $total, $limit, $pageNum, $type, $params ) 
+{
+  /** Set aruments for pagination */
+  $argParams = add_query_arg ( 'pagenum', '%#%' );
+  if( !empty($params)) {
+    $argParams = add_query_arg ( $params ) ;
+  } 
+  /** Get number of pages */
+  $numOfPages = ceil ( $total / $limit );
+  /** Get pagination values */
+  $pageLinks   = paginate_links (
+    array ( 'base' => $argParams, 'format' => '', 'prev_text' => __ ( '&laquo;', 'aag' ),
+      'next_text' => __ ( '&raquo;', 'aag' ), 'total' => $numOfPages, 'current' => $pageNum )
+  );
+  /** Check type is admin */
+  $styleAdmin = '';
+  if ($type == 'admin') {
+    /** If type is admin, then apply css */
+    $styleAdmin = 'style="margin: 0em 0"';
+  }
+  /** Check pagination value is exist */
+  if ($pageLinks) {
+    /** Return pagination values */
+    return '<div class="tablenav"><div class="tablenav-pages" ' . $styleAdmin . ' >' . $pageLinks . '</div></div>';
+  }
 }
 /**
  * Function to get video order from settings
@@ -157,30 +167,31 @@ function paginateLinks ( $total, $limit, $pageNum, $type, $params ) {
  * @param unknown $recent_video_order
  * @return string
  */
-function getVideoOrder ( $recent_video_order ) {
-    /** Check recent video order type */
-    switch ($recent_video_order){
-      case 'hitcount': 
-        // Set thumb image order based on hicount
-        $thumImageorder = ' w.' . $recent_video_order . ' DESC '; 
-        break; 
-      case 'default':
-        // Set thumb image order based on ordering
-        #$thumImageorder = ' w.ordering ASC ';
-        // Set thumb image order based on name
-        $thumImageorder   = ' w.name ASC ';
-        break;
-      case 'id': 
-        // Set thumb image order based on id
-        $thumImageorder   = ' w.vid DESC ';
-        break;
-      default:
-        // Set thumb image order based on name
-        $thumImageorder   = ' w.name ASC ';
-        break;
-    }
-    /** Return thumb image order */
-    return $thumImageorder;  
+function getVideoOrder ( $recent_video_order ) 
+{
+  /** Check recent video order type */
+  switch ($recent_video_order){
+    case 'hitcount': 
+      // Set thumb image order based on hicount
+      $thumImageorder = ' w.' . $recent_video_order . ' DESC '; 
+      break; 
+    case 'default':
+      // Set thumb image order based on ordering
+      #$thumImageorder = ' w.ordering ASC ';
+      // Set thumb image order based on name
+      $thumImageorder   = ' w.name ASC ';
+      break;
+    case 'id': 
+      // Set thumb image order based on id
+      $thumImageorder   = ' w.vid DESC ';
+      break;
+    default:
+      // Set thumb image order based on name
+      $thumImageorder   = ' w.name ASC ';
+      break;
+  }
+  /** Return thumb image order */
+  return $thumImageorder;  
 }
 /**
  * Get rate count and calculate rate snippet and display if needs
@@ -190,44 +201,45 @@ function getVideoOrder ( $recent_video_order ) {
  * @param unknown $action
  * @return number|string
  */
-function getRatingValue ( $rate, $rateCount, $action ) {    
-    $rateSnippet     = 0 ;
-    /** Check rate and ratecount is exist */
-    if (!empty($rate) && !empty($rateCount)) {
-      /** If exist then calculate rateings value */
-      $rateSnippet = round ( $rate / $rateCount );
-    }
-    /** Check action is calc */
-    if ($action == 'calc') {
-      /** If yes, then return ratings value alone */
-      return $rateSnippet;
-    } else {      
-      /** Define rate star postions */
-      $ratearray = array ( 'nopos1', 'onepos1', 'twopos1', 'threepos1', 'fourpos1', 'fivepos1' );
-      /** Else display ratings value and return */
-      return '<span class="ratethis1 ' . $ratearray [$rateSnippet] . '"></span>';
-    }    
+function getRatingValue ( $rate, $rateCount, $action ) 
+{    
+  $rateSnippet = 0;
+  /** Check rate and ratecount is exist */
+  if (!empty($rate) && !empty($rateCount)) {
+    /** If exist then calculate rateings value */
+    $rateSnippet = round ( $rate / $rateCount );
+  }
+  /** Check action is calc */
+  if ($action == 'calc') {
+    /** If yes, then return ratings value alone */
+    return $rateSnippet;
+  } else {      
+    /** Define rate star postions */
+    $ratearray = array ( 'nopos1', 'onepos1', 'twopos1', 'threepos1', 'fourpos1', 'fivepos1' );
+    /** Else display ratings value and return */
+    return '<span class="ratethis1 ' . $ratearray [$rateSnippet] . '"></span>';
+  }
 }
-
 /**
  * Get views count and display it
  * 
  * @param unknown $hitCount
  * @return string
  */
-function displayViews ( $hitCount ) {
-    /** Defind language text for views, view text */
-    $viewsLang      = __ ( 'Views', FLICHEVIDEOGALLERY );
-    $viewLang       = __ ( 'View', FLICHEVIDEOGALLERY );
-    /** Set view text as default */
-    $viewlangText   = $viewLang;
-    /** Check views count is grater than 1 */
-    if ($hitCount > 1) {
-      /** Set views text if count is  > 1 */
-      $viewlangText = $viewsLang;
-    }
-    /** Return views display */
-    return '<span class="video_views">' . $hitCount . '&nbsp;' . $viewlangText . '</span>';
+function displayViews ( $hitCount ) 
+{
+  /** Defind language text for views, view text */
+  $viewsLang      = __ ( 'Views', FLICHEVIDEOGALLERY );
+  $viewLang       = __ ( 'View', FLICHEVIDEOGALLERY );
+  /** Set view text as default */
+  $viewlangText   = $viewLang;
+  /** Check views count is grater than 1 */
+  if ($hitCount > 1) {
+    /** Set views text if count is  > 1 */
+    $viewlangText = $viewsLang;
+  }
+  /** Return views display */
+  return '<span class="video_views">' . $hitCount . '&nbsp;' . $viewlangText . '</span>';
 }
 /**
  * Function to set image value based on file types
@@ -238,40 +250,41 @@ function displayViews ( $hitCount ) {
  * @param unknown $type
  * @return Ambigous <string, unknown>
  */
-function getImagesValue ( $image, $file_type, $amazonBucket, $type) {
-    /** Get videogallery plugin images directoy path */
-    $imagePath    = getImagesDirURL ();
-    /** Get videogallery plugin upload directory path */
-    $uploadPath   = getUploadDirURL ();
-    /** GEt image name */
-    $imageFileURL = $image;    
-    /** If type is 1 then set defult image for preview image
-     * Else set thumb defualt */
-    if($type == 1) {
-      $imageDefault  = $imagePath . 'noimage.jpg';
-    } else {
-      $imageDefault  = $imagePath . 'nothumbimage.jpg';
-    }    
-    /** If there is no thumb image for video */
-    if ( $imageFileURL == '' ) {
-        /** Set default image as thumb image */
-        $imageFileURL    = $imageDefault;
-    } else {
-        /** Check file type is 2 or 5 */
-        if ($file_type == 2 || $file_type == 5) {
-            /**
-             * Get thumb image full uploaded path 
-             */
-            $imageFileURL = $uploadPath . $imageFileURL;            
-            /** For Amazon S3 Buckets images */
-            if ($amazonBucket && strpos ( $image , '/' )) {
-                /** Get thumb image bucket URL */
-                $imageFileURL = $image;
-            } 
-        } 
-    }    
-    /** Return thumb image URL */
-    return $imageFileURL ;
+function getImagesValue ( $image, $file_type, $amazonBucket, $type ) 
+{
+  /** Get videogallery plugin images directoy path */
+  $imagePath    = getImagesDirURL ();
+  /** Get videogallery plugin upload directory path */
+  $uploadPath   = getUploadDirURL ();
+  /** GEt image name */
+  $imageFileURL = $image;    
+  /** If type is 1 then set defult image for preview image
+   * Else set thumb defualt */
+  if($type == 1) {
+    $imageDefault  = $imagePath . 'noimage.jpg';
+  } else {
+    $imageDefault  = $imagePath . 'nothumbimage.jpg';
+  }    
+  /** If there is no thumb image for video */
+  if ( $imageFileURL == '' ) {
+      /** Set default image as thumb image */
+      $imageFileURL    = $imageDefault;
+  } else {
+    /** Check file type is 2 or 5 */
+    if ($file_type == 2 || $file_type == 5) {
+      /**
+       * Get thumb image full uploaded path 
+       */
+      $imageFileURL = $uploadPath . $imageFileURL;            
+      /** For Amazon S3 Buckets images */
+      if ($amazonBucket && strpos ( $image , '/' )) {
+        /** Get thumb image bucket URL */
+        $imageFileURL = $image;
+      } 
+    } 
+  }    
+  /** Return thumb image URL */
+  return $imageFileURL;
 }
 /**
  * Function to set video, hdvideo value based on file types
@@ -281,7 +294,8 @@ function getImagesValue ( $image, $file_type, $amazonBucket, $type) {
  * @param unknown $amazonBucket
  * @return Ambigous <string, unknown>
  */
-function getVideosValue ( $videoFile, $file_type, $amazonBucket ) {
+function getVideosValue ( $videoFile, $file_type, $amazonBucket ) 
+{
    /** Get upload directory URL */
     $uploadPath   = getUploadDirURL ();
     $videoFileURL = $videoFile;
@@ -303,7 +317,8 @@ function getVideosValue ( $videoFile, $file_type, $amazonBucket ) {
  * 
  * @return boolean
  */
-function vgallery_detect_mobile() {
+function vgallery_detect_mobile () 
+{
   /** Get protocol */
   $_SERVER ['ALL_HTTP'] = isset ( $_SERVER ['ALL_HTTP'] ) ? $_SERVER ['ALL_HTTP'] : '';
   $mobile_browser       = '0';
@@ -359,7 +374,8 @@ function vgallery_detect_mobile() {
  * @param  string $text
  * @return string
  */
-function strip_html_tags( $text ) {
+function strip_html_tags( $text ) 
+{
   /** Remove invisible content
    * 
    * Add line breaks before and after blocks */
@@ -370,14 +386,14 @@ function strip_html_tags( $text ) {
       array(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',"\n\$0", "\n\$0", "\n\$0", "\n\$0", "\n\$0", "\n\$0","\n\$0", "\n\$0",),$text );
   return strip_tags( $text );
 }
-
 /**
  * Function to get Youtube Video ID from the given youtube video URL
  * 
  * @param unknown $text
  * @return mixed
  */
-function getYoutubeVideoID ( $text ) {
+function getYoutubeVideoID ( $text ) 
+{
   /**
    * Match non-linked youtube URL in the wild. (Rev:20130823)
    * 
@@ -402,7 +418,7 @@ function getYoutubeVideoID ( $text ) {
    * End negative lookahead assertion.
    * Consume any URL (query) remainder.
    */
-    return preg_replace('~https?://(?:[0-9A-Z-]+\.)?(?:youtu\.be/| youtube(?:-nocookie)?\.com\S*[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:[\'"][^<>]*>| </a>))[?=&+%\w.-]*~ix', '$1', $text);
+  return preg_replace('~https?://(?:[0-9A-Z-]+\.)?(?:youtu\.be/| youtube(?:-nocookie)?\.com\S*[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:[\'"][^<>]*>| </a>))[?=&+%\w.-]*~ix', '$1', $text);
 }
 /**
  * Function to get dailymotion Video ID from the given video URL
@@ -410,14 +426,13 @@ function getYoutubeVideoID ( $text ) {
  * @param unknown $text
  * @return multitype:
  */
-function getDailymotionVideoID ( $text ) {
+function getDailymotionVideoID ( $text ) 
+{
   /** Explode dailymotion video url with slash */
   $split      = explode ( '/', $text );
   /** Return dailymotion vieo id */
   return  explode ( '_', $split [4] );
 }
-
-
 
 /**
  * Function to get video duration using ffmpeg option
@@ -438,13 +453,11 @@ function getVideoDuration ( $ffmpeg_path, $videoFile )
   $get_duration   = ob_get_contents ();
 
 
-
 /** Execute code to get thumbnail using ffmpeg 
   passthru ( $ffmpeg_path . ' -i "' . $videoFile . '" 2>&1' );*/
 
   /** Get contents 
   $get_duration   = ob_get_contents ();*/
-
 
 
   ob_end_clean ();
@@ -456,7 +469,3 @@ function getVideoDuration ( $ffmpeg_path, $videoFile )
   /** Return video duration and matches */
   return array( $duration, $matches );
 }
-
-
-
-?>

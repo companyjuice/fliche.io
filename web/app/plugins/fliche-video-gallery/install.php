@@ -127,13 +127,14 @@ function createTables ($wfound, $pfound, $mfound, $tags ) {
     $sql = 'CREATE TABLE ' . WVG_PLAYLIST . ' 
       ( 
         pid BIGINT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+        parent_id BIGINT( 10 ) NOT NULL DEFAULT "0", 
         playlist_name VARCHAR( 200 ) NOT NULL, 
         playlist_slugname TEXT NOT NULL, 
         playlist_desc LONGTEXT NULL, 
         playlist_thumb VARCHAR( 200 ) NOT NULL, 
         playlist_image VARCHAR( 200 ) NOT NULL, 
-        is_publish INT NOT NULL, 
-        playlist_order INT NOT NULL 
+        is_publish INT NOT NULL DEFAULT "0", 
+        playlist_order INT NOT NULL DEFAULT "0" 
       ) ' . WVG_CHARSET_COLLATE . ';
     ';
     $wpdb->query ( $sql );

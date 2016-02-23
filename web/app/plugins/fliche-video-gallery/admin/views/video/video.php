@@ -1,10 +1,10 @@
 <?php
 /**
  * Video gallery admin video view file
- * All Video manage admin page  
- * @category   FishFlicks
+ * 
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -54,43 +54,96 @@ $selfurl  = get_site_url () . '/wp-admin/admin.php?page=video' . $page;
  * and assign to script variable
  */
 $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&type=1'. $page;
-/** Include css file and script to show /hide video page information*/ ?>
+
+/** Get orderby URL based on videos id for videos page titles */
+$videoIDURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=id&order='. $reverse_direction;
+/** Get orderby URL based on videos title for videos page titles */
+$videoTitleURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=title&order='. $reverse_direction;
+/** Get orderby URL based on videos author for videos page titles */
+$videoAuthorURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=author&order='. $reverse_direction;
+/** Get orderby URL based on videos category for videos page titles */
+$videoCatURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=category&order='.$reverse_direction;
+/** Get orderby URL based on featured videos for videos page titles */
+$videoFeaURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=fea&order='. $reverse_direction;
+/** Get orderby URL based on videos date for videos page titles */
+$videoDateURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=date&order='. $reverse_direction; 
+/** Get orderby URL based on videos status for videos page titles */
+$videoStatusURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=publish&order='. $reverse_direction; 
+/** Get orderby URL based on videos ordering for videos page titles */
+$videoOrderURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=ordering&order='.$reverse_direction 
+?>
+
+<?php /** Include css file and script to show /hide video page information*/ ?>
 <link rel="stylesheet" href="<?php echo FLICHE_VGALLERY_BASEURL . 'admin/css/jquery.ui.all.css'; ?>">
 <script type="text/javascript">
-        var sortorderURL = '<?php echo $sortOrderURL; ?>'; 
-        var dragdr = jQuery.noConflict();
-        dragdr( document ).ready( function() {
-            dragdr( ".ui-icon-minusthick" ).hide();
-            dragdr( ".portlet-content" ).hide();
-            dragdr( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" ) 
-              .find( ".portlet-header" ) 
-              .addClass( "ui-widget-header ui-corner-all" ) 
-              .prepend( "<span class='ui-icon ui-icon-plusthick'></span>" ) 
-              .end()
-              .find( ".portlet-content" ); 
-                dragdr( ".portlet-header .ui-icon" ).click( function() { 
-                dragdr( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" ); 
-                dragdr( this ).parents( ".portlet" ).find( ".portlet-content" ).toggle(); 
-            } );
-        });
+  var sortorderURL = '<?php echo $sortOrderURL; ?>'; 
+  var dragdr = jQuery.noConflict();
+  dragdr( document ).ready( function() {
+    dragdr( ".ui-icon-minusthick" ).hide();
+    dragdr( ".portlet-content" ).hide();
+    dragdr( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" ) 
+      .find( ".portlet-header" ) 
+      .addClass( "ui-widget-header ui-corner-all" ) 
+      .prepend( "<span class='ui-icon ui-icon-plusthick'></span>" ) 
+      .end()
+      .find( ".portlet-content" ); 
+        dragdr( ".portlet-header .ui-icon" ).click( function() { 
+        dragdr( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" ); 
+        dragdr( this ).parents( ".portlet" ).find( ".portlet-content" ).toggle(); 
+    } );
+  });
 </script>
+
+
 <?php /** Display videos page starts */ ?>
 <div class="fliche_gallery">
 <?php /** Call function to display admin tabs in videos page 
 		* Show only is admin logs in
 		*/
-	if($user_role == 'administrator') {
-		echo displayAdminTabs ( 'videos' ) ;
-		}
+	if( $user_role == 'administrator' ){
+		#echo displayAdminTabs( 'videos' );
+	}
       ?>    
       <div class="wrap">
-      <?php /** Display page title and icon in all videos page starts */ ?>
-          <h2 class="option_title"> <?php /*echo '<img src="' . getImagesDirURL() .'manage_video.png" alt="move" width="30"/>';*/ ?>
+          <?php /** Display page title and icon in all videos page starts */ ?>
+          <h1 class="option_title"> 
+              <?php echo '<img src="' . getImagesDirURL() .'manage_video.png" alt="move" width="30"/>'; ?>
               <?php esc_attr_e( 'Manage Videos', FLICHE_VGALLERY ); ?>
               <a class="button-primary" href="<?php echo get_site_url() ; ?>/wp-admin/admin.php?page=newvideo" style="margin-left: 10px;">
               <?php esc_attr_e( 'Add New', FLICHE_VGALLERY ); ?></a>
-              <?php if($user_role != 'administrator') { ?>(This grid shows the videos based on add method selected by admin)<?php }?>
-          </h2> 
+              <?php /* if( $user_role != 'administrator' ){ ?>(This grid shows the videos based on add method selected by admin)<?php } */ ?>
+          </h1> 
+          <?php /** Display page title and icon in all videos page starts */ ?>
+
+
+          <?php  
+            /** Get order limit, direction for videos page */
+            if (! empty ( $orderFilterlimit ) && $orderFilterlimit !== 'all') { 
+              $limit = $orderFilterlimit; 
+            } else if ($orderFilterlimit === 'all') { 
+              $limit = $Video_count; 
+            } else { 
+              $limit = 50; 
+            } 
+            $pagenum = absint ( filter_input ( INPUT_GET, 'pagenum' ) ); 
+            if (empty ( $pagenum )) { 
+              $pagenum = 1;
+            } 
+            $total = $Video_count; 
+            /** Set pagination arguments */
+            $arr_params = array ( 'pagenum' => '%#%', '#videofrm' => '' ); 
+            /** Display pagination for all videos page */
+            echo paginateLinks ( $total, $limit, $pagenum, 'admin', $arr_params );
+
+          ?>
+
+            <div class="alignleft">
+            <?php if ( isset( $pagelist ) ) { 
+              echo $pagelist; 
+            } ?>
+            </div> 
+            <div style="clear: both;"></div> 
+
 
           <?php
             /** Display status for the performed action */
@@ -99,11 +152,12 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
             $orderFilterlimit = filter_input ( INPUT_GET, 'filter' ); 
             $orderField       = filter_input ( INPUT_GET, 'order' ); 
             $orderby          = filter_input ( INPUT_GET, 'orderby' ); 
-            $direction        = isset ( $orderField ) ? $orderField : ''; 
+            $direction        = isset ( $orderField ) ? $orderField : 'DESC'; 
             if (! empty ( $orderby ) && ! empty ( $orderField )) { 
                 $ordervalue   = '&orderby=' . $orderby . '&order=' . $orderField; 
             }
             $reverse_direction = ($direction == 'DESC' ? 'ASC' : 'DESC'); 
+            
             /** Display search results message starts */
             if (isset ( $_REQUEST ['videosearchbtn'] )) { ?> 
               <div class="updated below-h2"> 
@@ -115,9 +169,10 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                       echo ' No Search Result( s ) for "' . $searchmsg . '".&nbsp&nbsp&nbsp<a href="' . $url . '" >Back to Videos List</a>'; 
                   } ?> 
               </div> 
-            <?php } ?> 
-            <?php /** Display search results message ends
-            /** Display video search button starts */ ?>
+            <?php } ?>
+          <?php /** Display search results message ends */ ?>
+
+          <?php /** Display video search button starts */ ?>
             <form class="admin_video_search alignright" name="videos" action="<?php echo $url . '&#videofrm'; ?>" method="post" onsubmit="return videosearch();"> 
                 <p class="search-box"> 
                 <?php /** Display textbox to get video search text */ ?>
@@ -130,8 +185,10 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                     <input type="submit" name="videosearchbtn" class="button" value="<?php esc_attr_e( 'Search Videos', FLICHE_VGALLERY ); ?>"> 
                 </p> 
             </form> 
-            <?php /** Display video search button ends */
-            /** Display grid form to show videos starts */ ?>
+          <?php /** Display video search button ends */ ?>
+
+
+          <?php /** Display grid form to show videos starts */ ?>
             <form class="admin_video_action" name="videofrm" id="videofrm" action="" method="post" onsubmit="return VideodeleteIds()"> 
                 <?php /** Display multi option to delete / feture / publish videos in head section */ ?>
                 <div class="alignleft actions" style="margin-bottom: 10px;"> 
@@ -172,51 +229,10 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
                     </select> 
                 </div>
             <?php  /** Display filter option to filter videos ends */ ?>
-
-            <?php  /** Get order limit, direction for videos page */
-            if (! empty ( $orderFilterlimit ) && $orderFilterlimit !== 'all') { 
-              $limit = $orderFilterlimit; 
-            } else if ($orderFilterlimit === 'all') { 
-              $limit = $Video_count; 
-            } else { 
-              $limit = 50; 
-            } 
-            $pagenum = absint ( filter_input ( INPUT_GET, 'pagenum' ) ); 
-            if (empty ( $pagenum )) { 
-              $pagenum = 1;
-            } 
-            $total = $Video_count; 
-            /** Set pagination arguments */
-            $arr_params = array ( 'pagenum' => '%#%', '#videofrm' => '' ); 
-            /** Display pagination for all videos page */
-            echo paginateLinks ( $total, $limit, $pagenum, 'admin', $arr_params ); 
-            /** Get orderby URL based on videos id for videos page titles */
-            $videoIDURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=id&order='. $reverse_direction ;
-            /** Get orderby URL based on videos title for videos page titles */
-            $videoTitleURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=title&order='. $reverse_direction;
-            /** Get orderby URL based on videos author for videos page titles */
-            $videoAuthorURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=author&order='. $reverse_direction;
-            /** Get orderby URL based on videos category for videos page titles */
-            $videoCatURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=category&order='.$reverse_direction;
-            /** Get orderby URL based on featured videos for videos page titles */
-            $videoFeaURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=fea&order='. $reverse_direction;
-            /** Get orderby URL based on videos date for videos page titles */
-            $videoDateURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=date&order='. $reverse_direction; 
-            /** Get orderby URL based on videos status for videos page titles */
-            $videoStatusURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=publish&order='. $reverse_direction; 
-            /** Get orderby URL based on videos ordering for videos page titles */
-            $videoOrderURL = get_site_url() .'/wp-admin/admin.php?page=video&orderby=ordering&order='.$reverse_direction ?> 
             
             <!--
             <br /> <br />
             -->
-
-            <div class="alignleft">
-            <?php if ( isset( $pagelist ) ) { 
-              echo $pagelist; 
-            } ?>
-            </div> 
-            <div style="clear: both;"></div> 
                   
 
             <?php /** Display videos titles in grid section */ ?>
@@ -543,7 +559,7 @@ $sortOrderURL = get_site_url() . '/wp-admin/admin-ajax.php?action=vg_sortorder&t
               <?php /** Display how to use information starts */ ?>
                   <div class="portlet-header"><?php esc_attr_e( 'How To Use?', FLICHE_VGALLERY ); ?></div>
                   <div class="portlet-content admin_short_video_info">
-                      <p> When you installed the "FishFlicks Video Gallery" plugin, a page titled "Videos" was created automatically. 
+                      <p> When you installed the "Video Gallery" plugin, a page titled "Videos" was created automatically. 
                       If you would like to display the video gallery home page on any other page/post, 
                       you can use the following shortcode <strong>[videohome]</strong>.</p> 
                       <p>To display the single video player on any page/post use <strong> [hdvideo id=10]</strong>. 

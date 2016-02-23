@@ -1,10 +1,10 @@
 <?php
 /**
- * Wordpress video gallery db query helper file.
+ * Wordpress video gallery db query helper file
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
@@ -97,6 +97,17 @@ function get_playlist_id ( $play_name ) {
 function get_playlist_name ( $play_id ) {
   global $wpdb;
   return $wpdb->get_var ( 'SELECT playlist_name FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE pid="' . $play_id . '" AND is_publish=1 LIMIT 1' );
+}
+
+/**
+ * Get playlist Description from Playlist id
+ * -||-
+ * @param unknown $play_id
+ * @return Ambiguous <string, NULL>
+ */
+function get_playlist_parent ( $play_id ) {
+  global $wpdb;
+  return $wpdb->get_var ( 'SELECT playlist_name FROM ' . $wpdb->prefix . 'hdflvvideoshare_playlist WHERE parent_id="' . $play_id . '" AND is_publish=1 LIMIT 1' );
 }
 
 /**

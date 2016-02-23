@@ -14,7 +14,7 @@ $path = '';
 if (! defined ( 'WP_LOAD_PATH' )) {
     /**
      * Classic root path if wp-content and plugins is below wp-config.php
-     * It should be end with a trailing slash
+     * It should be end with a trailing slash/
      */ 
     # CUSTOM CODE 
     $classic_root = dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . '/';

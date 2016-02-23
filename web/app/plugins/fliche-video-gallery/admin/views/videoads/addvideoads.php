@@ -2,13 +2,14 @@
 /**  
  * Multi type Video added and  update details form 
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
+
 /** Get upload directory url */
 $image_path = getUploadDirURL();
 $checked = 'checked="checked"';

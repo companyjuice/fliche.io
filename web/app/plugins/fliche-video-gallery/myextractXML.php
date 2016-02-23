@@ -1,18 +1,19 @@
 <?php
 /**  
- * Video player myextract xml file for video details and related  video settings.
+ * Video player myextract xml file for video details and related video settings
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
 /** Include config file for playlist xml */ 
-require_once (dirname ( __FILE__ ) . '/fliche-config.php');
-/** Variable Decalration and set defualt values */
+require_once( dirname ( __FILE__ ) . '/fliche-config.php' );
+
+/** Variable Declaration and set defualt values */
 $banner   = 0;
 $islive   = $streamer = $videoPreview = $videotag = $postroll_id = $featured =  '';
 $singleVideodata = array();

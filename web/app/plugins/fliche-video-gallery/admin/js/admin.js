@@ -1,15 +1,16 @@
 /**  
  * Video admin js file.
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
-function checkingarray(checkname)						//for giving the coma seprerated  selcted checkbox id's
+/** for comma separated selected checkbox id's */
+function checkingarray(checkname)
 {
 	checkarr   = document.getElementsByName(checkname);
 	checkarray = "";

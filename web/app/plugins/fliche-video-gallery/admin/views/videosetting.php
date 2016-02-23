@@ -1,14 +1,15 @@
 <?php
 /**
- * Video setting view file. 
+ * Video setting view file
  * 
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
+
 /** Get player color settings data */
 $player_colors = unserialize( $settingsGrid->player_colors );
 #var_dump($player_colors);
@@ -21,20 +22,23 @@ $checked = 'checked="checked"';
 /** Display video settings page starts */
 ?>
 <div class="fliche_gallery fliche_settings_label"> 
-<?php /** Call function to display admin tabs in settings page */
-      echo displayAdminTabs ( 'settings' ) ;?>
-      <div id="trackcodeerror"></div> 
-      <?php /** Display settings page status */ 
-      if($displayMsg) {
-        echo displayStatusMeassage ( $displayMsg ); 
-      }?> 
-     <?php /** Include css files, form actions */ ?>
+<?php 
+/** Call function to display admin tabs in settings page */
+#echo displayAdminTabs ( 'settings' ) ;
+?>
+    <div id="trackcodeerror"></div> 
+    <?php /** Display settings page status */ 
+    if($displayMsg) {
+      echo displayStatusMeassage ( $displayMsg ); 
+    }?>
+    
+    <?php /** Include css files, form actions */ ?>
       <div class="wrap"> 
          <link rel="stylesheet" href="<?php echo FLICHE_VGALLERY_BASEURL. 'admin/css/jquery.ui.all.css'; ?>"> 
          <form method="post" enctype="multipart/form-data" action="admin.php?page=hdflvvideosharesettings" >
          <?php /** Display settings page title and icon */ ?> 
          <h2 class="option_title"> <?php /*echo '<img src="' . getImagesDirURL() . 'setting.png" alt="move" width="30"/>';*/ ?> 
-             <?php esc_attr_e( 'Settings', FLICHE_VGALLERY ); ?> 
+             <?php esc_attr_e( 'Video Gallery Settings', FLICHE_VGALLERY ); ?> 
              <input class='button-primary' id='videogallery_setting' style="float:right; "type='submit' name="updatebutton" value='<?php esc_attr_e( 'Update Options', FLICHE_VGALLERY ); ?>'> 
          </h2> 
          <?php /** Display settings page fields starts */ ?>

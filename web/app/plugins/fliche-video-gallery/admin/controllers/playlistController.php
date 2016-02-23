@@ -2,16 +2,17 @@
 /**  
  * Video playlist admin controller file.
  *
- * @category   FishFlicks
+ * @category   VidFlix
  * @package    Fliche Video Gallery
- * @version    0.8.1
+ * @version    0.9.0
  * @author     Company Juice <support@companyjuice.com>
  * @copyright  Copyright (C) 2016 Company Juice. All rights reserved.
  * @license    GNU General Public License http://www.gnu.org/copyleft/gpl.html 
  */
 
 /** Including Playlist model file for get database information. */
-include_once ($adminModelPath . 'playlist.php');  
+include_once ($adminModelPath . 'playlist.php');
+
 /** Checks if the PlaylistController class has been defined starts */
 if ( !class_exists ( 'PlaylistController' )) { 
   /**
@@ -21,7 +22,8 @@ if ( !class_exists ( 'PlaylistController' )) {
     /**
      * Constructor starts
      */
-    public function __construct() {  
+    public function __construct() 
+    {  
       parent::__construct ();
       /** Get PlaylistssearchQuery from query parameters */
       $this->_playlistsearchQuery = filter_input ( INPUT_POST, 'PlaylistssearchQuery' );
@@ -46,7 +48,8 @@ if ( !class_exists ( 'PlaylistController' )) {
     /**
      * Function for add/ update playlist data.
      */
-    public function add_playlist() {
+    public function add_playlist() 
+    {
       global $wpdb;
 
       /** Check if sttus is exists */
@@ -71,6 +74,8 @@ if ( !class_exists ( 'PlaylistController' )) {
         $playlistImage      = filter_input ( INPUT_POST, 'playlistimage' );
         /** Get playlistthumb parameters from request URL */
         $playlistThumb      = filter_input ( INPUT_POST, 'playlistthumb' );
+        /** Get playlistparent parameters from request URL */
+        $playlistParent     = filter_input ( INPUT_POST, 'playlistparent' );
         /* -||- */
 
         /** Get ispublish parameters from request URL */
@@ -93,6 +98,7 @@ if ( !class_exists ( 'PlaylistController' )) {
         $playlistData = array ( 
           'playlist_name'     => $playlistName, 
           'playlist_slugname' => $playlist_slugname, 
+          'parent_id'         => $playlistParent, 
           'playlist_desc'     => $playlistDesc, 
           'playlist_image'    => $playlistImage, 
           'playlist_thumb'    => $playlistThumb, 
@@ -136,7 +142,8 @@ if ( !class_exists ( 'PlaylistController' )) {
      * @param unknown $action
      * @param unknown $type
      */
-    public function redirectPlaylistPage ( $statusFlag, $action, $type ) {
+    public function redirectPlaylistPage ( $statusFlag, $action, $type ) 
+    {
       /** Redirect to playlist page based on the status */
       if (! $statusFlag && $action != 'status' ) {
         /** For unsuccess action
@@ -183,7 +190,8 @@ if ( !class_exists ( 'PlaylistController' )) {
      * @param unknown $message_div
      * @return multitype:unknown string
      */
-    public function set_message ( $msg, $message_div ) {
+    public function set_message ( $msg, $message_div ) 
+    {
       /** Set status for the corresponding action */
       $this->_msg = __ ( 'Category', FLICHE_VGALLERY ) . ' ' . $msg . ' '. __ ( 'Successfully ...', FLICHE_VGALLERY ) ;
       /** Return message array */
@@ -195,7 +203,8 @@ if ( !class_exists ( 'PlaylistController' )) {
      *
      * @return multitype:string
      */
-    public function get_message() {
+    public function get_message () 
+    {
       $result = '';
       /** Check update action is success */
       if($this->_update == '1') {
@@ -227,9 +236,10 @@ if ( !class_exists ( 'PlaylistController' )) {
     /**
      * Function to order playlist data based on the selected fields
      */
-    public function playlist_data() {
+    public function playlist_data () 
+    {
       /** Store order by fileds into single array */
-      $orderBy  = array ( 'id', 'title', 'desc', 'publish', 'sorder' );
+      $orderBy  = array ( 'id', 'title', 'desc', 'parent', 'publish', 'sorder' );
       $order    = 'id';
       /** Check if order-by field exists within an array
        * Set order by values  */
@@ -245,17 +255,21 @@ if ( !class_exists ( 'PlaylistController' )) {
           $order = 'playlist_name';
           break;
         /* -||- */
+        case 'parent' :
+          $order = 'parent_id';
+          break;
+        /* -||- */
         case 'desc' :
           $order = 'playlist_desc';
           break;
-        /* -||- 
+        /* -||- */
         case 'image' :
           $order = 'playlist_image';
-          break;*/
-        /* -||- 
+          break;
+        /* -||- */
         case 'thumb' :
           $order = 'playlist_thumb';
-          break;*/
+          break;
         /* -||- */
         case 'publish' :
           $order = 'is_publish';
@@ -275,7 +289,8 @@ if ( !class_exists ( 'PlaylistController' )) {
     /**
      * Function to delete, publish or unpublish the playlist
      */
-    public function get_delete() {
+    public function get_delete () 
+    {
       /** Get playlistapply parameter from request URL */
       $playlistApply      = filter_input ( INPUT_POST, 'playlistapply' );
       /** Get playlistactionup parameter from request URL */
